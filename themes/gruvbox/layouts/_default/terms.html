@@ -1,0 +1,14 @@
+{{ define "header" }}
+    {{ partial "header.html" . }}
+{{ end }}
+
+{{ define "content" }}
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+
+    <!-- range all pages sorted by their title -->
+    {{ range sort .Site.Taxonomies.tags }}
+       <a class="badge badge-tag-list-page" href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+    {{ end }}
+{{ end }}
+

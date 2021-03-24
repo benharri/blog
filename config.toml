@@ -1,0 +1,8 @@
+baseURL = "."
+languageCode = "en-us"
+title = "blog // ~ben"
+theme = "gruvbox"
+uglyurls = true
+
+[taxonomies]
+    tag = "tags"
