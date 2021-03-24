@@ -7,7 +7,7 @@ tags:
 ---
 
 last week i did some
-[maintenance](https://tilde.team/news/?page=025_raid_reboot) on the
+[maintenance](https://tilde.team/news/025_raid_reboot) on the
 tilde.team box. probably should have written about it sooner but i
 didn't make time for it until now.
 
@@ -34,7 +34,19 @@ i've migrated tilde.team twice before (from linode -&gt; woothosting
 -&gt; hetzner -&gt; and now back to hetzner on the same box) using a
 slick little rsync that i've put together.
 
-` rsync -auHxv --numeric-ids \   --exclude=/etc/fstab \   --exclude=/etc/network/* \   --exclude=/proc/* \   --exclude=/tmp/* \   --exclude=/sys/* \   --exclude=/dev/* \   --exclude=/mnt/* \   --exclude=/boot/* \   --exclude=/root/* \   root@oldbox:/* /`
+```
+rsync -auHxv --numeric-ids \
+    --exclude=/etc/fstab \
+    --exclude=/etc/network/* \
+    --exclude=/proc/* \
+    --exclude=/tmp/* \
+    --exclude=/sys/* \
+    --exclude=/dev/* \
+    --exclude=/mnt/* \
+    --exclude=/boot/* \
+    --exclude=/root/* \
+    root@oldbox:/* /
+```
 
 as long as the destination and source boxen are running the same
 distro/version, you should be good to go after rebooting the destination
