@@ -1,6 +1,6 @@
 ---
 title: 'pan galactic gargle blaster'
-date: 201712071641.40
+date: 2017-12-07T16:41:40
 tags:
 - 'beer'
 - 'hhgtg'

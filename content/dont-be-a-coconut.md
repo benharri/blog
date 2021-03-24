@@ -1,9 +1,8 @@
 ---
 title: "don't be a coconut"
-date: 201712051325.47
+date: 2017-12-05T13:25:47
 tags:
 - 'music'
-- 'lyrics'
 - 'words'
 ---
 

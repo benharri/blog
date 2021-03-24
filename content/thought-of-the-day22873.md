@@ -1,6 +1,6 @@
 ---
 title: 'Thought of the Day'
-date: 201711271654.07
+date: 2017-11-27T16:54:07
 tags:
 - 'nonsense'
 - 'quotes'

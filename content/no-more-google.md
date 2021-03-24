@@ -1,6 +1,6 @@
 ---
 title: 'no more google'
-date: 201808142336.05
+date: 2018-08-14T23:36:05
 tags:
 - 'linux'
 - 'net-neutrality'

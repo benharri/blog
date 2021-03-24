@@ -1,6 +1,6 @@
 ---
 title: 'where to find me elsewhere on the web'
-date: 201711281622.42
+date: 2017-11-28T16:22:42
 tags:
 - 'social'
 - 'contact'

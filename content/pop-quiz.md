@@ -1,6 +1,6 @@
 ---
 title: 'pop quiz'
-date: 201801161726.40
+date: 2018-01-16T17:26:40
 tags:
 - '4k-gaming'
 - 'gaming'

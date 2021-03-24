@@ -1,6 +1,6 @@
 ---
 title: 'lxd networking and additional IPs'
-date: 201807261534.50
+date: 2018-07-26T15:34:50
 tags:
 - 'linux'
 - 'sysadmin'

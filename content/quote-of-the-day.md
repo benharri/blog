@@ -1,6 +1,6 @@
 ---
 title: 'quote of the day'
-date: 201802130955.06
+date: 2018-02-13T09:55:06
 tags:
 - 'quotes'
 ---

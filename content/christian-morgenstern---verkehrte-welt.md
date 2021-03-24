@@ -1,6 +1,6 @@
 ---
 title: 'Christian Morgenstern – “verkehrte Welt”'
-date: 201711271652.49
+date: 2017-11-27T16:52:49
 tags:
 - 'german'
 - 'words'

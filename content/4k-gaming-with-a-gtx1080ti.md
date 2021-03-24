@@ -1,6 +1,6 @@
 ---
 title: '4k gaming with a gtx1080ti'
-date: 201710021609.26
+date: 2017-10-02T16:09:26
 tags:
 - 'gaming'
 ---

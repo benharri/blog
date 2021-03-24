@@ -1,6 +1,6 @@
 ---
 title: 'november 13 post mortem'
-date: 201811132020.33
+date: 2018-11-13T20:20:33
 tags:
 - 'post-mortem'
 - 'linux'

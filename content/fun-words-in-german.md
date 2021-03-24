@@ -1,6 +1,6 @@
 ---
 title: 'fun words in german'
-date: 201711271650.40
+date: 2017-11-27T16:50:40
 tags:
 - 'german'
 - 'words'

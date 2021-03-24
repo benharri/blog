@@ -1,6 +1,6 @@
 ---
 title: 'thought of the day'
-date: 201711271656.36
+date: 2017-11-27T16:56:36
 tags:
 - 'thought-of-the-day'
 ---

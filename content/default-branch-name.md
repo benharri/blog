@@ -1,6 +1,6 @@
 ---
 title: 'default branch name'
-date: 202101101526.29
+date: 2021-01-10T15:26:29
 tags:
 - 'git'
 - 'linux'

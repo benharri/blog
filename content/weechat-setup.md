@@ -1,6 +1,6 @@
 ---
 title: 'weechat setup'
-date: 201811162311.30
+date: 2018-11-16T23:11:30
 tags:
 - 'irc'
 - 'linux'

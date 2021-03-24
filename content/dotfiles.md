@@ -1,6 +1,6 @@
 ---
 title: 'dotfiles'
-date: 201807221926.26
+date: 2018-07-22T19:26:26
 tags:
 - 'linux'
 - 'dotfiles'

@@ -1,6 +1,6 @@
 ---
 title: 'bashblog and your gopherhole'
-date: 201807221144.03
+date: 2018-07-22T11:44:03
 tags:
 - 'tilde'
 - 'blog'

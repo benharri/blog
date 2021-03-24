@@ -1,6 +1,6 @@
 ---
 title: 'more drone photos'
-date: 201807152315.46
+date: 2018-07-15T23:15:46
 tags:
 - 'dji'
 - 'drone'

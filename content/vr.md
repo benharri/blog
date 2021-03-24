@@ -1,6 +1,6 @@
 ---
 title: 'vr'
-date: 201712181336.04
+date: 2017-12-18T13:36:04
 tags:
 - 'vr'
 - 'virtual-reality'

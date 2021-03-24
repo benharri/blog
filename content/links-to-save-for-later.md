@@ -1,6 +1,6 @@
 ---
 title: 'links to save for later'
-date: 201710201618.28
+date: 2017-10-20T16:18:28
 tags:
 - 'links'
 draft: true

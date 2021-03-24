@@ -1,6 +1,6 @@
 ---
 title: 'Nonsense'
-date: 201711271655.29
+date: 2017-11-27T16:55:29
 tags:
 - 'nonsense'
 - 'words'

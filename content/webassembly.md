@@ -1,6 +1,6 @@
 ---
 title: 'webassembly'
-date: 201801171309.13
+date: 2018-01-17T13:09:13
 tags:
 - 'wasm'
 - 'dev'

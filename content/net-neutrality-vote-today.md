@@ -1,6 +1,6 @@
 ---
 title: 'net neutrality vote today'
-date: 201712140626.55
+date: 2017-12-14T06:26:55
 tags:
 - 'net-neutrality'
 - 'internet'

@@ -1,6 +1,6 @@
 ---
 title: 'antiwitze'
-date: 201711271658.17
+date: 2017-11-27T16:58:17
 tags:
 - 'german'
 - 'jokes'

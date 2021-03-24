@@ -1,6 +1,6 @@
 ---
 title: 'tildeverse.org'
-date: 201807152309.22
+date: 2018-07-15T23:09:22
 tags:
 - 'tilde'
 - 'internet'

@@ -1,6 +1,6 @@
 ---
 title: 'git remotes with ssh aliases'
-date: 201801121330.26
+date: 2018-01-12T13:30:26
 tags:
 - 'git'
 - 'ssh'

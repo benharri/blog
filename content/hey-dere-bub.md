@@ -1,6 +1,6 @@
 ---
 title: 'hey dere bub!'
-date: 201712131912.51
+date: 2017-12-13T19:12:51
 tags:
 - 'heyderebub'
 - 'podcast'

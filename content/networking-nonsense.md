@@ -1,6 +1,6 @@
 ---
 title: 'networking nonsense'
-date: 201902110240.20
+date: 2019-02-11T02:40:20
 tags:
 - 'tilde'
 - 'linux'

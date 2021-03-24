@@ -1,6 +1,6 @@
 ---
 title: 'loading...'
-date: 201712211609.45
+date: 2017-12-21T16:09:45
 tags:
 - 'jokes'
 - 'humor'

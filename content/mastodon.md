@@ -1,6 +1,6 @@
 ---
 title: 'mastodon'
-date: 201712221628.45
+date: 2017-12-22T16:28:45
 tags:
 - 'social-networks'
 - 'mastodon'

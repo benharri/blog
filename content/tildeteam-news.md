@@ -1,6 +1,6 @@
 ---
 title: 'tilde.team news'
-date: 201806131507.45
+date: 2018-06-13T15:07:45
 tags:
 - 'tilde'
 - 'sysadmin'

@@ -1,6 +1,6 @@
 ---
 title: '8values'
-date: 201801031241.09
+date: 2018-01-03T12:41:09
 tags:
 - '8values'
 - 'ideology'

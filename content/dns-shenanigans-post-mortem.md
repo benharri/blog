@@ -1,6 +1,6 @@
 ---
 title: 'dns shenanigans post-mortem'
-date: 201808141503.49
+date: 2018-08-14T15:03:49
 tags:
 - 'linux'
 - 'sysadmin'

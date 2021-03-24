@@ -1,6 +1,6 @@
 ---
 title: 'white pride vs black pride'
-date: 201803071649.51
+date: 2018-03-07T16:49:51
 tags:
 - 'politics'
 ---

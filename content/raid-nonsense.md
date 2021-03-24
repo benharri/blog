@@ -1,6 +1,6 @@
 ---
 title: 'raid nonsense'
-date: 201901131328.45
+date: 2019-01-13T13:28:45
 tags:
 - 'tilde'
 - 'sysadmin'

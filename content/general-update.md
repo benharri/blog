@@ -1,6 +1,6 @@
 ---
 title: 'general update'
-date: 202002032006.43
+date: 2020-02-03T20:06:43
 tags:
 - 'update'
 - 'sysadmin'

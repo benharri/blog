@@ -1,6 +1,6 @@
 ---
 title: 'Joe on Sporty-ball-z'
-date: 201711271651.42
+date: 2017-11-27T16:51:42
 tags:
 - 'thought-of-the-day'
 - 'quotes'

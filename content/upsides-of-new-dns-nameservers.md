@@ -1,6 +1,6 @@
 ---
 title: 'upsides of new dns nameservers'
-date: 201808141505.38
+date: 2018-08-14T15:05:38
 tags:
 - 'dns'
 - 'linux'

@@ -1,6 +1,6 @@
 ---
 title: 'mastodon postgres upgrade fun'
-date: 202010281631.39
+date: 2020-10-28T16:31:39
 tags:
 - 'sysadmin'
 - 'tilde'

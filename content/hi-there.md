@@ -1,6 +1,6 @@
 ---
 title: 'hi there'
-date: 201710021611.13
+date: 2017-10-02T16:11:13
 tags:
 - 'linux'
 - 'sysadmin'

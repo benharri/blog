@@ -1,6 +1,6 @@
 ---
 title: 'proactive redundancy'
-date: 201811151839.26
+date: 2018-11-15T18:39:26
 tags:
 - 'sysadmin'
 - 'tilde'

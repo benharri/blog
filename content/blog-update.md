@@ -1,6 +1,6 @@
 ---
 title: 'blog update'
-date: 201711272048.10
+date: 2017-11-27T20:48:10
 tags:
 - 'blog'
 - 'update'
