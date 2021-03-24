@@ -73,4 +73,3 @@ there are [a few extra photos here](https://bhh.sh/pub/photos/italy/)
 
 thanks for stopping by!
 
-tags: [travel](tag_travel.html)

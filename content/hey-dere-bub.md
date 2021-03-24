@@ -28,4 +28,3 @@ if there is anything you'd like us to talk about in the future.
 
 thanks!
 
-tags: [heyderebub](tag_heyderebub.html), [podcast](tag_podcast.html)

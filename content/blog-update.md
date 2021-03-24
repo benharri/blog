@@ -12,4 +12,3 @@ sorry for the blast of posts. i recreated them from a wordpress blog on
 i plan on posting some random thoughts here from time to time. thanks
 for checking in.
 
-tags: [blog](tag_blog.html), [update](tag_update.html)

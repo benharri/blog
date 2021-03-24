@@ -54,4 +54,3 @@ the raid is now in a raid0 config, leaving us with 468gb (not GiB)
 available space. thanks for tuning in to this episode of sysadmin
 adventures!
 
-tags: [tilde](tag_tilde.html), [sysadmin](tag_sysadmin.html)

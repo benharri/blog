@@ -7,4 +7,3 @@ tags:
 
 wherever you go, there you are
 
-tags: [thought-of-the-day](tag_thought-of-the-day.html)

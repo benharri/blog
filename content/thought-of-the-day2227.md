@@ -7,6 +7,3 @@ tags:
 ---
 
 everything in the universe either is or isn't a potato.
-
-tags: [thought-of-the-day](tag_thought-of-the-day.html),
-[words](tag_words.html)

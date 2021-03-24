@@ -54,4 +54,3 @@ use the templateDir option:
 
     git config --global init.defaultBranch main
 
-tags: [git](tag_git.html), [linux](tag_linux.html), [dev](tag_dev.html)

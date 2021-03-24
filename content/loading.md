@@ -28,4 +28,3 @@ const loadingmsgs = [
 
 [sauce](https://twitter.com/0xdade/status/943573845469827072)
 
-tags: [jokes](tag_jokes.html), [humor](tag_humor.html)

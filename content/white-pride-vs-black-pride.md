@@ -41,4 +41,3 @@ culture, I have Irish culture.
 So that's why white pride makes you an asshole but black pride actually
 makes sense.
 
-tags: [politics](tag_politics.html)

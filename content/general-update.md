@@ -36,4 +36,3 @@ click the photo to see some more!
 otherwise, i've just been hanging out on irc, so stop by and say hello
 :)
 
-tags: [update](tag_update.html), [sysadmin](tag_sysadmin.html)

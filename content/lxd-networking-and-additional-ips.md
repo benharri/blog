@@ -24,6 +24,3 @@ to get this up and running.
 
 ping me on [irc](https://tilde.chat) or [email](mailto:ben@tilde.team)
 if you have experience with this.
-
-tags: [linux](tag_linux.html), [sysadmin](tag_sysadmin.html),
-[ubuntu](tag_ubuntu.html)

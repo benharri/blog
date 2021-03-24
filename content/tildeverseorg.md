@@ -22,6 +22,3 @@ i've also started a phlog in my
 [burrow](https://github.com/jamestomasino/burrow) gopherhole tool!
 
 i'll try to post a bit more often too with updates from the tildeverse!
-
-tags: [tilde](tag_tilde.html), [internet](tag_internet.html),
-[links](tag_links.html), [git](tag_git.html)

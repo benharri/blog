@@ -52,4 +52,3 @@ thanks for reading,
 **update**: the round robin host is now *irc*.tilde.chat, which resolves
 the site issues that we were having, due to the duplicated deployments.
 
-tags: [sysadmin](tag_sysadmin.html), [tilde](tag_tilde.html)

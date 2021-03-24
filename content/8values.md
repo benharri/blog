@@ -16,6 +16,3 @@ losing my results url) and got these results.
 
 [my results again as a
 link](https://8values.github.io/results.html?e=95.7&d=92.6&g=78.5&s=92.3)
-
-tags: [8values](tag_8values.html), [ideology](tag_ideology.html),
-[politics](tag_politics.html)

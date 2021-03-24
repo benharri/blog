@@ -31,6 +31,3 @@ i decided to follow this
 ended up with [this](https://tilde.team/~ben/wasm/hello.html).
 
 i don't know what to do next. any ideas?
-
-tags: [wasm](tag_wasm.html), [dev](tag_dev.html),
-[internet](tag_internet.html)

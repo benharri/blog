@@ -7,4 +7,3 @@ tags:
 
 Be Alert! - the world needs more Lerts.
 
-tags: [quotes](tag_quotes.html)

@@ -58,6 +58,3 @@ expected!
 
 thanks to [fosslinux](https://tilde.team/~fosslinux/) and
 [jchelpau](https://tilde.team/~jchelpau/) for their debugging help!
-
-tags: [tilde](tag_tilde.html), [linux](tag_linux.html),
-[sysadmin](tag_sysadmin.html)

@@ -7,4 +7,3 @@ tags:
 
 things are not what they appear to be. nor are they otherwise.
 
-tags: [thought-of-the-day](tag_thought-of-the-day.html)

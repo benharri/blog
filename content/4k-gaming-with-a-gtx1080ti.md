@@ -2,9 +2,7 @@
 title: '4k gaming with a gtx1080ti'
 date: 201710021609.26
 tags:
-- '4k-gaming'
-- 'pc-master-race'
-- 'gtx1080ti'
+- 'gaming'
 ---
 
 i recently picked up a gtx1080ti on newegg (and a 4k monitor earlier in
@@ -34,7 +32,3 @@ some of the other games that i'm looking forward to exploring more of in
 -   hellblade: senua's sacrifice
 -   watch dogs 2
 -   many others
-
-tags: [4k-gaming](tag_4k-gaming.html),
-[pc-master-race](tag_pc-master-race.html),
-[gtx1080ti](tag_gtx1080ti.html)

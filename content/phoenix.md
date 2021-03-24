@@ -35,4 +35,3 @@ check out these response times. sub-millisecond!?!?!
 give it a look, and [join the tilde.team](https://tilde.team/signup) if
 you want to come hang out!
 
-tags: [internet](tag_internet.html), [dev](tag_dev.html)

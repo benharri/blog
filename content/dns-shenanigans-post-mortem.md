@@ -44,6 +44,3 @@ d'oh!
 
 i removed the dnssec from those affected domains, so we should be good
 to go as soon as it all propagates through the fickle beast that is dns.
-
-tags: [linux](tag_linux.html), [sysadmin](tag_sysadmin.html),
-[tilde](tag_tilde.html), [dns](tag_dns.html)

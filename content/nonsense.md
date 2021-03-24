@@ -30,4 +30,3 @@ denial and error but I swear on my mother’s mating name that when you
 put the petal to the medal you will pass with flying carpets like it’s a
 peach of cake.
 
-tags: [nonsense](tag_nonsense.html), [words](tag_words.html)

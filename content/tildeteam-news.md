@@ -34,4 +34,3 @@ all still privacy policy update notices. :(
 
 see you soon!
 
-tags: [tilde](tag_tilde.html), [sysadmin](tag_sysadmin.html)

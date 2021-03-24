@@ -15,6 +15,3 @@ for use with the configs that i'm keeping with it.
 
 now i just need to figure out why my ssh config doesn't copy/symlink my
 config to ~/.ssh when it already exists.
-
-tags: [linux](tag_linux.html), [dotfiles](tag_dotfiles.html),
-[git](tag_git.html)

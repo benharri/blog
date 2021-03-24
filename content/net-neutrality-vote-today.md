@@ -26,6 +26,3 @@ than a minute.
 
 **Copy and paste this into your own status update!** Seriously, this is
 simple and so important. Do it.
-
-tags: [net-neutrality](tag_net-neutrality.html),
-[internet](tag_internet.html)

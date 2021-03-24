@@ -43,6 +43,3 @@ ging die Sonne unter und der graue Tag erschien.
 
 Und das alles dichtet Goethe Als er in der Morgenröte Liegend auf dem
 Nachttopf saß Und dabei die Zeitung las.
-
-tags: [german](tag_german.html), [words](tag_words.html),
-[poetry](tag_poetry.html), [nonsense](tag_nonsense.html)

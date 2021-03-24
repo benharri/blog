@@ -24,4 +24,3 @@ i'm still using:
 -   google photos - but this is going to be replaced long-term with
     syncthing
 
-tags: [linux](tag_linux.html), [net-neutrality](tag_net-neutrality.html)

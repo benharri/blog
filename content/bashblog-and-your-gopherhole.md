@@ -16,4 +16,3 @@ posts.
 
 try it out and let me know if there are any problems!
 
-tags: [tilde](tag_tilde.html), [blog](tag_blog.html)

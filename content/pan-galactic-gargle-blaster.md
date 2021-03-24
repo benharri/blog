@@ -15,4 +15,3 @@ it once again.
 > the effect of which is like having your brains smashed out with a
 > slice of lemon wrapped round a large gold brick.”
 
-tags: [beer](tag_beer.html), [hhgtg](tag_hhgtg.html)

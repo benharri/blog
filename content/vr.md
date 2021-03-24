@@ -23,6 +23,3 @@ have you played any other cool vr games lately? are there any that i
 should check out?
 
 let me know!
-
-tags: [vr](tag_vr.html), [virtual-reality](tag_virtual-reality.html),
-[gaming](tag_gaming.html)

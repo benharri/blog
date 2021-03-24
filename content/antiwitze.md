@@ -16,6 +16,3 @@ tags:
 -   Cola schmeckt besser als aus dem Glas!!!
 -   Zu Fuß ist schneller als übern Berg!
 -   Was ist weiss und wandert den Berg hinauf? Eine Lawine mit Heimweh.
-
-tags: [german](tag_german.html), [jokes](tag_jokes.html),
-[antiwitze](tag_antiwitze.html)

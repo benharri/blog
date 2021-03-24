@@ -17,6 +17,3 @@ i like to mess around with linux sysadmin shtuff.
 get involved.
 
 thanks for being awesome. keep it up.
-
-tags: [linux](tag_linux.html), [sysadmin](tag_sysadmin.html),
-[ubuntu](tag_ubuntu.html), [tilde](tag_tilde.html)

@@ -53,6 +53,3 @@ that the locale was not correctly set while running the apt upgrades…
 
 if this happens to you, hopefully this helps you wade out while keeping
 all your data :)
-
-tags: [sysadmin](tag_sysadmin.html), [tilde](tag_tilde.html),
-[social-networks](tag_social-networks.html)

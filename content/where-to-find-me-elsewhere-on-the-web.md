@@ -17,4 +17,3 @@ tags:
 -   [gitlab](https://gitlab.com/benharri)
 -   [tilde~ben](/~ben/)
 
-tags: [social](tag_social.html), [contact](tag_contact.html)

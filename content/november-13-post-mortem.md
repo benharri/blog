@@ -62,6 +62,3 @@ in one day, i ended up sending three different support emails to hetzner
 support, which finally resulted in them unlocking the ip.
 
 it's definitely time to research redundancy options!
-
-tags: [post-mortem](tag_post-mortem.html), [linux](tag_linux.html),
-[sysadmin](tag_sysadmin.html)

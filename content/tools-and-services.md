@@ -99,4 +99,3 @@ suppose that means that the main cost is my time and energy. in general,
 these things are hands-off in the day-to-day and only take time when
 there are updates or something breaks.
 
-tags: [tilde](tag_tilde.html), [sysadmin](tag_sysadmin.html)

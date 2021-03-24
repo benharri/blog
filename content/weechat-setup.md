@@ -90,6 +90,3 @@ additionally, feel free to [use my
 add your ~/.weechat to source control, and compare.
 
 hope you've enjoyed customizing your weechat!
-
-tags: [irc](tag_irc.html), [linux](tag_linux.html),
-[weechat](tag_weechat.html)

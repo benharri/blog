@@ -18,6 +18,3 @@ send me a toot [@ben@tilde.team](https://social.tilde.team/@ben) (from
 any mastodon instance!)
 
 thanks!
-
-tags: [social-networks](tag_social-networks.html),
-[mastodon](tag_mastodon.html), [tilde](tag_tilde.html)

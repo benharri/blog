@@ -19,4 +19,3 @@ this](https://github.com/benharri/tilde/issues/1#issuecomment-418732788).
 now we just need to figure out if it can be pointed at a gitea instance
 like [tildegit](https://tildegit.org). might be time for a PR!
 
-tags: [blog](tag_blog.html)

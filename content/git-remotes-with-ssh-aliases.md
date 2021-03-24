@@ -35,4 +35,3 @@ of `scp file.txt ben@tilde.team:workspace/.`
 the ssh\_config file is super useful. check `man ssh_config` for a full
 list of options!
 
-tags: [git](tag_git.html), [ssh](tag_ssh.html)
