@@ -13,10 +13,10 @@ i awoke, not suspecting anything to be amiss. as soon as i logged in to
 check my email and irc mentions, it became clear.
 
 tilde.team was at the least inaccessible, and at the worst, down
-completely. according the message in my inbox, there hade been an
+completely. according the message in my inbox, there had been an
 attempted "attack" from my IP.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 > We have indications that there was an attack from your server. Please
 > take all necessary measures to avoid this in the future and to solve

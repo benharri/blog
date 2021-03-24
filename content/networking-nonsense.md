@@ -11,7 +11,7 @@ i've recently been working on setting up [drone
 ci](https://drone.tildegit.org) on the tilde.team machine. however,
 there's been something strange going on with the networking on there.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 starting up drone with
 [docker-compose](https://tildegit.org/tildeverse/drone/src/branch/master/docker-compose.yml)

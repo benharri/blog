@@ -10,7 +10,7 @@ inspired by [tomasino](https://tomasino.org)'s recent
 [post](%20https://labs.tomasino.org/freelancing-tools-services/), i'd
 like to detail some of the stuff that i rent and use.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 ## recurring costs
 

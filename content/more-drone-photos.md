@@ -2,7 +2,6 @@
 title: 'more drone photos'
 date: 2018-07-15T23:15:46
 tags:
-- 'dji'
 - 'drone'
 - 'photography'
 ---

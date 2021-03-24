@@ -4,7 +4,6 @@ date: 2017-11-27T16:58:17
 tags:
 - 'german'
 - 'jokes'
-- 'antiwitze'
 ---
 
 -   uebern berg ist schneller als zu fuss sagte der wanderer und schwamm

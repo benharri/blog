@@ -16,7 +16,7 @@ the palatine.
 
 ![](https://bhh.sh/pub/photos/italy/roman-forum.jpg)
 
-------------------------------------------------------------------------
+<!-- more -->
 
 here's me standing next to the same piece of ancient rome as i did the
 last time i visited in 2015. see [my github

@@ -11,6 +11,13 @@
     <div>
         {{ range first 10 .Pages }}
             {{ .Render "summary" }}
+            <hr>
         {{ end }}
     </div>
+    <center>
+        <a href="tags.html">all tags</a> ~
+        <a href="posts.html">all posts</a> ~
+        <a href="index.xml">rss</a>
+    </center>
+    <br>
 {{ end }}

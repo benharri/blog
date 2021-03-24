@@ -4,7 +4,7 @@ date: 2020-10-28T16:31:39
 tags:
 - 'sysadmin'
 - 'tilde'
-- 'social-networks'
+- 'social'
 ---
 
 howdy friends!
@@ -15,7 +15,7 @@ recently.
 
 here’s a quick recap of what went down during the upgrade process.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 we run the current stable version of postgresql from the [postgres apt
 repos](https://wiki.postgresql.org/wiki/Apt). postgres

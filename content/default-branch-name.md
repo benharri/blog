@@ -1,6 +1,6 @@
 ---
 title: 'default branch name'
-date: 2021-01-10T15:26:29
+date: 2020-06-16T15:26:29
 tags:
 - 'git'
 - 'linux'
@@ -11,13 +11,13 @@ changing git’s default branch name has come up recently as an easy
 action we can take to update our language and remove harmful ideas from
 our daily usage.
 
+<!-- more -->
+
 i’m concerned that this effort to change the language used is ultimately
 a symbolic gesture to avoid scrutiny into actual change (notably
 github’s push for this change and continued contracts with ICE).
 
 however, it’s an easy change to make.
-
-------------------------------------------------------------------------
 
 let’s have a look at how to change it for new repos:
 

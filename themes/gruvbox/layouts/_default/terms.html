@@ -1,14 +1,11 @@
-{{ define "header" }}
-    {{ partial "header.html" . }}
-{{ end }}
+{{ define "title" }}{{ .Title | lower }} &ndash; {{ .Site.Title }}{{ end }}
 
-{{ define "content" }}
-    <h1>{{ .Title }}</h1>
+{{ define "main" }}
+    <h1>{{ .Title | lower }}</h1>
     {{ .Content }}
 
-    <!-- range all pages sorted by their title -->
     {{ range sort .Site.Taxonomies.tags }}
-       <a class="badge badge-tag-list-page" href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a>
+    ~&gt; <a class="badge badge-tag-list-page" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> ({{ .Count }})<br>
     {{ end }}
 {{ end }}
 

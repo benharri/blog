@@ -14,7 +14,7 @@ what options do you need to set? what plugins? what scripts?
 i'll go over some of the most essential of these, and share my full
 configs.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 ## options
 

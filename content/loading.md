@@ -3,7 +3,6 @@ title: 'loading...'
 date: 2017-12-21T16:09:45
 tags:
 - 'jokes'
-- 'humor'
 ---
 
 ```

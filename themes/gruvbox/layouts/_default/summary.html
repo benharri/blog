@@ -1,7 +1,11 @@
 <article>
     <div>
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        {{ .Summary }}
+        <h2>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <small><time>{{ .Date.Format "2006-01-02" }}</time></small>
+        </h2>
+
+        <p>{{ .Summary }}</p>
     </div>
     {{ if .Truncated }}
     <div>

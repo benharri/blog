@@ -2,7 +2,6 @@
 title: '8values'
 date: 2018-01-03T12:41:09
 tags:
-- '8values'
 - 'ideology'
 - 'politics'
 ---

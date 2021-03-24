@@ -16,7 +16,7 @@ logo](https://heyderebub.com/images/itunes_image.jpg)](https://heyderebub.com)
 5](https://heyderebub.com/?name=2017-12-13_hey_dere_bub_ep__5.mp3) was
 uploaded today.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 we're on [twitter](https://twitter.com/heyderebub),
 [facebook](https://facebook.com/heyderebub), and of course [our own

@@ -2,10 +2,7 @@
 title: 'cold'
 date: 2018-01-05T09:49:42
 tags:
-- 'cold'
 - 'weather'
-- 'winter'
-- 'snow'
 ---
 
 why is it so cold

@@ -11,7 +11,7 @@ last week i did some
 tilde.team box. probably should have written about it sooner but i
 didn't make time for it until now.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 the gist of the problem was that the default images provided by
 [hetzner](https://hetzner.com) default to raid1 between the available

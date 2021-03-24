@@ -15,7 +15,7 @@ almost a year since i posted anything at all.
 i don't have anything in particular to post today so i figured it would
 be good to give a general update since the last time i posted.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 we've moved physical hosts again ([/news
 post](https://tilde.team/news/028_back_up)), which is now a vm on a

@@ -2,10 +2,8 @@
 title: 'pop quiz'
 date: 2018-01-16T17:26:40
 tags:
-- '4k-gaming'
 - 'gaming'
 - 'gtx1080ti'
-- 'pc-master-race'
 ---
 
 is this real?

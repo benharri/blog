@@ -3,7 +3,6 @@ title: 'vr'
 date: 2017-12-18T13:36:04
 tags:
 - 'vr'
-- 'virtual-reality'
 - 'gaming'
 ---
 

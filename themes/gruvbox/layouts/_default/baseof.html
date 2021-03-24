@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-    {{- partial "head.html" . -}}
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>{{- block "title" . }}{{ .Site.Title }}{{ end -}}</title>
+	</head>
+
     <body>
         <main>
         {{- partial "header.html" . -}}
-        {{- block "main" . }}{{- end }}
+        {{- block "main" . }}{{ end -}}
         {{- partial "footer.html" . -}}
         </main>
     </body>

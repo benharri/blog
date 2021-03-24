@@ -12,7 +12,7 @@ it's still a large spof (single-point-of-failure), but i'm reasonably
 certain that at least the irc net will remain up and functional in the
 event of another outage.
 
-------------------------------------------------------------------------
+<!-- more -->
 
 the first thing that i set up was a handful of additional ircd nodes:
 see [the tilde.chat wiki](https://tilde.chat/wiki/?page=servers) for a
