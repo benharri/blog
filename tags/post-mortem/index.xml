@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>post-mortem on blog // ~ben</title>
+    <link>./tags/post-mortem.html</link>
+    <description>Recent content in post-mortem on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Nov 2018 20:20:33 +0000</lastBuildDate><atom:link href="./tags/post-mortem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>november 13 post mortem</title>
+      <link>./november-13-post-mortem.html</link>
+      <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
+      
+      <guid>./november-13-post-mortem.html</guid>
+      <description>we had something of an outage on november 13, 2018 on tilde.team.
+i awoke, not suspecting anything to be amiss. as soon as i logged in to check my email and irc mentions, it became clear.</description>
+    </item>
+    
+  </channel>
+</rss>

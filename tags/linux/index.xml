@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on blog // ~ben</title>
+    <link>./tags/linux.html</link>
+    <description>Recent content in linux on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jun 2020 15:26:29 +0000</lastBuildDate><atom:link href="./tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>default branch name</title>
+      <link>./default-branch-name.html</link>
+      <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
+      
+      <guid>./default-branch-name.html</guid>
+      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
+i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+    </item>
+    
+    <item>
+      <title>networking nonsense</title>
+      <link>./networking-nonsense.html</link>
+      <pubDate>Mon, 11 Feb 2019 02:40:20 +0000</pubDate>
+      
+      <guid>./networking-nonsense.html</guid>
+      <description>i&amp;rsquo;ve recently been working on setting up drone ci on the tilde.team machine. however, there&amp;rsquo;s been something strange going on with the networking on there.
+starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netstat -tulpn showed the port binding properly to 127.</description>
+    </item>
+    
+    <item>
+      <title>weechat setup</title>
+      <link>./weechat-setup.html</link>
+      <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
+      
+      <guid>./weechat-setup.html</guid>
+      <description>so you decided to switch from irssi to weechat?
+what options do you need to set? what plugins? what scripts?
+i&amp;rsquo;ll go over some of the most essential of these, and share my full configs.</description>
+    </item>
+    
+    <item>
+      <title>november 13 post mortem</title>
+      <link>./november-13-post-mortem.html</link>
+      <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
+      
+      <guid>./november-13-post-mortem.html</guid>
+      <description>we had something of an outage on november 13, 2018 on tilde.team.
+i awoke, not suspecting anything to be amiss. as soon as i logged in to check my email and irc mentions, it became clear.</description>
+    </item>
+    
+    <item>
+      <title>no more google</title>
+      <link>./no-more-google.html</link>
+      <pubDate>Tue, 14 Aug 2018 23:36:05 +0000</pubDate>
+      
+      <guid>./no-more-google.html</guid>
+      <description>not sure if this is appropriately tagged, but i didn&amp;rsquo;t feel like making a new one.
+i figured i should probably get some notes down about moving off google.
+to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:</description>
+    </item>
+    
+    <item>
+      <title>upsides of new dns nameservers</title>
+      <link>./upsides-of-new-dns-nameservers.html</link>
+      <pubDate>Tue, 14 Aug 2018 15:05:38 +0000</pubDate>
+      
+      <guid>./upsides-of-new-dns-nameservers.html</guid>
+      <description> no more google no more google automated certbot validation for letsencrypt wildcard certs!! no more manual TXT records every three months!  </description>
+    </item>
+    
+    <item>
+      <title>dns shenanigans post-mortem</title>
+      <link>./dns-shenanigans-post-mortem.html</link>
+      <pubDate>Tue, 14 Aug 2018 15:03:49 +0000</pubDate>
+      
+      <guid>./dns-shenanigans-post-mortem.html</guid>
+      <description>let&amp;rsquo;s start by saying i probably should have done a bit more research before diving head-first into this endeavor.
+i&amp;rsquo;ve been thinking about transferring my domains off google domains for some time now, as part of my personal goal to self host and limit my dependence on google and other large third-party monstrosities.</description>
+    </item>
+    
+    <item>
+      <title>lxd networking and additional IPs</title>
+      <link>./lxd-networking-and-additional-ips.html</link>
+      <pubDate>Thu, 26 Jul 2018 15:34:50 +0000</pubDate>
+      
+      <guid>./lxd-networking-and-additional-ips.html</guid>
+      <description>now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to get a secondary IP address assigned to a lxd container (which i plan to use for my personal stuff).</description>
+    </item>
+    
+    <item>
+      <title>dotfiles</title>
+      <link>./dotfiles.html</link>
+      <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
+      
+      <guid>./dotfiles.html</guid>
+      <description>finally got around to updating my dotfiles to use gnu stow. i adapted ~tomasino&amp;rsquo;s makefile for use with the configs that i&amp;rsquo;m keeping with it.
+now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my config to ~/.</description>
+    </item>
+    
+    <item>
+      <title>hi there</title>
+      <link>./hi-there.html</link>
+      <pubDate>Mon, 02 Oct 2017 16:11:13 +0000</pubDate>
+      
+      <guid>./hi-there.html</guid>
+      <description>welcome to my tildeblog
+you are here.
+i like to mess around with linux sysadmin shtuff. tilde.team is my baby. let me know if you want to get involved.
+thanks for being awesome.</description>
+    </item>
+    
+  </channel>
+</rss>

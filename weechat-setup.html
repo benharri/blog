@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>weechat setup</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./weechat-setup.html">weechat setup</a></h1>
+
+    <time>Fri, 16 Nov 2018 23:11 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/irc.html">irc</a>
+    </li> <li>
+        <a href="tags/linux.html">linux</a>
+    </li> <li>
+        <a href="tags/weechat.html">weechat</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>so you decided to switch from irssi to weechat?</p>
+<p>what options do you need to set? what plugins? what scripts?</p>
+<p>i&rsquo;ll go over some of the most essential of these, and share my full
+configs.</p>
+<!-- raw HTML omitted -->
+<h2 id="options">options</h2>
+<ul>
+<li><code>logger.level.irc</code> the default is 9, which includes joins and parts.
+in most cases you can set this to 3, which only includes messages</li>
+<li><code>weechat.look.buffer_notify_default</code> the default here is &ldquo;all&rdquo;,
+which will add joins and parts to your hotlist. set it to &ldquo;message&rdquo;.</li>
+<li><code>weechat.look.confirm_quit</code> set this to on. you&rsquo;ll thank me when you
+type <code>/quit</code> and mean <code>/close</code></li>
+<li><code>weechat.look.highlight</code> add a comma-separated list of names/terms
+you&rsquo;d like to trigger a highlight here</li>
+<li><code>weechat.look.prefix_align_max</code> set this to something between 10
+and 20. otherwise, long nicks will crush your available screen real
+estate.</li>
+<li><code>buflist.format.indent</code> try something like
+<code>${color:237}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?├:└}</code></li>
+<li><code>buflist.format.number</code> if you want to skip the . or space after the
+number, set it to <code>${color:green}${number}</code></li>
+<li><code>irc.look.color_nicks_in_names</code> set this to on</li>
+<li><code>irc.look.color_nicks_in_nicklist</code> set this to on</li>
+<li><code>irc.look.server_buffer</code> set this to independent to prevent
+automatic merges with the core weechat buffer. especially useful if
+you plan on using
+<a href="https://weechat.org/scripts/source/autosort.py.html/">autosort.py</a></li>
+<li><code>irc.server_default.autoconnect</code> set this to on so you don&rsquo;t have to
+set it for every new network you add.</li>
+</ul>
+<h2 id="scripts">scripts</h2>
+<p>these scripts can be managed with the built in <code>/script</code> tool. press i,
+then enter on the selected script to install it.</p>
+<ul>
+<li><a href="https://weechat.org/scripts/source/highmon.pl.html/">highmon.pl</a> -
+set aside a buffer to list the places your nick has been mentioned</li>
+<li><a href="https://weechat.org/scripts/source/colorize_nicks.py.html/">colorize_nicks.py</a> -
+show nicks in chat with colors</li>
+<li><a href="https://weechat.org/scripts/source/go.py.html/">go.py</a> - fuzzy
+quick jump by buffer number of channel name</li>
+<li><a href="https://weechat.org/scripts/source/autojoin.py.html/">autojoin.py</a> -
+use <code>/autojoin --run</code> to save all the channels you&rsquo;re currently in
+to be autojoined the next time you start weechat</li>
+<li><a href="https://weechat.org/scripts/source/autosort.py.html/">autosort.py</a> -
+use this script in tandem with irc.look.server_buffer=independent
+to keep you channel and server list in order</li>
+<li><a href="https://weechat.org/scripts/source/colorize_lines.pl.html/">colorize_lines.pl</a> -
+i use this script to highlight the entire line of messages i&rsquo;ve been
+mentioned in. check the options in the source or with
+<code>/help colorize_lines</code></li>
+<li><a href="https://weechat.org/scripts/source/grep.py.html/">grep.py</a> -
+quickly search history and buffers with <code>/grep</code></li>
+</ul>
+<h2 id="the-rest-of-my-configs">the rest of my configs</h2>
+<p>you can find the rest of my configs
+<a href="https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat">here</a>.</p>
+<p>if you have any questions, feel free to ping me on irc. i&rsquo;m benharri on
+freenode and ben on <a href="https://tilde.chat">tilde.chat</a></p>
+<h2 id="screenshot">screenshot</h2>
+<p>here&rsquo;s a screenshot of my current configs</p>
+<p><img src="https://bhh.sh/pub/screenies/weechat.png" alt=""></p>
+<h2 id="bonus">bonus</h2>
+<p>if you have an existing setup, you can check the config changes you&rsquo;ve
+made with <code>/set diff</code></p>
+<p>additionally, feel free to <a href="https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat/.gitignore">use my
+.gitignore</a>,
+add your ~/.weechat to source control, and compare.</p>
+<p>hope you&rsquo;ve enjoyed customizing your weechat!</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

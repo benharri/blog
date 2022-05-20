@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>contact on blog // ~ben</title>
+    <link>./tags/contact.html</link>
+    <description>Recent content in contact on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 Nov 2017 16:22:42 +0000</lastBuildDate><atom:link href="./tags/contact/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>where to find me elsewhere on the web</title>
+      <link>./where-to-find-me-elsewhere-on-the-web.html</link>
+      <pubDate>Tue, 28 Nov 2017 16:22:42 +0000</pubDate>
+      
+      <guid>./where-to-find-me-elsewhere-on-the-web.html</guid>
+      <description> email wire @bharris matrix/riot @benh:matrix.org telegram twitter keybase my personal site github gitlab tilde~ben  </description>
+    </item>
+    
+  </channel>
+</rss>

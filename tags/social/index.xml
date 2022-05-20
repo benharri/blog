@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>social on blog // ~ben</title>
+    <link>./tags/social.html</link>
+    <description>Recent content in social on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Oct 2020 16:31:39 +0000</lastBuildDate><atom:link href="./tags/social/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mastodon postgres upgrade fun</title>
+      <link>./mastodon-postgres-upgrade-fun.html</link>
+      <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
+      
+      <guid>./mastodon-postgres-upgrade-fun.html</guid>
+      <description>howdy friends!
+if you’re a mastodon user on tilde.zone (the tildeverse mastodon instance), you might’ve noticed some downtime recently.
+here’s a quick recap of what went down during the upgrade process.</description>
+    </item>
+    
+    <item>
+      <title>mastodon</title>
+      <link>./mastodon.html</link>
+      <pubDate>Fri, 22 Dec 2017 16:28:45 +0000</pubDate>
+      
+      <guid>./mastodon.html</guid>
+      <description>hi everyone.
+i started hosting a mastodon instance at social.tilde.team.
+check it out if you want some federated open source social goodness :)
+send me a toot @ben@tilde.team (from any mastodon instance!</description>
+    </item>
+    
+    <item>
+      <title>where to find me elsewhere on the web</title>
+      <link>./where-to-find-me-elsewhere-on-the-web.html</link>
+      <pubDate>Tue, 28 Nov 2017 16:22:42 +0000</pubDate>
+      
+      <guid>./where-to-find-me-elsewhere-on-the-web.html</guid>
+      <description> email wire @bharris matrix/riot @benh:matrix.org telegram twitter keybase my personal site github gitlab tilde~ben  </description>
+    </item>
+    
+  </channel>
+</rss>

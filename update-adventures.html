@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>Update Adventures</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./update-adventures.html">Update Adventures</a></h1>
+
+    <time>Wed, 25 Aug 2021 00:35 EDT</time>
+    <p>tags:</p>
+     
+
+
+    <hr>
+
+    <p>here&rsquo;s the longer version about the outage on august 24, 2021:</p>
+<p>after finishing the package upgrades on my proxmox hosts for the new release
+(proxmox 7.0, corresponding to debian 11/bullseye), i typed reboot and pressed
+enter, crossing my fingers that it would come back up as expected.</p>
+<p>it didn&rsquo;t.</p>
+<p>luckily i had done one last round of vm-level backups before starting the
+upgrade! i started restoring the backups to one of my other servers, but my
+authoritative dns is hosted on the same server as tilde.team, so that needed
+to happen first.</p>
+<p>i got the ns1 set up on my proxmox node at hetzner, but my ns2 secondary zones
+had been hosted at ovh. time to move those to <a href="https://dns.he.net">he.net</a>
+to get it going again (and move away from a provider-dependent solution).</p>
+<p>while shuffling VMs around, i ended up starting a restore of the tilde.team VM
+on my infra-2 server at ovh. it&rsquo;s a large VM with two 300gb disks so it would take
+a while.</p>
+<p>i started working to update the dns records for tilde.team to live on ovh instead
+of my soyoustart box, but shortly after, i received a mail (in my non-tilde inbox
+luckily) from the ovh monitoring team that my server had been rebooted into rescue
+mode after being unpingable for this long.</p>
+<p>i was able to log in with the temporary ssh password and update <code>/etc/network/interfaces</code>
+to use the currently working MAC address that the rescue system was using.</p>
+<p>once i figured out how to disable the netboot rescue mode in the control panel,
+i hit reboot once more. we&rsquo;re back up and running on the upgraded server that it was on
+at the start of the day!</p>
+<p><a href="https://tilde.team/wiki/xmpp">ejabberd</a> wasn&rsquo;t happy with mysql for some reason
+but everything else seems to have come back up now.</p>
+<p>like usual, holler if you see anything amiss!</p>
+<p>cheers,
+~ben</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

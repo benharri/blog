@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>german on blog // ~ben</title>
+    <link>./tags/german.html</link>
+    <description>Recent content in german on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 27 Nov 2017 16:58:17 +0000</lastBuildDate><atom:link href="./tags/german/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>antiwitze</title>
+      <link>./antiwitze.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:58:17 +0000</pubDate>
+      
+      <guid>./antiwitze.html</guid>
+      <description>uebern berg ist schneller als zu fuss sagte der wanderer und schwamm los Was ist der Unterschied zwischen einem Vogel? Beide Beine sind gleich lang. Besonders das linke. Nachts ist es kälter als draußen.</description>
+    </item>
+    
+    <item>
+      <title>Christian Morgenstern – “verkehrte Welt”</title>
+      <link>./christian-morgenstern-verkehrte-welt.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:52:49 +0000</pubDate>
+      
+      <guid>./christian-morgenstern-verkehrte-welt.html</guid>
+      <description>Dunkel war’s der Mond schien helle, Schnee bedeckt die grüne Flur als ein Auto blitzeschnelle, langsam um die Ecke fuhr.
+Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein totgeschossner Hase, auf der Sandbank Schlittschuh lief.</description>
+    </item>
+    
+    <item>
+      <title>fun words in german</title>
+      <link>./fun-words-in-german.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:50:40 +0000</pubDate>
+      
+      <guid>./fun-words-in-german.html</guid>
+      <description> Tschechisches Streichholzschächtelchen Rindfleischettikettierungsüberwachungsaufgabensübertragungsgesetz Donaudampfschifffahrtsgesellschaftskapitän  </description>
+    </item>
+    
+  </channel>
+</rss>

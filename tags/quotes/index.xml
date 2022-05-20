@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>quotes on blog // ~ben</title>
+    <link>./tags/quotes.html</link>
+    <description>Recent content in quotes on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 13 Feb 2018 09:55:06 +0000</lastBuildDate><atom:link href="./tags/quotes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>quote of the day</title>
+      <link>./quote-of-the-day.html</link>
+      <pubDate>Tue, 13 Feb 2018 09:55:06 +0000</pubDate>
+      
+      <guid>./quote-of-the-day.html</guid>
+      <description>Be Alert! - the world needs more Lerts.</description>
+    </item>
+    
+    <item>
+      <title>Thought of the Day</title>
+      <link>./thought-of-the-day22873.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:54:07 +0000</pubDate>
+      
+      <guid>./thought-of-the-day22873.html</guid>
+      <description>“Arguing with religious people – It’s like playing chess with a pigeon; no matter how good I am at chess, the pigeon is just going to knock over the pieces, crap on the board and strut around victorious” – Anonymous</description>
+    </item>
+    
+    <item>
+      <title>Joe on Sporty-ball-z</title>
+      <link>./joe-on-sporty-ball-z.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:51:42 +0000</pubDate>
+      
+      <guid>./joe-on-sporty-ball-z.html</guid>
+      <description>For every nerd calling something sportsball there needs to be a jock that walks into a library and yells “WHAT’S UP WITH ALL THESE WORD BURGERS”</description>
+    </item>
+    
+  </channel>
+</rss>

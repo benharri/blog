@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ubuntu on blog // ~ben</title>
+    <link>./tags/ubuntu.html</link>
+    <description>Recent content in ubuntu on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Jul 2018 15:34:50 +0000</lastBuildDate><atom:link href="./tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>lxd networking and additional IPs</title>
+      <link>./lxd-networking-and-additional-ips.html</link>
+      <pubDate>Thu, 26 Jul 2018 15:34:50 +0000</pubDate>
+      
+      <guid>./lxd-networking-and-additional-ips.html</guid>
+      <description>now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to get a secondary IP address assigned to a lxd container (which i plan to use for my personal stuff).</description>
+    </item>
+    
+    <item>
+      <title>hi there</title>
+      <link>./hi-there.html</link>
+      <pubDate>Mon, 02 Oct 2017 16:11:13 +0000</pubDate>
+      
+      <guid>./hi-there.html</guid>
+      <description>welcome to my tildeblog
+you are here.
+i like to mess around with linux sysadmin shtuff. tilde.team is my baby. let me know if you want to get involved.
+thanks for being awesome.</description>
+    </item>
+    
+  </channel>
+</rss>

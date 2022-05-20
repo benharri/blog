@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>music on blog // ~ben</title>
+    <link>./tags/music.html</link>
+    <description>Recent content in music on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Dec 2017 13:25:47 +0000</lastBuildDate><atom:link href="./tags/music/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>don&#39;t be a coconut</title>
+      <link>./dont-be-a-coconut.html</link>
+      <pubDate>Tue, 05 Dec 2017 13:25:47 +0000</pubDate>
+      
+      <guid>./dont-be-a-coconut.html</guid>
+      <description>i&amp;rsquo;ve got nothing to say don&amp;rsquo;t be a coconut
+ Ask Me Anything - The Strokes (on First Impressions of Earth)</description>
+    </item>
+    
+  </channel>
+</rss>

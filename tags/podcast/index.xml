@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>podcast on blog // ~ben</title>
+    <link>./tags/podcast.html</link>
+    <description>Recent content in podcast on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Feb 2018 13:33:16 +0000</lastBuildDate><atom:link href="./tags/podcast/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>otm</title>
+      <link>./otm.html</link>
+      <pubDate>Thu, 15 Feb 2018 13:33:16 +0000</pubDate>
+      
+      <guid>./otm.html</guid>
+      <description>just heard the latest episode of on the media. this is a super helpful guide i found on their twitter.</description>
+    </item>
+    
+    <item>
+      <title>hey dere bub!</title>
+      <link>./hey-dere-bub.html</link>
+      <pubDate>Wed, 13 Dec 2017 19:12:51 +0000</pubDate>
+      
+      <guid>./hey-dere-bub.html</guid>
+      <description>if you haven&amp;rsquo;t checked it out yet, give my new podcast a listen!
+
+episode 5 was uploaded today.
+we&amp;rsquo;re on twitter, facebook, and of course our own website
+give us a shout on twitter or shoot us an email and let us know what you thought and if there is anything you&amp;rsquo;d like us to talk about in the future.</description>
+    </item>
+    
+  </channel>
+</rss>

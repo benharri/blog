@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>networking nonsense</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./networking-nonsense.html">networking nonsense</a></h1>
+
+    <time>Mon, 11 Feb 2019 02:40 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/tilde.html">tilde</a>
+    </li> <li>
+        <a href="tags/linux.html">linux</a>
+    </li> <li>
+        <a href="tags/sysadmin.html">sysadmin</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>i&rsquo;ve recently been working on setting up <a href="https://drone.tildegit.org">drone
+ci</a> on the tilde.team machine. however,
+there&rsquo;s been something strange going on with the networking on there.</p>
+<!-- raw HTML omitted -->
+<p>starting up drone with
+<a href="https://tildegit.org/tildeverse/drone/src/branch/master/docker-compose.yml">docker-compose</a>
+didn&rsquo;t seem to be working: <code>netstat -tulpn</code> showed the port binding
+properly to 127.0.0.1:8888 but i was completely unable to get anything
+from it (using curl the nginx proxy that was to come).</p>
+<p>i ended up scrapping docker on the ~team box itself and moving it into a
+lxd container (pronounced &ldquo;lex-dee&rdquo;) with nesting enabled.</p>
+<p>this got us in to another problem that had been seen before when using
+nginx to proxy to apps running in other containers. requests were
+dropped intermittently, sometimes hanging for upwards of 30 seconds.</p>
+<p>getting frustrated with this error, i tried to reproduce it on another
+host. both the docker-proxy and nginx-&gt;lxd proxies work on the first
+try yielded no clues as to where things were going wrong.</p>
+<p>in a half-awake stupor last saturday evening, i decided to try rule out
+ipv6 by disabling it system-wide. as is expected for sleepy work, it
+didn&rsquo;t fix the problem and created more in the process.</p>
+<p>feeling satisfied that the problem didn&rsquo;t lie with ipv6, i re-enabled
+it, only to find that i was unable to bind nginx to my allocated /64. i
+may or may not have ranted a bit about this on irc but i was able to get
+it back up and running by restarting systemd-networkd.</p>
+<p>one step forwards broke something and now we&rsquo;re back to where we started
+with the original problem of the intermittent hangups to the lxd
+container.</p>
+<p>seeing my troubles on irc, <a href="https://tilde.team/~jchelpau/">jchelpau</a>
+offered to help dig in to the problem with a a fresh set of eyes. he
+noted right away that pings over ipv6 to the containers worked fine, but
+ipv4 did not.</p>
+<p>we ended up looking at the firewall configurations, only to find that
+one of the subnets i blocked after november&rsquo;s <a href="november-13-post-mortem.html">nmap
+incident</a> included lxdbr0&rsquo;s subnet (the
+bridge device used by lxd).</p>
+<p>now that i made the exeption for lxdbr0, everything is working as
+expected!</p>
+<p>thanks to <a href="https://tilde.team/~fosslinux/">fosslinux</a> and
+<a href="https://tilde.team/~jchelpau/">jchelpau</a> for their debugging help!</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

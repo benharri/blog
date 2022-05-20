@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>default branch name</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./default-branch-name.html">default branch name</a></h1>
+
+    <time>Tue, 16 Jun 2020 15:26 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/git.html">git</a>
+    </li> <li>
+        <a href="tags/linux.html">linux</a>
+    </li> <li>
+        <a href="tags/dev.html">dev</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>changing git’s default branch name has come up recently as an easy
+action we can take to update our language and remove harmful ideas from
+our daily usage.</p>
+<!-- raw HTML omitted -->
+<p>i’m concerned that this effort to change the language used is ultimately
+a symbolic gesture to avoid scrutiny into actual change (notably
+github’s push for this change and continued contracts with ICE).</p>
+<p>however, it’s an easy change to make.</p>
+<p>let’s have a look at how to change it for new repos:</p>
+<pre><code>mkdir -p ~/.config/git/template
+echo &quot;ref: refs/head/main&quot; &gt; ~/.config/git/template/HEAD
+git config --global init.templateDir ~/.config/git/template
+</code></pre>
+<p>note that you can put this template dir anywhere you like.</p>
+<p>you can also set this system-wide (not just for your user) in
+/usr/share, but note that this might get overriden by package updates.</p>
+<pre><code>echo &quot;ref: refs/head/main&quot; | sudo tee /usr/share/git-core/templates/HEAD
+</code></pre>
+<p>the next time you <code>git init</code>, you’ll be on a branch named main.</p>
+<p>to change an existing repo, you can use the <code>-m</code> switch of <code>git-branch</code>:</p>
+<pre><code>git checkout master
+git branch -m master main
+</code></pre>
+<p>push with <code>-u</code> to your remote if needed and update the default branch in
+the repo settings in the hosting platform of choice.</p>
+<p>it’s a relatively easy change, but don’t kid yourself that it makes any
+real impact. go protest, <a href="https://blacklivesmatter.carrd.co/">donate and sign
+petitions</a>, and get out there to fix
+the actual problems.</p>
+<h2 id="update">update:</h2>
+<p>as of git 2.28, there’s a new configuration option and you don’t need to
+use the templateDir option:</p>
+<pre><code>git config --global init.defaultBranch main
+</code></pre>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

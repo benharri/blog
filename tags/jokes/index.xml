@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jokes on blog // ~ben</title>
+    <link>./tags/jokes.html</link>
+    <description>Recent content in jokes on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Dec 2017 16:09:45 +0000</lastBuildDate><atom:link href="./tags/jokes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>loading...</title>
+      <link>./loading.html</link>
+      <pubDate>Thu, 21 Dec 2017 16:09:45 +0000</pubDate>
+      
+      <guid>./loading.html</guid>
+      <description>const loadingmsgs = [ &amp;quot;Proving P=NP...&amp;quot;, &amp;quot;Computing 6 x 9...&amp;quot;, &amp;quot;Mining Bitcoin...&amp;quot;, &amp;quot;Dividing by 0...&amp;quot;, &amp;quot;Initializing Skynet...&amp;quot;, &amp;quot;[REDACTED]&amp;quot;, &amp;quot;Downloading more RAM...&amp;quot;, &amp;quot;Ordering 1s and 0s...&amp;quot;, &amp;quot;Navigating neural network...&amp;quot;, &amp;quot;Importing machine learning.</description>
+    </item>
+    
+    <item>
+      <title>antiwitze</title>
+      <link>./antiwitze.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:58:17 +0000</pubDate>
+      
+      <guid>./antiwitze.html</guid>
+      <description>uebern berg ist schneller als zu fuss sagte der wanderer und schwamm los Was ist der Unterschied zwischen einem Vogel? Beide Beine sind gleich lang. Besonders das linke. Nachts ist es kälter als draußen.</description>
+    </item>
+    
+  </channel>
+</rss>

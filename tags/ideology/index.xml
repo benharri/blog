@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ideology on blog // ~ben</title>
+    <link>./tags/ideology.html</link>
+    <description>Recent content in ideology on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Jan 2018 12:41:09 +0000</lastBuildDate><atom:link href="./tags/ideology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>8values</title>
+      <link>./8values.html</link>
+      <pubDate>Wed, 03 Jan 2018 12:41:09 +0000</pubDate>
+      
+      <guid>./8values.html</guid>
+      <description>not that i&amp;rsquo;m very surprised by this, but i took the quiz again (after losing my results url) and got these results.
+take the quiz here
+my results again as a link</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>weechat on blog // ~ben</title>
+    <link>./tags/weechat.html</link>
+    <description>Recent content in weechat on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Nov 2018 23:11:30 +0000</lastBuildDate><atom:link href="./tags/weechat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>weechat setup</title>
+      <link>./weechat-setup.html</link>
+      <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
+      
+      <guid>./weechat-setup.html</guid>
+      <description>so you decided to switch from irssi to weechat?
+what options do you need to set? what plugins? what scripts?
+i&amp;rsquo;ll go over some of the most essential of these, and share my full configs.</description>
+    </item>
+    
+  </channel>
+</rss>

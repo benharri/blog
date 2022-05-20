@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mastodon on blog // ~ben</title>
+    <link>./tags/mastodon.html</link>
+    <description>Recent content in mastodon on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Dec 2017 16:28:45 +0000</lastBuildDate><atom:link href="./tags/mastodon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mastodon</title>
+      <link>./mastodon.html</link>
+      <pubDate>Fri, 22 Dec 2017 16:28:45 +0000</pubDate>
+      
+      <guid>./mastodon.html</guid>
+      <description>hi everyone.
+i started hosting a mastodon instance at social.tilde.team.
+check it out if you want some federated open source social goodness :)
+send me a toot @ben@tilde.team (from any mastodon instance!</description>
+    </item>
+    
+  </channel>
+</rss>

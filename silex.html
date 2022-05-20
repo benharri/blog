@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>Why I chose Silex for this website</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./silex.html">Why I chose Silex for this website</a></h1>
+
+    <time>Wed, 29 Jun 2016 00:00 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/dev.html">dev</a>
+    </li> <li>
+        <a href="tags/blog.html">blog</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <blockquote>
+<p>UPDATE:
+this is a very old post that i&rsquo;m importing from my old site&hellip;
+i&rsquo;m including it for historical purposes
+here&rsquo;s the <a href="https://benhh.bhh.sh">deployed site</a>
+and the <a href="https://github.com/benharri/benhh.com">source for it</a></p>
+</blockquote>
+<h3 id="this-is-an-introduction-to-my-choice-of-framework-in-building-this-website">This is an introduction to my choice of framework in building this website.</h3>
+<h4 id="several-options-i-considered-for-my-website">Several options I considered for my website:</h4>
+<ul>
+<li><a href="https://djangoproject.com/">Django</a>
+<ul>
+<li>Django&rsquo;s opinionated Model model with its strong database ties seemed a bit much for a relatively static site</li>
+<li>It&rsquo;s huge and unnecessarily complicated for a simple website</li>
+<li>It would be a great learning experience in Python</li>
+</ul>
+</li>
+<li><a href="https://php.net">Vanilla PHP</a>
+<ul>
+<li>I have a lot of experience in vanilla PHP at my internship at <a href="http://nmu.edu">Northern Michigan University</a> working in the Information Services department where I develop web applications for internal use.</li>
+<li>I often find myself frustrated with PHP&rsquo;s quirkiness and wouldn&rsquo;t learn new material if I used this for my personal website.</li>
+</ul>
+</li>
+<li><a href="https://silex.sensiolabs.com">Silex</a>
+<ul>
+<li>This is a micro-framework built using components of the much larger <a href="https://symfony.com">Symfony</a> framework.</li>
+<li>I discovered Silex in <a href="https://devcenter.heroku.com/articles/getting-started-with-php">Heroku&rsquo;s PHP deployment guide</a> where I noticed that it was small enough to not draw unneeded overhead and extensible enough for my website to grow as it needed.</li>
+</ul>
+</li>
+</ul>
+<p>I opted to go with Silex. The source code is available <a href="https://github.com/benharri/benhh.com">here</a> for your perusal.</p>
+<p>I have gone through many iterations of this site. The first version was simply a clone of the <a href="http://euclid.nmu.edu/~benharri/">homepage</a> that I have on my university&rsquo;s computer science department server. This wasn&rsquo;t a very useful homepage as many of the projects that I wanted to show in a portfolio were tied to a database on that server.</p>
+<p>I eventually moved towards a one-page style layout (<a href="https://github.com/benharri/benhh.com/commit/974e12e85a9ab872facf0f4a238337b2e2d216a3">in this commit</a>) where the links in the navbar would scroll the page to pre-defined regions. I then ditched the old multipage layout and at this point I discovered <a href="https://getgrav.org">Grav</a>. After difficulties integrating Grav within my app (read more <a href="/blog/grav-on-heroku">here</a>), I decided to roll my own blogging solution modeled after Grav&rsquo;s markdown content system.</p>
+<p>I included a YAML Front Matter + Markdown Parser and used that to define the metadata for a <a href="https://github.com/benharri/benhh.com/blob/master/app/controllers/Blog.php">blogpost</a>.</p>
+<p>There is still much to do (post sort order, paging, tagging, etc), but I appreciate the experience that I have gained in building this blogging system.</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

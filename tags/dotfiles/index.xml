@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dotfiles on blog // ~ben</title>
+    <link>./tags/dotfiles.html</link>
+    <description>Recent content in dotfiles on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Jul 2018 19:26:26 +0000</lastBuildDate><atom:link href="./tags/dotfiles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotfiles</title>
+      <link>./dotfiles.html</link>
+      <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
+      
+      <guid>./dotfiles.html</guid>
+      <description>finally got around to updating my dotfiles to use gnu stow. i adapted ~tomasino&amp;rsquo;s makefile for use with the configs that i&amp;rsquo;m keeping with it.
+now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my config to ~/.</description>
+    </item>
+    
+  </channel>
+</rss>

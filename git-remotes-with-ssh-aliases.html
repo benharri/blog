@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>git remotes with ssh aliases</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./git-remotes-with-ssh-aliases.html">git remotes with ssh aliases</a></h1>
+
+    <time>Fri, 12 Jan 2018 13:30 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/git.html">git</a>
+    </li> <li>
+        <a href="tags/ssh.html">ssh</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>did you know that <code>~/.ssh/config</code> aliases work for git remotes??</p>
+<p>~/.ssh/config</p>
+<pre><code>Host gh
+HostName github.com
+User git
+IdentityFile ~/.ssh/gh_key
+</code></pre>
+<p>you can now use <code>gh:username/repo</code> as the remote in place of
+<code>git@github.com:username/repo</code>, which is much shorter and easier to type
+many times!</p>
+<p><code>git clone gh:benharri/learngit</code></p>
+<p>there are many other use cases for the <code>ssh_config</code> file. for example,
+here is my config for the tilde machine for easy ssh connections.</p>
+<pre><code>Host tilde
+HostName tilde.team
+User ben
+</code></pre>
+<p>then use <code>ssh tilde</code> to start a new ssh session. this also works with
+<code>scp</code>: try something like this <code>scp file.txt tilde:workspace/.</code> in place
+of <code>scp file.txt ben@tilde.team:workspace/.</code></p>
+<p>the ssh_config file is super useful. check <code>man ssh_config</code> for a full
+list of options!</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

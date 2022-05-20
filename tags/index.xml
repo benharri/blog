@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>all tags on blog // ~ben</title>
+    <link>./tags.html</link>
+    <description>Recent content in all tags on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Mar 2021 16:16:11 -0400</lastBuildDate><atom:link href="./tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>blog</title>
+      <link>./tags/blog.html</link>
+      <pubDate>Wed, 24 Mar 2021 16:16:11 -0400</pubDate>
+      
+      <guid>./tags/blog.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>social</title>
+      <link>./tags/social.html</link>
+      <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
+      
+      <guid>./tags/social.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sysadmin</title>
+      <link>./tags/sysadmin.html</link>
+      <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
+      
+      <guid>./tags/sysadmin.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tilde</title>
+      <link>./tags/tilde.html</link>
+      <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
+      
+      <guid>./tags/tilde.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dev</title>
+      <link>./tags/dev.html</link>
+      <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
+      
+      <guid>./tags/dev.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>./tags/git.html</link>
+      <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
+      
+      <guid>./tags/git.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>./tags/linux.html</link>
+      <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
+      
+      <guid>./tags/linux.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>update</title>
+      <link>./tags/update.html</link>
+      <pubDate>Mon, 03 Feb 2020 20:06:43 +0000</pubDate>
+      
+      <guid>./tags/update.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>irc</title>
+      <link>./tags/irc.html</link>
+      <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
+      
+      <guid>./tags/irc.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>weechat</title>
+      <link>./tags/weechat.html</link>
+      <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
+      
+      <guid>./tags/weechat.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>post-mortem</title>
+      <link>./tags/post-mortem.html</link>
+      <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
+      
+      <guid>./tags/post-mortem.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>travel</title>
+      <link>./tags/travel.html</link>
+      <pubDate>Thu, 20 Sep 2018 17:32:33 +0000</pubDate>
+      
+      <guid>./tags/travel.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>net-neutrality</title>
+      <link>./tags/net-neutrality.html</link>
+      <pubDate>Tue, 14 Aug 2018 23:36:05 +0000</pubDate>
+      
+      <guid>./tags/net-neutrality.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dns</title>
+      <link>./tags/dns.html</link>
+      <pubDate>Tue, 14 Aug 2018 15:05:38 +0000</pubDate>
+      
+      <guid>./tags/dns.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>./tags/ubuntu.html</link>
+      <pubDate>Thu, 26 Jul 2018 15:34:50 +0000</pubDate>
+      
+      <guid>./tags/ubuntu.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dotfiles</title>
+      <link>./tags/dotfiles.html</link>
+      <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
+      
+      <guid>./tags/dotfiles.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>drone</title>
+      <link>./tags/drone.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:15:46 +0000</pubDate>
+      
+      <guid>./tags/drone.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>photography</title>
+      <link>./tags/photography.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:15:46 +0000</pubDate>
+      
+      <guid>./tags/photography.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>internet</title>
+      <link>./tags/internet.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
+      
+      <guid>./tags/internet.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>links</title>
+      <link>./tags/links.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
+      
+      <guid>./tags/links.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>politics</title>
+      <link>./tags/politics.html</link>
+      <pubDate>Wed, 07 Mar 2018 16:49:51 +0000</pubDate>
+      
+      <guid>./tags/politics.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>podcast</title>
+      <link>./tags/podcast.html</link>
+      <pubDate>Thu, 15 Feb 2018 13:33:16 +0000</pubDate>
+      
+      <guid>./tags/podcast.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quotes</title>
+      <link>./tags/quotes.html</link>
+      <pubDate>Tue, 13 Feb 2018 09:55:06 +0000</pubDate>
+      
+      <guid>./tags/quotes.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wasm</title>
+      <link>./tags/wasm.html</link>
+      <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
+      
+      <guid>./tags/wasm.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gaming</title>
+      <link>./tags/gaming.html</link>
+      <pubDate>Tue, 16 Jan 2018 17:26:40 +0000</pubDate>
+      
+      <guid>./tags/gaming.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gtx1080ti</title>
+      <link>./tags/gtx1080ti.html</link>
+      <pubDate>Tue, 16 Jan 2018 17:26:40 +0000</pubDate>
+      
+      <guid>./tags/gtx1080ti.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>./tags/ssh.html</link>
+      <pubDate>Fri, 12 Jan 2018 13:30:26 +0000</pubDate>
+      
+      <guid>./tags/ssh.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>weather</title>
+      <link>./tags/weather.html</link>
+      <pubDate>Fri, 05 Jan 2018 09:49:42 +0000</pubDate>
+      
+      <guid>./tags/weather.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ideology</title>
+      <link>./tags/ideology.html</link>
+      <pubDate>Wed, 03 Jan 2018 12:41:09 +0000</pubDate>
+      
+      <guid>./tags/ideology.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mastodon</title>
+      <link>./tags/mastodon.html</link>
+      <pubDate>Fri, 22 Dec 2017 16:28:45 +0000</pubDate>
+      
+      <guid>./tags/mastodon.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jokes</title>
+      <link>./tags/jokes.html</link>
+      <pubDate>Thu, 21 Dec 2017 16:09:45 +0000</pubDate>
+      
+      <guid>./tags/jokes.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vr</title>
+      <link>./tags/vr.html</link>
+      <pubDate>Mon, 18 Dec 2017 13:36:04 +0000</pubDate>
+      
+      <guid>./tags/vr.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>heyderebub</title>
+      <link>./tags/heyderebub.html</link>
+      <pubDate>Wed, 13 Dec 2017 19:12:51 +0000</pubDate>
+      
+      <guid>./tags/heyderebub.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>beer</title>
+      <link>./tags/beer.html</link>
+      <pubDate>Thu, 07 Dec 2017 16:41:40 +0000</pubDate>
+      
+      <guid>./tags/beer.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hhgtg</title>
+      <link>./tags/hhgtg.html</link>
+      <pubDate>Thu, 07 Dec 2017 16:41:40 +0000</pubDate>
+      
+      <guid>./tags/hhgtg.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>music</title>
+      <link>./tags/music.html</link>
+      <pubDate>Tue, 05 Dec 2017 13:25:47 +0000</pubDate>
+      
+      <guid>./tags/music.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>words</title>
+      <link>./tags/words.html</link>
+      <pubDate>Tue, 05 Dec 2017 13:25:47 +0000</pubDate>
+      
+      <guid>./tags/words.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thought-of-the-day</title>
+      <link>./tags/thought-of-the-day.html</link>
+      <pubDate>Sun, 03 Dec 2017 13:47:36 +0000</pubDate>
+      
+      <guid>./tags/thought-of-the-day.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>contact</title>
+      <link>./tags/contact.html</link>
+      <pubDate>Tue, 28 Nov 2017 16:22:42 +0000</pubDate>
+      
+      <guid>./tags/contact.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>german</title>
+      <link>./tags/german.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:58:17 +0000</pubDate>
+      
+      <guid>./tags/german.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nonsense</title>
+      <link>./tags/nonsense.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:55:29 +0000</pubDate>
+      
+      <guid>./tags/nonsense.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>poetry</title>
+      <link>./tags/poetry.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:52:49 +0000</pubDate>
+      
+      <guid>./tags/poetry.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>conventions</title>
+      <link>./tags/conventions.html</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./tags/conventions.html</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

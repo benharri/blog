@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on blog // ~ben</title>
+    <link>./tags/blog.html</link>
+    <description>Recent content in blog on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Mar 2021 16:16:11 -0400</lastBuildDate><atom:link href="./tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hugo blog rewrite</title>
+      <link>./hugo.html</link>
+      <pubDate>Wed, 24 Mar 2021 16:16:11 -0400</pubDate>
+      
+      <guid>./hugo.html</guid>
+      <description>i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog with hugo
+why fix something that ain&amp;rsquo;t broken? there are several major bugs in bashblog that i haven&amp;rsquo;t had the time or interest to fix.</description>
+    </item>
+    
+    <item>
+      <title>utterances</title>
+      <link>./utterances.html</link>
+      <pubDate>Wed, 05 Sep 2018 21:34:13 +0000</pubDate>
+      
+      <guid>./utterances.html</guid>
+      <description>i somehow stumbled upon utterances today at lunch. (i think someone had it forked on their github page).
+no matter how i found it, i still decided to add it to my blog here with bashblog.</description>
+    </item>
+    
+    <item>
+      <title>bashblog and your gopherhole</title>
+      <link>./bashblog-and-your-gopherhole.html</link>
+      <pubDate>Sun, 22 Jul 2018 11:44:03 +0000</pubDate>
+      
+      <guid>./bashblog-and-your-gopherhole.html</guid>
+      <description>i&amp;rsquo;ve created a repo for the tilde.team customizations to bashblog.
+it will now make sure that your ~/public_gopher exists and symlink your blog into it with a nice gophermap to list all the markdown styled posts.</description>
+    </item>
+    
+    <item>
+      <title>blog update</title>
+      <link>./blog-update.html</link>
+      <pubDate>Mon, 27 Nov 2017 20:48:10 +0000</pubDate>
+      
+      <guid>./blog-update.html</guid>
+      <description>sorry for the blast of posts. i recreated them from a wordpress blog on motd.org.
+i plan on posting some random thoughts here from time to time. thanks for checking in.</description>
+    </item>
+    
+    <item>
+      <title>Why I chose Silex for this website</title>
+      <link>./silex.html</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./silex.html</guid>
+      <description>UPDATE: this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip; i&amp;rsquo;m including it for historical purposes here&amp;rsquo;s the deployed site and the source for it</description>
+    </item>
+    
+    <item>
+      <title>Heroku with Grav flat-file CMS</title>
+      <link>./grav-on-heroku.html</link>
+      <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./grav-on-heroku.html</guid>
+      <description>NOTE: this is a historical post that i&amp;rsquo;m importing from my old site.
+ When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.</description>
+    </item>
+    
+    <item>
+      <title>Welcome To My Blog</title>
+      <link>./welcome.html</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./welcome.html</guid>
+      <description>This is my first post.
+I&amp;rsquo;m Ben Harris. I study computer science at Northern Michigan University.
+I&amp;rsquo;ll be writing about some of the experiences I&amp;rsquo;ve had in software and in other areas of my life.</description>
+    </item>
+    
+  </channel>
+</rss>

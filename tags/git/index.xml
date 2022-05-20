@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on blog // ~ben</title>
+    <link>./tags/git.html</link>
+    <description>Recent content in git on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jun 2020 15:26:29 +0000</lastBuildDate><atom:link href="./tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>default branch name</title>
+      <link>./default-branch-name.html</link>
+      <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
+      
+      <guid>./default-branch-name.html</guid>
+      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
+i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+    </item>
+    
+    <item>
+      <title>dotfiles</title>
+      <link>./dotfiles.html</link>
+      <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
+      
+      <guid>./dotfiles.html</guid>
+      <description>finally got around to updating my dotfiles to use gnu stow. i adapted ~tomasino&amp;rsquo;s makefile for use with the configs that i&amp;rsquo;m keeping with it.
+now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my config to ~/.</description>
+    </item>
+    
+    <item>
+      <title>tildeverse.org</title>
+      <link>./tildeverseorg.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
+      
+      <guid>./tildeverseorg.html</guid>
+      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
+among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+    </item>
+    
+    <item>
+      <title>git remotes with ssh aliases</title>
+      <link>./git-remotes-with-ssh-aliases.html</link>
+      <pubDate>Fri, 12 Jan 2018 13:30:26 +0000</pubDate>
+      
+      <guid>./git-remotes-with-ssh-aliases.html</guid>
+      <description>did you know that ~/.ssh/config aliases work for git remotes??
+~/.ssh/config
+Host gh HostName github.com User git IdentityFile ~/.ssh/gh_key  you can now use gh:username/repo as the remote in place of git@github.</description>
+    </item>
+    
+  </channel>
+</rss>

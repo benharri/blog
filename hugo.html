@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>hugo blog rewrite</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./hugo.html">hugo blog rewrite</a></h1>
+
+    <time>Wed, 24 Mar 2021 16:16 EDT</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/blog.html">blog</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog
+with <a href="https://gohugo.io">hugo</a></p>
+<!-- raw HTML omitted -->
+<h2 id="why-fix-something-that-aint-broken">why fix something that ain&rsquo;t broken?</h2>
+<p>there are several <a href="https://tildegit.org/team/bashblog/issues">major bugs</a> in
+bashblog that i haven&rsquo;t had the time or interest to fix. luckily, i have my
+blog source in a <a href="https://tildegit.org/ben/tilde">git repo</a>, so the messed-up
+files are relatively easy to fix up.</p>
+<p>my theory is that the cognitive load of dealing with those bugs has been
+preventing me from writing any new posts&hellip; (among other current events).</p>
+<p>plus i guess i just needed a project!</p>
+<h2 id="the-hard-part">the hard part</h2>
+<p>it was a bit of a struggle to get my blogposts converted over to a proper format.</p>
+<p>bashblog maintains the tags with a plaintext link line at the bottom of the file
+and keeps track of modify dates <em>on the filesystem</em> using <code>date -r</code> and <code>touch -t</code>
+to keep them up to date.</p>
+<p>this makes it hard to work with the blog in any place other than where it&rsquo;s already
+deployed live. additionally, parsing the tags to another format was a bit of a headache&hellip;</p>
+<p>i ended up writing a little <a href="https://tildegit.org/ben/blog/src/branch/main/fix_dates.sh">script</a>
+to pull the timestamp from bashblog&rsquo;s generated html since i no longer had the original
+file metadata.</p>
+<h2 id="time-to-write-more">time to write more</h2>
+<p>i&rsquo;m always tempted to play with the publishing process instead of actually writing.</p>
+<p>we&rsquo;ll see how well i can avoid the temptation now!</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

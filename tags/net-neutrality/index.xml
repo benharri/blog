@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>net-neutrality on blog // ~ben</title>
+    <link>./tags/net-neutrality.html</link>
+    <description>Recent content in net-neutrality on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Aug 2018 23:36:05 +0000</lastBuildDate><atom:link href="./tags/net-neutrality/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>no more google</title>
+      <link>./no-more-google.html</link>
+      <pubDate>Tue, 14 Aug 2018 23:36:05 +0000</pubDate>
+      
+      <guid>./no-more-google.html</guid>
+      <description>not sure if this is appropriately tagged, but i didn&amp;rsquo;t feel like making a new one.
+i figured i should probably get some notes down about moving off google.
+to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:</description>
+    </item>
+    
+    <item>
+      <title>net neutrality vote today</title>
+      <link>./net-neutrality-vote-today.html</link>
+      <pubDate>Thu, 14 Dec 2017 06:26:55 +0000</pubDate>
+      
+      <guid>./net-neutrality-vote-today.html</guid>
+      <description>Everybody! We only have UNTIL TOMORROW to fight the FCC &amp;amp; the repeal of #NetNeutrality! Repealing Net Nutrality would result in an unequal access to online content including research, social/political organizing, and personal media.</description>
+    </item>
+    
+  </channel>
+</rss>

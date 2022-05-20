@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vr on blog // ~ben</title>
+    <link>./tags/vr.html</link>
+    <description>Recent content in vr on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Dec 2017 13:36:04 +0000</lastBuildDate><atom:link href="./tags/vr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vr</title>
+      <link>./vr.html</link>
+      <pubDate>Mon, 18 Dec 2017 13:36:04 +0000</pubDate>
+      
+      <guid>./vr.html</guid>
+      <description>i picked up an oculus rift after my last paycheck :P
+it was half christmas present. these are some of the games that i&amp;rsquo;m most excited for:
+ elite dangerous lone echo / echo arena dirt rally gun club vr eagle flight robo recall  have you played any other cool vr games lately?</description>
+    </item>
+    
+  </channel>
+</rss>

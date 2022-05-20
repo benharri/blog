@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>mastodon postgres upgrade fun</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./mastodon-postgres-upgrade-fun.html">mastodon postgres upgrade fun</a></h1>
+
+    <time>Wed, 28 Oct 2020 16:31 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/sysadmin.html">sysadmin</a>
+    </li> <li>
+        <a href="tags/tilde.html">tilde</a>
+    </li> <li>
+        <a href="tags/social.html">social</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>howdy friends!</p>
+<p>if you’re a mastodon user on <a href="https://tilde.zone">tilde.zone</a> (the
+tildeverse mastodon instance), you might’ve noticed some downtime
+recently.</p>
+<p>here’s a quick recap of what went down during the upgrade process.</p>
+<!-- raw HTML omitted -->
+<p>we run the current stable version of postgresql from the <a href="https://wiki.postgresql.org/wiki/Apt">postgres apt
+repos</a>. postgres
+<a href="https://www.postgresql.org/docs/release/13.0/">13</a> was released
+recently and the apt upgrades automatically created a new cluster
+running 13.</p>
+<p>the database for mastodon has gotten quite large (about 16gb) which
+complicates this upgrade a bit. this was my inital plan:</p>
+<ul>
+<li>drop the 13 cluster created by the apt package upgrades</li>
+<li>upgrade the 12-main cluster to 13</li>
+<li>drop the 12 cluster</li>
+</ul>
+<p>these steps appeared to work fine, but closer inspection afterwards led
+me to discover that the new cluster had ended up with <code>SQL_ASCII</code>
+encoding somehow. this is not a situation we want to be in. time to fix
+it.</p>
+<p>here’s the new plan:</p>
+<ul>
+<li>
+<p>stop mastodon
+<code> for i in streaming sidekiq web; do systemctl stop mastodon-$i; done</code></p>
+</li>
+<li>
+<p>dump current database state <code> pg_dump mastodon_production &gt; db.dump</code></p>
+</li>
+<li>
+<p>drop and recreate cluster with utf8 encoding
+<code> pg_dropcluster 13 main --stop pg_createcluster --locale=en_US.UTF8 13 main --start</code></p>
+</li>
+<li>
+<p>restore backup
+<code> sudo -u postgres psql -c &quot;create user mastodon createdb;&quot; sudo -u mastodon createdb -E utf8 mastodon_production sudo -u mastodon psql &lt; db.dump</code></p>
+</li>
+</ul>
+<p>i’m still not 100% sure how the encoding reverted to ascii but it seems
+that the locale was not correctly set while running the apt upgrades…</p>
+<p>if this happens to you, hopefully this helps you wade out while keeping
+all your data :)</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

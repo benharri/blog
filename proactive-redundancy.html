@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>proactive redundancy</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./proactive-redundancy.html">proactive redundancy</a></h1>
+
+    <time>Thu, 15 Nov 2018 18:39 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/sysadmin.html">sysadmin</a>
+    </li> <li>
+        <a href="tags/tilde.html">tilde</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>after the <a href="november-13-post-mortem.html">fiasco</a> earlier this week, i&rsquo;ve
+been taking steps to minimize the impact if tilde.team were to go down.
+it&rsquo;s still a large spof (single-point-of-failure), but i&rsquo;m reasonably
+certain that at least the irc net will remain up and functional in the
+event of another outage.</p>
+<!-- raw HTML omitted -->
+<p>the first thing that i set up was a handful of additional ircd nodes:
+see <a href="https://tilde.chat/wiki/?page=servers">the tilde.chat wiki</a> for a
+full list. slash.tilde.chat is on my personal vps, and bsd.tilde.chat is
+hosted on the bsd vps that i set up for tilde.team.</p>
+<p>i added the ipv4 addresses for these machines, along with the ip for
+yourtilde.com as A records for tilde.chat, creating a dns round-robin.
+<code>host tilde.chat</code> will return all four. requesting the dns record will
+return any one of them, rotating them in a semi-random fashion. this
+means that when connecting to tilde.chat on 6697 for irc, you might end
+up on any of <code>{your,team,bsd,slash}.tilde.chat</code>.</p>
+<p>this creates the additional problem that visiting the <a href="https://tilde.chat">tilde.chat
+site</a> will end up at any of those 4 machines in much
+the same way. for the moment, the site is deployed on all of the boxes,
+making site setup issues hard to
+<a href="https://tildegit.org/tildeverse/tilde.chat/issues/8">debug</a>. the
+solution to this problem is to use a subdomain as the roundrobin host,
+as other networks like freenode do (see <code>host chat.freenode.net</code> for the
+list of servers).</p>
+<p>i&rsquo;m not sure how to make any of the other services more resilient. it&rsquo;s
+something that i have been and will continue to research moving forward.</p>
+<p>the other main step that i have taken to prevent the same issue from
+happening again was to configure the firewall to drop outgoing requests
+to the subnets as defined in <a href="https://tools.ietf.org/html/rfc1918">rfc
+1918</a>.</p>
+<p>i&rsquo;d like to consider at least this risk to be mitigated.</p>
+<p>thanks for reading,</p>
+<p>~ben</p>
+<p><strong>update</strong>: the round robin host is now <em>irc</em>.tilde.chat, which resolves
+the site issues that we were having, due to the duplicated deployments.</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>november 13 post mortem</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./november-13-post-mortem.html">november 13 post mortem</a></h1>
+
+    <time>Tue, 13 Nov 2018 20:20 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/post-mortem.html">post-mortem</a>
+    </li> <li>
+        <a href="tags/linux.html">linux</a>
+    </li> <li>
+        <a href="tags/sysadmin.html">sysadmin</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>we had something of an outage on november 13, 2018 on tilde.team.</p>
+<p>i awoke, not suspecting anything to be amiss. as soon as i logged in to
+check my email and irc mentions, it became clear.</p>
+<p>tilde.team was at the least inaccessible, and at the worst, down
+completely. according the message in my inbox, there had been an
+attempted &ldquo;attack&rdquo; from my IP.</p>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>We have indications that there was an attack from your server. Please
+take all necessary measures to avoid this in the future and to solve
+the issue.</p>
+</blockquote>
+<p>at this point, i have no idea what could have happened over night while
+i&rsquo;m sleeping. the timestamp shows that it arrive only 30 minutes after
+i&rsquo;d turned in for the night.</p>
+<p>when i finally log on in the morning to check mails and irc mentions, i
+find that i&rsquo;m unable to connect to tilde.team&hellip; strange, but ok; time
+to troubleshoot. i refresh the <a href="https://mail.tilde.team">webmail</a> to see
+what i&rsquo;m missing. it ends up failing to find the server. even stranger!
+i&rsquo;d better get the mails off my phone if they&rsquo;re on my @tilde.team mail!</p>
+<p>here, i launch in to full debugging mode: what command was it? who ran
+it?</p>
+<p>search <code>~/.bash_history</code> per user was not very successful. nothing i
+could find was related to net or map. i had checked
+<code>sudo grep nmap /home/*/.bash_history</code> and many other commands.</p>
+<p>at this point, i had connected with other ~teammates across other irc
+nets (<a href="https://hashbang.sh/">#!</a>, <a href="https://tilde.town">~town</a>, etc).
+among suggestions to check <code>/var/log/syslog</code>, <code>/var/log/kern.log</code>, and
+<code>dmesg</code>, i finally decided to check <code>ps</code>. <code>ps -ef | grep nmap</code> yielded
+nmap on an obscured uid and gid, which is shortly established to belong
+to a container i had provisioned for <a href="/~fosslinux/">~fosslinux</a>.</p>
+<p>i&rsquo;m not considering methods of policing access to any site over port 80
+and port 443. this is crazy. how do you police <code>nmap</code> when it isn&rsquo;t
+scanning on every port?</p>
+<p>after a bit of shit-talking and reassurance from other sysadmins, i
+reexamined and realized that <a href="/~fosslinux/">~fosslinux</a> had only run
+<code>nmap</code> for addresses in the <code>10.0.0.0/8</code> space. the <code>10/8</code> address space
+is intended to not be addressable outside the local space. how could
+<a href="https://hetzner.com">hetzner</a> have found out about a localhost network
+probe!?</p>
+<p>finally, after speaking with more people than i expected to speak with
+in one day, i ended up sending three different support emails to hetzner
+support, which finally resulted in them unlocking the ip.</p>
+<p>it&rsquo;s definitely time to research redundancy options!</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

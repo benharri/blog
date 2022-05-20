@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>Heroku with Grav flat-file CMS</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./grav-on-heroku.html">Heroku with Grav flat-file CMS</a></h1>
+
+    <time>Sat, 25 Jun 2016 00:00 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/dev.html">dev</a>
+    </li> <li>
+        <a href="tags/blog.html">blog</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <blockquote>
+<p>NOTE:
+this is a historical post that i&rsquo;m importing from my old site.</p>
+</blockquote>
+<p>When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.</p>
+<p>I had already decided that I would use a free dyno on <a href="https://heroku.com">Heroku</a> for hosting.</p>
+<p>As I researched additional solutions, I came upon the world of the PHP CMS (Content Management System, for the uninitiated). Just the sheer number and variety of CMS is <a href="https://en.wikipedia.org/wiki/List_of_content_management_systems#PHP">terrifying</a>.</p>
+<p>The free tier for databases in Heroku felt lacking in peace of mind and ease of setup so I focused my search to the realm of the &ldquo;flat-file&rdquo; CMS.</p>
+<p>I discovered <a href="https://getgrav.org">Grav</a> purely by chance. Grav claims to be fast and extensible. I was enticed by the flashy admin interface replete with responsive UI and a gorgeous built-in Markdown editor for content creation.</p>
+<p>After a bit of <a href="https://learn.getgrav.org/hosting/paas/heroku">configuration</a>, I managed to deploy a Grav instance into a Heroku dyno (a rather annoying affair which involved deploying caches to Heroku and <code>mod_rewrite</code> rules in <code>.htaccess</code>).</p>
+<p>The tricky part came when I brought the <a href="https://github.com/getgrav/grav-plugin-admin">Admin Plugin</a> into the picture. Without the Admin Plugin, you need to directly change the configurations and add content from the filesystem and then deploy that to the web. You are able, however, to use PHP&rsquo;s built-in development webserver (<code>php -S localhost:9000</code>) to test your changes.</p>
+<p>Once I got the Admin plugin working (don&rsquo;t forget to clear your cache if you&rsquo;re deploying to Heroku &ndash; or make sure that the cache directory is in your <code>.gitignore</code> file), I started making changes to my <code>.yml</code> configuration files and writing some content with the built-in Markdown editor. I was very impressed with the Admin interface. It&rsquo;s very modern-feeling, while still being lightning-quick.</p>
+<p>Then I needed to make a change that wasn&rsquo;t available from the Admin interface&hellip; After the next deploy to Heroku, every change that I had made from within the Admin interface was obliterated. This is the main flaw in hosting a Grav app on Heroku. The ephemeral file system for a dyno on Heroku works just fine, but when the dyno restarts, it is regenerated to the state at the latest build. It&rsquo;s important to note that dynos go down any time you push a new build and at <a href="https://devcenter.heroku.com/articles/dynos#restarting">least once a day</a>.</p>
+<blockquote>
+<p>Dynos restart when:</p>
+</blockquote>
+<ul>
+<li>create a new release by deploying new code</li>
+<li>change your config vars</li>
+<li>change your add-ons</li>
+<li>run heroku restart</li>
+</ul>
+<p>I then read more about the <a href="https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem">ephemeral filesystem</a> of Heroku dynos.</p>
+<blockquote>
+<p>Each dyno gets its own ephemeral filesystem, with a fresh copy of the most recently deployed code. During the dyno’s lifetime its running processes can use the filesystem as a temporary scratchpad, but no files that are written are visible to processes in any other dyno and any files written will be discarded the moment the dyno is stopped or restarted. For example, this occurs any time a dyno is replaced due to application deployment and approximately once a day as part of normal dyno management.</p>
+</blockquote>
+<p>This is a useless setup for a Grav application where everything is a file. This may sound a bit harsh, but changes to the live app will be destroyed within a day. This just means that there are two options:</p>
+<ol>
+<li>Ditch the Admin plugin</li>
+<li>Use a full LAMP stack locally to make changes to the files from within the Admin interface before deploying to Heroku</li>
+</ol>
+<p>I chose to ditch the Admin plugin. Making changes to the project from within the filesystem in <a href="https://sublimetext.com/3">my text editor</a> was totally acceptable.</p>
+<p>Not long after trying to integrate a Grav app within the Silex application that is my website (rather than linking to the Grav app through a subdomain of benhh.com), I gave up Grav for my blog entirely and decided to roll my own <a href="/blog/silex">blogging solution</a>.</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

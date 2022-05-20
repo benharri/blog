@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on blog // ~ben</title>
+    <link>./tags/ssh.html</link>
+    <description>Recent content in ssh on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jan 2018 13:30:26 +0000</lastBuildDate><atom:link href="./tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git remotes with ssh aliases</title>
+      <link>./git-remotes-with-ssh-aliases.html</link>
+      <pubDate>Fri, 12 Jan 2018 13:30:26 +0000</pubDate>
+      
+      <guid>./git-remotes-with-ssh-aliases.html</guid>
+      <description>did you know that ~/.ssh/config aliases work for git remotes??
+~/.ssh/config
+Host gh HostName github.com User git IdentityFile ~/.ssh/gh_key  you can now use gh:username/repo as the remote in place of git@github.</description>
+    </item>
+    
+  </channel>
+</rss>

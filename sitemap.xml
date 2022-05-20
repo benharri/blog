@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>./matrix-sucks.html</loc>
+    <lastmod>2021-08-29T15:28:27-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./update-adventures.html</loc>
+    <lastmod>2021-08-25T00:35:13-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags.html</loc>
+    <lastmod>2021-03-24T16:16:11-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/blog.html</loc>
+    <lastmod>2021-03-24T16:16:11-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./</loc>
+    <lastmod>2021-03-24T16:16:11-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./hugo.html</loc>
+    <lastmod>2021-03-24T16:16:11-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./mastodon-postgres-upgrade-fun.html</loc>
+    <lastmod>2020-10-28T16:31:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/social.html</loc>
+    <lastmod>2020-10-28T16:31:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/sysadmin.html</loc>
+    <lastmod>2020-10-28T16:31:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/tilde.html</loc>
+    <lastmod>2020-10-28T16:31:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./default-branch-name.html</loc>
+    <lastmod>2020-06-16T15:26:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/dev.html</loc>
+    <lastmod>2020-06-16T15:26:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/git.html</loc>
+    <lastmod>2020-06-16T15:26:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/linux.html</loc>
+    <lastmod>2020-06-16T15:26:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tools-and-services.html</loc>
+    <lastmod>2020-03-03T14:02:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./general-update.html</loc>
+    <lastmod>2020-02-03T20:06:43+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/update.html</loc>
+    <lastmod>2020-02-03T20:06:43+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./networking-nonsense.html</loc>
+    <lastmod>2019-02-11T02:40:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./raid-nonsense.html</loc>
+    <lastmod>2019-01-13T13:28:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/irc.html</loc>
+    <lastmod>2018-11-16T23:11:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/weechat.html</loc>
+    <lastmod>2018-11-16T23:11:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./weechat-setup.html</loc>
+    <lastmod>2018-11-16T23:11:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./proactive-redundancy.html</loc>
+    <lastmod>2018-11-15T18:39:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./november-13-post-mortem.html</loc>
+    <lastmod>2018-11-13T20:20:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/post-mortem.html</loc>
+    <lastmod>2018-11-13T20:20:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./italy.html</loc>
+    <lastmod>2018-09-20T17:32:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/travel.html</loc>
+    <lastmod>2018-09-20T17:32:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./utterances.html</loc>
+    <lastmod>2018-09-05T21:34:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/net-neutrality.html</loc>
+    <lastmod>2018-08-14T23:36:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./no-more-google.html</loc>
+    <lastmod>2018-08-14T23:36:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/dns.html</loc>
+    <lastmod>2018-08-14T15:05:38+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./upsides-of-new-dns-nameservers.html</loc>
+    <lastmod>2018-08-14T15:05:38+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./dns-shenanigans-post-mortem.html</loc>
+    <lastmod>2018-08-14T15:03:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./lxd-networking-and-additional-ips.html</loc>
+    <lastmod>2018-07-26T15:34:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/ubuntu.html</loc>
+    <lastmod>2018-07-26T15:34:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/dotfiles.html</loc>
+    <lastmod>2018-07-22T19:26:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./dotfiles.html</loc>
+    <lastmod>2018-07-22T19:26:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./bashblog-and-your-gopherhole.html</loc>
+    <lastmod>2018-07-22T11:44:03+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/drone.html</loc>
+    <lastmod>2018-07-15T23:15:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./more-drone-photos.html</loc>
+    <lastmod>2018-07-15T23:15:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/photography.html</loc>
+    <lastmod>2018-07-15T23:15:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/internet.html</loc>
+    <lastmod>2018-07-15T23:09:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/links.html</loc>
+    <lastmod>2018-07-15T23:09:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tildeverseorg.html</loc>
+    <lastmod>2018-07-15T23:09:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tildeteam-news.html</loc>
+    <lastmod>2018-06-13T15:07:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/politics.html</loc>
+    <lastmod>2018-03-07T16:49:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./white-pride-vs-black-pride.html</loc>
+    <lastmod>2018-03-07T16:49:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./phoenix.html</loc>
+    <lastmod>2018-02-26T11:57:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./otm.html</loc>
+    <lastmod>2018-02-15T13:33:16+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/podcast.html</loc>
+    <lastmod>2018-02-15T13:33:16+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./quote-of-the-day.html</loc>
+    <lastmod>2018-02-13T09:55:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/quotes.html</loc>
+    <lastmod>2018-02-13T09:55:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/wasm.html</loc>
+    <lastmod>2018-01-17T13:09:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./webassembly.html</loc>
+    <lastmod>2018-01-17T13:09:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/gaming.html</loc>
+    <lastmod>2018-01-16T17:26:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/gtx1080ti.html</loc>
+    <lastmod>2018-01-16T17:26:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./pop-quiz.html</loc>
+    <lastmod>2018-01-16T17:26:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./git-remotes-with-ssh-aliases.html</loc>
+    <lastmod>2018-01-12T13:30:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/ssh.html</loc>
+    <lastmod>2018-01-12T13:30:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./cold.html</loc>
+    <lastmod>2018-01-05T09:49:42+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/weather.html</loc>
+    <lastmod>2018-01-05T09:49:42+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./8values.html</loc>
+    <lastmod>2018-01-03T12:41:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/ideology.html</loc>
+    <lastmod>2018-01-03T12:41:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/mastodon.html</loc>
+    <lastmod>2017-12-22T16:28:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./mastodon.html</loc>
+    <lastmod>2017-12-22T16:28:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/jokes.html</loc>
+    <lastmod>2017-12-21T16:09:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./loading.html</loc>
+    <lastmod>2017-12-21T16:09:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/vr.html</loc>
+    <lastmod>2017-12-18T13:36:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./vr.html</loc>
+    <lastmod>2017-12-18T13:36:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./net-neutrality-vote-today.html</loc>
+    <lastmod>2017-12-14T06:26:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./hey-dere-bub.html</loc>
+    <lastmod>2017-12-13T19:12:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/heyderebub.html</loc>
+    <lastmod>2017-12-13T19:12:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/beer.html</loc>
+    <lastmod>2017-12-07T16:41:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/hhgtg.html</loc>
+    <lastmod>2017-12-07T16:41:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./pan-galactic-gargle-blaster.html</loc>
+    <lastmod>2017-12-07T16:41:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./dont-be-a-coconut.html</loc>
+    <lastmod>2017-12-05T13:25:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/music.html</loc>
+    <lastmod>2017-12-05T13:25:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/words.html</loc>
+    <lastmod>2017-12-05T13:25:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./thought-of-the-day2227.html</loc>
+    <lastmod>2017-12-03T13:47:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/thought-of-the-day.html</loc>
+    <lastmod>2017-12-03T13:47:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/contact.html</loc>
+    <lastmod>2017-11-28T16:22:42+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./where-to-find-me-elsewhere-on-the-web.html</loc>
+    <lastmod>2017-11-28T16:22:42+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./blog-update.html</loc>
+    <lastmod>2017-11-27T20:48:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./thought-of-the-day27904.html</loc>
+    <lastmod>2017-11-27T16:58:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./antiwitze.html</loc>
+    <lastmod>2017-11-27T16:58:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/german.html</loc>
+    <lastmod>2017-11-27T16:58:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./thought-of-the-day14302.html</loc>
+    <lastmod>2017-11-27T16:56:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./nonsense.html</loc>
+    <lastmod>2017-11-27T16:55:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/nonsense.html</loc>
+    <lastmod>2017-11-27T16:55:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./thought-of-the-day22873.html</loc>
+    <lastmod>2017-11-27T16:54:07+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./christian-morgenstern-verkehrte-welt.html</loc>
+    <lastmod>2017-11-27T16:52:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/poetry.html</loc>
+    <lastmod>2017-11-27T16:52:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./joe-on-sporty-ball-z.html</loc>
+    <lastmod>2017-11-27T16:51:42+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./fun-words-in-german.html</loc>
+    <lastmod>2017-11-27T16:50:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./thought-of-the-day.html</loc>
+    <lastmod>2017-11-27T16:49:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./hi-there.html</loc>
+    <lastmod>2017-10-02T16:11:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./4k-gaming-with-a-gtx1080ti.html</loc>
+    <lastmod>2017-10-02T16:09:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/conventions.html</loc>
+    <lastmod>2016-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./rnc-day-four.html</loc>
+    <lastmod>2016-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./the-party-of-lincoln.html</loc>
+    <lastmod>2016-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./rnc-day-three.html</loc>
+    <lastmod>2016-07-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./rnc-day-two.html</loc>
+    <lastmod>2016-07-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./blue-lives-matter.html</loc>
+    <lastmod>2016-07-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./rnc-day-one.html</loc>
+    <lastmod>2016-07-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./republican-national-convention.html</loc>
+    <lastmod>2016-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./silex.html</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./grav-on-heroku.html</loc>
+    <lastmod>2016-06-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./welcome.html</loc>
+    <lastmod>2016-06-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./posts.html</loc>
+  </url>
+  
+</urlset>

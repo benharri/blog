@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dns on blog // ~ben</title>
+    <link>./tags/dns.html</link>
+    <description>Recent content in dns on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Aug 2018 15:05:38 +0000</lastBuildDate><atom:link href="./tags/dns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>upsides of new dns nameservers</title>
+      <link>./upsides-of-new-dns-nameservers.html</link>
+      <pubDate>Tue, 14 Aug 2018 15:05:38 +0000</pubDate>
+      
+      <guid>./upsides-of-new-dns-nameservers.html</guid>
+      <description> no more google no more google automated certbot validation for letsencrypt wildcard certs!! no more manual TXT records every three months!  </description>
+    </item>
+    
+    <item>
+      <title>dns shenanigans post-mortem</title>
+      <link>./dns-shenanigans-post-mortem.html</link>
+      <pubDate>Tue, 14 Aug 2018 15:03:49 +0000</pubDate>
+      
+      <guid>./dns-shenanigans-post-mortem.html</guid>
+      <description>let&amp;rsquo;s start by saying i probably should have done a bit more research before diving head-first into this endeavor.
+i&amp;rsquo;ve been thinking about transferring my domains off google domains for some time now, as part of my personal goal to self host and limit my dependence on google and other large third-party monstrosities.</description>
+    </item>
+    
+  </channel>
+</rss>

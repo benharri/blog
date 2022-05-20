@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>lxd networking and additional IPs</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./lxd-networking-and-additional-ips.html">lxd networking and additional IPs</a></h1>
+
+    <time>Thu, 26 Jul 2018 15:34 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/linux.html">linux</a>
+    </li> <li>
+        <a href="tags/sysadmin.html">sysadmin</a>
+    </li> <li>
+        <a href="tags/ubuntu.html">ubuntu</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>now that tilde.team is on a fancy-shmancy new dedi server, i&rsquo;ve tried to
+get a secondary IP address assigned to a lxd container (which i plan to
+use for my personal stuff). lxd shows that the secondary IP is being
+picked up by that container, but i&rsquo;m still seeing the host machine&rsquo;s IP
+as the external address.</p>
+<p>i&rsquo;m not sure how i&rsquo;ll need to configure the network settings on the host
+machine (now that we&rsquo;re running ubuntu 18.04 and it uses netplan for
+configs and not /etc/network/interfaces). another confusing thing is
+that the main config in /etc/netplan says that the network config is
+handled by systemd-networkd&hellip;</p>
+<p>at least i have through the end of the year when my current vps runs out
+to get this up and running.</p>
+<p>ping me on <a href="https://tilde.chat">irc</a> or <a href="mailto:ben@tilde.team">email</a>
+if you have experience with this.</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

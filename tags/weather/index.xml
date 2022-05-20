@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>weather on blog // ~ben</title>
+    <link>./tags/weather.html</link>
+    <description>Recent content in weather on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Jan 2018 09:49:42 +0000</lastBuildDate><atom:link href="./tags/weather/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cold</title>
+      <link>./cold.html</link>
+      <pubDate>Fri, 05 Jan 2018 09:49:42 +0000</pubDate>
+      
+      <guid>./cold.html</guid>
+      <description>why is it so cold
+i&amp;rsquo;m so done with winter</description>
+    </item>
+    
+  </channel>
+</rss>

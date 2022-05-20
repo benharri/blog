@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>update on blog // ~ben</title>
+    <link>./tags/update.html</link>
+    <description>Recent content in update on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Feb 2020 20:06:43 +0000</lastBuildDate><atom:link href="./tags/update/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>general update</title>
+      <link>./general-update.html</link>
+      <pubDate>Mon, 03 Feb 2020 20:06:43 +0000</pubDate>
+      
+      <guid>./general-update.html</guid>
+      <description>it&amp;rsquo;s been quite a long time since i posted anything here on this blog.
+i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use it and finally realized it&amp;rsquo;s been almost a year since i posted anything at all.</description>
+    </item>
+    
+    <item>
+      <title>blog update</title>
+      <link>./blog-update.html</link>
+      <pubDate>Mon, 27 Nov 2017 20:48:10 +0000</pubDate>
+      
+      <guid>./blog-update.html</guid>
+      <description>sorry for the blast of posts. i recreated them from a wordpress blog on motd.org.
+i plan on posting some random thoughts here from time to time. thanks for checking in.</description>
+    </item>
+    
+  </channel>
+</rss>

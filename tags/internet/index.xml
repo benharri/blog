@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>internet on blog // ~ben</title>
+    <link>./tags/internet.html</link>
+    <description>Recent content in internet on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jul 2018 23:09:22 +0000</lastBuildDate><atom:link href="./tags/internet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tildeverse.org</title>
+      <link>./tildeverseorg.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
+      
+      <guid>./tildeverseorg.html</guid>
+      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
+among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+    </item>
+    
+    <item>
+      <title>phoenix</title>
+      <link>./phoenix.html</link>
+      <pubDate>Mon, 26 Feb 2018 11:57:10 +0000</pubDate>
+      
+      <guid>./phoenix.html</guid>
+      <description>inspired by oodsnet, (and my pull request to add darkmode), i started to create my own tilde.team fork (now forum.tilde.team).
+the first step was to switch out the css to the tilde.</description>
+    </item>
+    
+    <item>
+      <title>webassembly</title>
+      <link>./webassembly.html</link>
+      <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
+      
+      <guid>./webassembly.html</guid>
+      <description>according to this post on the mozilla blog, we will be able to compile wasm as it streams into the browser in much the same way that images are decoded. this is a huge game changer from the current paradigm of loading javascript completely before being able to parse and compile it.</description>
+    </item>
+    
+    <item>
+      <title>net neutrality vote today</title>
+      <link>./net-neutrality-vote-today.html</link>
+      <pubDate>Thu, 14 Dec 2017 06:26:55 +0000</pubDate>
+      
+      <guid>./net-neutrality-vote-today.html</guid>
+      <description>Everybody! We only have UNTIL TOMORROW to fight the FCC &amp;amp; the repeal of #NetNeutrality! Repealing Net Nutrality would result in an unequal access to online content including research, social/political organizing, and personal media.</description>
+    </item>
+    
+  </channel>
+</rss>

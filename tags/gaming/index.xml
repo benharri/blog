@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gaming on blog // ~ben</title>
+    <link>./tags/gaming.html</link>
+    <description>Recent content in gaming on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jan 2018 17:26:40 +0000</lastBuildDate><atom:link href="./tags/gaming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pop quiz</title>
+      <link>./pop-quiz.html</link>
+      <pubDate>Tue, 16 Jan 2018 17:26:40 +0000</pubDate>
+      
+      <guid>./pop-quiz.html</guid>
+      <description>is this real?
+hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real place.</description>
+    </item>
+    
+    <item>
+      <title>vr</title>
+      <link>./vr.html</link>
+      <pubDate>Mon, 18 Dec 2017 13:36:04 +0000</pubDate>
+      
+      <guid>./vr.html</guid>
+      <description>i picked up an oculus rift after my last paycheck :P
+it was half christmas present. these are some of the games that i&amp;rsquo;m most excited for:
+ elite dangerous lone echo / echo arena dirt rally gun club vr eagle flight robo recall  have you played any other cool vr games lately?</description>
+    </item>
+    
+    <item>
+      <title>4k gaming with a gtx1080ti</title>
+      <link>./4k-gaming-with-a-gtx1080ti.html</link>
+      <pubDate>Mon, 02 Oct 2017 16:09:26 +0000</pubDate>
+      
+      <guid>./4k-gaming-with-a-gtx1080ti.html</guid>
+      <description>i recently picked up a gtx1080ti on newegg (and a 4k monitor earlier in the summer on prime day). i can&amp;rsquo;t stop playing the witcher 3. even though it&amp;rsquo;s a couple years old, it just looks so good.</description>
+    </item>
+    
+  </channel>
+</rss>

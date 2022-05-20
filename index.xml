@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog // ~ben</title>
+    <link>./</link>
+    <description>Recent content on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Mar 2021 16:16:11 -0400</lastBuildDate><atom:link href="./index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matrix Sucks</title>
+      <link>./matrix-sucks.html</link>
+      <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
+      
+      <guid>./matrix-sucks.html</guid>
+      <description>i&amp;rsquo;ve gotten sick of explaining why matrix is bad over and over so i&amp;rsquo;m gathering my thoughts and some points here and publishing it so i can link to it.</description>
+    </item>
+    
+    <item>
+      <title>Update Adventures</title>
+      <link>./update-adventures.html</link>
+      <pubDate>Wed, 25 Aug 2021 00:35:13 -0400</pubDate>
+      
+      <guid>./update-adventures.html</guid>
+      <description>here&amp;rsquo;s the longer version about the outage on august 24, 2021:
+after finishing the package upgrades on my proxmox hosts for the new release (proxmox 7.0, corresponding to debian 11/bullseye), i typed reboot and pressed enter, crossing my fingers that it would come back up as expected.</description>
+    </item>
+    
+    <item>
+      <title>hugo blog rewrite</title>
+      <link>./hugo.html</link>
+      <pubDate>Wed, 24 Mar 2021 16:16:11 -0400</pubDate>
+      
+      <guid>./hugo.html</guid>
+      <description>i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog with hugo
+why fix something that ain&amp;rsquo;t broken? there are several major bugs in bashblog that i haven&amp;rsquo;t had the time or interest to fix.</description>
+    </item>
+    
+    <item>
+      <title>mastodon postgres upgrade fun</title>
+      <link>./mastodon-postgres-upgrade-fun.html</link>
+      <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
+      
+      <guid>./mastodon-postgres-upgrade-fun.html</guid>
+      <description>howdy friends!
+if you’re a mastodon user on tilde.zone (the tildeverse mastodon instance), you might’ve noticed some downtime recently.
+here’s a quick recap of what went down during the upgrade process.</description>
+    </item>
+    
+    <item>
+      <title>default branch name</title>
+      <link>./default-branch-name.html</link>
+      <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
+      
+      <guid>./default-branch-name.html</guid>
+      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
+i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+    </item>
+    
+    <item>
+      <title>tools and services</title>
+      <link>./tools-and-services.html</link>
+      <pubDate>Tue, 03 Mar 2020 14:02:47 +0000</pubDate>
+      
+      <guid>./tools-and-services.html</guid>
+      <description>inspired by tomasino&amp;rsquo;s recent post, i&amp;rsquo;d like to detail some of the stuff that i rent and use.
+recurring costs some of these are monthly, others are annual
+ server rental  $135/month, 64gb model, 2yr contract discount   proxmox - my preferred hypervisor.</description>
+    </item>
+    
+    <item>
+      <title>general update</title>
+      <link>./general-update.html</link>
+      <pubDate>Mon, 03 Feb 2020 20:06:43 +0000</pubDate>
+      
+      <guid>./general-update.html</guid>
+      <description>it&amp;rsquo;s been quite a long time since i posted anything here on this blog.
+i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use it and finally realized it&amp;rsquo;s been almost a year since i posted anything at all.</description>
+    </item>
+    
+    <item>
+      <title>networking nonsense</title>
+      <link>./networking-nonsense.html</link>
+      <pubDate>Mon, 11 Feb 2019 02:40:20 +0000</pubDate>
+      
+      <guid>./networking-nonsense.html</guid>
+      <description>i&amp;rsquo;ve recently been working on setting up drone ci on the tilde.team machine. however, there&amp;rsquo;s been something strange going on with the networking on there.
+starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netstat -tulpn showed the port binding properly to 127.</description>
+    </item>
+    
+    <item>
+      <title>raid nonsense</title>
+      <link>./raid-nonsense.html</link>
+      <pubDate>Sun, 13 Jan 2019 13:28:45 +0000</pubDate>
+      
+      <guid>./raid-nonsense.html</guid>
+      <description>last week i did some maintenance on the tilde.team box. probably should have written about it sooner but i didn&amp;rsquo;t make time for it until now.
+the gist of the problem was that the default images provided by hetzner default to raid1 between the available disks.</description>
+    </item>
+    
+    <item>
+      <title>weechat setup</title>
+      <link>./weechat-setup.html</link>
+      <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
+      
+      <guid>./weechat-setup.html</guid>
+      <description>so you decided to switch from irssi to weechat?
+what options do you need to set? what plugins? what scripts?
+i&amp;rsquo;ll go over some of the most essential of these, and share my full configs.</description>
+    </item>
+    
+    <item>
+      <title>proactive redundancy</title>
+      <link>./proactive-redundancy.html</link>
+      <pubDate>Thu, 15 Nov 2018 18:39:26 +0000</pubDate>
+      
+      <guid>./proactive-redundancy.html</guid>
+      <description>after the fiasco earlier this week, i&amp;rsquo;ve been taking steps to minimize the impact if tilde.team were to go down. it&amp;rsquo;s still a large spof (single-point-of-failure), but i&amp;rsquo;m reasonably certain that at least the irc net will remain up and functional in the event of another outage.</description>
+    </item>
+    
+    <item>
+      <title>november 13 post mortem</title>
+      <link>./november-13-post-mortem.html</link>
+      <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
+      
+      <guid>./november-13-post-mortem.html</guid>
+      <description>we had something of an outage on november 13, 2018 on tilde.team.
+i awoke, not suspecting anything to be amiss. as soon as i logged in to check my email and irc mentions, it became clear.</description>
+    </item>
+    
+    <item>
+      <title>italy</title>
+      <link>./italy.html</link>
+      <pubDate>Thu, 20 Sep 2018 17:32:33 +0000</pubDate>
+      
+      <guid>./italy.html</guid>
+      <description>i just got back from a 10-day backpacking trip to italy and i&amp;rsquo;d like to share some of the photos i took!
+the travel plan was rome -&amp;gt; venice -&amp;gt; florence -&amp;gt; naples -&amp;gt; pompei/vesuvius -&amp;gt; capri -&amp;gt; amalfi</description>
+    </item>
+    
+    <item>
+      <title>utterances</title>
+      <link>./utterances.html</link>
+      <pubDate>Wed, 05 Sep 2018 21:34:13 +0000</pubDate>
+      
+      <guid>./utterances.html</guid>
+      <description>i somehow stumbled upon utterances today at lunch. (i think someone had it forked on their github page).
+no matter how i found it, i still decided to add it to my blog here with bashblog.</description>
+    </item>
+    
+    <item>
+      <title>no more google</title>
+      <link>./no-more-google.html</link>
+      <pubDate>Tue, 14 Aug 2018 23:36:05 +0000</pubDate>
+      
+      <guid>./no-more-google.html</guid>
+      <description>not sure if this is appropriately tagged, but i didn&amp;rsquo;t feel like making a new one.
+i figured i should probably get some notes down about moving off google.
+to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:</description>
+    </item>
+    
+    <item>
+      <title>upsides of new dns nameservers</title>
+      <link>./upsides-of-new-dns-nameservers.html</link>
+      <pubDate>Tue, 14 Aug 2018 15:05:38 +0000</pubDate>
+      
+      <guid>./upsides-of-new-dns-nameservers.html</guid>
+      <description> no more google no more google automated certbot validation for letsencrypt wildcard certs!! no more manual TXT records every three months!  </description>
+    </item>
+    
+    <item>
+      <title>dns shenanigans post-mortem</title>
+      <link>./dns-shenanigans-post-mortem.html</link>
+      <pubDate>Tue, 14 Aug 2018 15:03:49 +0000</pubDate>
+      
+      <guid>./dns-shenanigans-post-mortem.html</guid>
+      <description>let&amp;rsquo;s start by saying i probably should have done a bit more research before diving head-first into this endeavor.
+i&amp;rsquo;ve been thinking about transferring my domains off google domains for some time now, as part of my personal goal to self host and limit my dependence on google and other large third-party monstrosities.</description>
+    </item>
+    
+    <item>
+      <title>lxd networking and additional IPs</title>
+      <link>./lxd-networking-and-additional-ips.html</link>
+      <pubDate>Thu, 26 Jul 2018 15:34:50 +0000</pubDate>
+      
+      <guid>./lxd-networking-and-additional-ips.html</guid>
+      <description>now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to get a secondary IP address assigned to a lxd container (which i plan to use for my personal stuff).</description>
+    </item>
+    
+    <item>
+      <title>dotfiles</title>
+      <link>./dotfiles.html</link>
+      <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
+      
+      <guid>./dotfiles.html</guid>
+      <description>finally got around to updating my dotfiles to use gnu stow. i adapted ~tomasino&amp;rsquo;s makefile for use with the configs that i&amp;rsquo;m keeping with it.
+now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my config to ~/.</description>
+    </item>
+    
+    <item>
+      <title>bashblog and your gopherhole</title>
+      <link>./bashblog-and-your-gopherhole.html</link>
+      <pubDate>Sun, 22 Jul 2018 11:44:03 +0000</pubDate>
+      
+      <guid>./bashblog-and-your-gopherhole.html</guid>
+      <description>i&amp;rsquo;ve created a repo for the tilde.team customizations to bashblog.
+it will now make sure that your ~/public_gopher exists and symlink your blog into it with a nice gophermap to list all the markdown styled posts.</description>
+    </item>
+    
+    <item>
+      <title>more drone photos</title>
+      <link>./more-drone-photos.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:15:46 +0000</pubDate>
+      
+      <guid>./more-drone-photos.html</guid>
+      <description>i finally got my drone out this summer to take some more pics!
+more here</description>
+    </item>
+    
+    <item>
+      <title>tildeverse.org</title>
+      <link>./tildeverseorg.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
+      
+      <guid>./tildeverseorg.html</guid>
+      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
+among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+    </item>
+    
+    <item>
+      <title>tilde.team news</title>
+      <link>./tildeteam-news.html</link>
+      <pubDate>Wed, 13 Jun 2018 15:07:45 +0000</pubDate>
+      
+      <guid>./tildeteam-news.html</guid>
+      <description>hey hi hello!
+it seems that i haven&amp;rsquo;t written anything on my blog in quite a while&amp;hellip;
+time to fix that! i&amp;rsquo;ve been quite busy in the last month or so with a lot of new ideas an energy for tilde.</description>
+    </item>
+    
+    <item>
+      <title>white pride vs black pride</title>
+      <link>./white-pride-vs-black-pride.html</link>
+      <pubDate>Wed, 07 Mar 2018 16:49:51 +0000</pubDate>
+      
+      <guid>./white-pride-vs-black-pride.html</guid>
+      <description>What White Nationalists Don&amp;rsquo;t Get
+A common and seemingly reasonable argument for white pride or white nationalism is: why cant I be proud of my culture?
+Well, you can. Always have been able to.</description>
+    </item>
+    
+    <item>
+      <title>phoenix</title>
+      <link>./phoenix.html</link>
+      <pubDate>Mon, 26 Feb 2018 11:57:10 +0000</pubDate>
+      
+      <guid>./phoenix.html</guid>
+      <description>inspired by oodsnet, (and my pull request to add darkmode), i started to create my own tilde.team fork (now forum.tilde.team).
+the first step was to switch out the css to the tilde.</description>
+    </item>
+    
+    <item>
+      <title>otm</title>
+      <link>./otm.html</link>
+      <pubDate>Thu, 15 Feb 2018 13:33:16 +0000</pubDate>
+      
+      <guid>./otm.html</guid>
+      <description>just heard the latest episode of on the media. this is a super helpful guide i found on their twitter.</description>
+    </item>
+    
+    <item>
+      <title>quote of the day</title>
+      <link>./quote-of-the-day.html</link>
+      <pubDate>Tue, 13 Feb 2018 09:55:06 +0000</pubDate>
+      
+      <guid>./quote-of-the-day.html</guid>
+      <description>Be Alert! - the world needs more Lerts.</description>
+    </item>
+    
+    <item>
+      <title>webassembly</title>
+      <link>./webassembly.html</link>
+      <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
+      
+      <guid>./webassembly.html</guid>
+      <description>according to this post on the mozilla blog, we will be able to compile wasm as it streams into the browser in much the same way that images are decoded. this is a huge game changer from the current paradigm of loading javascript completely before being able to parse and compile it.</description>
+    </item>
+    
+    <item>
+      <title>pop quiz</title>
+      <link>./pop-quiz.html</link>
+      <pubDate>Tue, 16 Jan 2018 17:26:40 +0000</pubDate>
+      
+      <guid>./pop-quiz.html</guid>
+      <description>is this real?
+hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real place.</description>
+    </item>
+    
+    <item>
+      <title>git remotes with ssh aliases</title>
+      <link>./git-remotes-with-ssh-aliases.html</link>
+      <pubDate>Fri, 12 Jan 2018 13:30:26 +0000</pubDate>
+      
+      <guid>./git-remotes-with-ssh-aliases.html</guid>
+      <description>did you know that ~/.ssh/config aliases work for git remotes??
+~/.ssh/config
+Host gh HostName github.com User git IdentityFile ~/.ssh/gh_key  you can now use gh:username/repo as the remote in place of git@github.</description>
+    </item>
+    
+    <item>
+      <title>cold</title>
+      <link>./cold.html</link>
+      <pubDate>Fri, 05 Jan 2018 09:49:42 +0000</pubDate>
+      
+      <guid>./cold.html</guid>
+      <description>why is it so cold
+i&amp;rsquo;m so done with winter</description>
+    </item>
+    
+    <item>
+      <title>8values</title>
+      <link>./8values.html</link>
+      <pubDate>Wed, 03 Jan 2018 12:41:09 +0000</pubDate>
+      
+      <guid>./8values.html</guid>
+      <description>not that i&amp;rsquo;m very surprised by this, but i took the quiz again (after losing my results url) and got these results.
+take the quiz here
+my results again as a link</description>
+    </item>
+    
+    <item>
+      <title>mastodon</title>
+      <link>./mastodon.html</link>
+      <pubDate>Fri, 22 Dec 2017 16:28:45 +0000</pubDate>
+      
+      <guid>./mastodon.html</guid>
+      <description>hi everyone.
+i started hosting a mastodon instance at social.tilde.team.
+check it out if you want some federated open source social goodness :)
+send me a toot @ben@tilde.team (from any mastodon instance!</description>
+    </item>
+    
+    <item>
+      <title>loading...</title>
+      <link>./loading.html</link>
+      <pubDate>Thu, 21 Dec 2017 16:09:45 +0000</pubDate>
+      
+      <guid>./loading.html</guid>
+      <description>const loadingmsgs = [ &amp;quot;Proving P=NP...&amp;quot;, &amp;quot;Computing 6 x 9...&amp;quot;, &amp;quot;Mining Bitcoin...&amp;quot;, &amp;quot;Dividing by 0...&amp;quot;, &amp;quot;Initializing Skynet...&amp;quot;, &amp;quot;[REDACTED]&amp;quot;, &amp;quot;Downloading more RAM...&amp;quot;, &amp;quot;Ordering 1s and 0s...&amp;quot;, &amp;quot;Navigating neural network...&amp;quot;, &amp;quot;Importing machine learning.</description>
+    </item>
+    
+    <item>
+      <title>vr</title>
+      <link>./vr.html</link>
+      <pubDate>Mon, 18 Dec 2017 13:36:04 +0000</pubDate>
+      
+      <guid>./vr.html</guid>
+      <description>i picked up an oculus rift after my last paycheck :P
+it was half christmas present. these are some of the games that i&amp;rsquo;m most excited for:
+ elite dangerous lone echo / echo arena dirt rally gun club vr eagle flight robo recall  have you played any other cool vr games lately?</description>
+    </item>
+    
+    <item>
+      <title>net neutrality vote today</title>
+      <link>./net-neutrality-vote-today.html</link>
+      <pubDate>Thu, 14 Dec 2017 06:26:55 +0000</pubDate>
+      
+      <guid>./net-neutrality-vote-today.html</guid>
+      <description>Everybody! We only have UNTIL TOMORROW to fight the FCC &amp;amp; the repeal of #NetNeutrality! Repealing Net Nutrality would result in an unequal access to online content including research, social/political organizing, and personal media.</description>
+    </item>
+    
+    <item>
+      <title>hey dere bub!</title>
+      <link>./hey-dere-bub.html</link>
+      <pubDate>Wed, 13 Dec 2017 19:12:51 +0000</pubDate>
+      
+      <guid>./hey-dere-bub.html</guid>
+      <description>if you haven&amp;rsquo;t checked it out yet, give my new podcast a listen!
+
+episode 5 was uploaded today.
+we&amp;rsquo;re on twitter, facebook, and of course our own website
+give us a shout on twitter or shoot us an email and let us know what you thought and if there is anything you&amp;rsquo;d like us to talk about in the future.</description>
+    </item>
+    
+    <item>
+      <title>pan galactic gargle blaster</title>
+      <link>./pan-galactic-gargle-blaster.html</link>
+      <pubDate>Thu, 07 Dec 2017 16:41:40 +0000</pubDate>
+      
+      <guid>./pan-galactic-gargle-blaster.html</guid>
+      <description>short&amp;rsquo;s brewery released another batch of their pan galactic gargle blaster imperial IPA. i had one last night and was very excited to have it once again.
+ “The Hitch-Hiker&amp;rsquo;s Guide to the Galaxy also mentions alcohol.</description>
+    </item>
+    
+    <item>
+      <title>don&#39;t be a coconut</title>
+      <link>./dont-be-a-coconut.html</link>
+      <pubDate>Tue, 05 Dec 2017 13:25:47 +0000</pubDate>
+      
+      <guid>./dont-be-a-coconut.html</guid>
+      <description>i&amp;rsquo;ve got nothing to say don&amp;rsquo;t be a coconut
+ Ask Me Anything - The Strokes (on First Impressions of Earth)</description>
+    </item>
+    
+    <item>
+      <title>thought of the day</title>
+      <link>./thought-of-the-day2227.html</link>
+      <pubDate>Sun, 03 Dec 2017 13:47:36 +0000</pubDate>
+      
+      <guid>./thought-of-the-day2227.html</guid>
+      <description>everything in the universe either is or isn&amp;rsquo;t a potato.</description>
+    </item>
+    
+    <item>
+      <title>where to find me elsewhere on the web</title>
+      <link>./where-to-find-me-elsewhere-on-the-web.html</link>
+      <pubDate>Tue, 28 Nov 2017 16:22:42 +0000</pubDate>
+      
+      <guid>./where-to-find-me-elsewhere-on-the-web.html</guid>
+      <description> email wire @bharris matrix/riot @benh:matrix.org telegram twitter keybase my personal site github gitlab tilde~ben  </description>
+    </item>
+    
+    <item>
+      <title>blog update</title>
+      <link>./blog-update.html</link>
+      <pubDate>Mon, 27 Nov 2017 20:48:10 +0000</pubDate>
+      
+      <guid>./blog-update.html</guid>
+      <description>sorry for the blast of posts. i recreated them from a wordpress blog on motd.org.
+i plan on posting some random thoughts here from time to time. thanks for checking in.</description>
+    </item>
+    
+    <item>
+      <title>thought of the day</title>
+      <link>./thought-of-the-day27904.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:58:50 +0000</pubDate>
+      
+      <guid>./thought-of-the-day27904.html</guid>
+      <description>wherever you go, there you are</description>
+    </item>
+    
+    <item>
+      <title>antiwitze</title>
+      <link>./antiwitze.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:58:17 +0000</pubDate>
+      
+      <guid>./antiwitze.html</guid>
+      <description>uebern berg ist schneller als zu fuss sagte der wanderer und schwamm los Was ist der Unterschied zwischen einem Vogel? Beide Beine sind gleich lang. Besonders das linke. Nachts ist es kälter als draußen.</description>
+    </item>
+    
+    <item>
+      <title>thought of the day</title>
+      <link>./thought-of-the-day14302.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:56:36 +0000</pubDate>
+      
+      <guid>./thought-of-the-day14302.html</guid>
+      <description>why do they tell us to use the stairs in case of fire? shouldn&amp;rsquo;t we be using a fire extinguisher?</description>
+    </item>
+    
+    <item>
+      <title>Nonsense</title>
+      <link>./nonsense.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:55:29 +0000</pubDate>
+      
+      <guid>./nonsense.html</guid>
+      <description>I hole-hardedly agree, but allow me to play doubles advocate here for a moment. For all intensive purposes I think you are wrong. In an age where false morals are a diamond dozen, true virtues are a blessing in the skies.</description>
+    </item>
+    
+    <item>
+      <title>Thought of the Day</title>
+      <link>./thought-of-the-day22873.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:54:07 +0000</pubDate>
+      
+      <guid>./thought-of-the-day22873.html</guid>
+      <description>“Arguing with religious people – It’s like playing chess with a pigeon; no matter how good I am at chess, the pigeon is just going to knock over the pieces, crap on the board and strut around victorious” – Anonymous</description>
+    </item>
+    
+    <item>
+      <title>Christian Morgenstern – “verkehrte Welt”</title>
+      <link>./christian-morgenstern-verkehrte-welt.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:52:49 +0000</pubDate>
+      
+      <guid>./christian-morgenstern-verkehrte-welt.html</guid>
+      <description>Dunkel war’s der Mond schien helle, Schnee bedeckt die grüne Flur als ein Auto blitzeschnelle, langsam um die Ecke fuhr.
+Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein totgeschossner Hase, auf der Sandbank Schlittschuh lief.</description>
+    </item>
+    
+    <item>
+      <title>Joe on Sporty-ball-z</title>
+      <link>./joe-on-sporty-ball-z.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:51:42 +0000</pubDate>
+      
+      <guid>./joe-on-sporty-ball-z.html</guid>
+      <description>For every nerd calling something sportsball there needs to be a jock that walks into a library and yells “WHAT’S UP WITH ALL THESE WORD BURGERS”</description>
+    </item>
+    
+    <item>
+      <title>fun words in german</title>
+      <link>./fun-words-in-german.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:50:40 +0000</pubDate>
+      
+      <guid>./fun-words-in-german.html</guid>
+      <description> Tschechisches Streichholzschächtelchen Rindfleischettikettierungsüberwachungsaufgabensübertragungsgesetz Donaudampfschifffahrtsgesellschaftskapitän  </description>
+    </item>
+    
+    <item>
+      <title>Thought of the day</title>
+      <link>./thought-of-the-day.html</link>
+      <pubDate>Mon, 27 Nov 2017 16:49:29 +0000</pubDate>
+      
+      <guid>./thought-of-the-day.html</guid>
+      <description>things are not what they appear to be. nor are they otherwise.</description>
+    </item>
+    
+    <item>
+      <title>hi there</title>
+      <link>./hi-there.html</link>
+      <pubDate>Mon, 02 Oct 2017 16:11:13 +0000</pubDate>
+      
+      <guid>./hi-there.html</guid>
+      <description>welcome to my tildeblog
+you are here.
+i like to mess around with linux sysadmin shtuff. tilde.team is my baby. let me know if you want to get involved.
+thanks for being awesome.</description>
+    </item>
+    
+    <item>
+      <title>4k gaming with a gtx1080ti</title>
+      <link>./4k-gaming-with-a-gtx1080ti.html</link>
+      <pubDate>Mon, 02 Oct 2017 16:09:26 +0000</pubDate>
+      
+      <guid>./4k-gaming-with-a-gtx1080ti.html</guid>
+      <description>i recently picked up a gtx1080ti on newegg (and a 4k monitor earlier in the summer on prime day). i can&amp;rsquo;t stop playing the witcher 3. even though it&amp;rsquo;s a couple years old, it just looks so good.</description>
+    </item>
+    
+    <item>
+      <title>Republican National Convention in Cleveland - Day Four</title>
+      <link>./rnc-day-four.html</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./rnc-day-four.html</guid>
+      <description>UPDATE looks like an article of convention notes by two of our reporters ran in the Mining Journal!
+Trump is officially the Republican nominee for President of the United States of America.</description>
+    </item>
+    
+    <item>
+      <title>The Party of Lincoln</title>
+      <link>./the-party-of-lincoln.html</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./the-party-of-lincoln.html</guid>
+      <description>Something that struck me as absolutely outrageous (more than other things that I&amp;rsquo;ve seen this week) was the connection of the roots of the Republican party to the modern Republican party.</description>
+    </item>
+    
+    <item>
+      <title>Republican National Convention in Cleveland - Day Three</title>
+      <link>./rnc-day-three.html</link>
+      <pubDate>Wed, 20 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./rnc-day-three.html</guid>
+      <description>Something that has been on my mind all week is the utter lack of minority representation at the convention. Inside the security perimeter, most black people that you see are working here.</description>
+    </item>
+    
+    <item>
+      <title>Republican National Convention in Cleveland - Day Two</title>
+      <link>./rnc-day-two.html</link>
+      <pubDate>Tue, 19 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./rnc-day-two.html</guid>
+      <description>Our second day at the RNC began once again at the Michigan Delegation Breakfast Session.
+Michigan Speaker of the House Kevin Cotter addressed the delegation with a report on the state of the state.</description>
+    </item>
+    
+    <item>
+      <title>Blue Lives Matter? I thought All lives matter</title>
+      <link>./blue-lives-matter.html</link>
+      <pubDate>Mon, 18 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./blue-lives-matter.html</guid>
+      <description>#BlueLivesMatter completely misses the point. And it makes #AllLivesMatter hypocritical.
+This cartoon says it all.
+The same people that pioneered the #AllLivesMatter movement are now claiming that #BlueLivesMatter. Do they not understand the irony of this?</description>
+    </item>
+    
+    <item>
+      <title>Republican National Convention in Cleveland - Day One</title>
+      <link>./rnc-day-one.html</link>
+      <pubDate>Mon, 18 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./rnc-day-one.html</guid>
+      <description>Michigan delegates to the Republican National Convention got fired up for New Jersey Governor Chris Christie as he addressed them this morning at their first breakfast meeting. Christie stressed the importance of party unity behind the presumptive nominee, Donald Trump.</description>
+    </item>
+    
+    <item>
+      <title>Republican National Convention</title>
+      <link>./republican-national-convention.html</link>
+      <pubDate>Sun, 17 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./republican-national-convention.html</guid>
+      <description>I was asked to chaperone a group of youth journalists with 8-18 Media (a youth journalism program in Marquette that I was once a part of)
+Disclaimer: these blog posts represent my opinion!</description>
+    </item>
+    
+    <item>
+      <title>Why I chose Silex for this website</title>
+      <link>./silex.html</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./silex.html</guid>
+      <description>UPDATE: this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip; i&amp;rsquo;m including it for historical purposes here&amp;rsquo;s the deployed site and the source for it</description>
+    </item>
+    
+    <item>
+      <title>Heroku with Grav flat-file CMS</title>
+      <link>./grav-on-heroku.html</link>
+      <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./grav-on-heroku.html</guid>
+      <description>NOTE: this is a historical post that i&amp;rsquo;m importing from my old site.
+ When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.</description>
+    </item>
+    
+    <item>
+      <title>Welcome To My Blog</title>
+      <link>./welcome.html</link>
+      <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./welcome.html</guid>
+      <description>This is my first post.
+I&amp;rsquo;m Ben Harris. I study computer science at Northern Michigan University.
+I&amp;rsquo;ll be writing about some of the experiences I&amp;rsquo;ve had in software and in other areas of my life.</description>
+    </item>
+    
+  </channel>
+</rss>

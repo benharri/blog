@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>dns shenanigans post-mortem</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./dns-shenanigans-post-mortem.html">dns shenanigans post-mortem</a></h1>
+
+    <time>Tue, 14 Aug 2018 15:03 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/linux.html">linux</a>
+    </li> <li>
+        <a href="tags/sysadmin.html">sysadmin</a>
+    </li> <li>
+        <a href="tags/tilde.html">tilde</a>
+    </li> <li>
+        <a href="tags/dns.html">dns</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>let&rsquo;s start by saying i probably should have done a bit more research
+before diving head-first into this endeavor.</p>
+<p>i&rsquo;ve been thinking about transferring my domains off google domains for
+some time now, as part of my personal goal to self host and limit my
+dependence on google and other large third-party monstrosities. along
+that line, i asked for registrar recommendations.
+<a href="https://tomasino.tilde.team">~tomasino</a> responded with
+<a href="https://namesilo.com">namesilo</a>. i found that they had $3.99
+registrations for .team and .zone domains, which is 1/10th the cost of
+the $40 registration on google domains.</p>
+<p>i started out by getting the list of domains from the google console. 2
+or 3 of them had been registered within the last 60 days, so i wasn&rsquo;t
+able to transfer those just yet. i grabbed all the domain unlock codes
+and dropped them into namesilo. i failed to realize that the dns panel
+on google domains would disappear as soon as it went through, but more
+importantly that the nameservers would be left pointing to the old
+defunct google domains ones.</p>
+<p>i updated the nameservers as soon as i realized this error from the
+namesilo panel. some of the domains propagated quickly. others, not so
+much. tilde.team was still in a state of flux between the old and new
+nameservers.</p>
+<p>in a rush to get the dns problem fixed, and under recommendation from
+several people on irc, i decided to switch the nameservers for
+tilde.team and tilde.zone to cloudflare, leaving another layer of flux
+for the dns to be stuck in&hellip;</p>
+<p>of the five domains that i moved to cloudflare, 3 returned with a dnssec
+error, claiming that i needed to remove the DS record from that zone.
+d&rsquo;oh!</p>
+<p>i removed the dnssec from those affected domains, so we should be good
+to go as soon as it all propagates through the fickle beast that is dns.</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

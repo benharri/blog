@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
+		<title>webassembly</title>
+	</head>
+
+    <body>
+        <main>
+    <h1><a href="./webassembly.html">webassembly</a></h1>
+
+    <time>Wed, 17 Jan 2018 13:09 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/wasm.html">wasm</a>
+    </li> <li>
+        <a href="tags/dev.html">dev</a>
+    </li> <li>
+        <a href="tags/internet.html">internet</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <p>according to <a href="https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/">this
+post</a>
+on the mozilla blog, we will be able to compile wasm as it streams into
+the browser in much the same way that images are decoded. this is a huge
+game changer from the current paradigm of loading javascript completely
+before being able to parse and compile it.</p>
+<blockquote>
+<p>JavaScript code is much more expensive, byte for byte, than an image,
+because of the time spent parsing and compiling it. It&rsquo;s possible to
+parse and compile wasm as fast as it comes over the network, which
+makes it much more like an image than JavaScript code. Game changer!</p>
+<p>— Yehuda Katz (@wycats) <a href="https://twitter.com/wycats/status/942908325775077376?ref_src=twsrc%5Etfw">December 19,
+2017</a></p>
+</blockquote>
+<p>this will make <a href="https://github.com/WebAssembly/design/blob/master/UseCases.md">so many
+things</a>
+possible in the browser that never were before!</p>
+<p>i decided to follow this
+<a href="http://webassembly.org/getting-started/developers-guide/">tutorial</a> and
+ended up with <a href="https://tilde.team/~ben/wasm/hello.html">this</a>.</p>
+<p>i don&rsquo;t know what to do next. any ideas?</p>
+
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

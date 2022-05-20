@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dev on blog // ~ben</title>
+    <link>./tags/dev.html</link>
+    <description>Recent content in dev on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jun 2020 15:26:29 +0000</lastBuildDate><atom:link href="./tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>default branch name</title>
+      <link>./default-branch-name.html</link>
+      <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
+      
+      <guid>./default-branch-name.html</guid>
+      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
+i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+    </item>
+    
+    <item>
+      <title>phoenix</title>
+      <link>./phoenix.html</link>
+      <pubDate>Mon, 26 Feb 2018 11:57:10 +0000</pubDate>
+      
+      <guid>./phoenix.html</guid>
+      <description>inspired by oodsnet, (and my pull request to add darkmode), i started to create my own tilde.team fork (now forum.tilde.team).
+the first step was to switch out the css to the tilde.</description>
+    </item>
+    
+    <item>
+      <title>webassembly</title>
+      <link>./webassembly.html</link>
+      <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
+      
+      <guid>./webassembly.html</guid>
+      <description>according to this post on the mozilla blog, we will be able to compile wasm as it streams into the browser in much the same way that images are decoded. this is a huge game changer from the current paradigm of loading javascript completely before being able to parse and compile it.</description>
+    </item>
+    
+    <item>
+      <title>Why I chose Silex for this website</title>
+      <link>./silex.html</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./silex.html</guid>
+      <description>UPDATE: this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip; i&amp;rsquo;m including it for historical purposes here&amp;rsquo;s the deployed site and the source for it</description>
+    </item>
+    
+    <item>
+      <title>Heroku with Grav flat-file CMS</title>
+      <link>./grav-on-heroku.html</link>
+      <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>./grav-on-heroku.html</guid>
+      <description>NOTE: this is a historical post that i&amp;rsquo;m importing from my old site.
+ When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.</description>
+    </item>
+    
+  </channel>
+</rss>

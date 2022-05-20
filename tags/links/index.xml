@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>links on blog // ~ben</title>
+    <link>./tags/links.html</link>
+    <description>Recent content in links on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jul 2018 23:09:22 +0000</lastBuildDate><atom:link href="./tags/links/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tildeverse.org</title>
+      <link>./tildeverseorg.html</link>
+      <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
+      
+      <guid>./tildeverseorg.html</guid>
+      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
+among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+    </item>
+    
+  </channel>
+</rss>
