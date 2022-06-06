@@ -71,14 +71,14 @@ then enter on the selected script to install it.
 you can find the rest of my configs
 [here](https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat).
 
-if you have any questions, feel free to ping me on irc. i'm benharri on
-freenode and ben on [tilde.chat](https://tilde.chat)
+if you have any questions, feel free to ping me on irc. i'm ben on
+[libera](https://libera.chat) and [tilde.chat](https://tilde.chat)
 
 ## screenshot
 
 here's a screenshot of my current configs
 
-![](https://bhh.sh/pub/screenies/weechat.png)
+[![](https://bhh.sh/pub/screenies/weechat.png)](https://bhh.sh/pub/screenies/weechat.png)
 
 ## bonus
 
@@ -90,3 +90,5 @@ additionally, feel free to [use my
 add your ~/.weechat to source control, and compare.
 
 hope you've enjoyed customizing your weechat!
+
+EDIT: s/freenode/libera/g
