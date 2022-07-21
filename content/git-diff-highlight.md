@@ -11,7 +11,7 @@ diff output from git can be hard to read. luckily there's a nice tool bundled wi
 
 enter [diff-highlight](https://github.com/git/git/tree/master/contrib/diff-highlight), a little perl script found in git's contrib directory.
 
-from it's own documentation:
+from its own documentation:
 
 > [diff-highlight] post-processes the line-oriented diff, finds pairs of lines, and highlights the differening segments.
 
