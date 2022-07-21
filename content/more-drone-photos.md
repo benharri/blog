@@ -8,6 +8,6 @@ tags:
 
 i finally got my drone out this summer to take some more pics!
 
-![](https://bhh.sh/pub/photos/drone/DJI_0097.thumb.jpg)
+![](https://bhh.sh/pub/photos/drone/DJI_0097.jpg)
 
-[more here](https://bhh.sh/pub/photos/drone/)
+[more here](https://gallery.bhh.sh/?/category/drone)
