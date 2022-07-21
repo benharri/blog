@@ -2,6 +2,11 @@
 title: "Matrix Sucks"
 date: 2021-08-29T15:28:27-04:00
 draft: false
+tags:
+- 'social'
+- 'selfhosting'
+- 'irc'
+- 'chat'
 ---
 
 i’ve gotten sick of explaining why matrix is bad over and over so i’m gathering my thoughts and some points here and publishing it so i can link to it.
