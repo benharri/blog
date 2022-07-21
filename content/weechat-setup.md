@@ -5,6 +5,8 @@ tags:
 - 'irc'
 - 'linux'
 - 'weechat'
+- 'social'
+- 'chat'
 ---
 
 so you decided to switch from irssi to weechat?
