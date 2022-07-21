@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>default branch name</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>default branch name</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./default-branch-name.html">default branch name</a></h1>
 
     <time>Tue, 16 Jun 2020 15:26 UTC</time>
@@ -27,6 +34,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>changing git’s default branch name has come up recently as an easy
 action we can take to update our language and remove harmful ideas from
 our daily usage.</p>
@@ -62,6 +70,7 @@ use the templateDir option:</p>
 <pre><code>git config --global init.defaultBranch main
 </code></pre>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

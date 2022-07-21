@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>general update</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>general update</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./general-update.html">general update</a></h1>
 
     <time>Mon, 03 Feb 2020 20:06 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>it&rsquo;s been quite a long time since i posted anything here on this blog.</p>
 <p>i&rsquo;ve been playing with <a href="https://github.com/xe/gruvbox-css">gruvbox-css</a>,
 decided to switch my blog to use it and finally realized it&rsquo;s been
@@ -47,6 +55,7 @@ click the photo to see some more!</p>
 <p>otherwise, i&rsquo;ve just been hanging out on irc, so stop by and say hello
 :)</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

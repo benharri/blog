@@ -13,8 +13,28 @@
       <pubDate>Mon, 03 Feb 2020 20:06:43 +0000</pubDate>
       
       <guid>./general-update.html</guid>
-      <description>it&amp;rsquo;s been quite a long time since i posted anything here on this blog.
-i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use it and finally realized it&amp;rsquo;s been almost a year since i posted anything at all.</description>
+      <description>&lt;p&gt;it&amp;rsquo;s been quite a long time since i posted anything here on this blog.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve been playing with &lt;a href=&#34;https://github.com/xe/gruvbox-css&#34;&gt;gruvbox-css&lt;/a&gt;,
+decided to switch my blog to use it and finally realized it&amp;rsquo;s been
+almost a year since i posted anything at all.&lt;/p&gt;
+&lt;p&gt;i don&amp;rsquo;t have anything in particular to post today so i figured it would
+be good to give a general update since the last time i posted.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;we&amp;rsquo;ve moved physical hosts again (&lt;a href=&#34;https://tilde.team/news/028_back_up&#34;&gt;/news
+post&lt;/a&gt;), which is now a vm on a
+large dedicated machine i rent from
+&lt;a href=&#34;%20https://www.ovh.com/world/dedicated-servers/infra/infra-2/&#34;&gt;ovh&lt;/a&gt;. my
+current vm setup is proxmox, which i&amp;rsquo;m quite happy with. the new box is
+pricier but has a lot more resources and room to grow.&lt;/p&gt;
+&lt;p&gt;it appears that i haven&amp;rsquo;t posted anything in so long that i don&amp;rsquo;t yet
+have any pictures of my dog on my blog!&lt;/p&gt;
+&lt;p&gt;i got her last may (2019) and she&amp;rsquo;s the best. she&amp;rsquo;s an english springer
+spaniel and her name is Hope.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;%20https://bhh.sh/pub/photos/doggos/?filter=hope&#34;&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/doggos/hope6.jpg&#34; alt=&#34;hope&#34;&gt;&lt;/a&gt;
+click the photo to see some more!&lt;/p&gt;
+&lt;p&gt;otherwise, i&amp;rsquo;ve just been hanging out on irc, so stop by and say hello
+:)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +43,11 @@ i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use i
       <pubDate>Mon, 27 Nov 2017 20:48:10 +0000</pubDate>
       
       <guid>./blog-update.html</guid>
-      <description>sorry for the blast of posts. i recreated them from a wordpress blog on motd.org.
-i plan on posting some random thoughts here from time to time. thanks for checking in.</description>
+      <description>&lt;p&gt;sorry for the blast of posts. i recreated them from a wordpress blog on
+&lt;a href=&#34;http://motd.org&#34;&gt;motd.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i plan on posting some random thoughts here from time to time. thanks
+for checking in.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

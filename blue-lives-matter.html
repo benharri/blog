@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>Blue Lives Matter? I thought All lives matter</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>Blue Lives Matter? I thought All lives matter</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./blue-lives-matter.html">Blue Lives Matter? I thought All lives matter</a></h1>
 
     <time>Mon, 18 Jul 2016 00:00 UTC</time>
@@ -25,12 +32,14 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>#BlueLivesMatter completely misses the point. And it makes #AllLivesMatter hypocritical.</p>
 <p><img src="http://chainsawsuit.com/wp-content/uploads/2016/07/20160707_allhousesredux-506x500.png" alt=""></p>
 <p>This cartoon says it all.</p>
 <p>The same people that pioneered the #AllLivesMatter movement are now claiming that #BlueLivesMatter. Do they not understand the irony of this?</p>
 <p>By claiming that all lives matter, this minimizes the importance of lives that currently need the attention, much like the house on fire in the cartoon above.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

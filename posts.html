@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>all posts &ndash; blog // ~ben</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>all posts &ndash; blog // ~ben</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
+    <div data-pagefind-ignore>
     <h1>all posts</h1>
 
     
 
     <ul>
+    
+        <li>
+            <a href="git-diff-highlight.html">git diff-highlight</a> &ndash;
+            <time>2022-07-20</time>
+        </li>
+    
+        <li>
+            <a href="sqlite3-for-wordpress.html">sqlite3 for wordpress</a> &ndash;
+            <time>2022-07-06</time>
+        </li>
     
         <li>
             <a href="matrix-sucks.html">Matrix Sucks</a> &ndash;
@@ -331,6 +349,7 @@
         </li>
     
     </ul>
+    </div>
 <footer>
     CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
 </footer>

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>dns shenanigans post-mortem</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>dns shenanigans post-mortem</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./dns-shenanigans-post-mortem.html">dns shenanigans post-mortem</a></h1>
 
     <time>Tue, 14 Aug 2018 15:03 UTC</time>
@@ -29,6 +36,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>let&rsquo;s start by saying i probably should have done a bit more research
 before diving head-first into this endeavor.</p>
 <p>i&rsquo;ve been thinking about transferring my domains off google domains for
@@ -60,6 +68,7 @@ d&rsquo;oh!</p>
 <p>i removed the dnssec from those affected domains, so we should be good
 to go as soon as it all propagates through the fickle beast that is dns.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

@@ -13,7 +13,13 @@
       <pubDate>Tue, 14 Aug 2018 15:05:38 +0000</pubDate>
       
       <guid>./upsides-of-new-dns-nameservers.html</guid>
-      <description> no more google no more google automated certbot validation for letsencrypt wildcard certs!! no more manual TXT records every three months!  </description>
+      <description>&lt;ul&gt;
+&lt;li&gt;no more google&lt;/li&gt;
+&lt;li&gt;no more google&lt;/li&gt;
+&lt;li&gt;automated certbot validation for letsencrypt wildcard certs!! no
+more manual TXT records every three months!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -22,8 +28,37 @@
       <pubDate>Tue, 14 Aug 2018 15:03:49 +0000</pubDate>
       
       <guid>./dns-shenanigans-post-mortem.html</guid>
-      <description>let&amp;rsquo;s start by saying i probably should have done a bit more research before diving head-first into this endeavor.
-i&amp;rsquo;ve been thinking about transferring my domains off google domains for some time now, as part of my personal goal to self host and limit my dependence on google and other large third-party monstrosities.</description>
+      <description>&lt;p&gt;let&amp;rsquo;s start by saying i probably should have done a bit more research
+before diving head-first into this endeavor.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve been thinking about transferring my domains off google domains for
+some time now, as part of my personal goal to self host and limit my
+dependence on google and other large third-party monstrosities. along
+that line, i asked for registrar recommendations.
+&lt;a href=&#34;https://tomasino.tilde.team&#34;&gt;~tomasino&lt;/a&gt; responded with
+&lt;a href=&#34;https://namesilo.com&#34;&gt;namesilo&lt;/a&gt;. i found that they had $3.99
+registrations for .team and .zone domains, which is 1/10th the cost of
+the $40 registration on google domains.&lt;/p&gt;
+&lt;p&gt;i started out by getting the list of domains from the google console. 2
+or 3 of them had been registered within the last 60 days, so i wasn&amp;rsquo;t
+able to transfer those just yet. i grabbed all the domain unlock codes
+and dropped them into namesilo. i failed to realize that the dns panel
+on google domains would disappear as soon as it went through, but more
+importantly that the nameservers would be left pointing to the old
+defunct google domains ones.&lt;/p&gt;
+&lt;p&gt;i updated the nameservers as soon as i realized this error from the
+namesilo panel. some of the domains propagated quickly. others, not so
+much. tilde.team was still in a state of flux between the old and new
+nameservers.&lt;/p&gt;
+&lt;p&gt;in a rush to get the dns problem fixed, and under recommendation from
+several people on irc, i decided to switch the nameservers for
+tilde.team and tilde.zone to cloudflare, leaving another layer of flux
+for the dns to be stuck in&amp;hellip;&lt;/p&gt;
+&lt;p&gt;of the five domains that i moved to cloudflare, 3 returned with a dnssec
+error, claiming that i needed to remove the DS record from that zone.
+d&amp;rsquo;oh!&lt;/p&gt;
+&lt;p&gt;i removed the dnssec from those affected domains, so we should be good
+to go as soon as it all propagates through the fickle beast that is dns.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

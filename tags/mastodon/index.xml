@@ -13,10 +13,14 @@
       <pubDate>Fri, 22 Dec 2017 16:28:45 +0000</pubDate>
       
       <guid>./mastodon.html</guid>
-      <description>hi everyone.
-i started hosting a mastodon instance at social.tilde.team.
-check it out if you want some federated open source social goodness :)
-send me a toot @ben@tilde.team (from any mastodon instance!</description>
+      <description>&lt;p&gt;hi everyone.&lt;/p&gt;
+&lt;p&gt;i started hosting a &lt;a href=&#34;https://joinmastodon.org&#34;&gt;mastodon&lt;/a&gt; instance at
+&lt;a href=&#34;https://social.tilde.team&#34;&gt;social.tilde.team&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;check it out if you want some federated open source social goodness :)&lt;/p&gt;
+&lt;p&gt;send me a toot &lt;a href=&#34;https://social.tilde.team/@ben&#34;&gt;@ben@tilde.team&lt;/a&gt; (from
+any mastodon instance!)&lt;/p&gt;
+&lt;p&gt;thanks!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

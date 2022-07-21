@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>hey dere bub!</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>hey dere bub!</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./hey-dere-bub.html">hey dere bub!</a></h1>
 
     <time>Wed, 13 Dec 2017 19:12 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>if you haven&rsquo;t checked it out yet, give <a href="https://heyderebub.com">my new
 podcast</a> a listen!</p>
 <p><a href="https://heyderebub.com"><img src="https://heyderebub.com/images/itunes_image.jpg" alt="heyderebublogo"></a></p>
@@ -40,6 +48,7 @@ email</a> and let us know what you thought and
 if there is anything you&rsquo;d like us to talk about in the future.</p>
 <p>thanks!</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

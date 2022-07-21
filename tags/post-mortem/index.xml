@@ -13,8 +13,51 @@
       <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
       
       <guid>./november-13-post-mortem.html</guid>
-      <description>we had something of an outage on november 13, 2018 on tilde.team.
-i awoke, not suspecting anything to be amiss. as soon as i logged in to check my email and irc mentions, it became clear.</description>
+      <description>&lt;p&gt;we had something of an outage on november 13, 2018 on tilde.team.&lt;/p&gt;
+&lt;p&gt;i awoke, not suspecting anything to be amiss. as soon as i logged in to
+check my email and irc mentions, it became clear.&lt;/p&gt;
+&lt;p&gt;tilde.team was at the least inaccessible, and at the worst, down
+completely. according the message in my inbox, there had been an
+attempted &amp;ldquo;attack&amp;rdquo; from my IP.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have indications that there was an attack from your server. Please
+take all necessary measures to avoid this in the future and to solve
+the issue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;at this point, i have no idea what could have happened over night while
+i&amp;rsquo;m sleeping. the timestamp shows that it arrive only 30 minutes after
+i&amp;rsquo;d turned in for the night.&lt;/p&gt;
+&lt;p&gt;when i finally log on in the morning to check mails and irc mentions, i
+find that i&amp;rsquo;m unable to connect to tilde.team&amp;hellip; strange, but ok; time
+to troubleshoot. i refresh the &lt;a href=&#34;https://mail.tilde.team&#34;&gt;webmail&lt;/a&gt; to see
+what i&amp;rsquo;m missing. it ends up failing to find the server. even stranger!
+i&amp;rsquo;d better get the mails off my phone if they&amp;rsquo;re on my @tilde.team mail!&lt;/p&gt;
+&lt;p&gt;here, i launch in to full debugging mode: what command was it? who ran
+it?&lt;/p&gt;
+&lt;p&gt;search &lt;code&gt;~/.bash_history&lt;/code&gt; per user was not very successful. nothing i
+could find was related to net or map. i had checked
+&lt;code&gt;sudo grep nmap /home/*/.bash_history&lt;/code&gt; and many other commands.&lt;/p&gt;
+&lt;p&gt;at this point, i had connected with other ~teammates across other irc
+nets (&lt;a href=&#34;https://hashbang.sh/&#34;&gt;#!&lt;/a&gt;, &lt;a href=&#34;https://tilde.town&#34;&gt;~town&lt;/a&gt;, etc).
+among suggestions to check &lt;code&gt;/var/log/syslog&lt;/code&gt;, &lt;code&gt;/var/log/kern.log&lt;/code&gt;, and
+&lt;code&gt;dmesg&lt;/code&gt;, i finally decided to check &lt;code&gt;ps&lt;/code&gt;. &lt;code&gt;ps -ef | grep nmap&lt;/code&gt; yielded
+nmap on an obscured uid and gid, which is shortly established to belong
+to a container i had provisioned for &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not considering methods of policing access to any site over port 80
+and port 443. this is crazy. how do you police &lt;code&gt;nmap&lt;/code&gt; when it isn&amp;rsquo;t
+scanning on every port?&lt;/p&gt;
+&lt;p&gt;after a bit of shit-talking and reassurance from other sysadmins, i
+reexamined and realized that &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt; had only run
+&lt;code&gt;nmap&lt;/code&gt; for addresses in the &lt;code&gt;10.0.0.0/8&lt;/code&gt; space. the &lt;code&gt;10/8&lt;/code&gt; address space
+is intended to not be addressable outside the local space. how could
+&lt;a href=&#34;https://hetzner.com&#34;&gt;hetzner&lt;/a&gt; have found out about a localhost network
+probe!?&lt;/p&gt;
+&lt;p&gt;finally, after speaking with more people than i expected to speak with
+in one day, i ended up sending three different support emails to hetzner
+support, which finally resulted in them unlocking the ip.&lt;/p&gt;
+&lt;p&gt;it&amp;rsquo;s definitely time to research redundancy options!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>git remotes with ssh aliases</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>git remotes with ssh aliases</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./git-remotes-with-ssh-aliases.html">git remotes with ssh aliases</a></h1>
 
     <time>Fri, 12 Jan 2018 13:30 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>did you know that <code>~/.ssh/config</code> aliases work for git remotes??</p>
 <p>~/.ssh/config</p>
 <pre><code>Host gh
@@ -48,6 +56,7 @@ of <code>scp file.txt ben@tilde.team:workspace/.</code></p>
 <p>the ssh_config file is super useful. check <code>man ssh_config</code> for a full
 list of options!</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

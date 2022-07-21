@@ -13,8 +13,10 @@
       <pubDate>Tue, 16 Jan 2018 17:26:40 +0000</pubDate>
       
       <guid>./pop-quiz.html</guid>
-      <description>is this real?
-hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real place.</description>
+      <description>&lt;p&gt;is this real?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/The%20Witcher%203%20Screenshot%202017.09.12%20-%2023.44.17.73.png&#34; alt=&#34;4k witcher3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real place.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -23,9 +25,21 @@ hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real
       <pubDate>Mon, 18 Dec 2017 13:36:04 +0000</pubDate>
       
       <guid>./vr.html</guid>
-      <description>i picked up an oculus rift after my last paycheck :P
-it was half christmas present. these are some of the games that i&amp;rsquo;m most excited for:
- elite dangerous lone echo / echo arena dirt rally gun club vr eagle flight robo recall  have you played any other cool vr games lately?</description>
+      <description>&lt;p&gt;i picked up an oculus rift after my last paycheck :P&lt;/p&gt;
+&lt;p&gt;it was half christmas present. these are some of the games that i&amp;rsquo;m most
+excited for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;elite dangerous&lt;/li&gt;
+&lt;li&gt;lone echo / echo arena&lt;/li&gt;
+&lt;li&gt;dirt rally&lt;/li&gt;
+&lt;li&gt;gun club vr&lt;/li&gt;
+&lt;li&gt;eagle flight&lt;/li&gt;
+&lt;li&gt;robo recall&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;have you played any other cool vr games lately? are there any that i
+should check out?&lt;/p&gt;
+&lt;p&gt;let me know!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -34,7 +48,34 @@ it was half christmas present. these are some of the games that i&amp;rsquo;m mo
       <pubDate>Mon, 02 Oct 2017 16:09:26 +0000</pubDate>
       
       <guid>./4k-gaming-with-a-gtx1080ti.html</guid>
-      <description>i recently picked up a gtx1080ti on newegg (and a 4k monitor earlier in the summer on prime day). i can&amp;rsquo;t stop playing the witcher 3. even though it&amp;rsquo;s a couple years old, it just looks so good.</description>
+      <description>&lt;p&gt;i recently picked up a gtx1080ti on newegg (and a 4k monitor earlier in
+the summer on prime day). i can&amp;rsquo;t stop playing the witcher 3. even
+though it&amp;rsquo;s a couple years old, it just looks so good. plus, the story
+and gameplay are incredible as well. i find myself dreaming about the
+game and longing to play it when i&amp;rsquo;m not. i&amp;rsquo;ll have to say it is
+definitively the best game i&amp;rsquo;ve ever played.&lt;/p&gt;
+&lt;p&gt;some of the other games that i&amp;rsquo;m looking forward to exploring more of in
+4k are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;destiny 2&lt;/li&gt;
+&lt;li&gt;prey&lt;/li&gt;
+&lt;li&gt;overwatch (not that this will look insanely good, it will just be
+super silky smooth)&lt;/li&gt;
+&lt;li&gt;fallout 4&lt;/li&gt;
+&lt;li&gt;battlefield 1&lt;/li&gt;
+&lt;li&gt;dishonored&lt;/li&gt;
+&lt;li&gt;dishonored 2&lt;/li&gt;
+&lt;li&gt;dying light&lt;/li&gt;
+&lt;li&gt;battlefront&lt;/li&gt;
+&lt;li&gt;pubg&lt;/li&gt;
+&lt;li&gt;doom (2016)&lt;/li&gt;
+&lt;li&gt;gta5&lt;/li&gt;
+&lt;li&gt;just cause 3&lt;/li&gt;
+&lt;li&gt;hellblade: senua&amp;rsquo;s sacrifice&lt;/li&gt;
+&lt;li&gt;watch dogs 2&lt;/li&gt;
+&lt;li&gt;many others&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

@@ -13,8 +13,18 @@
       <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
       
       <guid>./tildeverseorg.html</guid>
-      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
-among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+      <description>&lt;p&gt;since the last time i wrote a post here, i&amp;rsquo;ve registered the
+tildeverse.org domain and started moving some services over that were
+already intended for tildeverse use.&lt;/p&gt;
+&lt;p&gt;among those are &lt;a href=&#34;https://git.tildeverse.org&#34;&gt;gitea&lt;/a&gt; and &lt;a href=&#34;https://links.tildeverse.org&#34;&gt;the new link
+aggregator&lt;/a&gt; (which runs the same source as
+&lt;a href=&#34;https://github.com/lobsters/lobsters&#34;&gt;lobste.rs&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve also started a phlog in my
+&lt;a href=&#34;https://gopher.tilde.team/tilde.team/~ben&#34;&gt;gopherhole&lt;/a&gt; with
+&lt;a href=&#34;./~tomasino&#34;&gt;~tomasino&amp;rsquo;s&lt;/a&gt; new
+&lt;a href=&#34;https://github.com/jamestomasino/burrow&#34;&gt;burrow&lt;/a&gt; gopherhole tool!&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll try to post a bit more often too with updates from the tildeverse!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +33,28 @@ among those are gitea and the new link aggregator (which runs the same source as
       <pubDate>Mon, 26 Feb 2018 11:57:10 +0000</pubDate>
       
       <guid>./phoenix.html</guid>
-      <description>inspired by oodsnet, (and my pull request to add darkmode), i started to create my own tilde.team fork (now forum.tilde.team).
-the first step was to switch out the css to the tilde.</description>
+      <description>&lt;p&gt;inspired by &lt;a href=&#34;http://oods.net&#34;&gt;oodsnet&lt;/a&gt;, (and my pull request to add
+&lt;a href=&#34;https://github.com/exezin/oodsnet/pull/5&#34;&gt;darkmode&lt;/a&gt;), i started to
+create my own tilde.team fork (now
+&lt;a href=&#34;https://forum.tilde.team/&#34;&gt;forum.tilde.team&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;the first step was to switch out the css to the &lt;a href=&#34;https://tilde.team/css/&#34;&gt;tilde.team
+standard&lt;/a&gt; and update the classes for bootstrap.
+once i got it going and integrated with the tilde.team linux auth
+service, i asked other tildeans for input and suggestions.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;./~micaiah/&#34;&gt;~micaiah&lt;/a&gt; was interested in helping, but also wanted to
+learn a new language and/or framework, so we decided to start over,
+recreating the entire forum with
+&lt;a href=&#34;http://phoenixframework.org&#34;&gt;elixir/phoenix&lt;/a&gt;. we&amp;rsquo;d discussed elixir
+previously, but never had a convincing use case to force us to learn it.&lt;/p&gt;
+&lt;p&gt;the project is live, with the source code on
+&lt;a href=&#34;https://github.com/tilde-team/forum&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;the thing that i&amp;rsquo;m most impressed with is the speed of the erlang
+runtime :D&lt;/p&gt;
+&lt;p&gt;check out these response times. sub-millisecond!?!?!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/phx.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;give it a look, and &lt;a href=&#34;https://tilde.team/signup&#34;&gt;join the tilde.team&lt;/a&gt; if
+you want to come hang out!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -33,7 +63,28 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
       
       <guid>./webassembly.html</guid>
-      <description>according to this post on the mozilla blog, we will be able to compile wasm as it streams into the browser in much the same way that images are decoded. this is a huge game changer from the current paradigm of loading javascript completely before being able to parse and compile it.</description>
+      <description>&lt;p&gt;according to &lt;a href=&#34;https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/&#34;&gt;this
+post&lt;/a&gt;
+on the mozilla blog, we will be able to compile wasm as it streams into
+the browser in much the same way that images are decoded. this is a huge
+game changer from the current paradigm of loading javascript completely
+before being able to parse and compile it.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript code is much more expensive, byte for byte, than an image,
+because of the time spent parsing and compiling it. It&amp;rsquo;s possible to
+parse and compile wasm as fast as it comes over the network, which
+makes it much more like an image than JavaScript code. Game changer!&lt;/p&gt;
+&lt;p&gt;— Yehuda Katz (@wycats) &lt;a href=&#34;https://twitter.com/wycats/status/942908325775077376?ref_src=twsrc%5Etfw&#34;&gt;December 19,
+2017&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;this will make &lt;a href=&#34;https://github.com/WebAssembly/design/blob/master/UseCases.md&#34;&gt;so many
+things&lt;/a&gt;
+possible in the browser that never were before!&lt;/p&gt;
+&lt;p&gt;i decided to follow this
+&lt;a href=&#34;http://webassembly.org/getting-started/developers-guide/&#34;&gt;tutorial&lt;/a&gt; and
+ended up with &lt;a href=&#34;https://tilde.team/~ben/wasm/hello.html&#34;&gt;this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i don&amp;rsquo;t know what to do next. any ideas?&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -42,7 +93,27 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Thu, 14 Dec 2017 06:26:55 +0000</pubDate>
       
       <guid>./net-neutrality-vote-today.html</guid>
-      <description>Everybody! We only have UNTIL TOMORROW to fight the FCC &amp;amp; the repeal of #NetNeutrality! Repealing Net Nutrality would result in an unequal access to online content including research, social/political organizing, and personal media.</description>
+      <description>&lt;p&gt;Everybody! We only have UNTIL TOMORROW to fight the FCC &amp;amp; the repeal of
+#NetNeutrality! Repealing Net Nutrality would result in an unequal
+access to online content including research, social/political
+organizing, and personal media. It would also allow powerhouse companies
+providing internet to charge more for regular quality internet, and
+charge certain users more than others. HERE&amp;rsquo;S A WAY TO ACT - takes less
+than a minute.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;a href=&#34;http://gofccyourself.com&#34;&gt;gofccyourself.com&lt;/a&gt; (the shortcut
+John Oliver made to the hard-to-find FCC comment page)&lt;/li&gt;
+&lt;li&gt;Click on the 17-108 link (Restoring Internet Freedom)&lt;/li&gt;
+&lt;li&gt;Click on &amp;ldquo;express&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Be sure to hit &amp;ldquo;ENTER&amp;rdquo; after you put in your name &amp;amp; info so it
+registers.&lt;/li&gt;
+&lt;li&gt;In the comment section write, &amp;ldquo;I strongly support net neutrality
+backed by Title 2 oversight of ISPs.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Click to submit, done. - Make sure you hit submit at the end!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Copy and paste this into your own status update!&lt;/strong&gt; Seriously, this is
+simple and so important. Do it.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

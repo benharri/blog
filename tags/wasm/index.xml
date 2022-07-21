@@ -13,7 +13,28 @@
       <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
       
       <guid>./webassembly.html</guid>
-      <description>according to this post on the mozilla blog, we will be able to compile wasm as it streams into the browser in much the same way that images are decoded. this is a huge game changer from the current paradigm of loading javascript completely before being able to parse and compile it.</description>
+      <description>&lt;p&gt;according to &lt;a href=&#34;https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/&#34;&gt;this
+post&lt;/a&gt;
+on the mozilla blog, we will be able to compile wasm as it streams into
+the browser in much the same way that images are decoded. this is a huge
+game changer from the current paradigm of loading javascript completely
+before being able to parse and compile it.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript code is much more expensive, byte for byte, than an image,
+because of the time spent parsing and compiling it. It&amp;rsquo;s possible to
+parse and compile wasm as fast as it comes over the network, which
+makes it much more like an image than JavaScript code. Game changer!&lt;/p&gt;
+&lt;p&gt;— Yehuda Katz (@wycats) &lt;a href=&#34;https://twitter.com/wycats/status/942908325775077376?ref_src=twsrc%5Etfw&#34;&gt;December 19,
+2017&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;this will make &lt;a href=&#34;https://github.com/WebAssembly/design/blob/master/UseCases.md&#34;&gt;so many
+things&lt;/a&gt;
+possible in the browser that never were before!&lt;/p&gt;
+&lt;p&gt;i decided to follow this
+&lt;a href=&#34;http://webassembly.org/getting-started/developers-guide/&#34;&gt;tutorial&lt;/a&gt; and
+ended up with &lt;a href=&#34;https://tilde.team/~ben/wasm/hello.html&#34;&gt;this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i don&amp;rsquo;t know what to do next. any ideas?&lt;/p&gt;
+</description>
     </item>
     
   </channel>

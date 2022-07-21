@@ -13,8 +13,18 @@
       <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
       
       <guid>./tildeverseorg.html</guid>
-      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
-among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+      <description>&lt;p&gt;since the last time i wrote a post here, i&amp;rsquo;ve registered the
+tildeverse.org domain and started moving some services over that were
+already intended for tildeverse use.&lt;/p&gt;
+&lt;p&gt;among those are &lt;a href=&#34;https://git.tildeverse.org&#34;&gt;gitea&lt;/a&gt; and &lt;a href=&#34;https://links.tildeverse.org&#34;&gt;the new link
+aggregator&lt;/a&gt; (which runs the same source as
+&lt;a href=&#34;https://github.com/lobsters/lobsters&#34;&gt;lobste.rs&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve also started a phlog in my
+&lt;a href=&#34;https://gopher.tilde.team/tilde.team/~ben&#34;&gt;gopherhole&lt;/a&gt; with
+&lt;a href=&#34;./~tomasino&#34;&gt;~tomasino&amp;rsquo;s&lt;/a&gt; new
+&lt;a href=&#34;https://github.com/jamestomasino/burrow&#34;&gt;burrow&lt;/a&gt; gopherhole tool!&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll try to post a bit more often too with updates from the tildeverse!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

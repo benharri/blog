@@ -6,16 +6,137 @@
     <description>Recent content in sysadmin on blog // ~ben</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Oct 2020 16:31:39 +0000</lastBuildDate><atom:link href="./tags/sysadmin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jul 2022 13:53:00 +0000</lastBuildDate><atom:link href="./tags/sysadmin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sqlite3 for wordpress</title>
+      <link>./sqlite3-for-wordpress.html</link>
+      <pubDate>Wed, 06 Jul 2022 13:53:00 +0000</pubDate>
+      
+      <guid>./sqlite3-for-wordpress.html</guid>
+      <description>&lt;h1 id=&#34;sqlite3-for-wordpress&#34;&gt;sqlite3 for wordpress&lt;/h1&gt;
+&lt;p&gt;running wordpress with sqlite is quick, easy, and can be much less
+system administration load as it eliminates the need for a separate
+database process running.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wptest.bhh.sh&#34;&gt;this site&lt;/a&gt; is currently running with sqlite using &lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db&#34;&gt;aaemnnosttv&amp;rsquo;s
+drop-in&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;set-it-up&#34;&gt;set it up&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;download &lt;a href=&#34;https://wordpress.org/latest.tar.gz&#34;&gt;https://wordpress.org/latest.tar.gz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;extract it into your webroot (something like &lt;code&gt;/var/www&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;download
+&lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db/raw/master/src/db.php&#34;&gt;db.php&lt;/a&gt;
+and add it to &lt;code&gt;/var/www/yoursite/wp-content/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;follow the normal setup instructions but skip the database fields&lt;/li&gt;
+&lt;li&gt;profit????&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;nginx-config&#34;&gt;nginx config&lt;/h2&gt;
+&lt;p&gt;adjust configs as needed. this is the live config for this site
+wptest.bhh.sh.&lt;/p&gt;
+&lt;p&gt;snippets/ssl/bhh.sh just includes the block from certbot that points to
+the right cert and key.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+        listen 80;
+        server_name wptest.bhh.sh;
+        return 307 https://$server_name$request_uri;
+}
+
+server {
+        listen 443 ssl;
+        server_name wptest.bhh.sh;
+        include snippets/ssl/bhh.sh;
+        index index.php index.html;
+        root /var/www/wptest.bhh.sh;
+        client_max_body_size 100M;
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+        location = /favicon.ico {
+                log_not_found off;
+                access_log off;
+        }
+
+        location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+
+        location ~* wp-config.php {
+                deny all;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_intercept_errors on;
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
     <item>
       <title>mastodon postgres upgrade fun</title>
       <link>./mastodon-postgres-upgrade-fun.html</link>
       <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
       
       <guid>./mastodon-postgres-upgrade-fun.html</guid>
-      <description>howdy friends!
-if you’re a mastodon user on tilde.zone (the tildeverse mastodon instance), you might’ve noticed some downtime recently.
-here’s a quick recap of what went down during the upgrade process.</description>
+      <description>&lt;p&gt;howdy friends!&lt;/p&gt;
+&lt;p&gt;if you’re a mastodon user on &lt;a href=&#34;https://tilde.zone&#34;&gt;tilde.zone&lt;/a&gt; (the
+tildeverse mastodon instance), you might’ve noticed some downtime
+recently.&lt;/p&gt;
+&lt;p&gt;here’s a quick recap of what went down during the upgrade process.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;we run the current stable version of postgresql from the &lt;a href=&#34;https://wiki.postgresql.org/wiki/Apt&#34;&gt;postgres apt
+repos&lt;/a&gt;. postgres
+&lt;a href=&#34;https://www.postgresql.org/docs/release/13.0/&#34;&gt;13&lt;/a&gt; was released
+recently and the apt upgrades automatically created a new cluster
+running 13.&lt;/p&gt;
+&lt;p&gt;the database for mastodon has gotten quite large (about 16gb) which
+complicates this upgrade a bit. this was my inital plan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;drop the 13 cluster created by the apt package upgrades&lt;/li&gt;
+&lt;li&gt;upgrade the 12-main cluster to 13&lt;/li&gt;
+&lt;li&gt;drop the 12 cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;these steps appeared to work fine, but closer inspection afterwards led
+me to discover that the new cluster had ended up with &lt;code&gt;SQL_ASCII&lt;/code&gt;
+encoding somehow. this is not a situation we want to be in. time to fix
+it.&lt;/p&gt;
+&lt;p&gt;here’s the new plan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;stop mastodon
+&lt;code&gt; for i in streaming sidekiq web; do systemctl stop mastodon-$i; done&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dump current database state &lt;code&gt; pg_dump mastodon_production &amp;gt; db.dump&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;drop and recreate cluster with utf8 encoding
+&lt;code&gt; pg_dropcluster 13 main --stop pg_createcluster --locale=en_US.UTF8 13 main --start&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;restore backup
+&lt;code&gt; sudo -u postgres psql -c &amp;quot;create user mastodon createdb;&amp;quot; sudo -u mastodon createdb -E utf8 mastodon_production sudo -u mastodon psql &amp;lt; db.dump&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i’m still not 100% sure how the encoding reverted to ascii but it seems
+that the locale was not correctly set while running the apt upgrades…&lt;/p&gt;
+&lt;p&gt;if this happens to you, hopefully this helps you wade out while keeping
+all your data :)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -24,9 +145,91 @@ here’s a quick recap of what went down during the upgrade process.</descriptio
       <pubDate>Tue, 03 Mar 2020 14:02:47 +0000</pubDate>
       
       <guid>./tools-and-services.html</guid>
-      <description>inspired by tomasino&amp;rsquo;s recent post, i&amp;rsquo;d like to detail some of the stuff that i rent and use.
-recurring costs some of these are monthly, others are annual
- server rental  $135/month, 64gb model, 2yr contract discount   proxmox - my preferred hypervisor.</description>
+      <description>&lt;p&gt;inspired by &lt;a href=&#34;https://tomasino.org&#34;&gt;tomasino&lt;/a&gt;&amp;rsquo;s recent
+&lt;a href=&#34;%20https://labs.tomasino.org/freelancing-tools-services/&#34;&gt;post&lt;/a&gt;, i&amp;rsquo;d
+like to detail some of the stuff that i rent and use.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;recurring-costs&#34;&gt;recurring costs&lt;/h2&gt;
+&lt;p&gt;some of these are monthly, others are annual&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ovh.com/world/dedicated-servers/infra/infra-2/&#34;&gt;server
+rental&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;$135/month, 64gb model, 2yr contract discount&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.proxmox.com&#34;&gt;proxmox&lt;/a&gt; - my preferred hypervisor. i find
+it useful enough and worth paying the annual license to use the
+official package mirrors - $80/year&lt;/li&gt;
+&lt;li&gt;domains - includes &lt;a href=&#34;https://tilde.wiki/domains&#34;&gt;tilde-related ones&lt;/a&gt;
+and my personal ones (about 10 or so) - about 30 domains totaling
+$500/year&lt;/li&gt;
+&lt;li&gt;offsite backups at &lt;a href=&#34;https://www.rsync.net/&#34;&gt;rsync.net&lt;/a&gt; - i use the
+&lt;a href=&#34;%20https://www.rsync.net/products/attic.html&#34;&gt;borg offering&lt;/a&gt; for a
+discount since versioning is handled by my backup software - between
+$60-$70/year&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;my out of pocket expenses are a little over $2k per year.&lt;/p&gt;
+&lt;p&gt;note that i use the server and backups for personal stuff in addition to
+tilde related things.&lt;/p&gt;
+&lt;p&gt;the current expenses are totally manageable as is, but if you&amp;rsquo;ve got
+some spare cash and want to pitch in towards tilde hosting costs, i have
+a &lt;a href=&#34;%20https://bhh.sh/donate&#34;&gt;donate page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;software-i-run-use-and-maintain&#34;&gt;software i run, use, and maintain&lt;/h2&gt;
+&lt;p&gt;these are all free/open source.&lt;/p&gt;
+&lt;h4 id=&#34;operating-systems&#34;&gt;operating systems&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ubuntu.com&#34;&gt;ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://debian.org&#34;&gt;debian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://alpinelinux.org&#34;&gt;alpine linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://freebsd.org&#34;&gt;freebsd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;platformssoftware&#34;&gt;platforms/software&lt;/h4&gt;
+&lt;p&gt;these are things that i run and maintain for tilde.team and the
+tildeverse&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://joinmastodon.org&#34;&gt;mastodon&lt;/a&gt;:
+&lt;a href=&#34;https://tilde.zone&#34;&gt;tilde.zone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pleroma.social&#34;&gt;pleroma&lt;/a&gt;:
+&lt;a href=&#34;https://pleroma.tilde.zone&#34;&gt;pleroma.tilde.zone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nextcloud.com&#34;&gt;nextcloud&lt;/a&gt;:
+&lt;a href=&#34;https://cloud.tilde.team&#34;&gt;cloud.tilde.team&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitea.io&#34;&gt;gitea&lt;/a&gt;: &lt;a href=&#34;https://tildegit.org&#34;&gt;tildegit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://inspircd.org&#34;&gt;inspircd&lt;/a&gt;, &lt;a href=&#34;http://anope.org&#34;&gt;anope&lt;/a&gt;:
+&lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.postfix.org/&#34;&gt;postfix&lt;/a&gt;, &lt;a href=&#34;https://dovecot.org/&#34;&gt;dovecot&lt;/a&gt;,
+&lt;a href=&#34;https://rspamd.com/&#34;&gt;rspamd&lt;/a&gt;,
+&lt;a href=&#34;https://www.rainloop.net/&#34;&gt;rainloop&lt;/a&gt;: &lt;a href=&#34;https://mail.tilde.team&#34;&gt;tilde.team
+email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xwiki-labs/cryptpad&#34;&gt;cryptpad&lt;/a&gt;:
+&lt;a href=&#34;https://pad.tildeverse.org&#34;&gt;pad.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://privatebin.info/&#34;&gt;privatebin&lt;/a&gt;:
+&lt;a href=&#34;https://paste.tildeverse.org&#34;&gt;paste.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/lachs0r/0x0&#34;&gt;0x0&lt;/a&gt;: &lt;a href=&#34;https://ttm.sh&#34;&gt;ttm.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/lobsters/lobsters&#34;&gt;lobsters&lt;/a&gt;:
+&lt;a href=&#34;https://tilde.news&#34;&gt;tilde.news&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tt-rss.org/&#34;&gt;tt-rss&lt;/a&gt;: &lt;a href=&#34;https://rss.tildeverse.org&#34;&gt;rss.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://drone.io&#34;&gt;drone&lt;/a&gt;:
+&lt;a href=&#34;https://drone.tildegit.org&#34;&gt;drone.tildegit.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.mailman3.org/en/latest/&#34;&gt;mailman&lt;/a&gt;:
+&lt;a href=&#34;https://lists.tildeverse.org&#34;&gt;lists.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;our-own-software&#34;&gt;our own software&lt;/h4&gt;
+&lt;p&gt;there are also a handful of other sites that we&amp;rsquo;ve written
+collaboratively among tildeverse peeps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tildegit.org/tildeverse/quotes&#34;&gt;quotes db&lt;/a&gt;: &lt;a href=&#34;https://quotes.tilde.chat&#34;&gt;see it
+live&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tildegit.org/tildeverse/zine&#34;&gt;tildeverse zine&lt;/a&gt;: &lt;a href=&#34;https://zine.tildeverse.org&#34;&gt;see it
+live&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;see the &lt;a href=&#34;https://tildegit.org/tildeverse&#34;&gt;tildeverse org&lt;/a&gt; and &lt;a href=&#34;https://tildegit.org/team&#34;&gt;team
+org&lt;/a&gt; on tildegit for more projects :)&lt;/p&gt;
+&lt;p&gt;this has diverged a bit from my costs into all the stuff that i do. i
+suppose that means that the main cost is my time and energy. in general,
+these things are hands-off in the day-to-day and only take time when
+there are updates or something breaks.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -35,8 +238,28 @@ recurring costs some of these are monthly, others are annual
       <pubDate>Mon, 03 Feb 2020 20:06:43 +0000</pubDate>
       
       <guid>./general-update.html</guid>
-      <description>it&amp;rsquo;s been quite a long time since i posted anything here on this blog.
-i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use it and finally realized it&amp;rsquo;s been almost a year since i posted anything at all.</description>
+      <description>&lt;p&gt;it&amp;rsquo;s been quite a long time since i posted anything here on this blog.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve been playing with &lt;a href=&#34;https://github.com/xe/gruvbox-css&#34;&gt;gruvbox-css&lt;/a&gt;,
+decided to switch my blog to use it and finally realized it&amp;rsquo;s been
+almost a year since i posted anything at all.&lt;/p&gt;
+&lt;p&gt;i don&amp;rsquo;t have anything in particular to post today so i figured it would
+be good to give a general update since the last time i posted.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;we&amp;rsquo;ve moved physical hosts again (&lt;a href=&#34;https://tilde.team/news/028_back_up&#34;&gt;/news
+post&lt;/a&gt;), which is now a vm on a
+large dedicated machine i rent from
+&lt;a href=&#34;%20https://www.ovh.com/world/dedicated-servers/infra/infra-2/&#34;&gt;ovh&lt;/a&gt;. my
+current vm setup is proxmox, which i&amp;rsquo;m quite happy with. the new box is
+pricier but has a lot more resources and room to grow.&lt;/p&gt;
+&lt;p&gt;it appears that i haven&amp;rsquo;t posted anything in so long that i don&amp;rsquo;t yet
+have any pictures of my dog on my blog!&lt;/p&gt;
+&lt;p&gt;i got her last may (2019) and she&amp;rsquo;s the best. she&amp;rsquo;s an english springer
+spaniel and her name is Hope.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;%20https://bhh.sh/pub/photos/doggos/?filter=hope&#34;&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/doggos/hope6.jpg&#34; alt=&#34;hope&#34;&gt;&lt;/a&gt;
+click the photo to see some more!&lt;/p&gt;
+&lt;p&gt;otherwise, i&amp;rsquo;ve just been hanging out on irc, so stop by and say hello
+:)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -45,8 +268,46 @@ i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use i
       <pubDate>Mon, 11 Feb 2019 02:40:20 +0000</pubDate>
       
       <guid>./networking-nonsense.html</guid>
-      <description>i&amp;rsquo;ve recently been working on setting up drone ci on the tilde.team machine. however, there&amp;rsquo;s been something strange going on with the networking on there.
-starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netstat -tulpn showed the port binding properly to 127.</description>
+      <description>&lt;p&gt;i&amp;rsquo;ve recently been working on setting up &lt;a href=&#34;https://drone.tildegit.org&#34;&gt;drone
+ci&lt;/a&gt; on the tilde.team machine. however,
+there&amp;rsquo;s been something strange going on with the networking on there.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;starting up drone with
+&lt;a href=&#34;https://tildegit.org/tildeverse/drone/src/branch/master/docker-compose.yml&#34;&gt;docker-compose&lt;/a&gt;
+didn&amp;rsquo;t seem to be working: &lt;code&gt;netstat -tulpn&lt;/code&gt; showed the port binding
+properly to 127.0.0.1:8888 but i was completely unable to get anything
+from it (using curl the nginx proxy that was to come).&lt;/p&gt;
+&lt;p&gt;i ended up scrapping docker on the ~team box itself and moving it into a
+lxd container (pronounced &amp;ldquo;lex-dee&amp;rdquo;) with nesting enabled.&lt;/p&gt;
+&lt;p&gt;this got us in to another problem that had been seen before when using
+nginx to proxy to apps running in other containers. requests were
+dropped intermittently, sometimes hanging for upwards of 30 seconds.&lt;/p&gt;
+&lt;p&gt;getting frustrated with this error, i tried to reproduce it on another
+host. both the docker-proxy and nginx-&amp;gt;lxd proxies work on the first
+try yielded no clues as to where things were going wrong.&lt;/p&gt;
+&lt;p&gt;in a half-awake stupor last saturday evening, i decided to try rule out
+ipv6 by disabling it system-wide. as is expected for sleepy work, it
+didn&amp;rsquo;t fix the problem and created more in the process.&lt;/p&gt;
+&lt;p&gt;feeling satisfied that the problem didn&amp;rsquo;t lie with ipv6, i re-enabled
+it, only to find that i was unable to bind nginx to my allocated /64. i
+may or may not have ranted a bit about this on irc but i was able to get
+it back up and running by restarting systemd-networkd.&lt;/p&gt;
+&lt;p&gt;one step forwards broke something and now we&amp;rsquo;re back to where we started
+with the original problem of the intermittent hangups to the lxd
+container.&lt;/p&gt;
+&lt;p&gt;seeing my troubles on irc, &lt;a href=&#34;https://tilde.team/~jchelpau/&#34;&gt;jchelpau&lt;/a&gt;
+offered to help dig in to the problem with a a fresh set of eyes. he
+noted right away that pings over ipv6 to the containers worked fine, but
+ipv4 did not.&lt;/p&gt;
+&lt;p&gt;we ended up looking at the firewall configurations, only to find that
+one of the subnets i blocked after november&amp;rsquo;s &lt;a href=&#34;november-13-post-mortem.html&#34;&gt;nmap
+incident&lt;/a&gt; included lxdbr0&amp;rsquo;s subnet (the
+bridge device used by lxd).&lt;/p&gt;
+&lt;p&gt;now that i made the exeption for lxdbr0, everything is working as
+expected!&lt;/p&gt;
+&lt;p&gt;thanks to &lt;a href=&#34;https://tilde.team/~fosslinux/&#34;&gt;fosslinux&lt;/a&gt; and
+&lt;a href=&#34;https://tilde.team/~jchelpau/&#34;&gt;jchelpau&lt;/a&gt; for their debugging help!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -55,8 +316,54 @@ starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netst
       <pubDate>Sun, 13 Jan 2019 13:28:45 +0000</pubDate>
       
       <guid>./raid-nonsense.html</guid>
-      <description>last week i did some maintenance on the tilde.team box. probably should have written about it sooner but i didn&amp;rsquo;t make time for it until now.
-the gist of the problem was that the default images provided by hetzner default to raid1 between the available disks.</description>
+      <description>&lt;p&gt;last week i did some
+&lt;a href=&#34;https://tilde.team/news/025_raid_reboot&#34;&gt;maintenance&lt;/a&gt; on the
+tilde.team box. probably should have written about it sooner but i
+didn&amp;rsquo;t make time for it until now.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;the gist of the problem was that the default images provided by
+&lt;a href=&#34;https://hetzner.com&#34;&gt;hetzner&lt;/a&gt; default to raid1 between the available
+disks. our box has two 240gb SSDs, which resulted in 200gb usable space
+for /. it also defaulted to giving us a huge swap partition which i deem
+unnecessary for a box with 64gb ram.&lt;/p&gt;
+&lt;p&gt;the only feasible solution that i&amp;rsquo;ve found involved using the rescue
+system and the
+&lt;a href=&#34;https://wiki.hetzner.de/index.php/Installimage/en&#34;&gt;installimage&lt;/a&gt;
+software to reconfigure the disk partitions.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://yourtilde.com/~deepend/&#34;&gt;deepend&lt;/a&gt; recently upgraded to a
+beefier dedi (more threads and more disk space) and had a bit of
+contract time on the old one. he offered to let me use it as a staging
+box for the meantime while i reinstalled and reconfigured my raid
+settings.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve migrated tilde.team twice before (from linode -&amp;gt; woothosting
+-&amp;gt; hetzner -&amp;gt; and now back to hetzner on the same box) using a
+slick little rsync that i&amp;rsquo;ve put together.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rsync -auHxv --numeric-ids \
+    --exclude=/etc/fstab \
+    --exclude=/etc/network/* \
+    --exclude=/proc/* \
+    --exclude=/tmp/* \
+    --exclude=/sys/* \
+    --exclude=/dev/* \
+    --exclude=/mnt/* \
+    --exclude=/boot/* \
+    --exclude=/root/* \
+    root@oldbox:/* /
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;as long as the destination and source boxen are running the same
+distro/version, you should be good to go after rebooting the destination
+box!&lt;/p&gt;
+&lt;p&gt;the only thing to watch out for is running databases. it happened to me
+this time with mysql. there were 3 pending transactions that were left
+open during the rsync backup. it kept failing to start after i got the
+box back up, along with all the other services that depend on it.&lt;/p&gt;
+&lt;p&gt;eventually i was able to get mysqld back up and running in recovery mode
+(basically read-only) and got a mysqldump of all databases. i then
+purged all existing mysql data, reinstalled mariadb-server, and restored
+the mysqldump. everything came up as expected and we were good to go!&lt;/p&gt;
+&lt;p&gt;the raid is now in a raid0 config, leaving us with 468gb (not GiB)
+available space. thanks for tuning in to this episode of sysadmin
+adventures!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -65,7 +372,42 @@ the gist of the problem was that the default images provided by hetzner default 
       <pubDate>Thu, 15 Nov 2018 18:39:26 +0000</pubDate>
       
       <guid>./proactive-redundancy.html</guid>
-      <description>after the fiasco earlier this week, i&amp;rsquo;ve been taking steps to minimize the impact if tilde.team were to go down. it&amp;rsquo;s still a large spof (single-point-of-failure), but i&amp;rsquo;m reasonably certain that at least the irc net will remain up and functional in the event of another outage.</description>
+      <description>&lt;p&gt;after the &lt;a href=&#34;november-13-post-mortem.html&#34;&gt;fiasco&lt;/a&gt; earlier this week, i&amp;rsquo;ve
+been taking steps to minimize the impact if tilde.team were to go down.
+it&amp;rsquo;s still a large spof (single-point-of-failure), but i&amp;rsquo;m reasonably
+certain that at least the irc net will remain up and functional in the
+event of another outage.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;the first thing that i set up was a handful of additional ircd nodes:
+see &lt;a href=&#34;https://tilde.chat/wiki/?page=servers&#34;&gt;the tilde.chat wiki&lt;/a&gt; for a
+full list. slash.tilde.chat is on my personal vps, and bsd.tilde.chat is
+hosted on the bsd vps that i set up for tilde.team.&lt;/p&gt;
+&lt;p&gt;i added the ipv4 addresses for these machines, along with the ip for
+yourtilde.com as A records for tilde.chat, creating a dns round-robin.
+&lt;code&gt;host tilde.chat&lt;/code&gt; will return all four. requesting the dns record will
+return any one of them, rotating them in a semi-random fashion. this
+means that when connecting to tilde.chat on 6697 for irc, you might end
+up on any of &lt;code&gt;{your,team,bsd,slash}.tilde.chat&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;this creates the additional problem that visiting the &lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat
+site&lt;/a&gt; will end up at any of those 4 machines in much
+the same way. for the moment, the site is deployed on all of the boxes,
+making site setup issues hard to
+&lt;a href=&#34;https://tildegit.org/tildeverse/tilde.chat/issues/8&#34;&gt;debug&lt;/a&gt;. the
+solution to this problem is to use a subdomain as the roundrobin host,
+as other networks like freenode do (see &lt;code&gt;host chat.freenode.net&lt;/code&gt; for the
+list of servers).&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not sure how to make any of the other services more resilient. it&amp;rsquo;s
+something that i have been and will continue to research moving forward.&lt;/p&gt;
+&lt;p&gt;the other main step that i have taken to prevent the same issue from
+happening again was to configure the firewall to drop outgoing requests
+to the subnets as defined in &lt;a href=&#34;https://tools.ietf.org/html/rfc1918&#34;&gt;rfc
+1918&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;d like to consider at least this risk to be mitigated.&lt;/p&gt;
+&lt;p&gt;thanks for reading,&lt;/p&gt;
+&lt;p&gt;~ben&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;update&lt;/strong&gt;: the round robin host is now &lt;em&gt;irc&lt;/em&gt;.tilde.chat, which resolves
+the site issues that we were having, due to the duplicated deployments.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -74,8 +416,51 @@ the gist of the problem was that the default images provided by hetzner default 
       <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
       
       <guid>./november-13-post-mortem.html</guid>
-      <description>we had something of an outage on november 13, 2018 on tilde.team.
-i awoke, not suspecting anything to be amiss. as soon as i logged in to check my email and irc mentions, it became clear.</description>
+      <description>&lt;p&gt;we had something of an outage on november 13, 2018 on tilde.team.&lt;/p&gt;
+&lt;p&gt;i awoke, not suspecting anything to be amiss. as soon as i logged in to
+check my email and irc mentions, it became clear.&lt;/p&gt;
+&lt;p&gt;tilde.team was at the least inaccessible, and at the worst, down
+completely. according the message in my inbox, there had been an
+attempted &amp;ldquo;attack&amp;rdquo; from my IP.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have indications that there was an attack from your server. Please
+take all necessary measures to avoid this in the future and to solve
+the issue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;at this point, i have no idea what could have happened over night while
+i&amp;rsquo;m sleeping. the timestamp shows that it arrive only 30 minutes after
+i&amp;rsquo;d turned in for the night.&lt;/p&gt;
+&lt;p&gt;when i finally log on in the morning to check mails and irc mentions, i
+find that i&amp;rsquo;m unable to connect to tilde.team&amp;hellip; strange, but ok; time
+to troubleshoot. i refresh the &lt;a href=&#34;https://mail.tilde.team&#34;&gt;webmail&lt;/a&gt; to see
+what i&amp;rsquo;m missing. it ends up failing to find the server. even stranger!
+i&amp;rsquo;d better get the mails off my phone if they&amp;rsquo;re on my @tilde.team mail!&lt;/p&gt;
+&lt;p&gt;here, i launch in to full debugging mode: what command was it? who ran
+it?&lt;/p&gt;
+&lt;p&gt;search &lt;code&gt;~/.bash_history&lt;/code&gt; per user was not very successful. nothing i
+could find was related to net or map. i had checked
+&lt;code&gt;sudo grep nmap /home/*/.bash_history&lt;/code&gt; and many other commands.&lt;/p&gt;
+&lt;p&gt;at this point, i had connected with other ~teammates across other irc
+nets (&lt;a href=&#34;https://hashbang.sh/&#34;&gt;#!&lt;/a&gt;, &lt;a href=&#34;https://tilde.town&#34;&gt;~town&lt;/a&gt;, etc).
+among suggestions to check &lt;code&gt;/var/log/syslog&lt;/code&gt;, &lt;code&gt;/var/log/kern.log&lt;/code&gt;, and
+&lt;code&gt;dmesg&lt;/code&gt;, i finally decided to check &lt;code&gt;ps&lt;/code&gt;. &lt;code&gt;ps -ef | grep nmap&lt;/code&gt; yielded
+nmap on an obscured uid and gid, which is shortly established to belong
+to a container i had provisioned for &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not considering methods of policing access to any site over port 80
+and port 443. this is crazy. how do you police &lt;code&gt;nmap&lt;/code&gt; when it isn&amp;rsquo;t
+scanning on every port?&lt;/p&gt;
+&lt;p&gt;after a bit of shit-talking and reassurance from other sysadmins, i
+reexamined and realized that &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt; had only run
+&lt;code&gt;nmap&lt;/code&gt; for addresses in the &lt;code&gt;10.0.0.0/8&lt;/code&gt; space. the &lt;code&gt;10/8&lt;/code&gt; address space
+is intended to not be addressable outside the local space. how could
+&lt;a href=&#34;https://hetzner.com&#34;&gt;hetzner&lt;/a&gt; have found out about a localhost network
+probe!?&lt;/p&gt;
+&lt;p&gt;finally, after speaking with more people than i expected to speak with
+in one day, i ended up sending three different support emails to hetzner
+support, which finally resulted in them unlocking the ip.&lt;/p&gt;
+&lt;p&gt;it&amp;rsquo;s definitely time to research redundancy options!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -84,8 +469,37 @@ i awoke, not suspecting anything to be amiss. as soon as i logged in to check my
       <pubDate>Tue, 14 Aug 2018 15:03:49 +0000</pubDate>
       
       <guid>./dns-shenanigans-post-mortem.html</guid>
-      <description>let&amp;rsquo;s start by saying i probably should have done a bit more research before diving head-first into this endeavor.
-i&amp;rsquo;ve been thinking about transferring my domains off google domains for some time now, as part of my personal goal to self host and limit my dependence on google and other large third-party monstrosities.</description>
+      <description>&lt;p&gt;let&amp;rsquo;s start by saying i probably should have done a bit more research
+before diving head-first into this endeavor.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve been thinking about transferring my domains off google domains for
+some time now, as part of my personal goal to self host and limit my
+dependence on google and other large third-party monstrosities. along
+that line, i asked for registrar recommendations.
+&lt;a href=&#34;https://tomasino.tilde.team&#34;&gt;~tomasino&lt;/a&gt; responded with
+&lt;a href=&#34;https://namesilo.com&#34;&gt;namesilo&lt;/a&gt;. i found that they had $3.99
+registrations for .team and .zone domains, which is 1/10th the cost of
+the $40 registration on google domains.&lt;/p&gt;
+&lt;p&gt;i started out by getting the list of domains from the google console. 2
+or 3 of them had been registered within the last 60 days, so i wasn&amp;rsquo;t
+able to transfer those just yet. i grabbed all the domain unlock codes
+and dropped them into namesilo. i failed to realize that the dns panel
+on google domains would disappear as soon as it went through, but more
+importantly that the nameservers would be left pointing to the old
+defunct google domains ones.&lt;/p&gt;
+&lt;p&gt;i updated the nameservers as soon as i realized this error from the
+namesilo panel. some of the domains propagated quickly. others, not so
+much. tilde.team was still in a state of flux between the old and new
+nameservers.&lt;/p&gt;
+&lt;p&gt;in a rush to get the dns problem fixed, and under recommendation from
+several people on irc, i decided to switch the nameservers for
+tilde.team and tilde.zone to cloudflare, leaving another layer of flux
+for the dns to be stuck in&amp;hellip;&lt;/p&gt;
+&lt;p&gt;of the five domains that i moved to cloudflare, 3 returned with a dnssec
+error, claiming that i needed to remove the DS record from that zone.
+d&amp;rsquo;oh!&lt;/p&gt;
+&lt;p&gt;i removed the dnssec from those affected domains, so we should be good
+to go as soon as it all propagates through the fickle beast that is dns.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -94,7 +508,21 @@ i&amp;rsquo;ve been thinking about transferring my domains off google domains fo
       <pubDate>Thu, 26 Jul 2018 15:34:50 +0000</pubDate>
       
       <guid>./lxd-networking-and-additional-ips.html</guid>
-      <description>now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to get a secondary IP address assigned to a lxd container (which i plan to use for my personal stuff).</description>
+      <description>&lt;p&gt;now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to
+get a secondary IP address assigned to a lxd container (which i plan to
+use for my personal stuff). lxd shows that the secondary IP is being
+picked up by that container, but i&amp;rsquo;m still seeing the host machine&amp;rsquo;s IP
+as the external address.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not sure how i&amp;rsquo;ll need to configure the network settings on the host
+machine (now that we&amp;rsquo;re running ubuntu 18.04 and it uses netplan for
+configs and not /etc/network/interfaces). another confusing thing is
+that the main config in /etc/netplan says that the network config is
+handled by systemd-networkd&amp;hellip;&lt;/p&gt;
+&lt;p&gt;at least i have through the end of the year when my current vps runs out
+to get this up and running.&lt;/p&gt;
+&lt;p&gt;ping me on &lt;a href=&#34;https://tilde.chat&#34;&gt;irc&lt;/a&gt; or &lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;email&lt;/a&gt;
+if you have experience with this.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -103,9 +531,28 @@ i&amp;rsquo;ve been thinking about transferring my domains off google domains fo
       <pubDate>Wed, 13 Jun 2018 15:07:45 +0000</pubDate>
       
       <guid>./tildeteam-news.html</guid>
-      <description>hey hi hello!
-it seems that i haven&amp;rsquo;t written anything on my blog in quite a while&amp;hellip;
-time to fix that! i&amp;rsquo;ve been quite busy in the last month or so with a lot of new ideas an energy for tilde.</description>
+      <description>&lt;p&gt;hey hi hello!&lt;/p&gt;
+&lt;p&gt;it seems that i haven&amp;rsquo;t written anything on my blog in quite a while&amp;hellip;&lt;/p&gt;
+&lt;p&gt;time to fix that! i&amp;rsquo;ve been quite busy in the last month or so with a
+lot of new ideas an energy for tilde.team.&lt;/p&gt;
+&lt;p&gt;after rediscovering my account on tilde.town, i hopped in the irc there
+and my enthusiasm translated into a couple new members over here on the
+~team.&lt;/p&gt;
+&lt;p&gt;our irc has been somewhat more active recently which is awesome:)&lt;/p&gt;
+&lt;p&gt;some of the new updates in the last month:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git.tilde.team&#34;&gt;tildegit (our own gitea instance)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mail.tilde.team&#34;&gt;tildemail&lt;/a&gt; with postfix and dovecot for
+smtp/imap as well as local command line mail in mutt and alpine&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git.tildeverse.org/team/tilde-launcher&#34;&gt;&lt;code&gt;tilde&lt;/code&gt;&lt;/a&gt; user
+script wrapper with submission and approval flows&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tilde.team/wiki/?page=ssh&#34;&gt;password auth disabled&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i&amp;rsquo;d like to make use of our new mailserver, so shoot me some
+&lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;mail&lt;/a&gt;. i never get enough personal mail. it&amp;rsquo;s
+all still privacy policy update notices. :(&lt;/p&gt;
+&lt;p&gt;see you soon!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -114,10 +561,13 @@ time to fix that! i&amp;rsquo;ve been quite busy in the last month or so with a 
       <pubDate>Mon, 02 Oct 2017 16:11:13 +0000</pubDate>
       
       <guid>./hi-there.html</guid>
-      <description>welcome to my tildeblog
-you are here.
-i like to mess around with linux sysadmin shtuff. tilde.team is my baby. let me know if you want to get involved.
-thanks for being awesome.</description>
+      <description>&lt;p&gt;welcome to my tildeblog&lt;/p&gt;
+&lt;p&gt;you are here.&lt;/p&gt;
+&lt;p&gt;i like to mess around with linux sysadmin shtuff.
+&lt;a href=&#34;https://tilde.team&#34;&gt;tilde.team&lt;/a&gt; is my baby. let me know if you want to
+get involved.&lt;/p&gt;
+&lt;p&gt;thanks for being awesome. keep it up.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

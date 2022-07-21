@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wordpress on blog // ~ben</title>
+    <link>./tags/wordpress.html</link>
+    <description>Recent content in wordpress on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Jul 2022 13:53:00 +0000</lastBuildDate><atom:link href="./tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sqlite3 for wordpress</title>
+      <link>./sqlite3-for-wordpress.html</link>
+      <pubDate>Wed, 06 Jul 2022 13:53:00 +0000</pubDate>
+      
+      <guid>./sqlite3-for-wordpress.html</guid>
+      <description>&lt;h1 id=&#34;sqlite3-for-wordpress&#34;&gt;sqlite3 for wordpress&lt;/h1&gt;
+&lt;p&gt;running wordpress with sqlite is quick, easy, and can be much less
+system administration load as it eliminates the need for a separate
+database process running.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wptest.bhh.sh&#34;&gt;this site&lt;/a&gt; is currently running with sqlite using &lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db&#34;&gt;aaemnnosttv&amp;rsquo;s
+drop-in&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;set-it-up&#34;&gt;set it up&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;download &lt;a href=&#34;https://wordpress.org/latest.tar.gz&#34;&gt;https://wordpress.org/latest.tar.gz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;extract it into your webroot (something like &lt;code&gt;/var/www&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;download
+&lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db/raw/master/src/db.php&#34;&gt;db.php&lt;/a&gt;
+and add it to &lt;code&gt;/var/www/yoursite/wp-content/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;follow the normal setup instructions but skip the database fields&lt;/li&gt;
+&lt;li&gt;profit????&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;nginx-config&#34;&gt;nginx config&lt;/h2&gt;
+&lt;p&gt;adjust configs as needed. this is the live config for this site
+wptest.bhh.sh.&lt;/p&gt;
+&lt;p&gt;snippets/ssl/bhh.sh just includes the block from certbot that points to
+the right cert and key.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+        listen 80;
+        server_name wptest.bhh.sh;
+        return 307 https://$server_name$request_uri;
+}
+
+server {
+        listen 443 ssl;
+        server_name wptest.bhh.sh;
+        include snippets/ssl/bhh.sh;
+        index index.php index.html;
+        root /var/www/wptest.bhh.sh;
+        client_max_body_size 100M;
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+        location = /favicon.ico {
+                log_not_found off;
+                access_log off;
+        }
+
+        location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+
+        location ~* wp-config.php {
+                deny all;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_intercept_errors on;
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>blog update</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>blog update</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./blog-update.html">blog update</a></h1>
 
     <time>Mon, 27 Nov 2017 20:48 UTC</time>
@@ -25,11 +32,13 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>sorry for the blast of posts. i recreated them from a wordpress blog on
 <a href="http://motd.org">motd.org</a>.</p>
 <p>i plan on posting some random thoughts here from time to time. thanks
 for checking in.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

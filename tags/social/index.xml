@@ -13,9 +13,51 @@
       <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
       
       <guid>./mastodon-postgres-upgrade-fun.html</guid>
-      <description>howdy friends!
-if you’re a mastodon user on tilde.zone (the tildeverse mastodon instance), you might’ve noticed some downtime recently.
-here’s a quick recap of what went down during the upgrade process.</description>
+      <description>&lt;p&gt;howdy friends!&lt;/p&gt;
+&lt;p&gt;if you’re a mastodon user on &lt;a href=&#34;https://tilde.zone&#34;&gt;tilde.zone&lt;/a&gt; (the
+tildeverse mastodon instance), you might’ve noticed some downtime
+recently.&lt;/p&gt;
+&lt;p&gt;here’s a quick recap of what went down during the upgrade process.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;we run the current stable version of postgresql from the &lt;a href=&#34;https://wiki.postgresql.org/wiki/Apt&#34;&gt;postgres apt
+repos&lt;/a&gt;. postgres
+&lt;a href=&#34;https://www.postgresql.org/docs/release/13.0/&#34;&gt;13&lt;/a&gt; was released
+recently and the apt upgrades automatically created a new cluster
+running 13.&lt;/p&gt;
+&lt;p&gt;the database for mastodon has gotten quite large (about 16gb) which
+complicates this upgrade a bit. this was my inital plan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;drop the 13 cluster created by the apt package upgrades&lt;/li&gt;
+&lt;li&gt;upgrade the 12-main cluster to 13&lt;/li&gt;
+&lt;li&gt;drop the 12 cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;these steps appeared to work fine, but closer inspection afterwards led
+me to discover that the new cluster had ended up with &lt;code&gt;SQL_ASCII&lt;/code&gt;
+encoding somehow. this is not a situation we want to be in. time to fix
+it.&lt;/p&gt;
+&lt;p&gt;here’s the new plan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;stop mastodon
+&lt;code&gt; for i in streaming sidekiq web; do systemctl stop mastodon-$i; done&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dump current database state &lt;code&gt; pg_dump mastodon_production &amp;gt; db.dump&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;drop and recreate cluster with utf8 encoding
+&lt;code&gt; pg_dropcluster 13 main --stop pg_createcluster --locale=en_US.UTF8 13 main --start&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;restore backup
+&lt;code&gt; sudo -u postgres psql -c &amp;quot;create user mastodon createdb;&amp;quot; sudo -u mastodon createdb -E utf8 mastodon_production sudo -u mastodon psql &amp;lt; db.dump&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i’m still not 100% sure how the encoding reverted to ascii but it seems
+that the locale was not correctly set while running the apt upgrades…&lt;/p&gt;
+&lt;p&gt;if this happens to you, hopefully this helps you wade out while keeping
+all your data :)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -24,10 +66,14 @@ here’s a quick recap of what went down during the upgrade process.</descriptio
       <pubDate>Fri, 22 Dec 2017 16:28:45 +0000</pubDate>
       
       <guid>./mastodon.html</guid>
-      <description>hi everyone.
-i started hosting a mastodon instance at social.tilde.team.
-check it out if you want some federated open source social goodness :)
-send me a toot @ben@tilde.team (from any mastodon instance!</description>
+      <description>&lt;p&gt;hi everyone.&lt;/p&gt;
+&lt;p&gt;i started hosting a &lt;a href=&#34;https://joinmastodon.org&#34;&gt;mastodon&lt;/a&gt; instance at
+&lt;a href=&#34;https://social.tilde.team&#34;&gt;social.tilde.team&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;check it out if you want some federated open source social goodness :)&lt;/p&gt;
+&lt;p&gt;send me a toot &lt;a href=&#34;https://social.tilde.team/@ben&#34;&gt;@ben@tilde.team&lt;/a&gt; (from
+any mastodon instance!)&lt;/p&gt;
+&lt;p&gt;thanks!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -36,7 +82,19 @@ send me a toot @ben@tilde.team (from any mastodon instance!</description>
       <pubDate>Tue, 28 Nov 2017 16:22:42 +0000</pubDate>
       
       <guid>./where-to-find-me-elsewhere-on-the-web.html</guid>
-      <description> email wire @bharris matrix/riot @benh:matrix.org telegram twitter keybase my personal site github gitlab tilde~ben  </description>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wire.com&#34;&gt;wire&lt;/a&gt; @bharris&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://riot.im&#34;&gt;matrix/riot&lt;/a&gt; @benh:matrix.org&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.me/bharris&#34;&gt;telegram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/nebsirrah&#34;&gt;twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://keybase.io/bharris&#34;&gt;keybase&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://benharr.is&#34;&gt;my personal site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/benharri&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitlab.com/benharri&#34;&gt;gitlab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./~ben/&#34;&gt;tilde~ben&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

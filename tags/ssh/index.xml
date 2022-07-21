@@ -13,9 +13,29 @@
       <pubDate>Fri, 12 Jan 2018 13:30:26 +0000</pubDate>
       
       <guid>./git-remotes-with-ssh-aliases.html</guid>
-      <description>did you know that ~/.ssh/config aliases work for git remotes??
-~/.ssh/config
-Host gh HostName github.com User git IdentityFile ~/.ssh/gh_key  you can now use gh:username/repo as the remote in place of git@github.</description>
+      <description>&lt;p&gt;did you know that &lt;code&gt;~/.ssh/config&lt;/code&gt; aliases work for git remotes??&lt;/p&gt;
+&lt;p&gt;~/.ssh/config&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host gh
+HostName github.com
+User git
+IdentityFile ~/.ssh/gh_key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;you can now use &lt;code&gt;gh:username/repo&lt;/code&gt; as the remote in place of
+&lt;code&gt;git@github.com:username/repo&lt;/code&gt;, which is much shorter and easier to type
+many times!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone gh:benharri/learngit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;there are many other use cases for the &lt;code&gt;ssh_config&lt;/code&gt; file. for example,
+here is my config for the tilde machine for easy ssh connections.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host tilde
+HostName tilde.team
+User ben
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;then use &lt;code&gt;ssh tilde&lt;/code&gt; to start a new ssh session. this also works with
+&lt;code&gt;scp&lt;/code&gt;: try something like this &lt;code&gt;scp file.txt tilde:workspace/.&lt;/code&gt; in place
+of &lt;code&gt;scp file.txt ben@tilde.team:workspace/.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;the ssh_config file is super useful. check &lt;code&gt;man ssh_config&lt;/code&gt; for a full
+list of options!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

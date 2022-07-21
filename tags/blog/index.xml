@@ -6,15 +6,117 @@
     <description>Recent content in blog on blog // ~ben</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Mar 2021 16:16:11 -0400</lastBuildDate><atom:link href="./tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jul 2022 13:53:00 +0000</lastBuildDate><atom:link href="./tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sqlite3 for wordpress</title>
+      <link>./sqlite3-for-wordpress.html</link>
+      <pubDate>Wed, 06 Jul 2022 13:53:00 +0000</pubDate>
+      
+      <guid>./sqlite3-for-wordpress.html</guid>
+      <description>&lt;h1 id=&#34;sqlite3-for-wordpress&#34;&gt;sqlite3 for wordpress&lt;/h1&gt;
+&lt;p&gt;running wordpress with sqlite is quick, easy, and can be much less
+system administration load as it eliminates the need for a separate
+database process running.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wptest.bhh.sh&#34;&gt;this site&lt;/a&gt; is currently running with sqlite using &lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db&#34;&gt;aaemnnosttv&amp;rsquo;s
+drop-in&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;set-it-up&#34;&gt;set it up&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;download &lt;a href=&#34;https://wordpress.org/latest.tar.gz&#34;&gt;https://wordpress.org/latest.tar.gz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;extract it into your webroot (something like &lt;code&gt;/var/www&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;download
+&lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db/raw/master/src/db.php&#34;&gt;db.php&lt;/a&gt;
+and add it to &lt;code&gt;/var/www/yoursite/wp-content/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;follow the normal setup instructions but skip the database fields&lt;/li&gt;
+&lt;li&gt;profit????&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;nginx-config&#34;&gt;nginx config&lt;/h2&gt;
+&lt;p&gt;adjust configs as needed. this is the live config for this site
+wptest.bhh.sh.&lt;/p&gt;
+&lt;p&gt;snippets/ssl/bhh.sh just includes the block from certbot that points to
+the right cert and key.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+        listen 80;
+        server_name wptest.bhh.sh;
+        return 307 https://$server_name$request_uri;
+}
+
+server {
+        listen 443 ssl;
+        server_name wptest.bhh.sh;
+        include snippets/ssl/bhh.sh;
+        index index.php index.html;
+        root /var/www/wptest.bhh.sh;
+        client_max_body_size 100M;
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+        location = /favicon.ico {
+                log_not_found off;
+                access_log off;
+        }
+
+        location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+
+        location ~* wp-config.php {
+                deny all;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_intercept_errors on;
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
     <item>
       <title>hugo blog rewrite</title>
       <link>./hugo.html</link>
       <pubDate>Wed, 24 Mar 2021 16:16:11 -0400</pubDate>
       
       <guid>./hugo.html</guid>
-      <description>i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog with hugo
-why fix something that ain&amp;rsquo;t broken? there are several major bugs in bashblog that i haven&amp;rsquo;t had the time or interest to fix.</description>
+      <description>&lt;p&gt;i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog
+with &lt;a href=&#34;https://gohugo.io&#34;&gt;hugo&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;why-fix-something-that-aint-broken&#34;&gt;why fix something that ain&amp;rsquo;t broken?&lt;/h2&gt;
+&lt;p&gt;there are several &lt;a href=&#34;https://tildegit.org/team/bashblog/issues&#34;&gt;major bugs&lt;/a&gt; in
+bashblog that i haven&amp;rsquo;t had the time or interest to fix. luckily, i have my
+blog source in a &lt;a href=&#34;https://tildegit.org/ben/tilde&#34;&gt;git repo&lt;/a&gt;, so the messed-up
+files are relatively easy to fix up.&lt;/p&gt;
+&lt;p&gt;my theory is that the cognitive load of dealing with those bugs has been
+preventing me from writing any new posts&amp;hellip; (among other current events).&lt;/p&gt;
+&lt;p&gt;plus i guess i just needed a project!&lt;/p&gt;
+&lt;h2 id=&#34;the-hard-part&#34;&gt;the hard part&lt;/h2&gt;
+&lt;p&gt;it was a bit of a struggle to get my blogposts converted over to a proper format.&lt;/p&gt;
+&lt;p&gt;bashblog maintains the tags with a plaintext link line at the bottom of the file
+and keeps track of modify dates &lt;em&gt;on the filesystem&lt;/em&gt; using &lt;code&gt;date -r&lt;/code&gt; and &lt;code&gt;touch -t&lt;/code&gt;
+to keep them up to date.&lt;/p&gt;
+&lt;p&gt;this makes it hard to work with the blog in any place other than where it&amp;rsquo;s already
+deployed live. additionally, parsing the tags to another format was a bit of a headache&amp;hellip;&lt;/p&gt;
+&lt;p&gt;i ended up writing a little &lt;a href=&#34;https://tildegit.org/ben/blog/src/branch/main/fix_dates.sh&#34;&gt;script&lt;/a&gt;
+to pull the timestamp from bashblog&amp;rsquo;s generated html since i no longer had the original
+file metadata.&lt;/p&gt;
+&lt;h2 id=&#34;time-to-write-more&#34;&gt;time to write more&lt;/h2&gt;
+&lt;p&gt;i&amp;rsquo;m always tempted to play with the publishing process instead of actually writing.&lt;/p&gt;
+&lt;p&gt;we&amp;rsquo;ll see how well i can avoid the temptation now!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +125,18 @@ why fix something that ain&amp;rsquo;t broken? there are several major bugs in b
       <pubDate>Wed, 05 Sep 2018 21:34:13 +0000</pubDate>
       
       <guid>./utterances.html</guid>
-      <description>i somehow stumbled upon utterances today at lunch. (i think someone had it forked on their github page).
-no matter how i found it, i still decided to add it to my blog here with bashblog.</description>
+      <description>&lt;p&gt;i somehow stumbled upon &lt;a href=&#34;https://utteranc.es&#34;&gt;utterances&lt;/a&gt; today at
+lunch. (i think someone had it forked on their github page).&lt;/p&gt;
+&lt;p&gt;no matter how i found it, i still decided to add it to my blog here with
+&lt;a href=&#34;https://tildegit.org/team/bashblog&#34;&gt;bashblog&lt;/a&gt;. utterances is a
+commenting system that leverages github issues. so, for example a
+comment on &lt;a href=&#34;https://tilde.team/~ben/blog/upsides-of-new-dns-nameservers.html&#34;&gt;a
+post&lt;/a&gt;
+shows up on github &lt;a href=&#34;https://github.com/benharri/tilde/issues/1#issuecomment-418732788&#34;&gt;like
+this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;now we just need to figure out if it can be pointed at a gitea instance
+like &lt;a href=&#34;https://tildegit.org&#34;&gt;tildegit&lt;/a&gt;. might be time for a PR!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -33,8 +145,14 @@ no matter how i found it, i still decided to add it to my blog here with bashblo
       <pubDate>Sun, 22 Jul 2018 11:44:03 +0000</pubDate>
       
       <guid>./bashblog-and-your-gopherhole.html</guid>
-      <description>i&amp;rsquo;ve created a repo for the tilde.team customizations to bashblog.
-it will now make sure that your ~/public_gopher exists and symlink your blog into it with a nice gophermap to list all the markdown styled posts.</description>
+      <description>&lt;p&gt;i&amp;rsquo;ve created &lt;a href=&#34;https://git.tildeverse.org/meta/bashblog&#34;&gt;a repo&lt;/a&gt; for the
+tilde.team customizations to
+&lt;a href=&#34;https://github.com/cfenollosa/bashblog&#34;&gt;bashblog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;it will now make sure that your ~/public_gopher exists and symlink your
+blog into it with a nice gophermap to list all the markdown styled
+posts.&lt;/p&gt;
+&lt;p&gt;try it out and let me know if there are any problems!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -43,8 +161,11 @@ it will now make sure that your ~/public_gopher exists and symlink your blog int
       <pubDate>Mon, 27 Nov 2017 20:48:10 +0000</pubDate>
       
       <guid>./blog-update.html</guid>
-      <description>sorry for the blast of posts. i recreated them from a wordpress blog on motd.org.
-i plan on posting some random thoughts here from time to time. thanks for checking in.</description>
+      <description>&lt;p&gt;sorry for the blast of posts. i recreated them from a wordpress blog on
+&lt;a href=&#34;http://motd.org&#34;&gt;motd.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i plan on posting some random thoughts here from time to time. thanks
+for checking in.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -53,7 +174,42 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./silex.html</guid>
-      <description>UPDATE: this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip; i&amp;rsquo;m including it for historical purposes here&amp;rsquo;s the deployed site and the source for it</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;UPDATE:
+this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip;
+i&amp;rsquo;m including it for historical purposes
+here&amp;rsquo;s the &lt;a href=&#34;https://benhh.bhh.sh&#34;&gt;deployed site&lt;/a&gt;
+and the &lt;a href=&#34;https://github.com/benharri/benhh.com&#34;&gt;source for it&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;this-is-an-introduction-to-my-choice-of-framework-in-building-this-website&#34;&gt;This is an introduction to my choice of framework in building this website.&lt;/h3&gt;
+&lt;h4 id=&#34;several-options-i-considered-for-my-website&#34;&gt;Several options I considered for my website:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://djangoproject.com/&#34;&gt;Django&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Django&amp;rsquo;s opinionated Model model with its strong database ties seemed a bit much for a relatively static site&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s huge and unnecessarily complicated for a simple website&lt;/li&gt;
+&lt;li&gt;It would be a great learning experience in Python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php.net&#34;&gt;Vanilla PHP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;I have a lot of experience in vanilla PHP at my internship at &lt;a href=&#34;http://nmu.edu&#34;&gt;Northern Michigan University&lt;/a&gt; working in the Information Services department where I develop web applications for internal use.&lt;/li&gt;
+&lt;li&gt;I often find myself frustrated with PHP&amp;rsquo;s quirkiness and wouldn&amp;rsquo;t learn new material if I used this for my personal website.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://silex.sensiolabs.com&#34;&gt;Silex&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This is a micro-framework built using components of the much larger &lt;a href=&#34;https://symfony.com&#34;&gt;Symfony&lt;/a&gt; framework.&lt;/li&gt;
+&lt;li&gt;I discovered Silex in &lt;a href=&#34;https://devcenter.heroku.com/articles/getting-started-with-php&#34;&gt;Heroku&amp;rsquo;s PHP deployment guide&lt;/a&gt; where I noticed that it was small enough to not draw unneeded overhead and extensible enough for my website to grow as it needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I opted to go with Silex. The source code is available &lt;a href=&#34;https://github.com/benharri/benhh.com&#34;&gt;here&lt;/a&gt; for your perusal.&lt;/p&gt;
+&lt;p&gt;I have gone through many iterations of this site. The first version was simply a clone of the &lt;a href=&#34;http://euclid.nmu.edu/~benharri/&#34;&gt;homepage&lt;/a&gt; that I have on my university&amp;rsquo;s computer science department server. This wasn&amp;rsquo;t a very useful homepage as many of the projects that I wanted to show in a portfolio were tied to a database on that server.&lt;/p&gt;
+&lt;p&gt;I eventually moved towards a one-page style layout (&lt;a href=&#34;https://github.com/benharri/benhh.com/commit/974e12e85a9ab872facf0f4a238337b2e2d216a3&#34;&gt;in this commit&lt;/a&gt;) where the links in the navbar would scroll the page to pre-defined regions. I then ditched the old multipage layout and at this point I discovered &lt;a href=&#34;https://getgrav.org&#34;&gt;Grav&lt;/a&gt;. After difficulties integrating Grav within my app (read more &lt;a href=&#34;./blog/grav-on-heroku&#34;&gt;here&lt;/a&gt;), I decided to roll my own blogging solution modeled after Grav&amp;rsquo;s markdown content system.&lt;/p&gt;
+&lt;p&gt;I included a YAML Front Matter + Markdown Parser and used that to define the metadata for a &lt;a href=&#34;https://github.com/benharri/benhh.com/blob/master/app/controllers/Blog.php&#34;&gt;blogpost&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is still much to do (post sort order, paging, tagging, etc), but I appreciate the experience that I have gained in building this blogging system.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -62,8 +218,40 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./grav-on-heroku.html</guid>
-      <description>NOTE: this is a historical post that i&amp;rsquo;m importing from my old site.
- When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;NOTE:
+this is a historical post that i&amp;rsquo;m importing from my old site.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.&lt;/p&gt;
+&lt;p&gt;I had already decided that I would use a free dyno on &lt;a href=&#34;https://heroku.com&#34;&gt;Heroku&lt;/a&gt; for hosting.&lt;/p&gt;
+&lt;p&gt;As I researched additional solutions, I came upon the world of the PHP CMS (Content Management System, for the uninitiated). Just the sheer number and variety of CMS is &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_content_management_systems#PHP&#34;&gt;terrifying&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The free tier for databases in Heroku felt lacking in peace of mind and ease of setup so I focused my search to the realm of the &amp;ldquo;flat-file&amp;rdquo; CMS.&lt;/p&gt;
+&lt;p&gt;I discovered &lt;a href=&#34;https://getgrav.org&#34;&gt;Grav&lt;/a&gt; purely by chance. Grav claims to be fast and extensible. I was enticed by the flashy admin interface replete with responsive UI and a gorgeous built-in Markdown editor for content creation.&lt;/p&gt;
+&lt;p&gt;After a bit of &lt;a href=&#34;https://learn.getgrav.org/hosting/paas/heroku&#34;&gt;configuration&lt;/a&gt;, I managed to deploy a Grav instance into a Heroku dyno (a rather annoying affair which involved deploying caches to Heroku and &lt;code&gt;mod_rewrite&lt;/code&gt; rules in &lt;code&gt;.htaccess&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The tricky part came when I brought the &lt;a href=&#34;https://github.com/getgrav/grav-plugin-admin&#34;&gt;Admin Plugin&lt;/a&gt; into the picture. Without the Admin Plugin, you need to directly change the configurations and add content from the filesystem and then deploy that to the web. You are able, however, to use PHP&amp;rsquo;s built-in development webserver (&lt;code&gt;php -S localhost:9000&lt;/code&gt;) to test your changes.&lt;/p&gt;
+&lt;p&gt;Once I got the Admin plugin working (don&amp;rsquo;t forget to clear your cache if you&amp;rsquo;re deploying to Heroku &amp;ndash; or make sure that the cache directory is in your &lt;code&gt;.gitignore&lt;/code&gt; file), I started making changes to my &lt;code&gt;.yml&lt;/code&gt; configuration files and writing some content with the built-in Markdown editor. I was very impressed with the Admin interface. It&amp;rsquo;s very modern-feeling, while still being lightning-quick.&lt;/p&gt;
+&lt;p&gt;Then I needed to make a change that wasn&amp;rsquo;t available from the Admin interface&amp;hellip; After the next deploy to Heroku, every change that I had made from within the Admin interface was obliterated. This is the main flaw in hosting a Grav app on Heroku. The ephemeral file system for a dyno on Heroku works just fine, but when the dyno restarts, it is regenerated to the state at the latest build. It&amp;rsquo;s important to note that dynos go down any time you push a new build and at &lt;a href=&#34;https://devcenter.heroku.com/articles/dynos#restarting&#34;&gt;least once a day&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dynos restart when:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;create a new release by deploying new code&lt;/li&gt;
+&lt;li&gt;change your config vars&lt;/li&gt;
+&lt;li&gt;change your add-ons&lt;/li&gt;
+&lt;li&gt;run heroku restart&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I then read more about the &lt;a href=&#34;https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem&#34;&gt;ephemeral filesystem&lt;/a&gt; of Heroku dynos.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each dyno gets its own ephemeral filesystem, with a fresh copy of the most recently deployed code. During the dyno’s lifetime its running processes can use the filesystem as a temporary scratchpad, but no files that are written are visible to processes in any other dyno and any files written will be discarded the moment the dyno is stopped or restarted. For example, this occurs any time a dyno is replaced due to application deployment and approximately once a day as part of normal dyno management.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a useless setup for a Grav application where everything is a file. This may sound a bit harsh, but changes to the live app will be destroyed within a day. This just means that there are two options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ditch the Admin plugin&lt;/li&gt;
+&lt;li&gt;Use a full LAMP stack locally to make changes to the files from within the Admin interface before deploying to Heroku&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I chose to ditch the Admin plugin. Making changes to the project from within the filesystem in &lt;a href=&#34;https://sublimetext.com/3&#34;&gt;my text editor&lt;/a&gt; was totally acceptable.&lt;/p&gt;
+&lt;p&gt;Not long after trying to integrate a Grav app within the Silex application that is my website (rather than linking to the Grav app through a subdomain of benhh.com), I gave up Grav for my blog entirely and decided to roll my own &lt;a href=&#34;./blog/silex&#34;&gt;blogging solution&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -72,9 +260,18 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./welcome.html</guid>
-      <description>This is my first post.
-I&amp;rsquo;m Ben Harris. I study computer science at Northern Michigan University.
-I&amp;rsquo;ll be writing about some of the experiences I&amp;rsquo;ve had in software and in other areas of my life.</description>
+      <description>&lt;p&gt;This is my first post.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m Ben Harris. I study computer science at Northern Michigan University.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll be writing about some of the experiences I&amp;rsquo;ve had in software and in other areas of my life.&lt;/p&gt;
+&lt;p&gt;Some of my hobbies include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;writing software&lt;/li&gt;
+&lt;li&gt;biking&lt;/li&gt;
+&lt;li&gt;traveling&lt;/li&gt;
+&lt;li&gt;ultimate frisbee&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thanks for checking out my blog!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>thought of the day</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>thought of the day</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./thought-of-the-day14302.html">thought of the day</a></h1>
 
     <time>Mon, 27 Nov 2017 16:56 UTC</time>
@@ -23,9 +30,11 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>why do they tell us to use the stairs in case of fire? shouldn&rsquo;t we be
 using a fire extinguisher?</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

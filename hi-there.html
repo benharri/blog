@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>hi there</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>hi there</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./hi-there.html">hi there</a></h1>
 
     <time>Mon, 02 Oct 2017 16:11 UTC</time>
@@ -29,6 +36,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>welcome to my tildeblog</p>
 <p>you are here.</p>
 <p>i like to mess around with linux sysadmin shtuff.
@@ -36,6 +44,7 @@
 get involved.</p>
 <p>thanks for being awesome. keep it up.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

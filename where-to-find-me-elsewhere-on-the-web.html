@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>where to find me elsewhere on the web</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>where to find me elsewhere on the web</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./where-to-find-me-elsewhere-on-the-web.html">where to find me elsewhere on the web</a></h1>
 
     <time>Tue, 28 Nov 2017 16:22 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <ul>
 <li><a href="mailto:ben@tilde.team">email</a></li>
 <li><a href="https://wire.com">wire</a> @bharris</li>
@@ -38,6 +46,7 @@
 <li><a href="/~ben/">tilde~ben</a></li>
 </ul>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

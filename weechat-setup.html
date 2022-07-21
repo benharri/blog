@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>weechat setup</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>weechat setup</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./weechat-setup.html">weechat setup</a></h1>
 
     <time>Fri, 16 Nov 2018 23:11 UTC</time>
@@ -27,6 +34,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>so you decided to switch from irssi to weechat?</p>
 <p>what options do you need to set? what plugins? what scripts?</p>
 <p>i&rsquo;ll go over some of the most essential of these, and share my full
@@ -84,11 +92,11 @@ quickly search history and buffers with <code>/grep</code></li>
 <h2 id="the-rest-of-my-configs">the rest of my configs</h2>
 <p>you can find the rest of my configs
 <a href="https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat">here</a>.</p>
-<p>if you have any questions, feel free to ping me on irc. i&rsquo;m benharri on
-freenode and ben on <a href="https://tilde.chat">tilde.chat</a></p>
+<p>if you have any questions, feel free to ping me on irc. i&rsquo;m ben on
+<a href="https://libera.chat">libera</a> and <a href="https://tilde.chat">tilde.chat</a></p>
 <h2 id="screenshot">screenshot</h2>
 <p>here&rsquo;s a screenshot of my current configs</p>
-<p><img src="https://bhh.sh/pub/screenies/weechat.png" alt=""></p>
+<p><a href="https://bhh.sh/pub/screenies/weechat.png"><img src="https://bhh.sh/pub/screenies/weechat.png" alt=""></a></p>
 <h2 id="bonus">bonus</h2>
 <p>if you have an existing setup, you can check the config changes you&rsquo;ve
 made with <code>/set diff</code></p>
@@ -96,7 +104,9 @@ made with <code>/set diff</code></p>
 .gitignore</a>,
 add your ~/.weechat to source control, and compare.</p>
 <p>hope you&rsquo;ve enjoyed customizing your weechat!</p>
+<p>EDIT: s/freenode/libera/g</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

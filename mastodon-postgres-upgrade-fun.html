@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>mastodon postgres upgrade fun</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>mastodon postgres upgrade fun</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./mastodon-postgres-upgrade-fun.html">mastodon postgres upgrade fun</a></h1>
 
     <time>Wed, 28 Oct 2020 16:31 UTC</time>
@@ -27,6 +34,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>howdy friends!</p>
 <p>if you’re a mastodon user on <a href="https://tilde.zone">tilde.zone</a> (the
 tildeverse mastodon instance), you might’ve noticed some downtime
@@ -72,6 +80,7 @@ that the locale was not correctly set while running the apt upgrades…</p>
 <p>if this happens to you, hopefully this helps you wade out while keeping
 all your data :)</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

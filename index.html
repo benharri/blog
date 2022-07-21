@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
+    <head>
 	<meta name="generator" content="Hugo 0.80.0" />
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>blog // ~ben</title>
-	</head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>blog // ~ben</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <header class="homepage-header">
         <h1>blog // ~ben</h1>
         
@@ -24,11 +31,49 @@
             <article>
     <div>
         <h2>
+            <a href="git-diff-highlight.html">git diff-highlight</a>
+            <small><time>2022-07-20</time></small>
+        </h2>
+
+        <p>diff output from git can be hard to read. luckily there&rsquo;s a nice tool bundled with git that can help us out.
+enter diff-highlight, a little perl script found in git&rsquo;s contrib directory.</p>
+    </div>
+    
+    <div>
+        <a href="git-diff-highlight.html">read more...</a>
+    </div>
+    
+</article>
+
+            <hr>
+        
+            <article>
+    <div>
+        <h2>
+            <a href="sqlite3-for-wordpress.html">sqlite3 for wordpress</a>
+            <small><time>2022-07-06</time></small>
+        </h2>
+
+        <p>sqlite3 for wordpress running wordpress with sqlite is quick, easy, and can be much less system administration load as it eliminates the need for a separate database process running.
+this site is currently running with sqlite using aaemnnosttv&rsquo;s drop-in.</p>
+    </div>
+    
+    <div>
+        <a href="sqlite3-for-wordpress.html">read more...</a>
+    </div>
+    
+</article>
+
+            <hr>
+        
+            <article>
+    <div>
+        <h2>
             <a href="matrix-sucks.html">Matrix Sucks</a>
             <small><time>2021-08-29</time></small>
         </h2>
 
-        <p>i&rsquo;ve gotten sick of explaining why matrix is bad over and over so i&rsquo;m gathering my thoughts and some points here and publishing it so i can link to it.</p>
+        <p>i’ve gotten sick of explaining why matrix is bad over and over so i’m gathering my thoughts and some points here and publishing it so i can link to it.</p>
     </div>
     
     <div>
@@ -168,45 +213,6 @@ starting up drone with docker-compose didn&rsquo;t seem to be working: netstat -
     
     <div>
         <a href="networking-nonsense.html">read more...</a>
-    </div>
-    
-</article>
-
-            <hr>
-        
-            <article>
-    <div>
-        <h2>
-            <a href="raid-nonsense.html">raid nonsense</a>
-            <small><time>2019-01-13</time></small>
-        </h2>
-
-        <p>last week i did some maintenance on the tilde.team box. probably should have written about it sooner but i didn&rsquo;t make time for it until now.
-the gist of the problem was that the default images provided by hetzner default to raid1 between the available disks.</p>
-    </div>
-    
-    <div>
-        <a href="raid-nonsense.html">read more...</a>
-    </div>
-    
-</article>
-
-            <hr>
-        
-            <article>
-    <div>
-        <h2>
-            <a href="weechat-setup.html">weechat setup</a>
-            <small><time>2018-11-16</time></small>
-        </h2>
-
-        <p>so you decided to switch from irssi to weechat?
-what options do you need to set? what plugins? what scripts?
-i&rsquo;ll go over some of the most essential of these, and share my full configs.</p>
-    </div>
-    
-    <div>
-        <a href="weechat-setup.html">read more...</a>
     </div>
     
 </article>

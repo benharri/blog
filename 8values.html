@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>8values</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>8values</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./8values.html">8values</a></h1>
 
     <time>Wed, 03 Jan 2018 12:41 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>not that i&rsquo;m very surprised by this, but i took the quiz again (after
 losing my results url) and got these results.</p>
 <p><img src="https://bhh.sh/pub/photos/8values.png" alt=""></p>
@@ -32,6 +40,7 @@ losing my results url) and got these results.</p>
 <p><a href="https://8values.github.io/results.html?e=95.7&amp;d=92.6&amp;g=78.5&amp;s=92.3">my results again as a
 link</a></p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

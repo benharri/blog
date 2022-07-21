@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>webassembly</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>webassembly</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./webassembly.html">webassembly</a></h1>
 
     <time>Wed, 17 Jan 2018 13:09 UTC</time>
@@ -27,6 +34,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>according to <a href="https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/">this
 post</a>
 on the mozilla blog, we will be able to compile wasm as it streams into
@@ -49,6 +57,7 @@ possible in the browser that never were before!</p>
 ended up with <a href="https://tilde.team/~ben/wasm/hello.html">this</a>.</p>
 <p>i don&rsquo;t know what to do next. any ideas?</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>Matrix Sucks</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>Matrix Sucks</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./matrix-sucks.html">Matrix Sucks</a></h1>
 
     <time>Sun, 29 Aug 2021 15:28 EDT</time>
@@ -18,11 +25,18 @@
 
     <hr>
 
-    <p>i&rsquo;ve gotten sick of explaining why matrix is bad over and over
-so i&rsquo;m gathering my thoughts and some points here and publishing
-it so i can link to it.</p>
-<p>i&rsquo;ll update this later with more info when i can.</p>
-<pre><code class="language-irc" data-lang="irc">15:25 &lt;remyabel&gt; their reference client is slow, had an unnecessary/confusing rename and you can't delete your account
+    <div data-pagefind-body>
+    <p>i’ve gotten sick of explaining why matrix is bad over and over so i’m gathering my thoughts and some points here and publishing it so i can link to it.</p>
+<ul>
+<li>no moderation capabilities</li>
+<li>bridges don&rsquo;t work well and are 1-way in order to siphon users to matrix</li>
+<li>it&rsquo;s super slow</li>
+<li>running a server requires a supercomputer</li>
+<li>de-facto not federated, everyone is on matrix.org</li>
+<li>even when you run your own server, it phones home with all kinds of user data to vector.im</li>
+</ul>
+<p>i’ll update this later with more info when i can.</p>
+<pre><code>15:25 &lt;remyabel&gt; their reference client is slow, had an unnecessary/confusing rename and you can't delete your account
 15:25 &lt;remyabel&gt; you can only &quot;deactivate&quot; it
 15:26 &lt;Shell&gt; also on a technical level it's just an /awful/ protocol
 15:26 &lt;~ben&gt; extremely disruptive 1way bridging
@@ -35,11 +49,14 @@ it so i can link to it.</p>
 15:28 &lt;~ben&gt; they only care about usercounts
 15:29 &lt;Shell&gt; they have, at various points, refused to employ people to work on the IRC bridges, while the bridge was horribly broken and led to security breaches and ban evasion, while simultaneously advertising them as a primary reason to use Matrix
 15:30 &lt;Shell&gt; and it's not really an &quot;open project&quot; as the words &quot;Matrix Foundation&quot; would have you think - the entire thing is driven almost entirely by the Matrix.org people, anyone else's input into the project is largely ignored in place of the Matrix.org roadmap.
-</code></pre><p>the connection to amdocs is FUD and not worth discussing</p>
+</code></pre>
+<p>the connection to amdocs is FUD and not worth discussing</p>
 <p>additional links:</p>
 <ul>
 <li><a href="https://wiki.404.city/en/XMPP_vs_Matrix">https://wiki.404.city/en/XMPP_vs_Matrix</a></li>
 <li><a href="https://hackea.org/notas/matrix.html">https://hackea.org/notas/matrix.html</a></li>
+<li><a href="https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1">https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1</a></li>
+<li><a href="https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2">https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2</a></li>
 </ul>
 <p>archive.org links:</p>
 <ul>
@@ -60,6 +77,7 @@ it so i can link to it.</p>
 <li><a href="https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md">https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md</a></li>
 </ul>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

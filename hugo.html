@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>hugo blog rewrite</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>hugo blog rewrite</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./hugo.html">hugo blog rewrite</a></h1>
 
     <time>Wed, 24 Mar 2021 16:16 EDT</time>
@@ -23,6 +30,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog
 with <a href="https://gohugo.io">hugo</a></p>
 <!-- raw HTML omitted -->
@@ -48,6 +56,7 @@ file metadata.</p>
 <p>i&rsquo;m always tempted to play with the publishing process instead of actually writing.</p>
 <p>we&rsquo;ll see how well i can avoid the temptation now!</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

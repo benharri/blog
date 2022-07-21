@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>git diff-highlight</title>
+    </head>
+
+    <body>
+        <main>
+            <div id="search"></div>
+    <h1><a href="./git-diff-highlight.html">git diff-highlight</a></h1>
+
+    <time>Wed, 20 Jul 2022 22:23 EDT</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/git.html">git</a>
+    </li> <li>
+        <a href="tags/linux.html">linux</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <div data-pagefind-body>
+    <p>diff output from git can be hard to read. luckily there&rsquo;s a nice tool bundled with git that can help us out.</p>
+<p>enter <a href="https://github.com/git/git/tree/master/contrib/diff-highlight">diff-highlight</a>, a little perl script found in git&rsquo;s contrib directory.</p>
+<p>from it&rsquo;s own documentation:</p>
+<blockquote>
+<p>[diff-highlight] post-processes the line-oriented diff, finds pairs of lines, and highlights the differening segments.</p>
+</blockquote>
+<p>diff-highlight is shipped in a default git install but it needs to be added to your $PATH. here&rsquo;s how to do it on debian:</p>
+<pre><code>$ sudo make -C /usr/share/doc/git/contrib/diff-highlight
+$ sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/
+</code></pre>
+<p>now you can pipe git&rsquo;s diff output to to diff-highlight to get a better view of what actually changed.</p>
+<pre><code>git diff | diff-highlight
+</code></pre>
+<p>optionally, you can configure git to use it all the time. add the following to your <code>~/.gitconfig</code>:</p>
+<pre><code>[pager]
+log = diff-highlight | less
+show = diff-highlight | less
+diff = diff-highlight | less
+</code></pre>
+<p>see the <a href="https://github.com/git/git/blob/master/contrib/diff-highlight/README">documentation</a> for more usage tips!</p>
+
+    </div>
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

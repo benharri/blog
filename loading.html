@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>loading...</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>loading...</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./loading.html">loading...</a></h1>
 
     <time>Thu, 21 Dec 2017 16:09 UTC</time>
@@ -23,6 +30,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <pre><code>const loadingmsgs = [
     &quot;Proving P=NP...&quot;,
     &quot;Computing 6 x 9...&quot;,
@@ -42,6 +50,7 @@
 ];
 </code></pre><p><a href="https://twitter.com/0xdade/status/943573845469827072">sauce</a></p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

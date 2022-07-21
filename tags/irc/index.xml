@@ -13,9 +13,77 @@
       <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
       
       <guid>./weechat-setup.html</guid>
-      <description>so you decided to switch from irssi to weechat?
-what options do you need to set? what plugins? what scripts?
-i&amp;rsquo;ll go over some of the most essential of these, and share my full configs.</description>
+      <description>&lt;p&gt;so you decided to switch from irssi to weechat?&lt;/p&gt;
+&lt;p&gt;what options do you need to set? what plugins? what scripts?&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll go over some of the most essential of these, and share my full
+configs.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;options&#34;&gt;options&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logger.level.irc&lt;/code&gt; the default is 9, which includes joins and parts.
+in most cases you can set this to 3, which only includes messages&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.buffer_notify_default&lt;/code&gt; the default here is &amp;ldquo;all&amp;rdquo;,
+which will add joins and parts to your hotlist. set it to &amp;ldquo;message&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.confirm_quit&lt;/code&gt; set this to on. you&amp;rsquo;ll thank me when you
+type &lt;code&gt;/quit&lt;/code&gt; and mean &lt;code&gt;/close&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.highlight&lt;/code&gt; add a comma-separated list of names/terms
+you&amp;rsquo;d like to trigger a highlight here&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.prefix_align_max&lt;/code&gt; set this to something between 10
+and 20. otherwise, long nicks will crush your available screen real
+estate.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.indent&lt;/code&gt; try something like
+&lt;code&gt;${color:237}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?├:└}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.number&lt;/code&gt; if you want to skip the . or space after the
+number, set it to &lt;code&gt;${color:green}${number}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_names&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_nicklist&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.server_buffer&lt;/code&gt; set this to independent to prevent
+automatic merges with the core weechat buffer. especially useful if
+you plan on using
+&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.server_default.autoconnect&lt;/code&gt; set this to on so you don&amp;rsquo;t have to
+set it for every new network you add.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scripts&#34;&gt;scripts&lt;/h2&gt;
+&lt;p&gt;these scripts can be managed with the built in &lt;code&gt;/script&lt;/code&gt; tool. press i,
+then enter on the selected script to install it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/highmon.pl.html/&#34;&gt;highmon.pl&lt;/a&gt; -
+set aside a buffer to list the places your nick has been mentioned&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_nicks.py.html/&#34;&gt;colorize_nicks.py&lt;/a&gt; -
+show nicks in chat with colors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/go.py.html/&#34;&gt;go.py&lt;/a&gt; - fuzzy
+quick jump by buffer number of channel name&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autojoin.py.html/&#34;&gt;autojoin.py&lt;/a&gt; -
+use &lt;code&gt;/autojoin --run&lt;/code&gt; to save all the channels you&amp;rsquo;re currently in
+to be autojoined the next time you start weechat&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt; -
+use this script in tandem with irc.look.server_buffer=independent
+to keep you channel and server list in order&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_lines.pl.html/&#34;&gt;colorize_lines.pl&lt;/a&gt; -
+i use this script to highlight the entire line of messages i&amp;rsquo;ve been
+mentioned in. check the options in the source or with
+&lt;code&gt;/help colorize_lines&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/grep.py.html/&#34;&gt;grep.py&lt;/a&gt; -
+quickly search history and buffers with &lt;code&gt;/grep&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-rest-of-my-configs&#34;&gt;the rest of my configs&lt;/h2&gt;
+&lt;p&gt;you can find the rest of my configs
+&lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;if you have any questions, feel free to ping me on irc. i&amp;rsquo;m ben on
+&lt;a href=&#34;https://libera.chat&#34;&gt;libera&lt;/a&gt; and &lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;screenshot&#34;&gt;screenshot&lt;/h2&gt;
+&lt;p&gt;here&amp;rsquo;s a screenshot of my current configs&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bhh.sh/pub/screenies/weechat.png&#34;&gt;&lt;img src=&#34;https://bhh.sh/pub/screenies/weechat.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bonus&#34;&gt;bonus&lt;/h2&gt;
+&lt;p&gt;if you have an existing setup, you can check the config changes you&amp;rsquo;ve
+made with &lt;code&gt;/set diff&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;additionally, feel free to &lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat/.gitignore&#34;&gt;use my
+.gitignore&lt;/a&gt;,
+add your ~/.weechat to source control, and compare.&lt;/p&gt;
+&lt;p&gt;hope you&amp;rsquo;ve enjoyed customizing your weechat!&lt;/p&gt;
+&lt;p&gt;EDIT: s/freenode/libera/g&lt;/p&gt;
+</description>
     </item>
     
   </channel>

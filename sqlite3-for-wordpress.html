@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>sqlite3 for wordpress</title>
+    </head>
+
+    <body>
+        <main>
+            <div id="search"></div>
+    <h1><a href="./sqlite3-for-wordpress.html">sqlite3 for wordpress</a></h1>
+
+    <time>Wed, 06 Jul 2022 13:53 UTC</time>
+    <p>tags:</p>
+     
+<ul>
+     <li>
+        <a href="tags/blog.html">blog</a>
+    </li> <li>
+        <a href="tags/wordpress.html">wordpress</a>
+    </li> <li>
+        <a href="tags/sysadmin.html">sysadmin</a>
+    </li></ul>
+
+
+
+    <hr>
+
+    <div data-pagefind-body>
+    <h1 id="sqlite3-for-wordpress">sqlite3 for wordpress</h1>
+<p>running wordpress with sqlite is quick, easy, and can be much less
+system administration load as it eliminates the need for a separate
+database process running.</p>
+<p><a href="https://wptest.bhh.sh">this site</a> is currently running with sqlite using <a href="https://github.com/aaemnnosttv/wp-sqlite-db">aaemnnosttv&rsquo;s
+drop-in</a>.</p>
+<h2 id="set-it-up">set it up</h2>
+<ul>
+<li>download <a href="https://wordpress.org/latest.tar.gz">https://wordpress.org/latest.tar.gz</a></li>
+<li>extract it into your webroot (something like <code>/var/www</code>)</li>
+<li>download
+<a href="https://github.com/aaemnnosttv/wp-sqlite-db/raw/master/src/db.php">db.php</a>
+and add it to <code>/var/www/yoursite/wp-content/</code></li>
+<li>follow the normal setup instructions but skip the database fields</li>
+<li>profit????</li>
+</ul>
+<h2 id="nginx-config">nginx config</h2>
+<p>adjust configs as needed. this is the live config for this site
+wptest.bhh.sh.</p>
+<p>snippets/ssl/bhh.sh just includes the block from certbot that points to
+the right cert and key.</p>
+<pre><code>server {
+        listen 80;
+        server_name wptest.bhh.sh;
+        return 307 https://$server_name$request_uri;
+}
+
+server {
+        listen 443 ssl;
+        server_name wptest.bhh.sh;
+        include snippets/ssl/bhh.sh;
+        index index.php index.html;
+        root /var/www/wptest.bhh.sh;
+        client_max_body_size 100M;
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+        location = /favicon.ico {
+                log_not_found off;
+                access_log off;
+        }
+
+        location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+
+        location ~* wp-config.php {
+                deny all;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_intercept_errors on;
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+}
+</code></pre>
+
+    </div>
+
+	<script src="https://utteranc.es/client.js"
+        repo="benharri/blog"
+        issue-term="title"
+        crossorigin="anonymous"
+        theme="github-dark"
+        async>
+	</script>
+
+<footer>
+    CC by-nc-nd <a href="https://tilde.team/~ben/">~ben</a> &mdash; <a href="https://tildegit.org/ben/blog">site source</a>
+</footer>
+</main>
+    </body>
+</html>

@@ -13,7 +13,25 @@
       <pubDate>Thu, 21 Dec 2017 16:09:45 +0000</pubDate>
       
       <guid>./loading.html</guid>
-      <description>const loadingmsgs = [ &amp;quot;Proving P=NP...&amp;quot;, &amp;quot;Computing 6 x 9...&amp;quot;, &amp;quot;Mining Bitcoin...&amp;quot;, &amp;quot;Dividing by 0...&amp;quot;, &amp;quot;Initializing Skynet...&amp;quot;, &amp;quot;[REDACTED]&amp;quot;, &amp;quot;Downloading more RAM...&amp;quot;, &amp;quot;Ordering 1s and 0s...&amp;quot;, &amp;quot;Navigating neural network...&amp;quot;, &amp;quot;Importing machine learning.</description>
+      <description>&lt;pre&gt;&lt;code&gt;const loadingmsgs = [
+    &amp;quot;Proving P=NP...&amp;quot;,
+    &amp;quot;Computing 6 x 9...&amp;quot;,
+    &amp;quot;Mining Bitcoin...&amp;quot;,
+    &amp;quot;Dividing by 0...&amp;quot;,
+    &amp;quot;Initializing Skynet...&amp;quot;,
+    &amp;quot;[REDACTED]&amp;quot;,
+    &amp;quot;Downloading more RAM...&amp;quot;,
+    &amp;quot;Ordering 1s and 0s...&amp;quot;,
+    &amp;quot;Navigating neural network...&amp;quot;,
+    &amp;quot;Importing machine learning...&amp;quot;,
+    &amp;quot;Issuing Alice and Bob one-time pads...&amp;quot;,
+    &amp;quot;Generating random sequence from key inputs while trying to exit vim...&amp;quot;,
+    &amp;quot;for i in range(additional): Pylon()&amp;quot;,
+    &amp;quot;(creating unresolved tension...&amp;quot;,
+    &amp;quot;Symlinking vim to nano and ed...&amp;quot;,
+];
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/0xdade/status/943573845469827072&#34;&gt;sauce&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -22,7 +40,18 @@
       <pubDate>Mon, 27 Nov 2017 16:58:17 +0000</pubDate>
       
       <guid>./antiwitze.html</guid>
-      <description>uebern berg ist schneller als zu fuss sagte der wanderer und schwamm los Was ist der Unterschied zwischen einem Vogel? Beide Beine sind gleich lang. Besonders das linke. Nachts ist es kälter als draußen.</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;uebern berg ist schneller als zu fuss sagte der wanderer und schwamm
+los&lt;/li&gt;
+&lt;li&gt;Was ist der Unterschied zwischen einem Vogel? Beide Beine sind
+gleich lang. Besonders das linke.&lt;/li&gt;
+&lt;li&gt;Nachts ist es kälter als draußen.&lt;/li&gt;
+&lt;li&gt;Wer später bremst, fährt länger schnell.&lt;/li&gt;
+&lt;li&gt;Cola schmeckt besser als aus dem Glas!!!&lt;/li&gt;
+&lt;li&gt;Zu Fuß ist schneller als übern Berg!&lt;/li&gt;
+&lt;li&gt;Was ist weiss und wandert den Berg hinauf? Eine Lawine mit Heimweh.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

@@ -6,15 +6,77 @@
     <description>Recent content in git on blog // ~ben</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Jun 2020 15:26:29 +0000</lastBuildDate><atom:link href="./tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 22:23:10 -0400</lastBuildDate><atom:link href="./tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git diff-highlight</title>
+      <link>./git-diff-highlight.html</link>
+      <pubDate>Wed, 20 Jul 2022 22:23:10 -0400</pubDate>
+      
+      <guid>./git-diff-highlight.html</guid>
+      <description>&lt;p&gt;diff output from git can be hard to read. luckily there&amp;rsquo;s a nice tool bundled with git that can help us out.&lt;/p&gt;
+&lt;p&gt;enter &lt;a href=&#34;https://github.com/git/git/tree/master/contrib/diff-highlight&#34;&gt;diff-highlight&lt;/a&gt;, a little perl script found in git&amp;rsquo;s contrib directory.&lt;/p&gt;
+&lt;p&gt;from it&amp;rsquo;s own documentation:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[diff-highlight] post-processes the line-oriented diff, finds pairs of lines, and highlights the differening segments.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;diff-highlight is shipped in a default git install but it needs to be added to your $PATH. here&amp;rsquo;s how to do it on debian:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo make -C /usr/share/doc/git/contrib/diff-highlight
+$ sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;now you can pipe git&amp;rsquo;s diff output to to diff-highlight to get a better view of what actually changed.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git diff | diff-highlight
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;optionally, you can configure git to use it all the time. add the following to your &lt;code&gt;~/.gitconfig&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[pager]
+log = diff-highlight | less
+show = diff-highlight | less
+diff = diff-highlight | less
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;see the &lt;a href=&#34;https://github.com/git/git/blob/master/contrib/diff-highlight/README&#34;&gt;documentation&lt;/a&gt; for more usage tips!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>default branch name</title>
       <link>./default-branch-name.html</link>
       <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
       
       <guid>./default-branch-name.html</guid>
-      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
-i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+      <description>&lt;p&gt;changing git’s default branch name has come up recently as an easy
+action we can take to update our language and remove harmful ideas from
+our daily usage.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;i’m concerned that this effort to change the language used is ultimately
+a symbolic gesture to avoid scrutiny into actual change (notably
+github’s push for this change and continued contracts with ICE).&lt;/p&gt;
+&lt;p&gt;however, it’s an easy change to make.&lt;/p&gt;
+&lt;p&gt;let’s have a look at how to change it for new repos:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/.config/git/template
+echo &amp;quot;ref: refs/head/main&amp;quot; &amp;gt; ~/.config/git/template/HEAD
+git config --global init.templateDir ~/.config/git/template
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;note that you can put this template dir anywhere you like.&lt;/p&gt;
+&lt;p&gt;you can also set this system-wide (not just for your user) in
+/usr/share, but note that this might get overriden by package updates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;ref: refs/head/main&amp;quot; | sudo tee /usr/share/git-core/templates/HEAD
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the next time you &lt;code&gt;git init&lt;/code&gt;, you’ll be on a branch named main.&lt;/p&gt;
+&lt;p&gt;to change an existing repo, you can use the &lt;code&gt;-m&lt;/code&gt; switch of &lt;code&gt;git-branch&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout master
+git branch -m master main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;push with &lt;code&gt;-u&lt;/code&gt; to your remote if needed and update the default branch in
+the repo settings in the hosting platform of choice.&lt;/p&gt;
+&lt;p&gt;it’s a relatively easy change, but don’t kid yourself that it makes any
+real impact. go protest, &lt;a href=&#34;https://blacklivesmatter.carrd.co/&#34;&gt;donate and sign
+petitions&lt;/a&gt;, and get out there to fix
+the actual problems.&lt;/p&gt;
+&lt;h2 id=&#34;update&#34;&gt;update:&lt;/h2&gt;
+&lt;p&gt;as of git 2.28, there’s a new configuration option and you don’t need to
+use the templateDir option:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global init.defaultBranch main
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +85,14 @@ i’m concerned that this effort to change the language used is ultimately a sym
       <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
       
       <guid>./dotfiles.html</guid>
-      <description>finally got around to updating my dotfiles to use gnu stow. i adapted ~tomasino&amp;rsquo;s makefile for use with the configs that i&amp;rsquo;m keeping with it.
-now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my config to ~/.</description>
+      <description>&lt;p&gt;finally got around to updating my
+&lt;a href=&#34;https://git.tilde.team/ben/dotfiles&#34;&gt;dotfiles&lt;/a&gt; to use gnu stow. i
+adapted &lt;a href=&#34;https://github.com/jamestomasino/dotfiles/blob/master/Makefile&#34;&gt;~tomasino&amp;rsquo;s
+makefile&lt;/a&gt;
+for use with the configs that i&amp;rsquo;m keeping with it.&lt;/p&gt;
+&lt;p&gt;now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my
+config to ~/.ssh when it already exists.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -33,8 +101,18 @@ now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink m
       <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
       
       <guid>./tildeverseorg.html</guid>
-      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
-among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+      <description>&lt;p&gt;since the last time i wrote a post here, i&amp;rsquo;ve registered the
+tildeverse.org domain and started moving some services over that were
+already intended for tildeverse use.&lt;/p&gt;
+&lt;p&gt;among those are &lt;a href=&#34;https://git.tildeverse.org&#34;&gt;gitea&lt;/a&gt; and &lt;a href=&#34;https://links.tildeverse.org&#34;&gt;the new link
+aggregator&lt;/a&gt; (which runs the same source as
+&lt;a href=&#34;https://github.com/lobsters/lobsters&#34;&gt;lobste.rs&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve also started a phlog in my
+&lt;a href=&#34;https://gopher.tilde.team/tilde.team/~ben&#34;&gt;gopherhole&lt;/a&gt; with
+&lt;a href=&#34;./~tomasino&#34;&gt;~tomasino&amp;rsquo;s&lt;/a&gt; new
+&lt;a href=&#34;https://github.com/jamestomasino/burrow&#34;&gt;burrow&lt;/a&gt; gopherhole tool!&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll try to post a bit more often too with updates from the tildeverse!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -43,9 +121,29 @@ among those are gitea and the new link aggregator (which runs the same source as
       <pubDate>Fri, 12 Jan 2018 13:30:26 +0000</pubDate>
       
       <guid>./git-remotes-with-ssh-aliases.html</guid>
-      <description>did you know that ~/.ssh/config aliases work for git remotes??
-~/.ssh/config
-Host gh HostName github.com User git IdentityFile ~/.ssh/gh_key  you can now use gh:username/repo as the remote in place of git@github.</description>
+      <description>&lt;p&gt;did you know that &lt;code&gt;~/.ssh/config&lt;/code&gt; aliases work for git remotes??&lt;/p&gt;
+&lt;p&gt;~/.ssh/config&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host gh
+HostName github.com
+User git
+IdentityFile ~/.ssh/gh_key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;you can now use &lt;code&gt;gh:username/repo&lt;/code&gt; as the remote in place of
+&lt;code&gt;git@github.com:username/repo&lt;/code&gt;, which is much shorter and easier to type
+many times!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone gh:benharri/learngit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;there are many other use cases for the &lt;code&gt;ssh_config&lt;/code&gt; file. for example,
+here is my config for the tilde machine for easy ssh connections.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host tilde
+HostName tilde.team
+User ben
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;then use &lt;code&gt;ssh tilde&lt;/code&gt; to start a new ssh session. this also works with
+&lt;code&gt;scp&lt;/code&gt;: try something like this &lt;code&gt;scp file.txt tilde:workspace/.&lt;/code&gt; in place
+of &lt;code&gt;scp file.txt ben@tilde.team:workspace/.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;the ssh_config file is super useful. check &lt;code&gt;man ssh_config&lt;/code&gt; for a full
+list of options!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

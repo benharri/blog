@@ -13,8 +13,41 @@
       <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
       
       <guid>./default-branch-name.html</guid>
-      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
-i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+      <description>&lt;p&gt;changing git’s default branch name has come up recently as an easy
+action we can take to update our language and remove harmful ideas from
+our daily usage.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;i’m concerned that this effort to change the language used is ultimately
+a symbolic gesture to avoid scrutiny into actual change (notably
+github’s push for this change and continued contracts with ICE).&lt;/p&gt;
+&lt;p&gt;however, it’s an easy change to make.&lt;/p&gt;
+&lt;p&gt;let’s have a look at how to change it for new repos:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/.config/git/template
+echo &amp;quot;ref: refs/head/main&amp;quot; &amp;gt; ~/.config/git/template/HEAD
+git config --global init.templateDir ~/.config/git/template
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;note that you can put this template dir anywhere you like.&lt;/p&gt;
+&lt;p&gt;you can also set this system-wide (not just for your user) in
+/usr/share, but note that this might get overriden by package updates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;ref: refs/head/main&amp;quot; | sudo tee /usr/share/git-core/templates/HEAD
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the next time you &lt;code&gt;git init&lt;/code&gt;, you’ll be on a branch named main.&lt;/p&gt;
+&lt;p&gt;to change an existing repo, you can use the &lt;code&gt;-m&lt;/code&gt; switch of &lt;code&gt;git-branch&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout master
+git branch -m master main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;push with &lt;code&gt;-u&lt;/code&gt; to your remote if needed and update the default branch in
+the repo settings in the hosting platform of choice.&lt;/p&gt;
+&lt;p&gt;it’s a relatively easy change, but don’t kid yourself that it makes any
+real impact. go protest, &lt;a href=&#34;https://blacklivesmatter.carrd.co/&#34;&gt;donate and sign
+petitions&lt;/a&gt;, and get out there to fix
+the actual problems.&lt;/p&gt;
+&lt;h2 id=&#34;update&#34;&gt;update:&lt;/h2&gt;
+&lt;p&gt;as of git 2.28, there’s a new configuration option and you don’t need to
+use the templateDir option:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global init.defaultBranch main
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +56,28 @@ i’m concerned that this effort to change the language used is ultimately a sym
       <pubDate>Mon, 26 Feb 2018 11:57:10 +0000</pubDate>
       
       <guid>./phoenix.html</guid>
-      <description>inspired by oodsnet, (and my pull request to add darkmode), i started to create my own tilde.team fork (now forum.tilde.team).
-the first step was to switch out the css to the tilde.</description>
+      <description>&lt;p&gt;inspired by &lt;a href=&#34;http://oods.net&#34;&gt;oodsnet&lt;/a&gt;, (and my pull request to add
+&lt;a href=&#34;https://github.com/exezin/oodsnet/pull/5&#34;&gt;darkmode&lt;/a&gt;), i started to
+create my own tilde.team fork (now
+&lt;a href=&#34;https://forum.tilde.team/&#34;&gt;forum.tilde.team&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;the first step was to switch out the css to the &lt;a href=&#34;https://tilde.team/css/&#34;&gt;tilde.team
+standard&lt;/a&gt; and update the classes for bootstrap.
+once i got it going and integrated with the tilde.team linux auth
+service, i asked other tildeans for input and suggestions.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;./~micaiah/&#34;&gt;~micaiah&lt;/a&gt; was interested in helping, but also wanted to
+learn a new language and/or framework, so we decided to start over,
+recreating the entire forum with
+&lt;a href=&#34;http://phoenixframework.org&#34;&gt;elixir/phoenix&lt;/a&gt;. we&amp;rsquo;d discussed elixir
+previously, but never had a convincing use case to force us to learn it.&lt;/p&gt;
+&lt;p&gt;the project is live, with the source code on
+&lt;a href=&#34;https://github.com/tilde-team/forum&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;the thing that i&amp;rsquo;m most impressed with is the speed of the erlang
+runtime :D&lt;/p&gt;
+&lt;p&gt;check out these response times. sub-millisecond!?!?!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/phx.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;give it a look, and &lt;a href=&#34;https://tilde.team/signup&#34;&gt;join the tilde.team&lt;/a&gt; if
+you want to come hang out!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -33,7 +86,28 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
       
       <guid>./webassembly.html</guid>
-      <description>according to this post on the mozilla blog, we will be able to compile wasm as it streams into the browser in much the same way that images are decoded. this is a huge game changer from the current paradigm of loading javascript completely before being able to parse and compile it.</description>
+      <description>&lt;p&gt;according to &lt;a href=&#34;https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/&#34;&gt;this
+post&lt;/a&gt;
+on the mozilla blog, we will be able to compile wasm as it streams into
+the browser in much the same way that images are decoded. this is a huge
+game changer from the current paradigm of loading javascript completely
+before being able to parse and compile it.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript code is much more expensive, byte for byte, than an image,
+because of the time spent parsing and compiling it. It&amp;rsquo;s possible to
+parse and compile wasm as fast as it comes over the network, which
+makes it much more like an image than JavaScript code. Game changer!&lt;/p&gt;
+&lt;p&gt;— Yehuda Katz (@wycats) &lt;a href=&#34;https://twitter.com/wycats/status/942908325775077376?ref_src=twsrc%5Etfw&#34;&gt;December 19,
+2017&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;this will make &lt;a href=&#34;https://github.com/WebAssembly/design/blob/master/UseCases.md&#34;&gt;so many
+things&lt;/a&gt;
+possible in the browser that never were before!&lt;/p&gt;
+&lt;p&gt;i decided to follow this
+&lt;a href=&#34;http://webassembly.org/getting-started/developers-guide/&#34;&gt;tutorial&lt;/a&gt; and
+ended up with &lt;a href=&#34;https://tilde.team/~ben/wasm/hello.html&#34;&gt;this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i don&amp;rsquo;t know what to do next. any ideas?&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -42,7 +116,42 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./silex.html</guid>
-      <description>UPDATE: this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip; i&amp;rsquo;m including it for historical purposes here&amp;rsquo;s the deployed site and the source for it</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;UPDATE:
+this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip;
+i&amp;rsquo;m including it for historical purposes
+here&amp;rsquo;s the &lt;a href=&#34;https://benhh.bhh.sh&#34;&gt;deployed site&lt;/a&gt;
+and the &lt;a href=&#34;https://github.com/benharri/benhh.com&#34;&gt;source for it&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;this-is-an-introduction-to-my-choice-of-framework-in-building-this-website&#34;&gt;This is an introduction to my choice of framework in building this website.&lt;/h3&gt;
+&lt;h4 id=&#34;several-options-i-considered-for-my-website&#34;&gt;Several options I considered for my website:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://djangoproject.com/&#34;&gt;Django&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Django&amp;rsquo;s opinionated Model model with its strong database ties seemed a bit much for a relatively static site&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s huge and unnecessarily complicated for a simple website&lt;/li&gt;
+&lt;li&gt;It would be a great learning experience in Python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php.net&#34;&gt;Vanilla PHP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;I have a lot of experience in vanilla PHP at my internship at &lt;a href=&#34;http://nmu.edu&#34;&gt;Northern Michigan University&lt;/a&gt; working in the Information Services department where I develop web applications for internal use.&lt;/li&gt;
+&lt;li&gt;I often find myself frustrated with PHP&amp;rsquo;s quirkiness and wouldn&amp;rsquo;t learn new material if I used this for my personal website.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://silex.sensiolabs.com&#34;&gt;Silex&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This is a micro-framework built using components of the much larger &lt;a href=&#34;https://symfony.com&#34;&gt;Symfony&lt;/a&gt; framework.&lt;/li&gt;
+&lt;li&gt;I discovered Silex in &lt;a href=&#34;https://devcenter.heroku.com/articles/getting-started-with-php&#34;&gt;Heroku&amp;rsquo;s PHP deployment guide&lt;/a&gt; where I noticed that it was small enough to not draw unneeded overhead and extensible enough for my website to grow as it needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I opted to go with Silex. The source code is available &lt;a href=&#34;https://github.com/benharri/benhh.com&#34;&gt;here&lt;/a&gt; for your perusal.&lt;/p&gt;
+&lt;p&gt;I have gone through many iterations of this site. The first version was simply a clone of the &lt;a href=&#34;http://euclid.nmu.edu/~benharri/&#34;&gt;homepage&lt;/a&gt; that I have on my university&amp;rsquo;s computer science department server. This wasn&amp;rsquo;t a very useful homepage as many of the projects that I wanted to show in a portfolio were tied to a database on that server.&lt;/p&gt;
+&lt;p&gt;I eventually moved towards a one-page style layout (&lt;a href=&#34;https://github.com/benharri/benhh.com/commit/974e12e85a9ab872facf0f4a238337b2e2d216a3&#34;&gt;in this commit&lt;/a&gt;) where the links in the navbar would scroll the page to pre-defined regions. I then ditched the old multipage layout and at this point I discovered &lt;a href=&#34;https://getgrav.org&#34;&gt;Grav&lt;/a&gt;. After difficulties integrating Grav within my app (read more &lt;a href=&#34;./blog/grav-on-heroku&#34;&gt;here&lt;/a&gt;), I decided to roll my own blogging solution modeled after Grav&amp;rsquo;s markdown content system.&lt;/p&gt;
+&lt;p&gt;I included a YAML Front Matter + Markdown Parser and used that to define the metadata for a &lt;a href=&#34;https://github.com/benharri/benhh.com/blob/master/app/controllers/Blog.php&#34;&gt;blogpost&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is still much to do (post sort order, paging, tagging, etc), but I appreciate the experience that I have gained in building this blogging system.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -51,8 +160,40 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./grav-on-heroku.html</guid>
-      <description>NOTE: this is a historical post that i&amp;rsquo;m importing from my old site.
- When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;NOTE:
+this is a historical post that i&amp;rsquo;m importing from my old site.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.&lt;/p&gt;
+&lt;p&gt;I had already decided that I would use a free dyno on &lt;a href=&#34;https://heroku.com&#34;&gt;Heroku&lt;/a&gt; for hosting.&lt;/p&gt;
+&lt;p&gt;As I researched additional solutions, I came upon the world of the PHP CMS (Content Management System, for the uninitiated). Just the sheer number and variety of CMS is &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_content_management_systems#PHP&#34;&gt;terrifying&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The free tier for databases in Heroku felt lacking in peace of mind and ease of setup so I focused my search to the realm of the &amp;ldquo;flat-file&amp;rdquo; CMS.&lt;/p&gt;
+&lt;p&gt;I discovered &lt;a href=&#34;https://getgrav.org&#34;&gt;Grav&lt;/a&gt; purely by chance. Grav claims to be fast and extensible. I was enticed by the flashy admin interface replete with responsive UI and a gorgeous built-in Markdown editor for content creation.&lt;/p&gt;
+&lt;p&gt;After a bit of &lt;a href=&#34;https://learn.getgrav.org/hosting/paas/heroku&#34;&gt;configuration&lt;/a&gt;, I managed to deploy a Grav instance into a Heroku dyno (a rather annoying affair which involved deploying caches to Heroku and &lt;code&gt;mod_rewrite&lt;/code&gt; rules in &lt;code&gt;.htaccess&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The tricky part came when I brought the &lt;a href=&#34;https://github.com/getgrav/grav-plugin-admin&#34;&gt;Admin Plugin&lt;/a&gt; into the picture. Without the Admin Plugin, you need to directly change the configurations and add content from the filesystem and then deploy that to the web. You are able, however, to use PHP&amp;rsquo;s built-in development webserver (&lt;code&gt;php -S localhost:9000&lt;/code&gt;) to test your changes.&lt;/p&gt;
+&lt;p&gt;Once I got the Admin plugin working (don&amp;rsquo;t forget to clear your cache if you&amp;rsquo;re deploying to Heroku &amp;ndash; or make sure that the cache directory is in your &lt;code&gt;.gitignore&lt;/code&gt; file), I started making changes to my &lt;code&gt;.yml&lt;/code&gt; configuration files and writing some content with the built-in Markdown editor. I was very impressed with the Admin interface. It&amp;rsquo;s very modern-feeling, while still being lightning-quick.&lt;/p&gt;
+&lt;p&gt;Then I needed to make a change that wasn&amp;rsquo;t available from the Admin interface&amp;hellip; After the next deploy to Heroku, every change that I had made from within the Admin interface was obliterated. This is the main flaw in hosting a Grav app on Heroku. The ephemeral file system for a dyno on Heroku works just fine, but when the dyno restarts, it is regenerated to the state at the latest build. It&amp;rsquo;s important to note that dynos go down any time you push a new build and at &lt;a href=&#34;https://devcenter.heroku.com/articles/dynos#restarting&#34;&gt;least once a day&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dynos restart when:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;create a new release by deploying new code&lt;/li&gt;
+&lt;li&gt;change your config vars&lt;/li&gt;
+&lt;li&gt;change your add-ons&lt;/li&gt;
+&lt;li&gt;run heroku restart&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I then read more about the &lt;a href=&#34;https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem&#34;&gt;ephemeral filesystem&lt;/a&gt; of Heroku dynos.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each dyno gets its own ephemeral filesystem, with a fresh copy of the most recently deployed code. During the dyno’s lifetime its running processes can use the filesystem as a temporary scratchpad, but no files that are written are visible to processes in any other dyno and any files written will be discarded the moment the dyno is stopped or restarted. For example, this occurs any time a dyno is replaced due to application deployment and approximately once a day as part of normal dyno management.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a useless setup for a Grav application where everything is a file. This may sound a bit harsh, but changes to the live app will be destroyed within a day. This just means that there are two options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ditch the Admin plugin&lt;/li&gt;
+&lt;li&gt;Use a full LAMP stack locally to make changes to the files from within the Admin interface before deploying to Heroku&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I chose to ditch the Admin plugin. Making changes to the project from within the filesystem in &lt;a href=&#34;https://sublimetext.com/3&#34;&gt;my text editor&lt;/a&gt; was totally acceptable.&lt;/p&gt;
+&lt;p&gt;Not long after trying to integrate a Grav app within the Silex application that is my website (rather than linking to the Grav app through a subdomain of benhh.com), I gave up Grav for my blog entirely and decided to roll my own &lt;a href=&#34;./blog/silex&#34;&gt;blogging solution&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

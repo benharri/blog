@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>Why I chose Silex for this website</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>Why I chose Silex for this website</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./silex.html">Why I chose Silex for this website</a></h1>
 
     <time>Wed, 29 Jun 2016 00:00 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <blockquote>
 <p>UPDATE:
 this is a very old post that i&rsquo;m importing from my old site&hellip;
@@ -61,6 +69,7 @@ and the <a href="https://github.com/benharri/benhh.com">source for it</a></p>
 <p>I included a YAML Front Matter + Markdown Parser and used that to define the metadata for a <a href="https://github.com/benharri/benhh.com/blob/master/app/controllers/Blog.php">blogpost</a>.</p>
 <p>There is still much to do (post sort order, paging, tagging, etc), but I appreciate the experience that I have gained in building this blogging system.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

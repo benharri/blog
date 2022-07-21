@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>utterances</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>utterances</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./utterances.html">utterances</a></h1>
 
     <time>Wed, 05 Sep 2018 21:34 UTC</time>
@@ -23,6 +30,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>i somehow stumbled upon <a href="https://utteranc.es">utterances</a> today at
 lunch. (i think someone had it forked on their github page).</p>
 <p>no matter how i found it, i still decided to add it to my blog here with
@@ -35,6 +43,7 @@ this</a>.</p>
 <p>now we just need to figure out if it can be pointed at a gitea instance
 like <a href="https://tildegit.org">tildegit</a>. might be time for a PR!</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

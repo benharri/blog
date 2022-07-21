@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>tilde.team news</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>tilde.team news</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./tildeteam-news.html">tilde.team news</a></h1>
 
     <time>Wed, 13 Jun 2018 15:07 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>hey hi hello!</p>
 <p>it seems that i haven&rsquo;t written anything on my blog in quite a while&hellip;</p>
 <p>time to fix that! i&rsquo;ve been quite busy in the last month or so with a
@@ -47,6 +55,7 @@ script wrapper with submission and approval flows</li>
 all still privacy policy update notices. :(</p>
 <p>see you soon!</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

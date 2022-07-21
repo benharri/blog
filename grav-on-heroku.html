@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>Heroku with Grav flat-file CMS</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>Heroku with Grav flat-file CMS</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./grav-on-heroku.html">Heroku with Grav flat-file CMS</a></h1>
 
     <time>Sat, 25 Jun 2016 00:00 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <blockquote>
 <p>NOTE:
 this is a historical post that i&rsquo;m importing from my old site.</p>
@@ -59,6 +67,7 @@ this is a historical post that i&rsquo;m importing from my old site.</p>
 <p>I chose to ditch the Admin plugin. Making changes to the project from within the filesystem in <a href="https://sublimetext.com/3">my text editor</a> was totally acceptable.</p>
 <p>Not long after trying to integrate a Grav app within the Silex application that is my website (rather than linking to the Grav app through a subdomain of benhh.com), I gave up Grav for my blog entirely and decided to roll my own <a href="/blog/silex">blogging solution</a>.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

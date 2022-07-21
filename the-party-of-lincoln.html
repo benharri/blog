@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>The Party of Lincoln</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>The Party of Lincoln</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./the-party-of-lincoln.html">The Party of Lincoln</a></h1>
 
     <time>Thu, 21 Jul 2016 00:00 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>Something that struck me as absolutely outrageous (<em>more</em> than other things that I&rsquo;ve seen this week) was the connection of the roots of the Republican party to the modern Republican party.</p>
 <p>While it never hurts to be proud of where the party comes from, it is completely unreasonable to claim that the modern-day party stands for the same things it did when it was founded.</p>
 <p>The Republican party was founded in 1854 on an anti-slavery platform, where it filled in the power gap in the north left by the collapsed Whig party. It saw strong support in the north of the US, where Republicans fought to end slavery. Abraham Lincoln was elected as the first Republican president in 1860.</p>
@@ -35,6 +43,7 @@
 <p>I was inspired to write this article by mention of this idea at the convention, as well as this Vox video.</p>
 <!-- raw HTML omitted -->
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

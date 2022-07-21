@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>dotfiles</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>dotfiles</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./dotfiles.html">dotfiles</a></h1>
 
     <time>Sun, 22 Jul 2018 19:26 UTC</time>
@@ -27,6 +34,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>finally got around to updating my
 <a href="https://git.tilde.team/ben/dotfiles">dotfiles</a> to use gnu stow. i
 adapted <a href="https://github.com/jamestomasino/dotfiles/blob/master/Makefile">~tomasino&rsquo;s
@@ -35,6 +43,7 @@ for use with the configs that i&rsquo;m keeping with it.</p>
 <p>now i just need to figure out why my ssh config doesn&rsquo;t copy/symlink my
 config to ~/.ssh when it already exists.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

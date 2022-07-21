@@ -6,15 +6,77 @@
     <description>Recent content in linux on blog // ~ben</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Jun 2020 15:26:29 +0000</lastBuildDate><atom:link href="./tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 22:23:10 -0400</lastBuildDate><atom:link href="./tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git diff-highlight</title>
+      <link>./git-diff-highlight.html</link>
+      <pubDate>Wed, 20 Jul 2022 22:23:10 -0400</pubDate>
+      
+      <guid>./git-diff-highlight.html</guid>
+      <description>&lt;p&gt;diff output from git can be hard to read. luckily there&amp;rsquo;s a nice tool bundled with git that can help us out.&lt;/p&gt;
+&lt;p&gt;enter &lt;a href=&#34;https://github.com/git/git/tree/master/contrib/diff-highlight&#34;&gt;diff-highlight&lt;/a&gt;, a little perl script found in git&amp;rsquo;s contrib directory.&lt;/p&gt;
+&lt;p&gt;from it&amp;rsquo;s own documentation:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[diff-highlight] post-processes the line-oriented diff, finds pairs of lines, and highlights the differening segments.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;diff-highlight is shipped in a default git install but it needs to be added to your $PATH. here&amp;rsquo;s how to do it on debian:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo make -C /usr/share/doc/git/contrib/diff-highlight
+$ sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;now you can pipe git&amp;rsquo;s diff output to to diff-highlight to get a better view of what actually changed.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git diff | diff-highlight
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;optionally, you can configure git to use it all the time. add the following to your &lt;code&gt;~/.gitconfig&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[pager]
+log = diff-highlight | less
+show = diff-highlight | less
+diff = diff-highlight | less
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;see the &lt;a href=&#34;https://github.com/git/git/blob/master/contrib/diff-highlight/README&#34;&gt;documentation&lt;/a&gt; for more usage tips!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>default branch name</title>
       <link>./default-branch-name.html</link>
       <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
       
       <guid>./default-branch-name.html</guid>
-      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
-i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+      <description>&lt;p&gt;changing git’s default branch name has come up recently as an easy
+action we can take to update our language and remove harmful ideas from
+our daily usage.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;i’m concerned that this effort to change the language used is ultimately
+a symbolic gesture to avoid scrutiny into actual change (notably
+github’s push for this change and continued contracts with ICE).&lt;/p&gt;
+&lt;p&gt;however, it’s an easy change to make.&lt;/p&gt;
+&lt;p&gt;let’s have a look at how to change it for new repos:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/.config/git/template
+echo &amp;quot;ref: refs/head/main&amp;quot; &amp;gt; ~/.config/git/template/HEAD
+git config --global init.templateDir ~/.config/git/template
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;note that you can put this template dir anywhere you like.&lt;/p&gt;
+&lt;p&gt;you can also set this system-wide (not just for your user) in
+/usr/share, but note that this might get overriden by package updates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;ref: refs/head/main&amp;quot; | sudo tee /usr/share/git-core/templates/HEAD
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the next time you &lt;code&gt;git init&lt;/code&gt;, you’ll be on a branch named main.&lt;/p&gt;
+&lt;p&gt;to change an existing repo, you can use the &lt;code&gt;-m&lt;/code&gt; switch of &lt;code&gt;git-branch&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout master
+git branch -m master main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;push with &lt;code&gt;-u&lt;/code&gt; to your remote if needed and update the default branch in
+the repo settings in the hosting platform of choice.&lt;/p&gt;
+&lt;p&gt;it’s a relatively easy change, but don’t kid yourself that it makes any
+real impact. go protest, &lt;a href=&#34;https://blacklivesmatter.carrd.co/&#34;&gt;donate and sign
+petitions&lt;/a&gt;, and get out there to fix
+the actual problems.&lt;/p&gt;
+&lt;h2 id=&#34;update&#34;&gt;update:&lt;/h2&gt;
+&lt;p&gt;as of git 2.28, there’s a new configuration option and you don’t need to
+use the templateDir option:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global init.defaultBranch main
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +85,46 @@ i’m concerned that this effort to change the language used is ultimately a sym
       <pubDate>Mon, 11 Feb 2019 02:40:20 +0000</pubDate>
       
       <guid>./networking-nonsense.html</guid>
-      <description>i&amp;rsquo;ve recently been working on setting up drone ci on the tilde.team machine. however, there&amp;rsquo;s been something strange going on with the networking on there.
-starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netstat -tulpn showed the port binding properly to 127.</description>
+      <description>&lt;p&gt;i&amp;rsquo;ve recently been working on setting up &lt;a href=&#34;https://drone.tildegit.org&#34;&gt;drone
+ci&lt;/a&gt; on the tilde.team machine. however,
+there&amp;rsquo;s been something strange going on with the networking on there.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;starting up drone with
+&lt;a href=&#34;https://tildegit.org/tildeverse/drone/src/branch/master/docker-compose.yml&#34;&gt;docker-compose&lt;/a&gt;
+didn&amp;rsquo;t seem to be working: &lt;code&gt;netstat -tulpn&lt;/code&gt; showed the port binding
+properly to 127.0.0.1:8888 but i was completely unable to get anything
+from it (using curl the nginx proxy that was to come).&lt;/p&gt;
+&lt;p&gt;i ended up scrapping docker on the ~team box itself and moving it into a
+lxd container (pronounced &amp;ldquo;lex-dee&amp;rdquo;) with nesting enabled.&lt;/p&gt;
+&lt;p&gt;this got us in to another problem that had been seen before when using
+nginx to proxy to apps running in other containers. requests were
+dropped intermittently, sometimes hanging for upwards of 30 seconds.&lt;/p&gt;
+&lt;p&gt;getting frustrated with this error, i tried to reproduce it on another
+host. both the docker-proxy and nginx-&amp;gt;lxd proxies work on the first
+try yielded no clues as to where things were going wrong.&lt;/p&gt;
+&lt;p&gt;in a half-awake stupor last saturday evening, i decided to try rule out
+ipv6 by disabling it system-wide. as is expected for sleepy work, it
+didn&amp;rsquo;t fix the problem and created more in the process.&lt;/p&gt;
+&lt;p&gt;feeling satisfied that the problem didn&amp;rsquo;t lie with ipv6, i re-enabled
+it, only to find that i was unable to bind nginx to my allocated /64. i
+may or may not have ranted a bit about this on irc but i was able to get
+it back up and running by restarting systemd-networkd.&lt;/p&gt;
+&lt;p&gt;one step forwards broke something and now we&amp;rsquo;re back to where we started
+with the original problem of the intermittent hangups to the lxd
+container.&lt;/p&gt;
+&lt;p&gt;seeing my troubles on irc, &lt;a href=&#34;https://tilde.team/~jchelpau/&#34;&gt;jchelpau&lt;/a&gt;
+offered to help dig in to the problem with a a fresh set of eyes. he
+noted right away that pings over ipv6 to the containers worked fine, but
+ipv4 did not.&lt;/p&gt;
+&lt;p&gt;we ended up looking at the firewall configurations, only to find that
+one of the subnets i blocked after november&amp;rsquo;s &lt;a href=&#34;november-13-post-mortem.html&#34;&gt;nmap
+incident&lt;/a&gt; included lxdbr0&amp;rsquo;s subnet (the
+bridge device used by lxd).&lt;/p&gt;
+&lt;p&gt;now that i made the exeption for lxdbr0, everything is working as
+expected!&lt;/p&gt;
+&lt;p&gt;thanks to &lt;a href=&#34;https://tilde.team/~fosslinux/&#34;&gt;fosslinux&lt;/a&gt; and
+&lt;a href=&#34;https://tilde.team/~jchelpau/&#34;&gt;jchelpau&lt;/a&gt; for their debugging help!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -33,9 +133,77 @@ starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netst
       <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
       
       <guid>./weechat-setup.html</guid>
-      <description>so you decided to switch from irssi to weechat?
-what options do you need to set? what plugins? what scripts?
-i&amp;rsquo;ll go over some of the most essential of these, and share my full configs.</description>
+      <description>&lt;p&gt;so you decided to switch from irssi to weechat?&lt;/p&gt;
+&lt;p&gt;what options do you need to set? what plugins? what scripts?&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll go over some of the most essential of these, and share my full
+configs.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;options&#34;&gt;options&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logger.level.irc&lt;/code&gt; the default is 9, which includes joins and parts.
+in most cases you can set this to 3, which only includes messages&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.buffer_notify_default&lt;/code&gt; the default here is &amp;ldquo;all&amp;rdquo;,
+which will add joins and parts to your hotlist. set it to &amp;ldquo;message&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.confirm_quit&lt;/code&gt; set this to on. you&amp;rsquo;ll thank me when you
+type &lt;code&gt;/quit&lt;/code&gt; and mean &lt;code&gt;/close&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.highlight&lt;/code&gt; add a comma-separated list of names/terms
+you&amp;rsquo;d like to trigger a highlight here&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.prefix_align_max&lt;/code&gt; set this to something between 10
+and 20. otherwise, long nicks will crush your available screen real
+estate.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.indent&lt;/code&gt; try something like
+&lt;code&gt;${color:237}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?├:└}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.number&lt;/code&gt; if you want to skip the . or space after the
+number, set it to &lt;code&gt;${color:green}${number}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_names&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_nicklist&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.server_buffer&lt;/code&gt; set this to independent to prevent
+automatic merges with the core weechat buffer. especially useful if
+you plan on using
+&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.server_default.autoconnect&lt;/code&gt; set this to on so you don&amp;rsquo;t have to
+set it for every new network you add.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scripts&#34;&gt;scripts&lt;/h2&gt;
+&lt;p&gt;these scripts can be managed with the built in &lt;code&gt;/script&lt;/code&gt; tool. press i,
+then enter on the selected script to install it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/highmon.pl.html/&#34;&gt;highmon.pl&lt;/a&gt; -
+set aside a buffer to list the places your nick has been mentioned&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_nicks.py.html/&#34;&gt;colorize_nicks.py&lt;/a&gt; -
+show nicks in chat with colors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/go.py.html/&#34;&gt;go.py&lt;/a&gt; - fuzzy
+quick jump by buffer number of channel name&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autojoin.py.html/&#34;&gt;autojoin.py&lt;/a&gt; -
+use &lt;code&gt;/autojoin --run&lt;/code&gt; to save all the channels you&amp;rsquo;re currently in
+to be autojoined the next time you start weechat&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt; -
+use this script in tandem with irc.look.server_buffer=independent
+to keep you channel and server list in order&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_lines.pl.html/&#34;&gt;colorize_lines.pl&lt;/a&gt; -
+i use this script to highlight the entire line of messages i&amp;rsquo;ve been
+mentioned in. check the options in the source or with
+&lt;code&gt;/help colorize_lines&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/grep.py.html/&#34;&gt;grep.py&lt;/a&gt; -
+quickly search history and buffers with &lt;code&gt;/grep&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-rest-of-my-configs&#34;&gt;the rest of my configs&lt;/h2&gt;
+&lt;p&gt;you can find the rest of my configs
+&lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;if you have any questions, feel free to ping me on irc. i&amp;rsquo;m ben on
+&lt;a href=&#34;https://libera.chat&#34;&gt;libera&lt;/a&gt; and &lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;screenshot&#34;&gt;screenshot&lt;/h2&gt;
+&lt;p&gt;here&amp;rsquo;s a screenshot of my current configs&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bhh.sh/pub/screenies/weechat.png&#34;&gt;&lt;img src=&#34;https://bhh.sh/pub/screenies/weechat.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bonus&#34;&gt;bonus&lt;/h2&gt;
+&lt;p&gt;if you have an existing setup, you can check the config changes you&amp;rsquo;ve
+made with &lt;code&gt;/set diff&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;additionally, feel free to &lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat/.gitignore&#34;&gt;use my
+.gitignore&lt;/a&gt;,
+add your ~/.weechat to source control, and compare.&lt;/p&gt;
+&lt;p&gt;hope you&amp;rsquo;ve enjoyed customizing your weechat!&lt;/p&gt;
+&lt;p&gt;EDIT: s/freenode/libera/g&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -44,8 +212,51 @@ i&amp;rsquo;ll go over some of the most essential of these, and share my full co
       <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
       
       <guid>./november-13-post-mortem.html</guid>
-      <description>we had something of an outage on november 13, 2018 on tilde.team.
-i awoke, not suspecting anything to be amiss. as soon as i logged in to check my email and irc mentions, it became clear.</description>
+      <description>&lt;p&gt;we had something of an outage on november 13, 2018 on tilde.team.&lt;/p&gt;
+&lt;p&gt;i awoke, not suspecting anything to be amiss. as soon as i logged in to
+check my email and irc mentions, it became clear.&lt;/p&gt;
+&lt;p&gt;tilde.team was at the least inaccessible, and at the worst, down
+completely. according the message in my inbox, there had been an
+attempted &amp;ldquo;attack&amp;rdquo; from my IP.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have indications that there was an attack from your server. Please
+take all necessary measures to avoid this in the future and to solve
+the issue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;at this point, i have no idea what could have happened over night while
+i&amp;rsquo;m sleeping. the timestamp shows that it arrive only 30 minutes after
+i&amp;rsquo;d turned in for the night.&lt;/p&gt;
+&lt;p&gt;when i finally log on in the morning to check mails and irc mentions, i
+find that i&amp;rsquo;m unable to connect to tilde.team&amp;hellip; strange, but ok; time
+to troubleshoot. i refresh the &lt;a href=&#34;https://mail.tilde.team&#34;&gt;webmail&lt;/a&gt; to see
+what i&amp;rsquo;m missing. it ends up failing to find the server. even stranger!
+i&amp;rsquo;d better get the mails off my phone if they&amp;rsquo;re on my @tilde.team mail!&lt;/p&gt;
+&lt;p&gt;here, i launch in to full debugging mode: what command was it? who ran
+it?&lt;/p&gt;
+&lt;p&gt;search &lt;code&gt;~/.bash_history&lt;/code&gt; per user was not very successful. nothing i
+could find was related to net or map. i had checked
+&lt;code&gt;sudo grep nmap /home/*/.bash_history&lt;/code&gt; and many other commands.&lt;/p&gt;
+&lt;p&gt;at this point, i had connected with other ~teammates across other irc
+nets (&lt;a href=&#34;https://hashbang.sh/&#34;&gt;#!&lt;/a&gt;, &lt;a href=&#34;https://tilde.town&#34;&gt;~town&lt;/a&gt;, etc).
+among suggestions to check &lt;code&gt;/var/log/syslog&lt;/code&gt;, &lt;code&gt;/var/log/kern.log&lt;/code&gt;, and
+&lt;code&gt;dmesg&lt;/code&gt;, i finally decided to check &lt;code&gt;ps&lt;/code&gt;. &lt;code&gt;ps -ef | grep nmap&lt;/code&gt; yielded
+nmap on an obscured uid and gid, which is shortly established to belong
+to a container i had provisioned for &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not considering methods of policing access to any site over port 80
+and port 443. this is crazy. how do you police &lt;code&gt;nmap&lt;/code&gt; when it isn&amp;rsquo;t
+scanning on every port?&lt;/p&gt;
+&lt;p&gt;after a bit of shit-talking and reassurance from other sysadmins, i
+reexamined and realized that &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt; had only run
+&lt;code&gt;nmap&lt;/code&gt; for addresses in the &lt;code&gt;10.0.0.0/8&lt;/code&gt; space. the &lt;code&gt;10/8&lt;/code&gt; address space
+is intended to not be addressable outside the local space. how could
+&lt;a href=&#34;https://hetzner.com&#34;&gt;hetzner&lt;/a&gt; have found out about a localhost network
+probe!?&lt;/p&gt;
+&lt;p&gt;finally, after speaking with more people than i expected to speak with
+in one day, i ended up sending three different support emails to hetzner
+support, which finally resulted in them unlocking the ip.&lt;/p&gt;
+&lt;p&gt;it&amp;rsquo;s definitely time to research redundancy options!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -54,9 +265,23 @@ i awoke, not suspecting anything to be amiss. as soon as i logged in to check my
       <pubDate>Tue, 14 Aug 2018 23:36:05 +0000</pubDate>
       
       <guid>./no-more-google.html</guid>
-      <description>not sure if this is appropriately tagged, but i didn&amp;rsquo;t feel like making a new one.
-i figured i should probably get some notes down about moving off google.
-to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:</description>
+      <description>&lt;p&gt;not sure if this is appropriately tagged, but i didn&amp;rsquo;t feel like making
+a new one.&lt;/p&gt;
+&lt;p&gt;i figured i should probably get some notes down about moving off google.&lt;/p&gt;
+&lt;p&gt;to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gmail =&amp;gt; &lt;a href=&#34;https://tilde.team/wiki/?page=email&#34;&gt;@tilde.team mail&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;google drive =&amp;gt; &lt;a href=&#34;https://syncthing.net&#34;&gt;syncthing&lt;/a&gt; (with a
+persistent node running on my personal vps)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i&amp;rsquo;m still using:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gplay music/youtube&lt;/li&gt;
+&lt;li&gt;google maps (open streetmap isn&amp;rsquo;t good enough to replace it)&lt;/li&gt;
+&lt;li&gt;google photos - but this is going to be replaced long-term with
+syncthing&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -65,7 +290,13 @@ to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:<
       <pubDate>Tue, 14 Aug 2018 15:05:38 +0000</pubDate>
       
       <guid>./upsides-of-new-dns-nameservers.html</guid>
-      <description> no more google no more google automated certbot validation for letsencrypt wildcard certs!! no more manual TXT records every three months!  </description>
+      <description>&lt;ul&gt;
+&lt;li&gt;no more google&lt;/li&gt;
+&lt;li&gt;no more google&lt;/li&gt;
+&lt;li&gt;automated certbot validation for letsencrypt wildcard certs!! no
+more manual TXT records every three months!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -74,8 +305,37 @@ to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:<
       <pubDate>Tue, 14 Aug 2018 15:03:49 +0000</pubDate>
       
       <guid>./dns-shenanigans-post-mortem.html</guid>
-      <description>let&amp;rsquo;s start by saying i probably should have done a bit more research before diving head-first into this endeavor.
-i&amp;rsquo;ve been thinking about transferring my domains off google domains for some time now, as part of my personal goal to self host and limit my dependence on google and other large third-party monstrosities.</description>
+      <description>&lt;p&gt;let&amp;rsquo;s start by saying i probably should have done a bit more research
+before diving head-first into this endeavor.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve been thinking about transferring my domains off google domains for
+some time now, as part of my personal goal to self host and limit my
+dependence on google and other large third-party monstrosities. along
+that line, i asked for registrar recommendations.
+&lt;a href=&#34;https://tomasino.tilde.team&#34;&gt;~tomasino&lt;/a&gt; responded with
+&lt;a href=&#34;https://namesilo.com&#34;&gt;namesilo&lt;/a&gt;. i found that they had $3.99
+registrations for .team and .zone domains, which is 1/10th the cost of
+the $40 registration on google domains.&lt;/p&gt;
+&lt;p&gt;i started out by getting the list of domains from the google console. 2
+or 3 of them had been registered within the last 60 days, so i wasn&amp;rsquo;t
+able to transfer those just yet. i grabbed all the domain unlock codes
+and dropped them into namesilo. i failed to realize that the dns panel
+on google domains would disappear as soon as it went through, but more
+importantly that the nameservers would be left pointing to the old
+defunct google domains ones.&lt;/p&gt;
+&lt;p&gt;i updated the nameservers as soon as i realized this error from the
+namesilo panel. some of the domains propagated quickly. others, not so
+much. tilde.team was still in a state of flux between the old and new
+nameservers.&lt;/p&gt;
+&lt;p&gt;in a rush to get the dns problem fixed, and under recommendation from
+several people on irc, i decided to switch the nameservers for
+tilde.team and tilde.zone to cloudflare, leaving another layer of flux
+for the dns to be stuck in&amp;hellip;&lt;/p&gt;
+&lt;p&gt;of the five domains that i moved to cloudflare, 3 returned with a dnssec
+error, claiming that i needed to remove the DS record from that zone.
+d&amp;rsquo;oh!&lt;/p&gt;
+&lt;p&gt;i removed the dnssec from those affected domains, so we should be good
+to go as soon as it all propagates through the fickle beast that is dns.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -84,7 +344,21 @@ i&amp;rsquo;ve been thinking about transferring my domains off google domains fo
       <pubDate>Thu, 26 Jul 2018 15:34:50 +0000</pubDate>
       
       <guid>./lxd-networking-and-additional-ips.html</guid>
-      <description>now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to get a secondary IP address assigned to a lxd container (which i plan to use for my personal stuff).</description>
+      <description>&lt;p&gt;now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to
+get a secondary IP address assigned to a lxd container (which i plan to
+use for my personal stuff). lxd shows that the secondary IP is being
+picked up by that container, but i&amp;rsquo;m still seeing the host machine&amp;rsquo;s IP
+as the external address.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not sure how i&amp;rsquo;ll need to configure the network settings on the host
+machine (now that we&amp;rsquo;re running ubuntu 18.04 and it uses netplan for
+configs and not /etc/network/interfaces). another confusing thing is
+that the main config in /etc/netplan says that the network config is
+handled by systemd-networkd&amp;hellip;&lt;/p&gt;
+&lt;p&gt;at least i have through the end of the year when my current vps runs out
+to get this up and running.&lt;/p&gt;
+&lt;p&gt;ping me on &lt;a href=&#34;https://tilde.chat&#34;&gt;irc&lt;/a&gt; or &lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;email&lt;/a&gt;
+if you have experience with this.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -93,8 +367,14 @@ i&amp;rsquo;ve been thinking about transferring my domains off google domains fo
       <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
       
       <guid>./dotfiles.html</guid>
-      <description>finally got around to updating my dotfiles to use gnu stow. i adapted ~tomasino&amp;rsquo;s makefile for use with the configs that i&amp;rsquo;m keeping with it.
-now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my config to ~/.</description>
+      <description>&lt;p&gt;finally got around to updating my
+&lt;a href=&#34;https://git.tilde.team/ben/dotfiles&#34;&gt;dotfiles&lt;/a&gt; to use gnu stow. i
+adapted &lt;a href=&#34;https://github.com/jamestomasino/dotfiles/blob/master/Makefile&#34;&gt;~tomasino&amp;rsquo;s
+makefile&lt;/a&gt;
+for use with the configs that i&amp;rsquo;m keeping with it.&lt;/p&gt;
+&lt;p&gt;now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my
+config to ~/.ssh when it already exists.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -103,10 +383,13 @@ now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink m
       <pubDate>Mon, 02 Oct 2017 16:11:13 +0000</pubDate>
       
       <guid>./hi-there.html</guid>
-      <description>welcome to my tildeblog
-you are here.
-i like to mess around with linux sysadmin shtuff. tilde.team is my baby. let me know if you want to get involved.
-thanks for being awesome.</description>
+      <description>&lt;p&gt;welcome to my tildeblog&lt;/p&gt;
+&lt;p&gt;you are here.&lt;/p&gt;
+&lt;p&gt;i like to mess around with linux sysadmin shtuff.
+&lt;a href=&#34;https://tilde.team&#34;&gt;tilde.team&lt;/a&gt; is my baby. let me know if you want to
+get involved.&lt;/p&gt;
+&lt;p&gt;thanks for being awesome. keep it up.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

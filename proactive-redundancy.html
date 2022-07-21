@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>proactive redundancy</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>proactive redundancy</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./proactive-redundancy.html">proactive redundancy</a></h1>
 
     <time>Thu, 15 Nov 2018 18:39 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>after the <a href="november-13-post-mortem.html">fiasco</a> earlier this week, i&rsquo;ve
 been taking steps to minimize the impact if tilde.team were to go down.
 it&rsquo;s still a large spof (single-point-of-failure), but i&rsquo;m reasonably
@@ -61,6 +69,7 @@ to the subnets as defined in <a href="https://tools.ietf.org/html/rfc1918">rfc
 <p><strong>update</strong>: the round robin host is now <em>irc</em>.tilde.chat, which resolves
 the site issues that we were having, due to the duplicated deployments.</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

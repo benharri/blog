@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>raid nonsense</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>raid nonsense</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./raid-nonsense.html">raid nonsense</a></h1>
 
     <time>Sun, 13 Jan 2019 13:28 UTC</time>
@@ -25,6 +32,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>last week i did some
 <a href="https://tilde.team/news/025_raid_reboot">maintenance</a> on the
 tilde.team box. probably should have written about it sooner but i
@@ -73,6 +81,7 @@ the mysqldump. everything came up as expected and we were good to go!</p>
 available space. thanks for tuning in to this episode of sysadmin
 adventures!</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"

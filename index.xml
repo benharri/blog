@@ -6,14 +6,172 @@
     <description>Recent content on blog // ~ben</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Mar 2021 16:16:11 -0400</lastBuildDate><atom:link href="./index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 22:23:10 -0400</lastBuildDate><atom:link href="./index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git diff-highlight</title>
+      <link>./git-diff-highlight.html</link>
+      <pubDate>Wed, 20 Jul 2022 22:23:10 -0400</pubDate>
+      
+      <guid>./git-diff-highlight.html</guid>
+      <description>&lt;p&gt;diff output from git can be hard to read. luckily there&amp;rsquo;s a nice tool bundled with git that can help us out.&lt;/p&gt;
+&lt;p&gt;enter &lt;a href=&#34;https://github.com/git/git/tree/master/contrib/diff-highlight&#34;&gt;diff-highlight&lt;/a&gt;, a little perl script found in git&amp;rsquo;s contrib directory.&lt;/p&gt;
+&lt;p&gt;from it&amp;rsquo;s own documentation:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[diff-highlight] post-processes the line-oriented diff, finds pairs of lines, and highlights the differening segments.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;diff-highlight is shipped in a default git install but it needs to be added to your $PATH. here&amp;rsquo;s how to do it on debian:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo make -C /usr/share/doc/git/contrib/diff-highlight
+$ sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;now you can pipe git&amp;rsquo;s diff output to to diff-highlight to get a better view of what actually changed.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git diff | diff-highlight
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;optionally, you can configure git to use it all the time. add the following to your &lt;code&gt;~/.gitconfig&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[pager]
+log = diff-highlight | less
+show = diff-highlight | less
+diff = diff-highlight | less
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;see the &lt;a href=&#34;https://github.com/git/git/blob/master/contrib/diff-highlight/README&#34;&gt;documentation&lt;/a&gt; for more usage tips!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>sqlite3 for wordpress</title>
+      <link>./sqlite3-for-wordpress.html</link>
+      <pubDate>Wed, 06 Jul 2022 13:53:00 +0000</pubDate>
+      
+      <guid>./sqlite3-for-wordpress.html</guid>
+      <description>&lt;h1 id=&#34;sqlite3-for-wordpress&#34;&gt;sqlite3 for wordpress&lt;/h1&gt;
+&lt;p&gt;running wordpress with sqlite is quick, easy, and can be much less
+system administration load as it eliminates the need for a separate
+database process running.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://wptest.bhh.sh&#34;&gt;this site&lt;/a&gt; is currently running with sqlite using &lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db&#34;&gt;aaemnnosttv&amp;rsquo;s
+drop-in&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;set-it-up&#34;&gt;set it up&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;download &lt;a href=&#34;https://wordpress.org/latest.tar.gz&#34;&gt;https://wordpress.org/latest.tar.gz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;extract it into your webroot (something like &lt;code&gt;/var/www&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;download
+&lt;a href=&#34;https://github.com/aaemnnosttv/wp-sqlite-db/raw/master/src/db.php&#34;&gt;db.php&lt;/a&gt;
+and add it to &lt;code&gt;/var/www/yoursite/wp-content/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;follow the normal setup instructions but skip the database fields&lt;/li&gt;
+&lt;li&gt;profit????&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;nginx-config&#34;&gt;nginx config&lt;/h2&gt;
+&lt;p&gt;adjust configs as needed. this is the live config for this site
+wptest.bhh.sh.&lt;/p&gt;
+&lt;p&gt;snippets/ssl/bhh.sh just includes the block from certbot that points to
+the right cert and key.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+        listen 80;
+        server_name wptest.bhh.sh;
+        return 307 https://$server_name$request_uri;
+}
+
+server {
+        listen 443 ssl;
+        server_name wptest.bhh.sh;
+        include snippets/ssl/bhh.sh;
+        index index.php index.html;
+        root /var/www/wptest.bhh.sh;
+        client_max_body_size 100M;
+
+        location / {
+                try_files $uri $uri/ /index.php?$args;
+        }
+
+        location = /favicon.ico {
+                log_not_found off;
+                access_log off;
+        }
+
+        location = /robots.txt {
+                allow all;
+                log_not_found off;
+                access_log off;
+        }
+
+        location ~* wp-config.php {
+                deny all;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_intercept_errors on;
+                fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+                expires max;
+                log_not_found off;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
     <item>
       <title>Matrix Sucks</title>
       <link>./matrix-sucks.html</link>
       <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
       
       <guid>./matrix-sucks.html</guid>
-      <description>i&amp;rsquo;ve gotten sick of explaining why matrix is bad over and over so i&amp;rsquo;m gathering my thoughts and some points here and publishing it so i can link to it.</description>
+      <description>&lt;p&gt;i’ve gotten sick of explaining why matrix is bad over and over so i’m gathering my thoughts and some points here and publishing it so i can link to it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;no moderation capabilities&lt;/li&gt;
+&lt;li&gt;bridges don&amp;rsquo;t work well and are 1-way in order to siphon users to matrix&lt;/li&gt;
+&lt;li&gt;it&amp;rsquo;s super slow&lt;/li&gt;
+&lt;li&gt;running a server requires a supercomputer&lt;/li&gt;
+&lt;li&gt;de-facto not federated, everyone is on matrix.org&lt;/li&gt;
+&lt;li&gt;even when you run your own server, it phones home with all kinds of user data to vector.im&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i’ll update this later with more info when i can.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;15:25 &amp;lt;remyabel&amp;gt; their reference client is slow, had an unnecessary/confusing rename and you can&#39;t delete your account
+15:25 &amp;lt;remyabel&amp;gt; you can only &amp;quot;deactivate&amp;quot; it
+15:26 &amp;lt;Shell&amp;gt; also on a technical level it&#39;s just an /awful/ protocol
+15:26 &amp;lt;~ben&amp;gt; extremely disruptive 1way bridging
+15:26 &amp;lt;Shell&amp;gt; with a huge amount of weird bugs as a result of the fact that the devs... just have no idea what they&#39;re doing
+15:26 &amp;lt;~ben&amp;gt; completely nonexistent abuse mitigation
+15:26 &amp;lt;Shell&amp;gt; and haven&#39;t for years
+15:26 &amp;lt;~ben&amp;gt; _huge_ resource hog if you want to try to run a server
+15:27 &amp;lt;Shell&amp;gt; and yes, the approach to bridging is basically to leech off everyone else, demand huge amounts of support from volunteers who never agreed to it in the first place, and give nothing back.
+15:27 &amp;lt;Shell&amp;gt; Matrix literally wouldn&#39;t have a userbase if it wasn&#39;t for IRC.
+15:28 &amp;lt;~ben&amp;gt; they only care about usercounts
+15:29 &amp;lt;Shell&amp;gt; they have, at various points, refused to employ people to work on the IRC bridges, while the bridge was horribly broken and led to security breaches and ban evasion, while simultaneously advertising them as a primary reason to use Matrix
+15:30 &amp;lt;Shell&amp;gt; and it&#39;s not really an &amp;quot;open project&amp;quot; as the words &amp;quot;Matrix Foundation&amp;quot; would have you think - the entire thing is driven almost entirely by the Matrix.org people, anyone else&#39;s input into the project is largely ignored in place of the Matrix.org roadmap.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the connection to amdocs is FUD and not worth discussing&lt;/p&gt;
+&lt;p&gt;additional links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.404.city/en/XMPP_vs_Matrix&#34;&gt;https://wiki.404.city/en/XMPP_vs_Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackea.org/notas/matrix.html&#34;&gt;https://hackea.org/notas/matrix.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1&#34;&gt;https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2&#34;&gt;https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;archive.org links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20141217141653/http://matrix.org/&#34;&gt;https://web.archive.org/web/20141217141653/http://matrix.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219215828/https://en.wikipedia.org/wiki/Matrix_%28protocol%29&#34;&gt;https://web.archive.org/web/20201219215828/https://en.wikipedia.org/wiki/Matrix_%28protocol%29&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219013924/https://lists.autistici.org/message/20200323.184245.94fa2bb8.en.html&#34;&gt;https://web.archive.org/web/20201219013924/https://lists.autistici.org/message/20200323.184245.94fa2bb8.en.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201221141252/https://listas.sindominio.net/pipermail/hackmeeting/2017-October/039274.html&#34;&gt;https://web.archive.org/web/20201221141252/https://listas.sindominio.net/pipermail/hackmeeting/2017-October/039274.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20160616114330/https://vector.im/&#34;&gt;https://web.archive.org/web/20160616114330/https://vector.im/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219130957/https://matrix.org/foundation/&#34;&gt;https://web.archive.org/web/20201219130957/https://matrix.org/foundation/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219131157/https://matrix.org/blog/2019/10/10/new-vector-raises-8-5-m-to-accelerate-matrix-riot-modular&#34;&gt;https://web.archive.org/web/20201219131157/https://matrix.org/blog/2019/10/10/new-vector-raises-8-5-m-to-accelerate-matrix-riot-modular&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20180806141618/https://directory.fsf.org/wiki/Talk:Riot.im&#34;&gt;https://web.archive.org/web/20180806141618/https://directory.fsf.org/wiki/Talk:Riot.im&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201024035930/https://directory.fsf.org/wiki?title=Electron&amp;amp;oldid=71699&#34;&gt;https://web.archive.org/web/20201024035930/https://directory.fsf.org/wiki?title=Electron&amp;amp;oldid=71699&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201025143628/https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_evaluation&#34;&gt;https://web.archive.org/web/20201025143628/https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_evaluation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219220645/https://matrix.org/bridges/&#34;&gt;https://web.archive.org/web/20201219220645/https://matrix.org/bridges/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219015708/https://disroot.org/en/blog/matrix-closure&#34;&gt;https://web.archive.org/web/20201219015708/https://disroot.org/en/blog/matrix-closure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219014545/https://gist.github.com/maxidorius/5736fd09c9194b7a6dc03b6b8d7220d0&#34;&gt;https://web.archive.org/web/20201219014545/https://gist.github.com/maxidorius/5736fd09c9194b7a6dc03b6b8d7220d0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219221731/https://www.matrix.org/blog/2019/09/27/privacy-improvements-in-synapse-1-4-and-riot-1-4/&#34;&gt;https://web.archive.org/web/20201219221731/https://www.matrix.org/blog/2019/09/27/privacy-improvements-in-synapse-1-4-and-riot-1-4/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md&#34;&gt;https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -22,8 +180,36 @@
       <pubDate>Wed, 25 Aug 2021 00:35:13 -0400</pubDate>
       
       <guid>./update-adventures.html</guid>
-      <description>here&amp;rsquo;s the longer version about the outage on august 24, 2021:
-after finishing the package upgrades on my proxmox hosts for the new release (proxmox 7.0, corresponding to debian 11/bullseye), i typed reboot and pressed enter, crossing my fingers that it would come back up as expected.</description>
+      <description>&lt;p&gt;here&amp;rsquo;s the longer version about the outage on august 24, 2021:&lt;/p&gt;
+&lt;p&gt;after finishing the package upgrades on my proxmox hosts for the new release
+(proxmox 7.0, corresponding to debian 11/bullseye), i typed reboot and pressed
+enter, crossing my fingers that it would come back up as expected.&lt;/p&gt;
+&lt;p&gt;it didn&amp;rsquo;t.&lt;/p&gt;
+&lt;p&gt;luckily i had done one last round of vm-level backups before starting the
+upgrade! i started restoring the backups to one of my other servers, but my
+authoritative dns is hosted on the same server as tilde.team, so that needed
+to happen first.&lt;/p&gt;
+&lt;p&gt;i got the ns1 set up on my proxmox node at hetzner, but my ns2 secondary zones
+had been hosted at ovh. time to move those to &lt;a href=&#34;https://dns.he.net&#34;&gt;he.net&lt;/a&gt;
+to get it going again (and move away from a provider-dependent solution).&lt;/p&gt;
+&lt;p&gt;while shuffling VMs around, i ended up starting a restore of the tilde.team VM
+on my infra-2 server at ovh. it&amp;rsquo;s a large VM with two 300gb disks so it would take
+a while.&lt;/p&gt;
+&lt;p&gt;i started working to update the dns records for tilde.team to live on ovh instead
+of my soyoustart box, but shortly after, i received a mail (in my non-tilde inbox
+luckily) from the ovh monitoring team that my server had been rebooted into rescue
+mode after being unpingable for this long.&lt;/p&gt;
+&lt;p&gt;i was able to log in with the temporary ssh password and update &lt;code&gt;/etc/network/interfaces&lt;/code&gt;
+to use the currently working MAC address that the rescue system was using.&lt;/p&gt;
+&lt;p&gt;once i figured out how to disable the netboot rescue mode in the control panel,
+i hit reboot once more. we&amp;rsquo;re back up and running on the upgraded server that it was on
+at the start of the day!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tilde.team/wiki/xmpp&#34;&gt;ejabberd&lt;/a&gt; wasn&amp;rsquo;t happy with mysql for some reason
+but everything else seems to have come back up now.&lt;/p&gt;
+&lt;p&gt;like usual, holler if you see anything amiss!&lt;/p&gt;
+&lt;p&gt;cheers,
+~ben&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -32,8 +218,31 @@ after finishing the package upgrades on my proxmox hosts for the new release (pr
       <pubDate>Wed, 24 Mar 2021 16:16:11 -0400</pubDate>
       
       <guid>./hugo.html</guid>
-      <description>i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog with hugo
-why fix something that ain&amp;rsquo;t broken? there are several major bugs in bashblog that i haven&amp;rsquo;t had the time or interest to fix.</description>
+      <description>&lt;p&gt;i finally got sick of some outstanding bashblog bugs and decided to rewrite my blog
+with &lt;a href=&#34;https://gohugo.io&#34;&gt;hugo&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;why-fix-something-that-aint-broken&#34;&gt;why fix something that ain&amp;rsquo;t broken?&lt;/h2&gt;
+&lt;p&gt;there are several &lt;a href=&#34;https://tildegit.org/team/bashblog/issues&#34;&gt;major bugs&lt;/a&gt; in
+bashblog that i haven&amp;rsquo;t had the time or interest to fix. luckily, i have my
+blog source in a &lt;a href=&#34;https://tildegit.org/ben/tilde&#34;&gt;git repo&lt;/a&gt;, so the messed-up
+files are relatively easy to fix up.&lt;/p&gt;
+&lt;p&gt;my theory is that the cognitive load of dealing with those bugs has been
+preventing me from writing any new posts&amp;hellip; (among other current events).&lt;/p&gt;
+&lt;p&gt;plus i guess i just needed a project!&lt;/p&gt;
+&lt;h2 id=&#34;the-hard-part&#34;&gt;the hard part&lt;/h2&gt;
+&lt;p&gt;it was a bit of a struggle to get my blogposts converted over to a proper format.&lt;/p&gt;
+&lt;p&gt;bashblog maintains the tags with a plaintext link line at the bottom of the file
+and keeps track of modify dates &lt;em&gt;on the filesystem&lt;/em&gt; using &lt;code&gt;date -r&lt;/code&gt; and &lt;code&gt;touch -t&lt;/code&gt;
+to keep them up to date.&lt;/p&gt;
+&lt;p&gt;this makes it hard to work with the blog in any place other than where it&amp;rsquo;s already
+deployed live. additionally, parsing the tags to another format was a bit of a headache&amp;hellip;&lt;/p&gt;
+&lt;p&gt;i ended up writing a little &lt;a href=&#34;https://tildegit.org/ben/blog/src/branch/main/fix_dates.sh&#34;&gt;script&lt;/a&gt;
+to pull the timestamp from bashblog&amp;rsquo;s generated html since i no longer had the original
+file metadata.&lt;/p&gt;
+&lt;h2 id=&#34;time-to-write-more&#34;&gt;time to write more&lt;/h2&gt;
+&lt;p&gt;i&amp;rsquo;m always tempted to play with the publishing process instead of actually writing.&lt;/p&gt;
+&lt;p&gt;we&amp;rsquo;ll see how well i can avoid the temptation now!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -42,9 +251,51 @@ why fix something that ain&amp;rsquo;t broken? there are several major bugs in b
       <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
       
       <guid>./mastodon-postgres-upgrade-fun.html</guid>
-      <description>howdy friends!
-if you’re a mastodon user on tilde.zone (the tildeverse mastodon instance), you might’ve noticed some downtime recently.
-here’s a quick recap of what went down during the upgrade process.</description>
+      <description>&lt;p&gt;howdy friends!&lt;/p&gt;
+&lt;p&gt;if you’re a mastodon user on &lt;a href=&#34;https://tilde.zone&#34;&gt;tilde.zone&lt;/a&gt; (the
+tildeverse mastodon instance), you might’ve noticed some downtime
+recently.&lt;/p&gt;
+&lt;p&gt;here’s a quick recap of what went down during the upgrade process.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;we run the current stable version of postgresql from the &lt;a href=&#34;https://wiki.postgresql.org/wiki/Apt&#34;&gt;postgres apt
+repos&lt;/a&gt;. postgres
+&lt;a href=&#34;https://www.postgresql.org/docs/release/13.0/&#34;&gt;13&lt;/a&gt; was released
+recently and the apt upgrades automatically created a new cluster
+running 13.&lt;/p&gt;
+&lt;p&gt;the database for mastodon has gotten quite large (about 16gb) which
+complicates this upgrade a bit. this was my inital plan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;drop the 13 cluster created by the apt package upgrades&lt;/li&gt;
+&lt;li&gt;upgrade the 12-main cluster to 13&lt;/li&gt;
+&lt;li&gt;drop the 12 cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;these steps appeared to work fine, but closer inspection afterwards led
+me to discover that the new cluster had ended up with &lt;code&gt;SQL_ASCII&lt;/code&gt;
+encoding somehow. this is not a situation we want to be in. time to fix
+it.&lt;/p&gt;
+&lt;p&gt;here’s the new plan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;stop mastodon
+&lt;code&gt; for i in streaming sidekiq web; do systemctl stop mastodon-$i; done&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dump current database state &lt;code&gt; pg_dump mastodon_production &amp;gt; db.dump&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;drop and recreate cluster with utf8 encoding
+&lt;code&gt; pg_dropcluster 13 main --stop pg_createcluster --locale=en_US.UTF8 13 main --start&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;restore backup
+&lt;code&gt; sudo -u postgres psql -c &amp;quot;create user mastodon createdb;&amp;quot; sudo -u mastodon createdb -E utf8 mastodon_production sudo -u mastodon psql &amp;lt; db.dump&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i’m still not 100% sure how the encoding reverted to ascii but it seems
+that the locale was not correctly set while running the apt upgrades…&lt;/p&gt;
+&lt;p&gt;if this happens to you, hopefully this helps you wade out while keeping
+all your data :)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -53,8 +304,41 @@ here’s a quick recap of what went down during the upgrade process.</descriptio
       <pubDate>Tue, 16 Jun 2020 15:26:29 +0000</pubDate>
       
       <guid>./default-branch-name.html</guid>
-      <description>changing git’s default branch name has come up recently as an easy action we can take to update our language and remove harmful ideas from our daily usage.
-i’m concerned that this effort to change the language used is ultimately a symbolic gesture to avoid scrutiny into actual change (notably github’s push for this change and continued contracts with ICE).</description>
+      <description>&lt;p&gt;changing git’s default branch name has come up recently as an easy
+action we can take to update our language and remove harmful ideas from
+our daily usage.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;i’m concerned that this effort to change the language used is ultimately
+a symbolic gesture to avoid scrutiny into actual change (notably
+github’s push for this change and continued contracts with ICE).&lt;/p&gt;
+&lt;p&gt;however, it’s an easy change to make.&lt;/p&gt;
+&lt;p&gt;let’s have a look at how to change it for new repos:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/.config/git/template
+echo &amp;quot;ref: refs/head/main&amp;quot; &amp;gt; ~/.config/git/template/HEAD
+git config --global init.templateDir ~/.config/git/template
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;note that you can put this template dir anywhere you like.&lt;/p&gt;
+&lt;p&gt;you can also set this system-wide (not just for your user) in
+/usr/share, but note that this might get overriden by package updates.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;ref: refs/head/main&amp;quot; | sudo tee /usr/share/git-core/templates/HEAD
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the next time you &lt;code&gt;git init&lt;/code&gt;, you’ll be on a branch named main.&lt;/p&gt;
+&lt;p&gt;to change an existing repo, you can use the &lt;code&gt;-m&lt;/code&gt; switch of &lt;code&gt;git-branch&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout master
+git branch -m master main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;push with &lt;code&gt;-u&lt;/code&gt; to your remote if needed and update the default branch in
+the repo settings in the hosting platform of choice.&lt;/p&gt;
+&lt;p&gt;it’s a relatively easy change, but don’t kid yourself that it makes any
+real impact. go protest, &lt;a href=&#34;https://blacklivesmatter.carrd.co/&#34;&gt;donate and sign
+petitions&lt;/a&gt;, and get out there to fix
+the actual problems.&lt;/p&gt;
+&lt;h2 id=&#34;update&#34;&gt;update:&lt;/h2&gt;
+&lt;p&gt;as of git 2.28, there’s a new configuration option and you don’t need to
+use the templateDir option:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global init.defaultBranch main
+&lt;/code&gt;&lt;/pre&gt;
+</description>
     </item>
     
     <item>
@@ -63,9 +347,91 @@ i’m concerned that this effort to change the language used is ultimately a sym
       <pubDate>Tue, 03 Mar 2020 14:02:47 +0000</pubDate>
       
       <guid>./tools-and-services.html</guid>
-      <description>inspired by tomasino&amp;rsquo;s recent post, i&amp;rsquo;d like to detail some of the stuff that i rent and use.
-recurring costs some of these are monthly, others are annual
- server rental  $135/month, 64gb model, 2yr contract discount   proxmox - my preferred hypervisor.</description>
+      <description>&lt;p&gt;inspired by &lt;a href=&#34;https://tomasino.org&#34;&gt;tomasino&lt;/a&gt;&amp;rsquo;s recent
+&lt;a href=&#34;%20https://labs.tomasino.org/freelancing-tools-services/&#34;&gt;post&lt;/a&gt;, i&amp;rsquo;d
+like to detail some of the stuff that i rent and use.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;recurring-costs&#34;&gt;recurring costs&lt;/h2&gt;
+&lt;p&gt;some of these are monthly, others are annual&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ovh.com/world/dedicated-servers/infra/infra-2/&#34;&gt;server
+rental&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;$135/month, 64gb model, 2yr contract discount&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.proxmox.com&#34;&gt;proxmox&lt;/a&gt; - my preferred hypervisor. i find
+it useful enough and worth paying the annual license to use the
+official package mirrors - $80/year&lt;/li&gt;
+&lt;li&gt;domains - includes &lt;a href=&#34;https://tilde.wiki/domains&#34;&gt;tilde-related ones&lt;/a&gt;
+and my personal ones (about 10 or so) - about 30 domains totaling
+$500/year&lt;/li&gt;
+&lt;li&gt;offsite backups at &lt;a href=&#34;https://www.rsync.net/&#34;&gt;rsync.net&lt;/a&gt; - i use the
+&lt;a href=&#34;%20https://www.rsync.net/products/attic.html&#34;&gt;borg offering&lt;/a&gt; for a
+discount since versioning is handled by my backup software - between
+$60-$70/year&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;my out of pocket expenses are a little over $2k per year.&lt;/p&gt;
+&lt;p&gt;note that i use the server and backups for personal stuff in addition to
+tilde related things.&lt;/p&gt;
+&lt;p&gt;the current expenses are totally manageable as is, but if you&amp;rsquo;ve got
+some spare cash and want to pitch in towards tilde hosting costs, i have
+a &lt;a href=&#34;%20https://bhh.sh/donate&#34;&gt;donate page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;software-i-run-use-and-maintain&#34;&gt;software i run, use, and maintain&lt;/h2&gt;
+&lt;p&gt;these are all free/open source.&lt;/p&gt;
+&lt;h4 id=&#34;operating-systems&#34;&gt;operating systems&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ubuntu.com&#34;&gt;ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://debian.org&#34;&gt;debian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://alpinelinux.org&#34;&gt;alpine linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://freebsd.org&#34;&gt;freebsd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;platformssoftware&#34;&gt;platforms/software&lt;/h4&gt;
+&lt;p&gt;these are things that i run and maintain for tilde.team and the
+tildeverse&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://joinmastodon.org&#34;&gt;mastodon&lt;/a&gt;:
+&lt;a href=&#34;https://tilde.zone&#34;&gt;tilde.zone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pleroma.social&#34;&gt;pleroma&lt;/a&gt;:
+&lt;a href=&#34;https://pleroma.tilde.zone&#34;&gt;pleroma.tilde.zone&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nextcloud.com&#34;&gt;nextcloud&lt;/a&gt;:
+&lt;a href=&#34;https://cloud.tilde.team&#34;&gt;cloud.tilde.team&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitea.io&#34;&gt;gitea&lt;/a&gt;: &lt;a href=&#34;https://tildegit.org&#34;&gt;tildegit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://inspircd.org&#34;&gt;inspircd&lt;/a&gt;, &lt;a href=&#34;http://anope.org&#34;&gt;anope&lt;/a&gt;:
+&lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.postfix.org/&#34;&gt;postfix&lt;/a&gt;, &lt;a href=&#34;https://dovecot.org/&#34;&gt;dovecot&lt;/a&gt;,
+&lt;a href=&#34;https://rspamd.com/&#34;&gt;rspamd&lt;/a&gt;,
+&lt;a href=&#34;https://www.rainloop.net/&#34;&gt;rainloop&lt;/a&gt;: &lt;a href=&#34;https://mail.tilde.team&#34;&gt;tilde.team
+email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xwiki-labs/cryptpad&#34;&gt;cryptpad&lt;/a&gt;:
+&lt;a href=&#34;https://pad.tildeverse.org&#34;&gt;pad.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://privatebin.info/&#34;&gt;privatebin&lt;/a&gt;:
+&lt;a href=&#34;https://paste.tildeverse.org&#34;&gt;paste.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/lachs0r/0x0&#34;&gt;0x0&lt;/a&gt;: &lt;a href=&#34;https://ttm.sh&#34;&gt;ttm.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/lobsters/lobsters&#34;&gt;lobsters&lt;/a&gt;:
+&lt;a href=&#34;https://tilde.news&#34;&gt;tilde.news&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tt-rss.org/&#34;&gt;tt-rss&lt;/a&gt;: &lt;a href=&#34;https://rss.tildeverse.org&#34;&gt;rss.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://drone.io&#34;&gt;drone&lt;/a&gt;:
+&lt;a href=&#34;https://drone.tildegit.org&#34;&gt;drone.tildegit.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.mailman3.org/en/latest/&#34;&gt;mailman&lt;/a&gt;:
+&lt;a href=&#34;https://lists.tildeverse.org&#34;&gt;lists.t.o&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;our-own-software&#34;&gt;our own software&lt;/h4&gt;
+&lt;p&gt;there are also a handful of other sites that we&amp;rsquo;ve written
+collaboratively among tildeverse peeps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tildegit.org/tildeverse/quotes&#34;&gt;quotes db&lt;/a&gt;: &lt;a href=&#34;https://quotes.tilde.chat&#34;&gt;see it
+live&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tildegit.org/tildeverse/zine&#34;&gt;tildeverse zine&lt;/a&gt;: &lt;a href=&#34;https://zine.tildeverse.org&#34;&gt;see it
+live&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;see the &lt;a href=&#34;https://tildegit.org/tildeverse&#34;&gt;tildeverse org&lt;/a&gt; and &lt;a href=&#34;https://tildegit.org/team&#34;&gt;team
+org&lt;/a&gt; on tildegit for more projects :)&lt;/p&gt;
+&lt;p&gt;this has diverged a bit from my costs into all the stuff that i do. i
+suppose that means that the main cost is my time and energy. in general,
+these things are hands-off in the day-to-day and only take time when
+there are updates or something breaks.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -74,8 +440,28 @@ recurring costs some of these are monthly, others are annual
       <pubDate>Mon, 03 Feb 2020 20:06:43 +0000</pubDate>
       
       <guid>./general-update.html</guid>
-      <description>it&amp;rsquo;s been quite a long time since i posted anything here on this blog.
-i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use it and finally realized it&amp;rsquo;s been almost a year since i posted anything at all.</description>
+      <description>&lt;p&gt;it&amp;rsquo;s been quite a long time since i posted anything here on this blog.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve been playing with &lt;a href=&#34;https://github.com/xe/gruvbox-css&#34;&gt;gruvbox-css&lt;/a&gt;,
+decided to switch my blog to use it and finally realized it&amp;rsquo;s been
+almost a year since i posted anything at all.&lt;/p&gt;
+&lt;p&gt;i don&amp;rsquo;t have anything in particular to post today so i figured it would
+be good to give a general update since the last time i posted.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;we&amp;rsquo;ve moved physical hosts again (&lt;a href=&#34;https://tilde.team/news/028_back_up&#34;&gt;/news
+post&lt;/a&gt;), which is now a vm on a
+large dedicated machine i rent from
+&lt;a href=&#34;%20https://www.ovh.com/world/dedicated-servers/infra/infra-2/&#34;&gt;ovh&lt;/a&gt;. my
+current vm setup is proxmox, which i&amp;rsquo;m quite happy with. the new box is
+pricier but has a lot more resources and room to grow.&lt;/p&gt;
+&lt;p&gt;it appears that i haven&amp;rsquo;t posted anything in so long that i don&amp;rsquo;t yet
+have any pictures of my dog on my blog!&lt;/p&gt;
+&lt;p&gt;i got her last may (2019) and she&amp;rsquo;s the best. she&amp;rsquo;s an english springer
+spaniel and her name is Hope.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;%20https://bhh.sh/pub/photos/doggos/?filter=hope&#34;&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/doggos/hope6.jpg&#34; alt=&#34;hope&#34;&gt;&lt;/a&gt;
+click the photo to see some more!&lt;/p&gt;
+&lt;p&gt;otherwise, i&amp;rsquo;ve just been hanging out on irc, so stop by and say hello
+:)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -84,8 +470,46 @@ i&amp;rsquo;ve been playing with gruvbox-css, decided to switch my blog to use i
       <pubDate>Mon, 11 Feb 2019 02:40:20 +0000</pubDate>
       
       <guid>./networking-nonsense.html</guid>
-      <description>i&amp;rsquo;ve recently been working on setting up drone ci on the tilde.team machine. however, there&amp;rsquo;s been something strange going on with the networking on there.
-starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netstat -tulpn showed the port binding properly to 127.</description>
+      <description>&lt;p&gt;i&amp;rsquo;ve recently been working on setting up &lt;a href=&#34;https://drone.tildegit.org&#34;&gt;drone
+ci&lt;/a&gt; on the tilde.team machine. however,
+there&amp;rsquo;s been something strange going on with the networking on there.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;starting up drone with
+&lt;a href=&#34;https://tildegit.org/tildeverse/drone/src/branch/master/docker-compose.yml&#34;&gt;docker-compose&lt;/a&gt;
+didn&amp;rsquo;t seem to be working: &lt;code&gt;netstat -tulpn&lt;/code&gt; showed the port binding
+properly to 127.0.0.1:8888 but i was completely unable to get anything
+from it (using curl the nginx proxy that was to come).&lt;/p&gt;
+&lt;p&gt;i ended up scrapping docker on the ~team box itself and moving it into a
+lxd container (pronounced &amp;ldquo;lex-dee&amp;rdquo;) with nesting enabled.&lt;/p&gt;
+&lt;p&gt;this got us in to another problem that had been seen before when using
+nginx to proxy to apps running in other containers. requests were
+dropped intermittently, sometimes hanging for upwards of 30 seconds.&lt;/p&gt;
+&lt;p&gt;getting frustrated with this error, i tried to reproduce it on another
+host. both the docker-proxy and nginx-&amp;gt;lxd proxies work on the first
+try yielded no clues as to where things were going wrong.&lt;/p&gt;
+&lt;p&gt;in a half-awake stupor last saturday evening, i decided to try rule out
+ipv6 by disabling it system-wide. as is expected for sleepy work, it
+didn&amp;rsquo;t fix the problem and created more in the process.&lt;/p&gt;
+&lt;p&gt;feeling satisfied that the problem didn&amp;rsquo;t lie with ipv6, i re-enabled
+it, only to find that i was unable to bind nginx to my allocated /64. i
+may or may not have ranted a bit about this on irc but i was able to get
+it back up and running by restarting systemd-networkd.&lt;/p&gt;
+&lt;p&gt;one step forwards broke something and now we&amp;rsquo;re back to where we started
+with the original problem of the intermittent hangups to the lxd
+container.&lt;/p&gt;
+&lt;p&gt;seeing my troubles on irc, &lt;a href=&#34;https://tilde.team/~jchelpau/&#34;&gt;jchelpau&lt;/a&gt;
+offered to help dig in to the problem with a a fresh set of eyes. he
+noted right away that pings over ipv6 to the containers worked fine, but
+ipv4 did not.&lt;/p&gt;
+&lt;p&gt;we ended up looking at the firewall configurations, only to find that
+one of the subnets i blocked after november&amp;rsquo;s &lt;a href=&#34;november-13-post-mortem.html&#34;&gt;nmap
+incident&lt;/a&gt; included lxdbr0&amp;rsquo;s subnet (the
+bridge device used by lxd).&lt;/p&gt;
+&lt;p&gt;now that i made the exeption for lxdbr0, everything is working as
+expected!&lt;/p&gt;
+&lt;p&gt;thanks to &lt;a href=&#34;https://tilde.team/~fosslinux/&#34;&gt;fosslinux&lt;/a&gt; and
+&lt;a href=&#34;https://tilde.team/~jchelpau/&#34;&gt;jchelpau&lt;/a&gt; for their debugging help!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -94,8 +518,54 @@ starting up drone with docker-compose didn&amp;rsquo;t seem to be working: netst
       <pubDate>Sun, 13 Jan 2019 13:28:45 +0000</pubDate>
       
       <guid>./raid-nonsense.html</guid>
-      <description>last week i did some maintenance on the tilde.team box. probably should have written about it sooner but i didn&amp;rsquo;t make time for it until now.
-the gist of the problem was that the default images provided by hetzner default to raid1 between the available disks.</description>
+      <description>&lt;p&gt;last week i did some
+&lt;a href=&#34;https://tilde.team/news/025_raid_reboot&#34;&gt;maintenance&lt;/a&gt; on the
+tilde.team box. probably should have written about it sooner but i
+didn&amp;rsquo;t make time for it until now.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;the gist of the problem was that the default images provided by
+&lt;a href=&#34;https://hetzner.com&#34;&gt;hetzner&lt;/a&gt; default to raid1 between the available
+disks. our box has two 240gb SSDs, which resulted in 200gb usable space
+for /. it also defaulted to giving us a huge swap partition which i deem
+unnecessary for a box with 64gb ram.&lt;/p&gt;
+&lt;p&gt;the only feasible solution that i&amp;rsquo;ve found involved using the rescue
+system and the
+&lt;a href=&#34;https://wiki.hetzner.de/index.php/Installimage/en&#34;&gt;installimage&lt;/a&gt;
+software to reconfigure the disk partitions.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://yourtilde.com/~deepend/&#34;&gt;deepend&lt;/a&gt; recently upgraded to a
+beefier dedi (more threads and more disk space) and had a bit of
+contract time on the old one. he offered to let me use it as a staging
+box for the meantime while i reinstalled and reconfigured my raid
+settings.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve migrated tilde.team twice before (from linode -&amp;gt; woothosting
+-&amp;gt; hetzner -&amp;gt; and now back to hetzner on the same box) using a
+slick little rsync that i&amp;rsquo;ve put together.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rsync -auHxv --numeric-ids \
+    --exclude=/etc/fstab \
+    --exclude=/etc/network/* \
+    --exclude=/proc/* \
+    --exclude=/tmp/* \
+    --exclude=/sys/* \
+    --exclude=/dev/* \
+    --exclude=/mnt/* \
+    --exclude=/boot/* \
+    --exclude=/root/* \
+    root@oldbox:/* /
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;as long as the destination and source boxen are running the same
+distro/version, you should be good to go after rebooting the destination
+box!&lt;/p&gt;
+&lt;p&gt;the only thing to watch out for is running databases. it happened to me
+this time with mysql. there were 3 pending transactions that were left
+open during the rsync backup. it kept failing to start after i got the
+box back up, along with all the other services that depend on it.&lt;/p&gt;
+&lt;p&gt;eventually i was able to get mysqld back up and running in recovery mode
+(basically read-only) and got a mysqldump of all databases. i then
+purged all existing mysql data, reinstalled mariadb-server, and restored
+the mysqldump. everything came up as expected and we were good to go!&lt;/p&gt;
+&lt;p&gt;the raid is now in a raid0 config, leaving us with 468gb (not GiB)
+available space. thanks for tuning in to this episode of sysadmin
+adventures!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -104,9 +574,77 @@ the gist of the problem was that the default images provided by hetzner default 
       <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
       
       <guid>./weechat-setup.html</guid>
-      <description>so you decided to switch from irssi to weechat?
-what options do you need to set? what plugins? what scripts?
-i&amp;rsquo;ll go over some of the most essential of these, and share my full configs.</description>
+      <description>&lt;p&gt;so you decided to switch from irssi to weechat?&lt;/p&gt;
+&lt;p&gt;what options do you need to set? what plugins? what scripts?&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll go over some of the most essential of these, and share my full
+configs.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;options&#34;&gt;options&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logger.level.irc&lt;/code&gt; the default is 9, which includes joins and parts.
+in most cases you can set this to 3, which only includes messages&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.buffer_notify_default&lt;/code&gt; the default here is &amp;ldquo;all&amp;rdquo;,
+which will add joins and parts to your hotlist. set it to &amp;ldquo;message&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.confirm_quit&lt;/code&gt; set this to on. you&amp;rsquo;ll thank me when you
+type &lt;code&gt;/quit&lt;/code&gt; and mean &lt;code&gt;/close&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.highlight&lt;/code&gt; add a comma-separated list of names/terms
+you&amp;rsquo;d like to trigger a highlight here&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.prefix_align_max&lt;/code&gt; set this to something between 10
+and 20. otherwise, long nicks will crush your available screen real
+estate.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.indent&lt;/code&gt; try something like
+&lt;code&gt;${color:237}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?├:└}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.number&lt;/code&gt; if you want to skip the . or space after the
+number, set it to &lt;code&gt;${color:green}${number}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_names&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_nicklist&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.server_buffer&lt;/code&gt; set this to independent to prevent
+automatic merges with the core weechat buffer. especially useful if
+you plan on using
+&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.server_default.autoconnect&lt;/code&gt; set this to on so you don&amp;rsquo;t have to
+set it for every new network you add.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scripts&#34;&gt;scripts&lt;/h2&gt;
+&lt;p&gt;these scripts can be managed with the built in &lt;code&gt;/script&lt;/code&gt; tool. press i,
+then enter on the selected script to install it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/highmon.pl.html/&#34;&gt;highmon.pl&lt;/a&gt; -
+set aside a buffer to list the places your nick has been mentioned&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_nicks.py.html/&#34;&gt;colorize_nicks.py&lt;/a&gt; -
+show nicks in chat with colors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/go.py.html/&#34;&gt;go.py&lt;/a&gt; - fuzzy
+quick jump by buffer number of channel name&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autojoin.py.html/&#34;&gt;autojoin.py&lt;/a&gt; -
+use &lt;code&gt;/autojoin --run&lt;/code&gt; to save all the channels you&amp;rsquo;re currently in
+to be autojoined the next time you start weechat&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt; -
+use this script in tandem with irc.look.server_buffer=independent
+to keep you channel and server list in order&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_lines.pl.html/&#34;&gt;colorize_lines.pl&lt;/a&gt; -
+i use this script to highlight the entire line of messages i&amp;rsquo;ve been
+mentioned in. check the options in the source or with
+&lt;code&gt;/help colorize_lines&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/grep.py.html/&#34;&gt;grep.py&lt;/a&gt; -
+quickly search history and buffers with &lt;code&gt;/grep&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-rest-of-my-configs&#34;&gt;the rest of my configs&lt;/h2&gt;
+&lt;p&gt;you can find the rest of my configs
+&lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;if you have any questions, feel free to ping me on irc. i&amp;rsquo;m ben on
+&lt;a href=&#34;https://libera.chat&#34;&gt;libera&lt;/a&gt; and &lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;screenshot&#34;&gt;screenshot&lt;/h2&gt;
+&lt;p&gt;here&amp;rsquo;s a screenshot of my current configs&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bhh.sh/pub/screenies/weechat.png&#34;&gt;&lt;img src=&#34;https://bhh.sh/pub/screenies/weechat.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bonus&#34;&gt;bonus&lt;/h2&gt;
+&lt;p&gt;if you have an existing setup, you can check the config changes you&amp;rsquo;ve
+made with &lt;code&gt;/set diff&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;additionally, feel free to &lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat/.gitignore&#34;&gt;use my
+.gitignore&lt;/a&gt;,
+add your ~/.weechat to source control, and compare.&lt;/p&gt;
+&lt;p&gt;hope you&amp;rsquo;ve enjoyed customizing your weechat!&lt;/p&gt;
+&lt;p&gt;EDIT: s/freenode/libera/g&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -115,7 +653,42 @@ i&amp;rsquo;ll go over some of the most essential of these, and share my full co
       <pubDate>Thu, 15 Nov 2018 18:39:26 +0000</pubDate>
       
       <guid>./proactive-redundancy.html</guid>
-      <description>after the fiasco earlier this week, i&amp;rsquo;ve been taking steps to minimize the impact if tilde.team were to go down. it&amp;rsquo;s still a large spof (single-point-of-failure), but i&amp;rsquo;m reasonably certain that at least the irc net will remain up and functional in the event of another outage.</description>
+      <description>&lt;p&gt;after the &lt;a href=&#34;november-13-post-mortem.html&#34;&gt;fiasco&lt;/a&gt; earlier this week, i&amp;rsquo;ve
+been taking steps to minimize the impact if tilde.team were to go down.
+it&amp;rsquo;s still a large spof (single-point-of-failure), but i&amp;rsquo;m reasonably
+certain that at least the irc net will remain up and functional in the
+event of another outage.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;the first thing that i set up was a handful of additional ircd nodes:
+see &lt;a href=&#34;https://tilde.chat/wiki/?page=servers&#34;&gt;the tilde.chat wiki&lt;/a&gt; for a
+full list. slash.tilde.chat is on my personal vps, and bsd.tilde.chat is
+hosted on the bsd vps that i set up for tilde.team.&lt;/p&gt;
+&lt;p&gt;i added the ipv4 addresses for these machines, along with the ip for
+yourtilde.com as A records for tilde.chat, creating a dns round-robin.
+&lt;code&gt;host tilde.chat&lt;/code&gt; will return all four. requesting the dns record will
+return any one of them, rotating them in a semi-random fashion. this
+means that when connecting to tilde.chat on 6697 for irc, you might end
+up on any of &lt;code&gt;{your,team,bsd,slash}.tilde.chat&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;this creates the additional problem that visiting the &lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat
+site&lt;/a&gt; will end up at any of those 4 machines in much
+the same way. for the moment, the site is deployed on all of the boxes,
+making site setup issues hard to
+&lt;a href=&#34;https://tildegit.org/tildeverse/tilde.chat/issues/8&#34;&gt;debug&lt;/a&gt;. the
+solution to this problem is to use a subdomain as the roundrobin host,
+as other networks like freenode do (see &lt;code&gt;host chat.freenode.net&lt;/code&gt; for the
+list of servers).&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not sure how to make any of the other services more resilient. it&amp;rsquo;s
+something that i have been and will continue to research moving forward.&lt;/p&gt;
+&lt;p&gt;the other main step that i have taken to prevent the same issue from
+happening again was to configure the firewall to drop outgoing requests
+to the subnets as defined in &lt;a href=&#34;https://tools.ietf.org/html/rfc1918&#34;&gt;rfc
+1918&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;d like to consider at least this risk to be mitigated.&lt;/p&gt;
+&lt;p&gt;thanks for reading,&lt;/p&gt;
+&lt;p&gt;~ben&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;update&lt;/strong&gt;: the round robin host is now &lt;em&gt;irc&lt;/em&gt;.tilde.chat, which resolves
+the site issues that we were having, due to the duplicated deployments.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -124,8 +697,51 @@ i&amp;rsquo;ll go over some of the most essential of these, and share my full co
       <pubDate>Tue, 13 Nov 2018 20:20:33 +0000</pubDate>
       
       <guid>./november-13-post-mortem.html</guid>
-      <description>we had something of an outage on november 13, 2018 on tilde.team.
-i awoke, not suspecting anything to be amiss. as soon as i logged in to check my email and irc mentions, it became clear.</description>
+      <description>&lt;p&gt;we had something of an outage on november 13, 2018 on tilde.team.&lt;/p&gt;
+&lt;p&gt;i awoke, not suspecting anything to be amiss. as soon as i logged in to
+check my email and irc mentions, it became clear.&lt;/p&gt;
+&lt;p&gt;tilde.team was at the least inaccessible, and at the worst, down
+completely. according the message in my inbox, there had been an
+attempted &amp;ldquo;attack&amp;rdquo; from my IP.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have indications that there was an attack from your server. Please
+take all necessary measures to avoid this in the future and to solve
+the issue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;at this point, i have no idea what could have happened over night while
+i&amp;rsquo;m sleeping. the timestamp shows that it arrive only 30 minutes after
+i&amp;rsquo;d turned in for the night.&lt;/p&gt;
+&lt;p&gt;when i finally log on in the morning to check mails and irc mentions, i
+find that i&amp;rsquo;m unable to connect to tilde.team&amp;hellip; strange, but ok; time
+to troubleshoot. i refresh the &lt;a href=&#34;https://mail.tilde.team&#34;&gt;webmail&lt;/a&gt; to see
+what i&amp;rsquo;m missing. it ends up failing to find the server. even stranger!
+i&amp;rsquo;d better get the mails off my phone if they&amp;rsquo;re on my @tilde.team mail!&lt;/p&gt;
+&lt;p&gt;here, i launch in to full debugging mode: what command was it? who ran
+it?&lt;/p&gt;
+&lt;p&gt;search &lt;code&gt;~/.bash_history&lt;/code&gt; per user was not very successful. nothing i
+could find was related to net or map. i had checked
+&lt;code&gt;sudo grep nmap /home/*/.bash_history&lt;/code&gt; and many other commands.&lt;/p&gt;
+&lt;p&gt;at this point, i had connected with other ~teammates across other irc
+nets (&lt;a href=&#34;https://hashbang.sh/&#34;&gt;#!&lt;/a&gt;, &lt;a href=&#34;https://tilde.town&#34;&gt;~town&lt;/a&gt;, etc).
+among suggestions to check &lt;code&gt;/var/log/syslog&lt;/code&gt;, &lt;code&gt;/var/log/kern.log&lt;/code&gt;, and
+&lt;code&gt;dmesg&lt;/code&gt;, i finally decided to check &lt;code&gt;ps&lt;/code&gt;. &lt;code&gt;ps -ef | grep nmap&lt;/code&gt; yielded
+nmap on an obscured uid and gid, which is shortly established to belong
+to a container i had provisioned for &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not considering methods of policing access to any site over port 80
+and port 443. this is crazy. how do you police &lt;code&gt;nmap&lt;/code&gt; when it isn&amp;rsquo;t
+scanning on every port?&lt;/p&gt;
+&lt;p&gt;after a bit of shit-talking and reassurance from other sysadmins, i
+reexamined and realized that &lt;a href=&#34;./~fosslinux/&#34;&gt;~fosslinux&lt;/a&gt; had only run
+&lt;code&gt;nmap&lt;/code&gt; for addresses in the &lt;code&gt;10.0.0.0/8&lt;/code&gt; space. the &lt;code&gt;10/8&lt;/code&gt; address space
+is intended to not be addressable outside the local space. how could
+&lt;a href=&#34;https://hetzner.com&#34;&gt;hetzner&lt;/a&gt; have found out about a localhost network
+probe!?&lt;/p&gt;
+&lt;p&gt;finally, after speaking with more people than i expected to speak with
+in one day, i ended up sending three different support emails to hetzner
+support, which finally resulted in them unlocking the ip.&lt;/p&gt;
+&lt;p&gt;it&amp;rsquo;s definitely time to research redundancy options!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -134,8 +750,49 @@ i awoke, not suspecting anything to be amiss. as soon as i logged in to check my
       <pubDate>Thu, 20 Sep 2018 17:32:33 +0000</pubDate>
       
       <guid>./italy.html</guid>
-      <description>i just got back from a 10-day backpacking trip to italy and i&amp;rsquo;d like to share some of the photos i took!
-the travel plan was rome -&amp;gt; venice -&amp;gt; florence -&amp;gt; naples -&amp;gt; pompei/vesuvius -&amp;gt; capri -&amp;gt; amalfi</description>
+      <description>&lt;p&gt;i just got back from a 10-day backpacking trip to italy and i&amp;rsquo;d like to
+share some of the photos i took!&lt;/p&gt;
+&lt;p&gt;the travel plan was rome -&amp;gt; venice -&amp;gt; florence -&amp;gt; naples -&amp;gt;
+pompei/vesuvius -&amp;gt; capri -&amp;gt; amalfi&lt;/p&gt;
+&lt;p&gt;this is the roman forum (with colosseum in the background) as seen from
+the palatine.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/roman-forum.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;here&amp;rsquo;s me standing next to the same piece of ancient rome as i did the
+last time i visited in 2015. see &lt;a href=&#34;https://github.com/benharri&#34;&gt;my github
+profile&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/threeyearslater.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;the inside of st. pete&amp;rsquo;s basilica. climbed the 551 steps to the top of
+it for a crazy view of rome.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/st-petes.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;venice was the next stop. this is the grand canal.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/venice-grand-canal.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;we visited all the main museums in firenze (aka florence, but firenze is
+far cooler). this is the view from the roof of our hostel.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/firenze.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;after arriving in naples, we headed out to see vesuvius and the ruins of
+pompei. i&amp;rsquo;m not sure why pompei has an extra &amp;lsquo;i&amp;rsquo; in english, but it only
+has one in modern-day italian. look at the ruts left from the ancience
+chariots in the basalt stone!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/pompei-ruts.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;here see vesuvius from pompei&amp;rsquo;s main square.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/vesuvius-from-pompei.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;we did a tour around the island of capri. (think capri pants, caprese
+salads, etc). we also took a chairlift to the top of the island for the
+stunning view. unfortunately, photos just don&amp;rsquo;t show the scale and sheer
+drop from the cliff.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/capri-rocks.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;this is the view from our airbnb in amalfi. it was quite a pain to get
+to&amp;hellip; but it was worth it!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/airbnb-view.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;here&amp;rsquo;s me and &lt;a href=&#34;https://tilde.team/~supercock789/&#34;&gt;~supercock789&lt;/a&gt;
+somewhere along the path of the gods.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/italy/me-and-nick.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;what a whirlwind! i&amp;rsquo;m pretty sure we visited all the major tourist
+attractions in the cities that we visited. and in quite a short time!&lt;/p&gt;
+&lt;p&gt;there are &lt;a href=&#34;https://bhh.sh/pub/photos/italy/&#34;&gt;a few extra photos here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;thanks for stopping by!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -144,8 +801,18 @@ the travel plan was rome -&amp;gt; venice -&amp;gt; florence -&amp;gt; naples -&
       <pubDate>Wed, 05 Sep 2018 21:34:13 +0000</pubDate>
       
       <guid>./utterances.html</guid>
-      <description>i somehow stumbled upon utterances today at lunch. (i think someone had it forked on their github page).
-no matter how i found it, i still decided to add it to my blog here with bashblog.</description>
+      <description>&lt;p&gt;i somehow stumbled upon &lt;a href=&#34;https://utteranc.es&#34;&gt;utterances&lt;/a&gt; today at
+lunch. (i think someone had it forked on their github page).&lt;/p&gt;
+&lt;p&gt;no matter how i found it, i still decided to add it to my blog here with
+&lt;a href=&#34;https://tildegit.org/team/bashblog&#34;&gt;bashblog&lt;/a&gt;. utterances is a
+commenting system that leverages github issues. so, for example a
+comment on &lt;a href=&#34;https://tilde.team/~ben/blog/upsides-of-new-dns-nameservers.html&#34;&gt;a
+post&lt;/a&gt;
+shows up on github &lt;a href=&#34;https://github.com/benharri/tilde/issues/1#issuecomment-418732788&#34;&gt;like
+this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;now we just need to figure out if it can be pointed at a gitea instance
+like &lt;a href=&#34;https://tildegit.org&#34;&gt;tildegit&lt;/a&gt;. might be time for a PR!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -154,9 +821,23 @@ no matter how i found it, i still decided to add it to my blog here with bashblo
       <pubDate>Tue, 14 Aug 2018 23:36:05 +0000</pubDate>
       
       <guid>./no-more-google.html</guid>
-      <description>not sure if this is appropriately tagged, but i didn&amp;rsquo;t feel like making a new one.
-i figured i should probably get some notes down about moving off google.
-to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:</description>
+      <description>&lt;p&gt;not sure if this is appropriately tagged, but i didn&amp;rsquo;t feel like making
+a new one.&lt;/p&gt;
+&lt;p&gt;i figured i should probably get some notes down about moving off google.&lt;/p&gt;
+&lt;p&gt;to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gmail =&amp;gt; &lt;a href=&#34;https://tilde.team/wiki/?page=email&#34;&gt;@tilde.team mail&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;google drive =&amp;gt; &lt;a href=&#34;https://syncthing.net&#34;&gt;syncthing&lt;/a&gt; (with a
+persistent node running on my personal vps)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i&amp;rsquo;m still using:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gplay music/youtube&lt;/li&gt;
+&lt;li&gt;google maps (open streetmap isn&amp;rsquo;t good enough to replace it)&lt;/li&gt;
+&lt;li&gt;google photos - but this is going to be replaced long-term with
+syncthing&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -165,7 +846,13 @@ to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:<
       <pubDate>Tue, 14 Aug 2018 15:05:38 +0000</pubDate>
       
       <guid>./upsides-of-new-dns-nameservers.html</guid>
-      <description> no more google no more google automated certbot validation for letsencrypt wildcard certs!! no more manual TXT records every three months!  </description>
+      <description>&lt;ul&gt;
+&lt;li&gt;no more google&lt;/li&gt;
+&lt;li&gt;no more google&lt;/li&gt;
+&lt;li&gt;automated certbot validation for letsencrypt wildcard certs!! no
+more manual TXT records every three months!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -174,8 +861,37 @@ to start, i&amp;rsquo;ll get a list of the things i was able to easily replace:<
       <pubDate>Tue, 14 Aug 2018 15:03:49 +0000</pubDate>
       
       <guid>./dns-shenanigans-post-mortem.html</guid>
-      <description>let&amp;rsquo;s start by saying i probably should have done a bit more research before diving head-first into this endeavor.
-i&amp;rsquo;ve been thinking about transferring my domains off google domains for some time now, as part of my personal goal to self host and limit my dependence on google and other large third-party monstrosities.</description>
+      <description>&lt;p&gt;let&amp;rsquo;s start by saying i probably should have done a bit more research
+before diving head-first into this endeavor.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve been thinking about transferring my domains off google domains for
+some time now, as part of my personal goal to self host and limit my
+dependence on google and other large third-party monstrosities. along
+that line, i asked for registrar recommendations.
+&lt;a href=&#34;https://tomasino.tilde.team&#34;&gt;~tomasino&lt;/a&gt; responded with
+&lt;a href=&#34;https://namesilo.com&#34;&gt;namesilo&lt;/a&gt;. i found that they had $3.99
+registrations for .team and .zone domains, which is 1/10th the cost of
+the $40 registration on google domains.&lt;/p&gt;
+&lt;p&gt;i started out by getting the list of domains from the google console. 2
+or 3 of them had been registered within the last 60 days, so i wasn&amp;rsquo;t
+able to transfer those just yet. i grabbed all the domain unlock codes
+and dropped them into namesilo. i failed to realize that the dns panel
+on google domains would disappear as soon as it went through, but more
+importantly that the nameservers would be left pointing to the old
+defunct google domains ones.&lt;/p&gt;
+&lt;p&gt;i updated the nameservers as soon as i realized this error from the
+namesilo panel. some of the domains propagated quickly. others, not so
+much. tilde.team was still in a state of flux between the old and new
+nameservers.&lt;/p&gt;
+&lt;p&gt;in a rush to get the dns problem fixed, and under recommendation from
+several people on irc, i decided to switch the nameservers for
+tilde.team and tilde.zone to cloudflare, leaving another layer of flux
+for the dns to be stuck in&amp;hellip;&lt;/p&gt;
+&lt;p&gt;of the five domains that i moved to cloudflare, 3 returned with a dnssec
+error, claiming that i needed to remove the DS record from that zone.
+d&amp;rsquo;oh!&lt;/p&gt;
+&lt;p&gt;i removed the dnssec from those affected domains, so we should be good
+to go as soon as it all propagates through the fickle beast that is dns.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -184,7 +900,21 @@ i&amp;rsquo;ve been thinking about transferring my domains off google domains fo
       <pubDate>Thu, 26 Jul 2018 15:34:50 +0000</pubDate>
       
       <guid>./lxd-networking-and-additional-ips.html</guid>
-      <description>now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to get a secondary IP address assigned to a lxd container (which i plan to use for my personal stuff).</description>
+      <description>&lt;p&gt;now that tilde.team is on a fancy-shmancy new dedi server, i&amp;rsquo;ve tried to
+get a secondary IP address assigned to a lxd container (which i plan to
+use for my personal stuff). lxd shows that the secondary IP is being
+picked up by that container, but i&amp;rsquo;m still seeing the host machine&amp;rsquo;s IP
+as the external address.&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m not sure how i&amp;rsquo;ll need to configure the network settings on the host
+machine (now that we&amp;rsquo;re running ubuntu 18.04 and it uses netplan for
+configs and not /etc/network/interfaces). another confusing thing is
+that the main config in /etc/netplan says that the network config is
+handled by systemd-networkd&amp;hellip;&lt;/p&gt;
+&lt;p&gt;at least i have through the end of the year when my current vps runs out
+to get this up and running.&lt;/p&gt;
+&lt;p&gt;ping me on &lt;a href=&#34;https://tilde.chat&#34;&gt;irc&lt;/a&gt; or &lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;email&lt;/a&gt;
+if you have experience with this.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -193,8 +923,14 @@ i&amp;rsquo;ve been thinking about transferring my domains off google domains fo
       <pubDate>Sun, 22 Jul 2018 19:26:26 +0000</pubDate>
       
       <guid>./dotfiles.html</guid>
-      <description>finally got around to updating my dotfiles to use gnu stow. i adapted ~tomasino&amp;rsquo;s makefile for use with the configs that i&amp;rsquo;m keeping with it.
-now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my config to ~/.</description>
+      <description>&lt;p&gt;finally got around to updating my
+&lt;a href=&#34;https://git.tilde.team/ben/dotfiles&#34;&gt;dotfiles&lt;/a&gt; to use gnu stow. i
+adapted &lt;a href=&#34;https://github.com/jamestomasino/dotfiles/blob/master/Makefile&#34;&gt;~tomasino&amp;rsquo;s
+makefile&lt;/a&gt;
+for use with the configs that i&amp;rsquo;m keeping with it.&lt;/p&gt;
+&lt;p&gt;now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink my
+config to ~/.ssh when it already exists.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -203,8 +939,14 @@ now i just need to figure out why my ssh config doesn&amp;rsquo;t copy/symlink m
       <pubDate>Sun, 22 Jul 2018 11:44:03 +0000</pubDate>
       
       <guid>./bashblog-and-your-gopherhole.html</guid>
-      <description>i&amp;rsquo;ve created a repo for the tilde.team customizations to bashblog.
-it will now make sure that your ~/public_gopher exists and symlink your blog into it with a nice gophermap to list all the markdown styled posts.</description>
+      <description>&lt;p&gt;i&amp;rsquo;ve created &lt;a href=&#34;https://git.tildeverse.org/meta/bashblog&#34;&gt;a repo&lt;/a&gt; for the
+tilde.team customizations to
+&lt;a href=&#34;https://github.com/cfenollosa/bashblog&#34;&gt;bashblog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;it will now make sure that your ~/public_gopher exists and symlink your
+blog into it with a nice gophermap to list all the markdown styled
+posts.&lt;/p&gt;
+&lt;p&gt;try it out and let me know if there are any problems!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -213,8 +955,10 @@ it will now make sure that your ~/public_gopher exists and symlink your blog int
       <pubDate>Sun, 15 Jul 2018 23:15:46 +0000</pubDate>
       
       <guid>./more-drone-photos.html</guid>
-      <description>i finally got my drone out this summer to take some more pics!
-more here</description>
+      <description>&lt;p&gt;i finally got my drone out this summer to take some more pics!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/drone/DJI_0097.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gallery.bhh.sh/?/category/drone&#34;&gt;more here&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -223,8 +967,18 @@ more here</description>
       <pubDate>Sun, 15 Jul 2018 23:09:22 +0000</pubDate>
       
       <guid>./tildeverseorg.html</guid>
-      <description>since the last time i wrote a post here, i&amp;rsquo;ve registered the tildeverse.org domain and started moving some services over that were already intended for tildeverse use.
-among those are gitea and the new link aggregator (which runs the same source as lobste.</description>
+      <description>&lt;p&gt;since the last time i wrote a post here, i&amp;rsquo;ve registered the
+tildeverse.org domain and started moving some services over that were
+already intended for tildeverse use.&lt;/p&gt;
+&lt;p&gt;among those are &lt;a href=&#34;https://git.tildeverse.org&#34;&gt;gitea&lt;/a&gt; and &lt;a href=&#34;https://links.tildeverse.org&#34;&gt;the new link
+aggregator&lt;/a&gt; (which runs the same source as
+&lt;a href=&#34;https://github.com/lobsters/lobsters&#34;&gt;lobste.rs&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ve also started a phlog in my
+&lt;a href=&#34;https://gopher.tilde.team/tilde.team/~ben&#34;&gt;gopherhole&lt;/a&gt; with
+&lt;a href=&#34;./~tomasino&#34;&gt;~tomasino&amp;rsquo;s&lt;/a&gt; new
+&lt;a href=&#34;https://github.com/jamestomasino/burrow&#34;&gt;burrow&lt;/a&gt; gopherhole tool!&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll try to post a bit more often too with updates from the tildeverse!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -233,9 +987,28 @@ among those are gitea and the new link aggregator (which runs the same source as
       <pubDate>Wed, 13 Jun 2018 15:07:45 +0000</pubDate>
       
       <guid>./tildeteam-news.html</guid>
-      <description>hey hi hello!
-it seems that i haven&amp;rsquo;t written anything on my blog in quite a while&amp;hellip;
-time to fix that! i&amp;rsquo;ve been quite busy in the last month or so with a lot of new ideas an energy for tilde.</description>
+      <description>&lt;p&gt;hey hi hello!&lt;/p&gt;
+&lt;p&gt;it seems that i haven&amp;rsquo;t written anything on my blog in quite a while&amp;hellip;&lt;/p&gt;
+&lt;p&gt;time to fix that! i&amp;rsquo;ve been quite busy in the last month or so with a
+lot of new ideas an energy for tilde.team.&lt;/p&gt;
+&lt;p&gt;after rediscovering my account on tilde.town, i hopped in the irc there
+and my enthusiasm translated into a couple new members over here on the
+~team.&lt;/p&gt;
+&lt;p&gt;our irc has been somewhat more active recently which is awesome:)&lt;/p&gt;
+&lt;p&gt;some of the new updates in the last month:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git.tilde.team&#34;&gt;tildegit (our own gitea instance)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mail.tilde.team&#34;&gt;tildemail&lt;/a&gt; with postfix and dovecot for
+smtp/imap as well as local command line mail in mutt and alpine&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git.tildeverse.org/team/tilde-launcher&#34;&gt;&lt;code&gt;tilde&lt;/code&gt;&lt;/a&gt; user
+script wrapper with submission and approval flows&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tilde.team/wiki/?page=ssh&#34;&gt;password auth disabled&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i&amp;rsquo;d like to make use of our new mailserver, so shoot me some
+&lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;mail&lt;/a&gt;. i never get enough personal mail. it&amp;rsquo;s
+all still privacy policy update notices. :(&lt;/p&gt;
+&lt;p&gt;see you soon!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -244,9 +1017,36 @@ time to fix that! i&amp;rsquo;ve been quite busy in the last month or so with a 
       <pubDate>Wed, 07 Mar 2018 16:49:51 +0000</pubDate>
       
       <guid>./white-pride-vs-black-pride.html</guid>
-      <description>What White Nationalists Don&amp;rsquo;t Get
-A common and seemingly reasonable argument for white pride or white nationalism is: why cant I be proud of my culture?
-Well, you can. Always have been able to.</description>
+      <description>&lt;p&gt;What White Nationalists Don&amp;rsquo;t Get&lt;/p&gt;
+&lt;p&gt;A common and seemingly reasonable argument for white pride or white
+nationalism is: why cant I be proud of my culture?&lt;/p&gt;
+&lt;p&gt;Well, you can. Always have been able to. We have Irish pride
+celebrations, we have German drinking festivals, we have Serbian food
+festivals. Any European culture you can think of has multiple
+organizations in North America dedicated to taking pride in their
+heritage and NO ONE gives them shit for it.&lt;/p&gt;
+&lt;p&gt;But, you see, when you start talking white pride, that&amp;rsquo;s not a culture.
+That&amp;rsquo;s a skin color. There is no white culture, never was. There is no
+pan-European culture, never was. Europe is a continent, not a culture or
+ethnicity.&lt;/p&gt;
+&lt;p&gt;Now, some of you are probably about to go, but wait! Black pride! How is
+that okay? Well, easy. Go find a black person and ask them if their
+ancestors were slaves. When you find one who says yes, proceed to ask
+them what country in Africa were your ancestors from? Do you know what
+their answer will probably be? I don&amp;rsquo;t know. This is because their
+culture was taken from them. It was beaten out of them. They were
+enslaved, Christianized, and then white washed. The one unifying feature
+they have as a people is that history of slavery and that history of
+being black. They cant have Liberian pride, or Congolese pride, or
+insert African country pride because they have no fucking idea where
+their ancestors came from other than the broad region of West Africa.&lt;/p&gt;
+&lt;p&gt;Meanwhile us white people can often trace our ancestors to specific
+cities and regions. I can trace my mothers maiden name to a single
+fucking village in Ireland. I know where I came from. I don&amp;rsquo;t have white
+culture, I have Irish culture.&lt;/p&gt;
+&lt;p&gt;So that&amp;rsquo;s why white pride makes you an asshole but black pride actually
+makes sense.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -255,8 +1055,28 @@ Well, you can. Always have been able to.</description>
       <pubDate>Mon, 26 Feb 2018 11:57:10 +0000</pubDate>
       
       <guid>./phoenix.html</guid>
-      <description>inspired by oodsnet, (and my pull request to add darkmode), i started to create my own tilde.team fork (now forum.tilde.team).
-the first step was to switch out the css to the tilde.</description>
+      <description>&lt;p&gt;inspired by &lt;a href=&#34;http://oods.net&#34;&gt;oodsnet&lt;/a&gt;, (and my pull request to add
+&lt;a href=&#34;https://github.com/exezin/oodsnet/pull/5&#34;&gt;darkmode&lt;/a&gt;), i started to
+create my own tilde.team fork (now
+&lt;a href=&#34;https://forum.tilde.team/&#34;&gt;forum.tilde.team&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;the first step was to switch out the css to the &lt;a href=&#34;https://tilde.team/css/&#34;&gt;tilde.team
+standard&lt;/a&gt; and update the classes for bootstrap.
+once i got it going and integrated with the tilde.team linux auth
+service, i asked other tildeans for input and suggestions.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;./~micaiah/&#34;&gt;~micaiah&lt;/a&gt; was interested in helping, but also wanted to
+learn a new language and/or framework, so we decided to start over,
+recreating the entire forum with
+&lt;a href=&#34;http://phoenixframework.org&#34;&gt;elixir/phoenix&lt;/a&gt;. we&amp;rsquo;d discussed elixir
+previously, but never had a convincing use case to force us to learn it.&lt;/p&gt;
+&lt;p&gt;the project is live, with the source code on
+&lt;a href=&#34;https://github.com/tilde-team/forum&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;the thing that i&amp;rsquo;m most impressed with is the speed of the erlang
+runtime :D&lt;/p&gt;
+&lt;p&gt;check out these response times. sub-millisecond!?!?!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/phx.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;give it a look, and &lt;a href=&#34;https://tilde.team/signup&#34;&gt;join the tilde.team&lt;/a&gt; if
+you want to come hang out!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -265,7 +1085,11 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Thu, 15 Feb 2018 13:33:16 +0000</pubDate>
       
       <guid>./otm.html</guid>
-      <description>just heard the latest episode of on the media. this is a super helpful guide i found on their twitter.</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/IMG_20180215_121947.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;just heard the &lt;a href=&#34;https://www.wnyc.org/story/safety-net-just-got-a-little-less-safe&#34;&gt;latest
+episode&lt;/a&gt;
+of on the media. this is a super helpful guide i found on their twitter.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -274,7 +1098,8 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Tue, 13 Feb 2018 09:55:06 +0000</pubDate>
       
       <guid>./quote-of-the-day.html</guid>
-      <description>Be Alert! - the world needs more Lerts.</description>
+      <description>&lt;p&gt;Be Alert! - the world needs more Lerts.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -283,7 +1108,28 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Wed, 17 Jan 2018 13:09:13 +0000</pubDate>
       
       <guid>./webassembly.html</guid>
-      <description>according to this post on the mozilla blog, we will be able to compile wasm as it streams into the browser in much the same way that images are decoded. this is a huge game changer from the current paradigm of loading javascript completely before being able to parse and compile it.</description>
+      <description>&lt;p&gt;according to &lt;a href=&#34;https://hacks.mozilla.org/2018/01/making-webassembly-even-faster-firefoxs-new-streaming-and-tiering-compiler/&#34;&gt;this
+post&lt;/a&gt;
+on the mozilla blog, we will be able to compile wasm as it streams into
+the browser in much the same way that images are decoded. this is a huge
+game changer from the current paradigm of loading javascript completely
+before being able to parse and compile it.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript code is much more expensive, byte for byte, than an image,
+because of the time spent parsing and compiling it. It&amp;rsquo;s possible to
+parse and compile wasm as fast as it comes over the network, which
+makes it much more like an image than JavaScript code. Game changer!&lt;/p&gt;
+&lt;p&gt;— Yehuda Katz (@wycats) &lt;a href=&#34;https://twitter.com/wycats/status/942908325775077376?ref_src=twsrc%5Etfw&#34;&gt;December 19,
+2017&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;this will make &lt;a href=&#34;https://github.com/WebAssembly/design/blob/master/UseCases.md&#34;&gt;so many
+things&lt;/a&gt;
+possible in the browser that never were before!&lt;/p&gt;
+&lt;p&gt;i decided to follow this
+&lt;a href=&#34;http://webassembly.org/getting-started/developers-guide/&#34;&gt;tutorial&lt;/a&gt; and
+ended up with &lt;a href=&#34;https://tilde.team/~ben/wasm/hello.html&#34;&gt;this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i don&amp;rsquo;t know what to do next. any ideas?&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -292,8 +1138,10 @@ the first step was to switch out the css to the tilde.</description>
       <pubDate>Tue, 16 Jan 2018 17:26:40 +0000</pubDate>
       
       <guid>./pop-quiz.html</guid>
-      <description>is this real?
-hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real place.</description>
+      <description>&lt;p&gt;is this real?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/The%20Witcher%203%20Screenshot%202017.09.12%20-%2023.44.17.73.png&#34; alt=&#34;4k witcher3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real place.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -302,9 +1150,29 @@ hint: it&amp;rsquo;s not. it&amp;rsquo;s the witcher 3. and it looks like a real
       <pubDate>Fri, 12 Jan 2018 13:30:26 +0000</pubDate>
       
       <guid>./git-remotes-with-ssh-aliases.html</guid>
-      <description>did you know that ~/.ssh/config aliases work for git remotes??
-~/.ssh/config
-Host gh HostName github.com User git IdentityFile ~/.ssh/gh_key  you can now use gh:username/repo as the remote in place of git@github.</description>
+      <description>&lt;p&gt;did you know that &lt;code&gt;~/.ssh/config&lt;/code&gt; aliases work for git remotes??&lt;/p&gt;
+&lt;p&gt;~/.ssh/config&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host gh
+HostName github.com
+User git
+IdentityFile ~/.ssh/gh_key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;you can now use &lt;code&gt;gh:username/repo&lt;/code&gt; as the remote in place of
+&lt;code&gt;git@github.com:username/repo&lt;/code&gt;, which is much shorter and easier to type
+many times!&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git clone gh:benharri/learngit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;there are many other use cases for the &lt;code&gt;ssh_config&lt;/code&gt; file. for example,
+here is my config for the tilde machine for easy ssh connections.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host tilde
+HostName tilde.team
+User ben
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;then use &lt;code&gt;ssh tilde&lt;/code&gt; to start a new ssh session. this also works with
+&lt;code&gt;scp&lt;/code&gt;: try something like this &lt;code&gt;scp file.txt tilde:workspace/.&lt;/code&gt; in place
+of &lt;code&gt;scp file.txt ben@tilde.team:workspace/.&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;the ssh_config file is super useful. check &lt;code&gt;man ssh_config&lt;/code&gt; for a full
+list of options!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -313,8 +1181,10 @@ Host gh HostName github.com User git IdentityFile ~/.ssh/gh_key  you can now use
       <pubDate>Fri, 05 Jan 2018 09:49:42 +0000</pubDate>
       
       <guid>./cold.html</guid>
-      <description>why is it so cold
-i&amp;rsquo;m so done with winter</description>
+      <description>&lt;p&gt;why is it so cold&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/Screenshot_20180105-094720.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;m so done with winter&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -323,9 +1193,13 @@ i&amp;rsquo;m so done with winter</description>
       <pubDate>Wed, 03 Jan 2018 12:41:09 +0000</pubDate>
       
       <guid>./8values.html</guid>
-      <description>not that i&amp;rsquo;m very surprised by this, but i took the quiz again (after losing my results url) and got these results.
-take the quiz here
-my results again as a link</description>
+      <description>&lt;p&gt;not that i&amp;rsquo;m very surprised by this, but i took the quiz again (after
+losing my results url) and got these results.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://bhh.sh/pub/photos/8values.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://8values.github.io&#34;&gt;take the quiz here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://8values.github.io/results.html?e=95.7&amp;amp;d=92.6&amp;amp;g=78.5&amp;amp;s=92.3&#34;&gt;my results again as a
+link&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -334,10 +1208,14 @@ my results again as a link</description>
       <pubDate>Fri, 22 Dec 2017 16:28:45 +0000</pubDate>
       
       <guid>./mastodon.html</guid>
-      <description>hi everyone.
-i started hosting a mastodon instance at social.tilde.team.
-check it out if you want some federated open source social goodness :)
-send me a toot @ben@tilde.team (from any mastodon instance!</description>
+      <description>&lt;p&gt;hi everyone.&lt;/p&gt;
+&lt;p&gt;i started hosting a &lt;a href=&#34;https://joinmastodon.org&#34;&gt;mastodon&lt;/a&gt; instance at
+&lt;a href=&#34;https://social.tilde.team&#34;&gt;social.tilde.team&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;check it out if you want some federated open source social goodness :)&lt;/p&gt;
+&lt;p&gt;send me a toot &lt;a href=&#34;https://social.tilde.team/@ben&#34;&gt;@ben@tilde.team&lt;/a&gt; (from
+any mastodon instance!)&lt;/p&gt;
+&lt;p&gt;thanks!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -346,7 +1224,25 @@ send me a toot @ben@tilde.team (from any mastodon instance!</description>
       <pubDate>Thu, 21 Dec 2017 16:09:45 +0000</pubDate>
       
       <guid>./loading.html</guid>
-      <description>const loadingmsgs = [ &amp;quot;Proving P=NP...&amp;quot;, &amp;quot;Computing 6 x 9...&amp;quot;, &amp;quot;Mining Bitcoin...&amp;quot;, &amp;quot;Dividing by 0...&amp;quot;, &amp;quot;Initializing Skynet...&amp;quot;, &amp;quot;[REDACTED]&amp;quot;, &amp;quot;Downloading more RAM...&amp;quot;, &amp;quot;Ordering 1s and 0s...&amp;quot;, &amp;quot;Navigating neural network...&amp;quot;, &amp;quot;Importing machine learning.</description>
+      <description>&lt;pre&gt;&lt;code&gt;const loadingmsgs = [
+    &amp;quot;Proving P=NP...&amp;quot;,
+    &amp;quot;Computing 6 x 9...&amp;quot;,
+    &amp;quot;Mining Bitcoin...&amp;quot;,
+    &amp;quot;Dividing by 0...&amp;quot;,
+    &amp;quot;Initializing Skynet...&amp;quot;,
+    &amp;quot;[REDACTED]&amp;quot;,
+    &amp;quot;Downloading more RAM...&amp;quot;,
+    &amp;quot;Ordering 1s and 0s...&amp;quot;,
+    &amp;quot;Navigating neural network...&amp;quot;,
+    &amp;quot;Importing machine learning...&amp;quot;,
+    &amp;quot;Issuing Alice and Bob one-time pads...&amp;quot;,
+    &amp;quot;Generating random sequence from key inputs while trying to exit vim...&amp;quot;,
+    &amp;quot;for i in range(additional): Pylon()&amp;quot;,
+    &amp;quot;(creating unresolved tension...&amp;quot;,
+    &amp;quot;Symlinking vim to nano and ed...&amp;quot;,
+];
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/0xdade/status/943573845469827072&#34;&gt;sauce&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -355,9 +1251,21 @@ send me a toot @ben@tilde.team (from any mastodon instance!</description>
       <pubDate>Mon, 18 Dec 2017 13:36:04 +0000</pubDate>
       
       <guid>./vr.html</guid>
-      <description>i picked up an oculus rift after my last paycheck :P
-it was half christmas present. these are some of the games that i&amp;rsquo;m most excited for:
- elite dangerous lone echo / echo arena dirt rally gun club vr eagle flight robo recall  have you played any other cool vr games lately?</description>
+      <description>&lt;p&gt;i picked up an oculus rift after my last paycheck :P&lt;/p&gt;
+&lt;p&gt;it was half christmas present. these are some of the games that i&amp;rsquo;m most
+excited for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;elite dangerous&lt;/li&gt;
+&lt;li&gt;lone echo / echo arena&lt;/li&gt;
+&lt;li&gt;dirt rally&lt;/li&gt;
+&lt;li&gt;gun club vr&lt;/li&gt;
+&lt;li&gt;eagle flight&lt;/li&gt;
+&lt;li&gt;robo recall&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;have you played any other cool vr games lately? are there any that i
+should check out?&lt;/p&gt;
+&lt;p&gt;let me know!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -366,7 +1274,27 @@ it was half christmas present. these are some of the games that i&amp;rsquo;m mo
       <pubDate>Thu, 14 Dec 2017 06:26:55 +0000</pubDate>
       
       <guid>./net-neutrality-vote-today.html</guid>
-      <description>Everybody! We only have UNTIL TOMORROW to fight the FCC &amp;amp; the repeal of #NetNeutrality! Repealing Net Nutrality would result in an unequal access to online content including research, social/political organizing, and personal media.</description>
+      <description>&lt;p&gt;Everybody! We only have UNTIL TOMORROW to fight the FCC &amp;amp; the repeal of
+#NetNeutrality! Repealing Net Nutrality would result in an unequal
+access to online content including research, social/political
+organizing, and personal media. It would also allow powerhouse companies
+providing internet to charge more for regular quality internet, and
+charge certain users more than others. HERE&amp;rsquo;S A WAY TO ACT - takes less
+than a minute.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;a href=&#34;http://gofccyourself.com&#34;&gt;gofccyourself.com&lt;/a&gt; (the shortcut
+John Oliver made to the hard-to-find FCC comment page)&lt;/li&gt;
+&lt;li&gt;Click on the 17-108 link (Restoring Internet Freedom)&lt;/li&gt;
+&lt;li&gt;Click on &amp;ldquo;express&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Be sure to hit &amp;ldquo;ENTER&amp;rdquo; after you put in your name &amp;amp; info so it
+registers.&lt;/li&gt;
+&lt;li&gt;In the comment section write, &amp;ldquo;I strongly support net neutrality
+backed by Title 2 oversight of ISPs.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Click to submit, done. - Make sure you hit submit at the end!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Copy and paste this into your own status update!&lt;/strong&gt; Seriously, this is
+simple and so important. Do it.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -375,11 +1303,21 @@ it was half christmas present. these are some of the games that i&amp;rsquo;m mo
       <pubDate>Wed, 13 Dec 2017 19:12:51 +0000</pubDate>
       
       <guid>./hey-dere-bub.html</guid>
-      <description>if you haven&amp;rsquo;t checked it out yet, give my new podcast a listen!
-
-episode 5 was uploaded today.
-we&amp;rsquo;re on twitter, facebook, and of course our own website
-give us a shout on twitter or shoot us an email and let us know what you thought and if there is anything you&amp;rsquo;d like us to talk about in the future.</description>
+      <description>&lt;p&gt;if you haven&amp;rsquo;t checked it out yet, give &lt;a href=&#34;https://heyderebub.com&#34;&gt;my new
+podcast&lt;/a&gt; a listen!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://heyderebub.com&#34;&gt;&lt;img src=&#34;https://heyderebub.com/images/itunes_image.jpg&#34; alt=&#34;heyderebublogo&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://heyderebub.com/?name=2017-12-13_hey_dere_bub_ep__5.mp3&#34;&gt;episode
+5&lt;/a&gt; was
+uploaded today.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;we&amp;rsquo;re on &lt;a href=&#34;https://twitter.com/heyderebub&#34;&gt;twitter&lt;/a&gt;,
+&lt;a href=&#34;https://facebook.com/heyderebub&#34;&gt;facebook&lt;/a&gt;, and of course &lt;a href=&#34;https://heyderebub.com&#34;&gt;our own
+website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;give us a shout on twitter or &lt;a href=&#34;mailto:hello@heyderebub.com&#34;&gt;shoot us an
+email&lt;/a&gt; and let us know what you thought and
+if there is anything you&amp;rsquo;d like us to talk about in the future.&lt;/p&gt;
+&lt;p&gt;thanks!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -388,8 +1326,16 @@ give us a shout on twitter or shoot us an email and let us know what you thought
       <pubDate>Thu, 07 Dec 2017 16:41:40 +0000</pubDate>
       
       <guid>./pan-galactic-gargle-blaster.html</guid>
-      <description>short&amp;rsquo;s brewery released another batch of their pan galactic gargle blaster imperial IPA. i had one last night and was very excited to have it once again.
- “The Hitch-Hiker&amp;rsquo;s Guide to the Galaxy also mentions alcohol.</description>
+      <description>&lt;p&gt;short&amp;rsquo;s brewery released another batch of their pan galactic gargle
+blaster imperial IPA. i had one last night and was very excited to have
+it once again.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“The Hitch-Hiker&amp;rsquo;s Guide to the Galaxy also mentions alcohol. It says
+that the best drink in existence is the Pan Galactic Gargle Blaster,
+the effect of which is like having your brains smashed out with a
+slice of lemon wrapped round a large gold brick.”&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
     </item>
     
     <item>
@@ -398,8 +1344,11 @@ give us a shout on twitter or shoot us an email and let us know what you thought
       <pubDate>Tue, 05 Dec 2017 13:25:47 +0000</pubDate>
       
       <guid>./dont-be-a-coconut.html</guid>
-      <description>i&amp;rsquo;ve got nothing to say don&amp;rsquo;t be a coconut
- Ask Me Anything - The Strokes (on First Impressions of Earth)</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;i&amp;rsquo;ve got nothing to say don&amp;rsquo;t be a coconut&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ask Me Anything - The Strokes (on First Impressions of Earth)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -408,7 +1357,8 @@ give us a shout on twitter or shoot us an email and let us know what you thought
       <pubDate>Sun, 03 Dec 2017 13:47:36 +0000</pubDate>
       
       <guid>./thought-of-the-day2227.html</guid>
-      <description>everything in the universe either is or isn&amp;rsquo;t a potato.</description>
+      <description>&lt;p&gt;everything in the universe either is or isn&amp;rsquo;t a potato.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -417,7 +1367,19 @@ give us a shout on twitter or shoot us an email and let us know what you thought
       <pubDate>Tue, 28 Nov 2017 16:22:42 +0000</pubDate>
       
       <guid>./where-to-find-me-elsewhere-on-the-web.html</guid>
-      <description> email wire @bharris matrix/riot @benh:matrix.org telegram twitter keybase my personal site github gitlab tilde~ben  </description>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wire.com&#34;&gt;wire&lt;/a&gt; @bharris&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://riot.im&#34;&gt;matrix/riot&lt;/a&gt; @benh:matrix.org&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.me/bharris&#34;&gt;telegram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/nebsirrah&#34;&gt;twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://keybase.io/bharris&#34;&gt;keybase&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://benharr.is&#34;&gt;my personal site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/benharri&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitlab.com/benharri&#34;&gt;gitlab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;./~ben/&#34;&gt;tilde~ben&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -426,8 +1388,11 @@ give us a shout on twitter or shoot us an email and let us know what you thought
       <pubDate>Mon, 27 Nov 2017 20:48:10 +0000</pubDate>
       
       <guid>./blog-update.html</guid>
-      <description>sorry for the blast of posts. i recreated them from a wordpress blog on motd.org.
-i plan on posting some random thoughts here from time to time. thanks for checking in.</description>
+      <description>&lt;p&gt;sorry for the blast of posts. i recreated them from a wordpress blog on
+&lt;a href=&#34;http://motd.org&#34;&gt;motd.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;i plan on posting some random thoughts here from time to time. thanks
+for checking in.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -436,7 +1401,8 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Mon, 27 Nov 2017 16:58:50 +0000</pubDate>
       
       <guid>./thought-of-the-day27904.html</guid>
-      <description>wherever you go, there you are</description>
+      <description>&lt;p&gt;wherever you go, there you are&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -445,7 +1411,18 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Mon, 27 Nov 2017 16:58:17 +0000</pubDate>
       
       <guid>./antiwitze.html</guid>
-      <description>uebern berg ist schneller als zu fuss sagte der wanderer und schwamm los Was ist der Unterschied zwischen einem Vogel? Beide Beine sind gleich lang. Besonders das linke. Nachts ist es kälter als draußen.</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;uebern berg ist schneller als zu fuss sagte der wanderer und schwamm
+los&lt;/li&gt;
+&lt;li&gt;Was ist der Unterschied zwischen einem Vogel? Beide Beine sind
+gleich lang. Besonders das linke.&lt;/li&gt;
+&lt;li&gt;Nachts ist es kälter als draußen.&lt;/li&gt;
+&lt;li&gt;Wer später bremst, fährt länger schnell.&lt;/li&gt;
+&lt;li&gt;Cola schmeckt besser als aus dem Glas!!!&lt;/li&gt;
+&lt;li&gt;Zu Fuß ist schneller als übern Berg!&lt;/li&gt;
+&lt;li&gt;Was ist weiss und wandert den Berg hinauf? Eine Lawine mit Heimweh.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -454,7 +1431,9 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Mon, 27 Nov 2017 16:56:36 +0000</pubDate>
       
       <guid>./thought-of-the-day14302.html</guid>
-      <description>why do they tell us to use the stairs in case of fire? shouldn&amp;rsquo;t we be using a fire extinguisher?</description>
+      <description>&lt;p&gt;why do they tell us to use the stairs in case of fire? shouldn&amp;rsquo;t we be
+using a fire extinguisher?&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -463,7 +1442,30 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Mon, 27 Nov 2017 16:55:29 +0000</pubDate>
       
       <guid>./nonsense.html</guid>
-      <description>I hole-hardedly agree, but allow me to play doubles advocate here for a moment. For all intensive purposes I think you are wrong. In an age where false morals are a diamond dozen, true virtues are a blessing in the skies.</description>
+      <description>&lt;p&gt;I hole-hardedly agree, but allow me to play doubles advocate here for a
+moment. For all intensive purposes I think you are wrong. In an age
+where false morals are a diamond dozen, true virtues are a blessing in
+the skies. We often put our false morality on a petal stool like a bunch
+of pre-Madonnas, but you all seem to be taking something very valuable
+for granite. So I ask of you to mustard up all the strength you can
+because it is a doggy dog world out there. Although there is some merit
+to what you are saying it seems like you have a huge ship on your
+shoulder. In your argument you seem to throw everything in but the kids
+Nsync, and even though you are having a feel day with this I am here to
+bring you back into reality. I have a sick sense when it comes to these
+types of things. It is almost spooky, because I cannot turn a blonde eye
+to these glaring flaws in your rhetoric. I have zero taller ants when it
+comes to people spouting out hate in the name of moral righteousness.
+You just need to remember what comes around is all around, and when
+supply and command fails you will be the first to go. Make my words,
+when you get down to brass stacks it doesn’t take rocket appliances to
+get two birds stoned at once. It’s clear who makes the pants in this
+relationship, and sometimes you just have to swallow your prize and
+accept the facts. You might have to come to this conclusion through
+denial and error but I swear on my mother’s mating name that when you
+put the petal to the medal you will pass with flying carpets like it’s a
+peach of cake.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -472,7 +1474,10 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Mon, 27 Nov 2017 16:54:07 +0000</pubDate>
       
       <guid>./thought-of-the-day22873.html</guid>
-      <description>“Arguing with religious people – It’s like playing chess with a pigeon; no matter how good I am at chess, the pigeon is just going to knock over the pieces, crap on the board and strut around victorious” – Anonymous</description>
+      <description>&lt;p&gt;“Arguing with religious people – It’s like playing chess with a pigeon;
+no matter how good I am at chess, the pigeon is just going to knock over
+the pieces, crap on the board and strut around victorious” – Anonymous&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -481,8 +1486,31 @@ i plan on posting some random thoughts here from time to time. thanks for checki
       <pubDate>Mon, 27 Nov 2017 16:52:49 +0000</pubDate>
       
       <guid>./christian-morgenstern-verkehrte-welt.html</guid>
-      <description>Dunkel war’s der Mond schien helle, Schnee bedeckt die grüne Flur als ein Auto blitzeschnelle, langsam um die Ecke fuhr.
-Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein totgeschossner Hase, auf der Sandbank Schlittschuh lief.</description>
+      <description>&lt;p&gt;Dunkel war’s der Mond schien helle, Schnee bedeckt die grüne Flur als
+ein Auto blitzeschnelle, langsam um die Ecke fuhr.&lt;/p&gt;
+&lt;p&gt;Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein
+totgeschossner Hase, auf der Sandbank Schlittschuh lief.&lt;/p&gt;
+&lt;p&gt;Und der Wagen fuhr im Trabe, rückwärts einen Berg hinauf. Droben zog ein
+alter Rabe grade eine Turmuhr auf.&lt;/p&gt;
+&lt;p&gt;Ringsumher herrscht tiefes schweigen und mit fürchterlichem Krach,
+spielen in des Grases Zweigen zwei Kamele lautlos Schach.&lt;/p&gt;
+&lt;p&gt;Und auf einer roten Parkbank, die blau angestrichen war, saß ein
+blondgelockter Jüngling mit kohlrabenschwarzem Haar.&lt;/p&gt;
+&lt;p&gt;Neben ihm ne alte Schrulle, zählte kaum erst 16 Jahr, In der Hand ne’
+Butterstulle, die mit Schmalz bestrichen war.&lt;/p&gt;
+&lt;p&gt;Droben auf dem Apfelbaume, der sehr süße Birnen trug, hing des Frühlings
+letzte Pflaume und an Nüssen noch genug.&lt;/p&gt;
+&lt;p&gt;Von der regennassen Straße wirbelte der Staub empor und der Junge bei
+der Hitze mächtig an den Ohren fror.&lt;/p&gt;
+&lt;p&gt;Beide Hände in den Taschen hielt er sich die Augen zu. Denn er konnte
+nicht ertragen, wie nach Veilchen roch die Kuh.&lt;/p&gt;
+&lt;p&gt;Holder Engel, süßer Bengel, furchtbar liebes Trampeltier. Du hast Augen
+wie Sardellen, alle Ochsen gleichen Dir.&lt;/p&gt;
+&lt;p&gt;Und zwei Fische liefen munter, durch das Blaue Kornfeld hin. Endlich
+ging die Sonne unter und der graue Tag erschien.&lt;/p&gt;
+&lt;p&gt;Und das alles dichtet Goethe Als er in der Morgenröte Liegend auf dem
+Nachttopf saß Und dabei die Zeitung las.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -491,7 +1519,10 @@ Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein totgesc
       <pubDate>Mon, 27 Nov 2017 16:51:42 +0000</pubDate>
       
       <guid>./joe-on-sporty-ball-z.html</guid>
-      <description>For every nerd calling something sportsball there needs to be a jock that walks into a library and yells “WHAT’S UP WITH ALL THESE WORD BURGERS”</description>
+      <description>&lt;p&gt;For every nerd calling something sportsball there needs to be a jock
+that walks into a library and yells “WHAT’S UP WITH ALL THESE WORD
+BURGERS”&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -500,7 +1531,12 @@ Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein totgesc
       <pubDate>Mon, 27 Nov 2017 16:50:40 +0000</pubDate>
       
       <guid>./fun-words-in-german.html</guid>
-      <description> Tschechisches Streichholzschächtelchen Rindfleischettikettierungsüberwachungsaufgabensübertragungsgesetz Donaudampfschifffahrtsgesellschaftskapitän  </description>
+      <description>&lt;ul&gt;
+&lt;li&gt;Tschechisches Streichholzschächtelchen&lt;/li&gt;
+&lt;li&gt;Rindfleischettikettierungsüberwachungsaufgabensübertragungsgesetz&lt;/li&gt;
+&lt;li&gt;Donaudampfschifffahrtsgesellschaftskapitän&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -509,7 +1545,8 @@ Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein totgesc
       <pubDate>Mon, 27 Nov 2017 16:49:29 +0000</pubDate>
       
       <guid>./thought-of-the-day.html</guid>
-      <description>things are not what they appear to be. nor are they otherwise.</description>
+      <description>&lt;p&gt;things are not what they appear to be. nor are they otherwise.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -518,10 +1555,13 @@ Drinnen saßen stehend Leute, schweigend ins Gespräch vertieft, als ein totgesc
       <pubDate>Mon, 02 Oct 2017 16:11:13 +0000</pubDate>
       
       <guid>./hi-there.html</guid>
-      <description>welcome to my tildeblog
-you are here.
-i like to mess around with linux sysadmin shtuff. tilde.team is my baby. let me know if you want to get involved.
-thanks for being awesome.</description>
+      <description>&lt;p&gt;welcome to my tildeblog&lt;/p&gt;
+&lt;p&gt;you are here.&lt;/p&gt;
+&lt;p&gt;i like to mess around with linux sysadmin shtuff.
+&lt;a href=&#34;https://tilde.team&#34;&gt;tilde.team&lt;/a&gt; is my baby. let me know if you want to
+get involved.&lt;/p&gt;
+&lt;p&gt;thanks for being awesome. keep it up.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -530,7 +1570,34 @@ thanks for being awesome.</description>
       <pubDate>Mon, 02 Oct 2017 16:09:26 +0000</pubDate>
       
       <guid>./4k-gaming-with-a-gtx1080ti.html</guid>
-      <description>i recently picked up a gtx1080ti on newegg (and a 4k monitor earlier in the summer on prime day). i can&amp;rsquo;t stop playing the witcher 3. even though it&amp;rsquo;s a couple years old, it just looks so good.</description>
+      <description>&lt;p&gt;i recently picked up a gtx1080ti on newegg (and a 4k monitor earlier in
+the summer on prime day). i can&amp;rsquo;t stop playing the witcher 3. even
+though it&amp;rsquo;s a couple years old, it just looks so good. plus, the story
+and gameplay are incredible as well. i find myself dreaming about the
+game and longing to play it when i&amp;rsquo;m not. i&amp;rsquo;ll have to say it is
+definitively the best game i&amp;rsquo;ve ever played.&lt;/p&gt;
+&lt;p&gt;some of the other games that i&amp;rsquo;m looking forward to exploring more of in
+4k are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;destiny 2&lt;/li&gt;
+&lt;li&gt;prey&lt;/li&gt;
+&lt;li&gt;overwatch (not that this will look insanely good, it will just be
+super silky smooth)&lt;/li&gt;
+&lt;li&gt;fallout 4&lt;/li&gt;
+&lt;li&gt;battlefield 1&lt;/li&gt;
+&lt;li&gt;dishonored&lt;/li&gt;
+&lt;li&gt;dishonored 2&lt;/li&gt;
+&lt;li&gt;dying light&lt;/li&gt;
+&lt;li&gt;battlefront&lt;/li&gt;
+&lt;li&gt;pubg&lt;/li&gt;
+&lt;li&gt;doom (2016)&lt;/li&gt;
+&lt;li&gt;gta5&lt;/li&gt;
+&lt;li&gt;just cause 3&lt;/li&gt;
+&lt;li&gt;hellblade: senua&amp;rsquo;s sacrifice&lt;/li&gt;
+&lt;li&gt;watch dogs 2&lt;/li&gt;
+&lt;li&gt;many others&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -539,8 +1606,9 @@ thanks for being awesome.</description>
       <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>./rnc-day-four.html</guid>
-      <description>UPDATE looks like an article of convention notes by two of our reporters ran in the Mining Journal!
-Trump is officially the Republican nominee for President of the United States of America.</description>
+      <description>&lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt; looks like an article of convention notes by two of our reporters ran in the &lt;a href=&#34;http://www.miningjournal.net/page/content.detail/id/643873/Notes-from-the-convention-hall.html?nav=5192&#34;&gt;Mining Journal&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Trump is officially the Republican nominee for President of the United States of America. My first reaction to this news was a feeling of impending doom.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -549,7 +1617,16 @@ Trump is officially the Republican nominee for President of the United States of
       <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>./the-party-of-lincoln.html</guid>
-      <description>Something that struck me as absolutely outrageous (more than other things that I&amp;rsquo;ve seen this week) was the connection of the roots of the Republican party to the modern Republican party.</description>
+      <description>&lt;p&gt;Something that struck me as absolutely outrageous (&lt;em&gt;more&lt;/em&gt; than other things that I&amp;rsquo;ve seen this week) was the connection of the roots of the Republican party to the modern Republican party.&lt;/p&gt;
+&lt;p&gt;While it never hurts to be proud of where the party comes from, it is completely unreasonable to claim that the modern-day party stands for the same things it did when it was founded.&lt;/p&gt;
+&lt;p&gt;The Republican party was founded in 1854 on an anti-slavery platform, where it filled in the power gap in the north left by the collapsed Whig party. It saw strong support in the north of the US, where Republicans fought to end slavery. Abraham Lincoln was elected as the first Republican president in 1860.&lt;/p&gt;
+&lt;p&gt;When Lincoln ended slavery with the Emancipation Proclamation, Democrats in the south resisted, sometimes violently, and sometimes with laws, known as Jim Crow laws.&lt;/p&gt;
+&lt;p&gt;Eventually, northern Republicans made rich by civil war industry grew tired of supporting the rights of freed slaves in the south. These rich white men became party officials and did not want to give up any of their power. The aimed to protect their own interests. In this manner, the Republican party became the party of big business.&lt;/p&gt;
+&lt;p&gt;The parties as we know them today were solidified in the &amp;rsquo;80s.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s entirely inaccurate to claim that the Republican party of today resembles in any way the Republican party at the time of its founding.&lt;/p&gt;
+&lt;p&gt;I was inspired to write this article by mention of this idea at the convention, as well as this Vox video.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+</description>
     </item>
     
     <item>
@@ -558,7 +1635,32 @@ Trump is officially the Republican nominee for President of the United States of
       <pubDate>Wed, 20 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>./rnc-day-three.html</guid>
-      <description>Something that has been on my mind all week is the utter lack of minority representation at the convention. Inside the security perimeter, most black people that you see are working here.</description>
+      <description>&lt;p&gt;Something that has been on my mind all week is the utter lack of minority representation at the convention. Inside the security perimeter, most black people that you see are working here. I check everyone&amp;rsquo;s credentials to see what their role here is. Of all the ones that I&amp;rsquo;ve seen, one hand would be enough to count all of the non-white delegates here.&lt;/p&gt;
+&lt;p&gt;White people are an enormous majority here. Seeing a hispanic or black speaker on stage seems entirely incongruous with the messages and platform of Donald Trump of the Republican party itself. It seems self-defeating for anyone who is not white to be a Republican.&lt;/p&gt;
+&lt;p&gt;Black guy quotes Martin Luther King Jr.&amp;rsquo;s &lt;em&gt;I have a dream&lt;/em&gt; speech to limited applause from the white delegates on the floor.&lt;/p&gt;
+&lt;p&gt;This is an excerpt of some notes that I made while watching the convention.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you&amp;rsquo;re tired of brokenness elect Donald Trump.&lt;/li&gt;
+&lt;li&gt;Conservative leadership is working in States with Republican governors? In Wisconsin? Fact check&lt;/li&gt;
+&lt;li&gt;Claims that our economy is in the toilet are unfounded&lt;/li&gt;
+&lt;li&gt;The whole premise of America coming back or becoming great again is flawed. What is it coming back from? When was it great? Whom was it great for?&lt;/li&gt;
+&lt;li&gt;Apart from race relations, things are relatively good, compared with what Obama inherited when he took office in &amp;lsquo;08.&lt;/li&gt;
+&lt;li&gt;Freedom means no one can tell me what I do with my body. Freedom means no one can tell me whom I marry.&lt;/li&gt;
+&lt;li&gt;Education, healthcare, marriage dictated out of Washington by hildawg? Nope, that&amp;rsquo;s what Republicans want to do.&lt;/li&gt;
+&lt;li&gt;Brexit mentioned -&amp;gt; cheer -&amp;gt; profound victory for uneducated populace&lt;/li&gt;
+&lt;li&gt;Build a wall -&amp;gt; cheer&lt;/li&gt;
+&lt;li&gt;Admitting Isis terrorists as refugees? Has that happened before?&lt;/li&gt;
+&lt;li&gt;Freedom will lift people out of dependency to the dignity of work? Wat&lt;/li&gt;
+&lt;li&gt;Rep founded to defeat slavery? True, but the party has since done a 180&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Abe Lincoln&lt;/li&gt;
+&lt;li&gt;That&amp;rsquo;s our legacy although the media will never share it? Because that&amp;rsquo;s not how the modern Republican party is&lt;/li&gt;
+&lt;li&gt;Cruz is all over the place. Didn&amp;rsquo;t endorse Trump. Booed off the stage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tonight was Republican Vice Presidential nominee Mike Pence&amp;rsquo;s first appearance on the stage of the convention. He seems fully aware of how boring he is, making a point to mention it to the audience. It&amp;rsquo;s interesting to see him finally joining the Trump train. Especially in contrast to his &lt;a href=&#34;http://www.indystar.com/story/opinion/2016/05/01/mike-pence-will-vote-ted-cruz/83792658/&#34;&gt;endorsement&lt;/a&gt; of Ted Cruz around the primaries.&lt;/p&gt;
+&lt;p&gt;Another interesting day at the Republican National Convention.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bonus video&lt;/strong&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+</description>
     </item>
     
     <item>
@@ -567,8 +1669,16 @@ Trump is officially the Republican nominee for President of the United States of
       <pubDate>Tue, 19 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>./rnc-day-two.html</guid>
-      <description>Our second day at the RNC began once again at the Michigan Delegation Breakfast Session.
-Michigan Speaker of the House Kevin Cotter addressed the delegation with a report on the state of the state.</description>
+      <description>&lt;p&gt;Our second day at the RNC began once again at the Michigan Delegation Breakfast Session.&lt;/p&gt;
+&lt;p&gt;Michigan Speaker of the House Kevin Cotter addressed the delegation with a report on the state of the state. His moderate, compromising stance was all but booed out by the delegation. To me, this highlighted the increasing radicalization of partisan politics. A reasonable politician who understands that things get done through compromise is criticized for not doing enough for the &amp;ldquo;party.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Despite not attending the RNC itself, Ohio Governor John Kasich addressed the MI delegation immediately following Speaker Cotter at the breakfast. As I expected, he didn&amp;rsquo;t mention the white elephant in the room: Trump. Trump and other party Republicans have called Kasich out for his absence from the Convention proceedings at the Quicken Loans Arena. Many delegates expected him to endorse Trump, but were left unsatisfied.&lt;/p&gt;
+&lt;p&gt;Delegates who were originally sent to represent Kasich were left confused, expecting him to give some sort of indication (that would have been made clear by some sort of endorsement). Once Kasich left, it seemed that these delegates would end up falling into party lines by voting Trump.&lt;/p&gt;
+&lt;p&gt;After returning to edit some stories and get lunch, we drove to an event that had been recommended to us by a local contact. &lt;a href=&#34;https://cityclub.org/events/the-american-dream-a-symposium-at-the-intersection-of-art-and-politics&#34;&gt;The American Dream&lt;/a&gt; included a 4000 pound ice sculpture of &lt;em&gt;&amp;ldquo;The American Dream&amp;rdquo;&lt;/em&gt; that was left outside to melt, a metaphor for the idea of the American Dream.&lt;/p&gt;
+&lt;p&gt;A panel of local artists and coordinators discussed the potential of art to be a powerful force for change. It was refreshing to hear some reasonable voices and empowering to hear about the experiences that these people have had in working together to produce a series of documentaries called &lt;a href=&#34;http://www.thefixerscleveland.com/&#34;&gt;&lt;em&gt;The Fixers&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Bonus video:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;UPDATE:&lt;/strong&gt; Looks like Donald is now officially the Republican nominee&amp;hellip; the votes are in.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -577,9 +1687,12 @@ Michigan Speaker of the House Kevin Cotter addressed the delegation with a repor
       <pubDate>Mon, 18 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>./blue-lives-matter.html</guid>
-      <description>#BlueLivesMatter completely misses the point. And it makes #AllLivesMatter hypocritical.
-This cartoon says it all.
-The same people that pioneered the #AllLivesMatter movement are now claiming that #BlueLivesMatter. Do they not understand the irony of this?</description>
+      <description>&lt;p&gt;#BlueLivesMatter completely misses the point. And it makes #AllLivesMatter hypocritical.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://chainsawsuit.com/wp-content/uploads/2016/07/20160707_allhousesredux-506x500.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This cartoon says it all.&lt;/p&gt;
+&lt;p&gt;The same people that pioneered the #AllLivesMatter movement are now claiming that #BlueLivesMatter. Do they not understand the irony of this?&lt;/p&gt;
+&lt;p&gt;By claiming that all lives matter, this minimizes the importance of lives that currently need the attention, much like the house on fire in the cartoon above.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -588,7 +1701,26 @@ The same people that pioneered the #AllLivesMatter movement are now claiming tha
       <pubDate>Mon, 18 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>./rnc-day-one.html</guid>
-      <description>Michigan delegates to the Republican National Convention got fired up for New Jersey Governor Chris Christie as he addressed them this morning at their first breakfast meeting. Christie stressed the importance of party unity behind the presumptive nominee, Donald Trump.</description>
+      <description>&lt;p&gt;Michigan delegates to the Republican National Convention got fired up for New Jersey Governor Chris Christie as he addressed them this morning at their first breakfast meeting. Christie stressed the importance of party unity behind the presumptive nominee, Donald Trump.&lt;/p&gt;
+&lt;p&gt;However, the enthusiasm for Trump was not as strong as expected. The emphasis was placed on bashing Hillary, rather than promoting a Trump presidency. It makes sense, as it&amp;rsquo;s very hard to promote a candidate who has nothing to offer.&lt;/p&gt;
+&lt;p&gt;The scene downtown has been peaceful so far. There are, however, huge crowds, but everyone has been respectful aside from some jeers and boos for Hillary.&lt;/p&gt;
+&lt;p&gt;We have had to take turns in the convention center, as we only have three (of which only two are valid for entering the arena itself) passes for six people.&lt;/p&gt;
+&lt;p&gt;At the convention center, any mention of Hillary Clinton&amp;rsquo;s name generates a huge boo from the audience.&lt;/p&gt;
+&lt;p&gt;According to Willie Robertson, of Duck Dynasty fame, Trump is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;a man who knows how to get things done&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;a man who says what he means and means what he says&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;and will&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Make America America again&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It&amp;rsquo;s really showing that the Republican Party had trouble finding people to speak here at the convention. What place do reality TV stars have in our political process?&lt;/p&gt;
+&lt;p&gt;Overall, it&amp;rsquo;s a disturbing display of the state of our country.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;UPDATE:&lt;/strong&gt; Melania&amp;rsquo;s Plagiarism of Michelle&amp;rsquo;s 2008 speech&lt;/em&gt; &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;So that&#39;s pretty blatant, right? &lt;!-- raw HTML omitted --&gt;pic.twitter.com/EPnHME7afV&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;— Mike Hearn (@mikehearn) &lt;!-- raw HTML omitted --&gt;July 19, 2016&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;UPDATE:&lt;/strong&gt; Tony Schwartz, ghostwriter of &lt;em&gt;The Art of the Deal&lt;/em&gt;, spoke out about writing the book. He believes that if Trump wins and gets the nuclear codes, there is an excellent possibility it will lead to the end of civilization. Source: &lt;strong&gt;&lt;a href=&#34;http://www.nytimes.com/2016/07/19/us/politics/trump-book-tony-schwartz.html&#34;&gt;NY Times&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -597,8 +1729,16 @@ The same people that pioneered the #AllLivesMatter movement are now claiming tha
       <pubDate>Sun, 17 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>./republican-national-convention.html</guid>
-      <description>I was asked to chaperone a group of youth journalists with 8-18 Media (a youth journalism program in Marquette that I was once a part of)
-Disclaimer: these blog posts represent my opinion!</description>
+      <description>&lt;p&gt;I was asked to chaperone a group of youth journalists with 8-18 Media (a youth journalism program in Marquette that I was once a part of)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; these blog posts represent my opinion!&lt;/p&gt;
+&lt;p&gt;I plan on writing a post for each day of the RNC journaling my thoughts about the event.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;rnc-day-one.html&#34;&gt;&lt;strong&gt;Day One&lt;/strong&gt;&lt;/a&gt; - Benghazi and weaponization of grief&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;rnc-day-two.html&#34;&gt;&lt;strong&gt;Day Two&lt;/strong&gt;&lt;/a&gt; - Make America Work Again (It&amp;rsquo;s already working with a very low unemployment rate)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;rnc-day-three.html&#34;&gt;&lt;strong&gt;Day Three&lt;/strong&gt;&lt;/a&gt; - Make America First Again featuring the second and third place candidates from the Republican primary&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;rnc-day-four.html&#34;&gt;&lt;strong&gt;Day Four&lt;/strong&gt;&lt;/a&gt; - Make America One Again&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -607,7 +1747,42 @@ Disclaimer: these blog posts represent my opinion!</description>
       <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./silex.html</guid>
-      <description>UPDATE: this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip; i&amp;rsquo;m including it for historical purposes here&amp;rsquo;s the deployed site and the source for it</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;UPDATE:
+this is a very old post that i&amp;rsquo;m importing from my old site&amp;hellip;
+i&amp;rsquo;m including it for historical purposes
+here&amp;rsquo;s the &lt;a href=&#34;https://benhh.bhh.sh&#34;&gt;deployed site&lt;/a&gt;
+and the &lt;a href=&#34;https://github.com/benharri/benhh.com&#34;&gt;source for it&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;this-is-an-introduction-to-my-choice-of-framework-in-building-this-website&#34;&gt;This is an introduction to my choice of framework in building this website.&lt;/h3&gt;
+&lt;h4 id=&#34;several-options-i-considered-for-my-website&#34;&gt;Several options I considered for my website:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://djangoproject.com/&#34;&gt;Django&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Django&amp;rsquo;s opinionated Model model with its strong database ties seemed a bit much for a relatively static site&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s huge and unnecessarily complicated for a simple website&lt;/li&gt;
+&lt;li&gt;It would be a great learning experience in Python&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://php.net&#34;&gt;Vanilla PHP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;I have a lot of experience in vanilla PHP at my internship at &lt;a href=&#34;http://nmu.edu&#34;&gt;Northern Michigan University&lt;/a&gt; working in the Information Services department where I develop web applications for internal use.&lt;/li&gt;
+&lt;li&gt;I often find myself frustrated with PHP&amp;rsquo;s quirkiness and wouldn&amp;rsquo;t learn new material if I used this for my personal website.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://silex.sensiolabs.com&#34;&gt;Silex&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This is a micro-framework built using components of the much larger &lt;a href=&#34;https://symfony.com&#34;&gt;Symfony&lt;/a&gt; framework.&lt;/li&gt;
+&lt;li&gt;I discovered Silex in &lt;a href=&#34;https://devcenter.heroku.com/articles/getting-started-with-php&#34;&gt;Heroku&amp;rsquo;s PHP deployment guide&lt;/a&gt; where I noticed that it was small enough to not draw unneeded overhead and extensible enough for my website to grow as it needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I opted to go with Silex. The source code is available &lt;a href=&#34;https://github.com/benharri/benhh.com&#34;&gt;here&lt;/a&gt; for your perusal.&lt;/p&gt;
+&lt;p&gt;I have gone through many iterations of this site. The first version was simply a clone of the &lt;a href=&#34;http://euclid.nmu.edu/~benharri/&#34;&gt;homepage&lt;/a&gt; that I have on my university&amp;rsquo;s computer science department server. This wasn&amp;rsquo;t a very useful homepage as many of the projects that I wanted to show in a portfolio were tied to a database on that server.&lt;/p&gt;
+&lt;p&gt;I eventually moved towards a one-page style layout (&lt;a href=&#34;https://github.com/benharri/benhh.com/commit/974e12e85a9ab872facf0f4a238337b2e2d216a3&#34;&gt;in this commit&lt;/a&gt;) where the links in the navbar would scroll the page to pre-defined regions. I then ditched the old multipage layout and at this point I discovered &lt;a href=&#34;https://getgrav.org&#34;&gt;Grav&lt;/a&gt;. After difficulties integrating Grav within my app (read more &lt;a href=&#34;./blog/grav-on-heroku&#34;&gt;here&lt;/a&gt;), I decided to roll my own blogging solution modeled after Grav&amp;rsquo;s markdown content system.&lt;/p&gt;
+&lt;p&gt;I included a YAML Front Matter + Markdown Parser and used that to define the metadata for a &lt;a href=&#34;https://github.com/benharri/benhh.com/blob/master/app/controllers/Blog.php&#34;&gt;blogpost&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There is still much to do (post sort order, paging, tagging, etc), but I appreciate the experience that I have gained in building this blogging system.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -616,8 +1791,40 @@ Disclaimer: these blog posts represent my opinion!</description>
       <pubDate>Sat, 25 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./grav-on-heroku.html</guid>
-      <description>NOTE: this is a historical post that i&amp;rsquo;m importing from my old site.
- When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;NOTE:
+this is a historical post that i&amp;rsquo;m importing from my old site.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When I started building a website (sparked by the purchase of my first personal domain name), I started looking into many different solutions to my web development process.&lt;/p&gt;
+&lt;p&gt;I had already decided that I would use a free dyno on &lt;a href=&#34;https://heroku.com&#34;&gt;Heroku&lt;/a&gt; for hosting.&lt;/p&gt;
+&lt;p&gt;As I researched additional solutions, I came upon the world of the PHP CMS (Content Management System, for the uninitiated). Just the sheer number and variety of CMS is &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_content_management_systems#PHP&#34;&gt;terrifying&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The free tier for databases in Heroku felt lacking in peace of mind and ease of setup so I focused my search to the realm of the &amp;ldquo;flat-file&amp;rdquo; CMS.&lt;/p&gt;
+&lt;p&gt;I discovered &lt;a href=&#34;https://getgrav.org&#34;&gt;Grav&lt;/a&gt; purely by chance. Grav claims to be fast and extensible. I was enticed by the flashy admin interface replete with responsive UI and a gorgeous built-in Markdown editor for content creation.&lt;/p&gt;
+&lt;p&gt;After a bit of &lt;a href=&#34;https://learn.getgrav.org/hosting/paas/heroku&#34;&gt;configuration&lt;/a&gt;, I managed to deploy a Grav instance into a Heroku dyno (a rather annoying affair which involved deploying caches to Heroku and &lt;code&gt;mod_rewrite&lt;/code&gt; rules in &lt;code&gt;.htaccess&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;The tricky part came when I brought the &lt;a href=&#34;https://github.com/getgrav/grav-plugin-admin&#34;&gt;Admin Plugin&lt;/a&gt; into the picture. Without the Admin Plugin, you need to directly change the configurations and add content from the filesystem and then deploy that to the web. You are able, however, to use PHP&amp;rsquo;s built-in development webserver (&lt;code&gt;php -S localhost:9000&lt;/code&gt;) to test your changes.&lt;/p&gt;
+&lt;p&gt;Once I got the Admin plugin working (don&amp;rsquo;t forget to clear your cache if you&amp;rsquo;re deploying to Heroku &amp;ndash; or make sure that the cache directory is in your &lt;code&gt;.gitignore&lt;/code&gt; file), I started making changes to my &lt;code&gt;.yml&lt;/code&gt; configuration files and writing some content with the built-in Markdown editor. I was very impressed with the Admin interface. It&amp;rsquo;s very modern-feeling, while still being lightning-quick.&lt;/p&gt;
+&lt;p&gt;Then I needed to make a change that wasn&amp;rsquo;t available from the Admin interface&amp;hellip; After the next deploy to Heroku, every change that I had made from within the Admin interface was obliterated. This is the main flaw in hosting a Grav app on Heroku. The ephemeral file system for a dyno on Heroku works just fine, but when the dyno restarts, it is regenerated to the state at the latest build. It&amp;rsquo;s important to note that dynos go down any time you push a new build and at &lt;a href=&#34;https://devcenter.heroku.com/articles/dynos#restarting&#34;&gt;least once a day&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dynos restart when:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;create a new release by deploying new code&lt;/li&gt;
+&lt;li&gt;change your config vars&lt;/li&gt;
+&lt;li&gt;change your add-ons&lt;/li&gt;
+&lt;li&gt;run heroku restart&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I then read more about the &lt;a href=&#34;https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem&#34;&gt;ephemeral filesystem&lt;/a&gt; of Heroku dynos.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each dyno gets its own ephemeral filesystem, with a fresh copy of the most recently deployed code. During the dyno’s lifetime its running processes can use the filesystem as a temporary scratchpad, but no files that are written are visible to processes in any other dyno and any files written will be discarded the moment the dyno is stopped or restarted. For example, this occurs any time a dyno is replaced due to application deployment and approximately once a day as part of normal dyno management.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a useless setup for a Grav application where everything is a file. This may sound a bit harsh, but changes to the live app will be destroyed within a day. This just means that there are two options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ditch the Admin plugin&lt;/li&gt;
+&lt;li&gt;Use a full LAMP stack locally to make changes to the files from within the Admin interface before deploying to Heroku&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I chose to ditch the Admin plugin. Making changes to the project from within the filesystem in &lt;a href=&#34;https://sublimetext.com/3&#34;&gt;my text editor&lt;/a&gt; was totally acceptable.&lt;/p&gt;
+&lt;p&gt;Not long after trying to integrate a Grav app within the Silex application that is my website (rather than linking to the Grav app through a subdomain of benhh.com), I gave up Grav for my blog entirely and decided to roll my own &lt;a href=&#34;./blog/silex&#34;&gt;blogging solution&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -626,9 +1833,18 @@ Disclaimer: these blog posts represent my opinion!</description>
       <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>./welcome.html</guid>
-      <description>This is my first post.
-I&amp;rsquo;m Ben Harris. I study computer science at Northern Michigan University.
-I&amp;rsquo;ll be writing about some of the experiences I&amp;rsquo;ve had in software and in other areas of my life.</description>
+      <description>&lt;p&gt;This is my first post.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m Ben Harris. I study computer science at Northern Michigan University.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll be writing about some of the experiences I&amp;rsquo;ve had in software and in other areas of my life.&lt;/p&gt;
+&lt;p&gt;Some of my hobbies include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;writing software&lt;/li&gt;
+&lt;li&gt;biking&lt;/li&gt;
+&lt;li&gt;traveling&lt;/li&gt;
+&lt;li&gt;ultimate frisbee&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thanks for checking out my blog!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

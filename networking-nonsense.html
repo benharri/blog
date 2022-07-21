@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="https://tilde.team/~ben/gruvbox/gruvbox.min.css">
-		<title>networking nonsense</title>
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="gruvbox.css">
+        <link rel="stylesheet" type="text/css" href="_pagefind/pagefind-ui.css">
+        <link rel="stylesheet" type="text/css" href="blog.css">
+        <script type="text/javascript" src="_pagefind/pagefind-ui.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
+        </script>
+        <title>networking nonsense</title>
+    </head>
 
     <body>
         <main>
+            <div id="search"></div>
     <h1><a href="./networking-nonsense.html">networking nonsense</a></h1>
 
     <time>Mon, 11 Feb 2019 02:40 UTC</time>
@@ -27,6 +34,7 @@
 
     <hr>
 
+    <div data-pagefind-body>
     <p>i&rsquo;ve recently been working on setting up <a href="https://drone.tildegit.org">drone
 ci</a> on the tilde.team machine. however,
 there&rsquo;s been something strange going on with the networking on there.</p>
@@ -67,6 +75,7 @@ expected!</p>
 <p>thanks to <a href="https://tilde.team/~fosslinux/">fosslinux</a> and
 <a href="https://tilde.team/~jchelpau/">jchelpau</a> for their debugging help!</p>
 
+    </div>
 
 	<script src="https://utteranc.es/client.js"
         repo="benharri/blog"
