@@ -1,6 +1,7 @@
 {{ define "title" }}{{ .Title | lower }} &ndash; {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
+    <div data-pagefind-ignore>
     <h1>{{ .Title | lower }}</h1>
 
     {{ .Content }}
@@ -13,5 +14,6 @@
         </li>
     {{ end }}
     </ul>
+    </div>
 {{ end }}
 

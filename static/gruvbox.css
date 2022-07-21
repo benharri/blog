@@ -1,0 +1,53 @@
+main {
+  -webkit-font-feature-settings: "liga" on, "calt" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'JetBrains Mono', 'Input Mono', monospace;
+  max-width: 38rem;
+  padding: 2rem;
+  margin: auto;
+}
+
+@media only screen and (max-device-width: 736px) {
+  main {
+    padding: 0.2rem;
+  }
+}
+
+::selection {
+  background: #9c0018;
+}
+
+body {
+  background: #282828;
+  color:      #ebdbb2;
+}
+
+pre {
+  background-color: #3c3836;
+  padding: 1em;
+  border: 0;
+}
+
+a, a:active, a:visited {
+  color: #e491b6;
+  background-color: #1d2021;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-bottom: .1rem;
+}
+
+blockquote {
+  border-left: 1px solid #bdae93;
+  margin: 0.5em 10px;
+  padding: 0.5em 10px;
+}
+
+footer {
+  align: center;
+}
+
+img {
+  max-width: 100%;
+}
