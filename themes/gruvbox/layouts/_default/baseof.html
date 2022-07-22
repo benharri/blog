@@ -1,11 +1,13 @@
+{{- $gruvbox := resources.Get "gruvbox.css" | resources.ToCSS }}
+{{- $blogcss := resources.Get "blog.css" | resources.ToCSS }}
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{{ "gruvbox.css" | absURL }}">
+        <style>{{ $gruvbox.Content | safeCSS }}</style>
         <link rel="stylesheet" type="text/css" href="{{ "_pagefind/pagefind-ui.css" | absURL }}">
-        <link rel="stylesheet" type="text/css" href="{{ "blog.css" | absURL }}">
+        <style>{{ $blogcss.Content | safeCSS }}</style>
         <script type="text/javascript" src="{{ "_pagefind/pagefind-ui.js" | absURL }}"></script>
         <script>
             window.addEventListener('DOMContentLoaded', (event) => { new PagefindUI({ element: "#search" }); });
