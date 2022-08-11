@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>chat on blog // ~ben</title>
+    <link>./tags/chat.html</link>
+    <description>Recent content in chat on blog // ~ben</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Aug 2021 15:28:27 -0400</lastBuildDate><atom:link href="./tags/chat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matrix Sucks</title>
+      <link>./matrix-sucks.html</link>
+      <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
+      
+      <guid>./matrix-sucks.html</guid>
+      <description>&lt;p&gt;i’ve gotten sick of explaining why matrix is bad over and over so i’m gathering my thoughts and some points here and publishing it so i can link to it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;no moderation capabilities&lt;/li&gt;
+&lt;li&gt;bridges don&amp;rsquo;t work well and are 1-way in order to siphon users to matrix&lt;/li&gt;
+&lt;li&gt;it&amp;rsquo;s super slow&lt;/li&gt;
+&lt;li&gt;running a server requires a supercomputer&lt;/li&gt;
+&lt;li&gt;de-facto not federated, everyone is on matrix.org&lt;/li&gt;
+&lt;li&gt;even when you run your own server, it phones home with all kinds of user data to vector.im&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i’ll update this later with more info when i can.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;15:25 &amp;lt;remyabel&amp;gt; their reference client is slow, had an unnecessary/confusing rename and you can&#39;t delete your account
+15:25 &amp;lt;remyabel&amp;gt; you can only &amp;quot;deactivate&amp;quot; it
+15:26 &amp;lt;Shell&amp;gt; also on a technical level it&#39;s just an /awful/ protocol
+15:26 &amp;lt;~ben&amp;gt; extremely disruptive 1way bridging
+15:26 &amp;lt;Shell&amp;gt; with a huge amount of weird bugs as a result of the fact that the devs... just have no idea what they&#39;re doing
+15:26 &amp;lt;~ben&amp;gt; completely nonexistent abuse mitigation
+15:26 &amp;lt;Shell&amp;gt; and haven&#39;t for years
+15:26 &amp;lt;~ben&amp;gt; _huge_ resource hog if you want to try to run a server
+15:27 &amp;lt;Shell&amp;gt; and yes, the approach to bridging is basically to leech off everyone else, demand huge amounts of support from volunteers who never agreed to it in the first place, and give nothing back.
+15:27 &amp;lt;Shell&amp;gt; Matrix literally wouldn&#39;t have a userbase if it wasn&#39;t for IRC.
+15:28 &amp;lt;~ben&amp;gt; they only care about usercounts
+15:29 &amp;lt;Shell&amp;gt; they have, at various points, refused to employ people to work on the IRC bridges, while the bridge was horribly broken and led to security breaches and ban evasion, while simultaneously advertising them as a primary reason to use Matrix
+15:30 &amp;lt;Shell&amp;gt; and it&#39;s not really an &amp;quot;open project&amp;quot; as the words &amp;quot;Matrix Foundation&amp;quot; would have you think - the entire thing is driven almost entirely by the Matrix.org people, anyone else&#39;s input into the project is largely ignored in place of the Matrix.org roadmap.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the connection to amdocs is FUD and not worth discussing&lt;/p&gt;
+&lt;p&gt;additional links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.404.city/en/XMPP_vs_Matrix&#34;&gt;https://wiki.404.city/en/XMPP_vs_Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackea.org/notas/matrix.html&#34;&gt;https://hackea.org/notas/matrix.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1&#34;&gt;https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2&#34;&gt;https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;archive.org links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20141217141653/http://matrix.org/&#34;&gt;https://web.archive.org/web/20141217141653/http://matrix.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219215828/https://en.wikipedia.org/wiki/Matrix_%28protocol%29&#34;&gt;https://web.archive.org/web/20201219215828/https://en.wikipedia.org/wiki/Matrix_%28protocol%29&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219013924/https://lists.autistici.org/message/20200323.184245.94fa2bb8.en.html&#34;&gt;https://web.archive.org/web/20201219013924/https://lists.autistici.org/message/20200323.184245.94fa2bb8.en.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201221141252/https://listas.sindominio.net/pipermail/hackmeeting/2017-October/039274.html&#34;&gt;https://web.archive.org/web/20201221141252/https://listas.sindominio.net/pipermail/hackmeeting/2017-October/039274.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20160616114330/https://vector.im/&#34;&gt;https://web.archive.org/web/20160616114330/https://vector.im/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219130957/https://matrix.org/foundation/&#34;&gt;https://web.archive.org/web/20201219130957/https://matrix.org/foundation/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219131157/https://matrix.org/blog/2019/10/10/new-vector-raises-8-5-m-to-accelerate-matrix-riot-modular&#34;&gt;https://web.archive.org/web/20201219131157/https://matrix.org/blog/2019/10/10/new-vector-raises-8-5-m-to-accelerate-matrix-riot-modular&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20180806141618/https://directory.fsf.org/wiki/Talk:Riot.im&#34;&gt;https://web.archive.org/web/20180806141618/https://directory.fsf.org/wiki/Talk:Riot.im&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201024035930/https://directory.fsf.org/wiki?title=Electron&amp;amp;oldid=71699&#34;&gt;https://web.archive.org/web/20201024035930/https://directory.fsf.org/wiki?title=Electron&amp;amp;oldid=71699&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201025143628/https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_evaluation&#34;&gt;https://web.archive.org/web/20201025143628/https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_evaluation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219220645/https://matrix.org/bridges/&#34;&gt;https://web.archive.org/web/20201219220645/https://matrix.org/bridges/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219015708/https://disroot.org/en/blog/matrix-closure&#34;&gt;https://web.archive.org/web/20201219015708/https://disroot.org/en/blog/matrix-closure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219014545/https://gist.github.com/maxidorius/5736fd09c9194b7a6dc03b6b8d7220d0&#34;&gt;https://web.archive.org/web/20201219014545/https://gist.github.com/maxidorius/5736fd09c9194b7a6dc03b6b8d7220d0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219221731/https://www.matrix.org/blog/2019/09/27/privacy-improvements-in-synapse-1-4-and-riot-1-4/&#34;&gt;https://web.archive.org/web/20201219221731/https://www.matrix.org/blog/2019/09/27/privacy-improvements-in-synapse-1-4-and-riot-1-4/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md&#34;&gt;https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>weechat setup</title>
+      <link>./weechat-setup.html</link>
+      <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
+      
+      <guid>./weechat-setup.html</guid>
+      <description>&lt;p&gt;so you decided to switch from irssi to weechat?&lt;/p&gt;
+&lt;p&gt;what options do you need to set? what plugins? what scripts?&lt;/p&gt;
+&lt;p&gt;i&amp;rsquo;ll go over some of the most essential of these, and share my full
+configs.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;options&#34;&gt;options&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logger.level.irc&lt;/code&gt; the default is 9, which includes joins and parts.
+in most cases you can set this to 3, which only includes messages&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.buffer_notify_default&lt;/code&gt; the default here is &amp;ldquo;all&amp;rdquo;,
+which will add joins and parts to your hotlist. set it to &amp;ldquo;message&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.confirm_quit&lt;/code&gt; set this to on. you&amp;rsquo;ll thank me when you
+type &lt;code&gt;/quit&lt;/code&gt; and mean &lt;code&gt;/close&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.highlight&lt;/code&gt; add a comma-separated list of names/terms
+you&amp;rsquo;d like to trigger a highlight here&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;weechat.look.prefix_align_max&lt;/code&gt; set this to something between 10
+and 20. otherwise, long nicks will crush your available screen real
+estate.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.indent&lt;/code&gt; try something like
+&lt;code&gt;${color:237}${if:${buffer.next_buffer.local_variables.type}=~^(channel|private)$?├:└}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buflist.format.number&lt;/code&gt; if you want to skip the . or space after the
+number, set it to &lt;code&gt;${color:green}${number}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_names&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.color_nicks_in_nicklist&lt;/code&gt; set this to on&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.look.server_buffer&lt;/code&gt; set this to independent to prevent
+automatic merges with the core weechat buffer. especially useful if
+you plan on using
+&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;irc.server_default.autoconnect&lt;/code&gt; set this to on so you don&amp;rsquo;t have to
+set it for every new network you add.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scripts&#34;&gt;scripts&lt;/h2&gt;
+&lt;p&gt;these scripts can be managed with the built in &lt;code&gt;/script&lt;/code&gt; tool. press i,
+then enter on the selected script to install it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/highmon.pl.html/&#34;&gt;highmon.pl&lt;/a&gt; -
+set aside a buffer to list the places your nick has been mentioned&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_nicks.py.html/&#34;&gt;colorize_nicks.py&lt;/a&gt; -
+show nicks in chat with colors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/go.py.html/&#34;&gt;go.py&lt;/a&gt; - fuzzy
+quick jump by buffer number of channel name&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autojoin.py.html/&#34;&gt;autojoin.py&lt;/a&gt; -
+use &lt;code&gt;/autojoin --run&lt;/code&gt; to save all the channels you&amp;rsquo;re currently in
+to be autojoined the next time you start weechat&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/autosort.py.html/&#34;&gt;autosort.py&lt;/a&gt; -
+use this script in tandem with irc.look.server_buffer=independent
+to keep you channel and server list in order&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/colorize_lines.pl.html/&#34;&gt;colorize_lines.pl&lt;/a&gt; -
+i use this script to highlight the entire line of messages i&amp;rsquo;ve been
+mentioned in. check the options in the source or with
+&lt;code&gt;/help colorize_lines&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weechat.org/scripts/source/grep.py.html/&#34;&gt;grep.py&lt;/a&gt; -
+quickly search history and buffers with &lt;code&gt;/grep&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-rest-of-my-configs&#34;&gt;the rest of my configs&lt;/h2&gt;
+&lt;p&gt;you can find the rest of my configs
+&lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;if you have any questions, feel free to ping me on irc. i&amp;rsquo;m ben on
+&lt;a href=&#34;https://libera.chat&#34;&gt;libera&lt;/a&gt; and &lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;screenshot&#34;&gt;screenshot&lt;/h2&gt;
+&lt;p&gt;here&amp;rsquo;s a screenshot of my current configs&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://bhh.sh/pub/screenies/weechat.png&#34;&gt;&lt;img src=&#34;https://bhh.sh/pub/screenies/weechat.png&#34; alt=&#34;&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bonus&#34;&gt;bonus&lt;/h2&gt;
+&lt;p&gt;if you have an existing setup, you can check the config changes you&amp;rsquo;ve
+made with &lt;code&gt;/set diff&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;additionally, feel free to &lt;a href=&#34;https://tildegit.org/ben/dotfiles/src/branch/master/weechat/.weechat/.gitignore&#34;&gt;use my
+.gitignore&lt;/a&gt;,
+add your ~/.weechat to source control, and compare.&lt;/p&gt;
+&lt;p&gt;hope you&amp;rsquo;ve enjoyed customizing your weechat!&lt;/p&gt;
+&lt;p&gt;EDIT: s/freenode/libera/g&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>where to find me elsewhere on the web</title>
+      <link>./where-to-find-me-elsewhere-on-the-web.html</link>
+      <pubDate>Tue, 28 Nov 2017 16:22:42 +0000</pubDate>
+      
+      <guid>./where-to-find-me-elsewhere-on-the-web.html</guid>
+      <description>&lt;p&gt;chat stuff:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;mailto:ben@tilde.team&#34;&gt;email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.me/bharris&#34;&gt;telegram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/nebsirrah&#34;&gt;twitter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i&amp;rsquo;m &lt;code&gt;ben&lt;/code&gt; on &lt;a href=&#34;https://tilde.chat&#34;&gt;tilde.chat&lt;/a&gt; and &lt;a href=&#34;https://libera.chat&#34;&gt;libera&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;websites:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://benharr.is&#34;&gt;my personal site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tilde.team/~ben/&#34;&gt;tilde site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;git:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/benharri&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tildegit.org/ben&#34;&gt;tildegit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;edit: updated some links&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

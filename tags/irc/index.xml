@@ -6,7 +6,66 @@
     <description>Recent content in irc on blog // ~ben</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Nov 2018 23:11:30 +0000</lastBuildDate><atom:link href="./tags/irc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Aug 2021 15:28:27 -0400</lastBuildDate><atom:link href="./tags/irc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matrix Sucks</title>
+      <link>./matrix-sucks.html</link>
+      <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
+      
+      <guid>./matrix-sucks.html</guid>
+      <description>&lt;p&gt;i’ve gotten sick of explaining why matrix is bad over and over so i’m gathering my thoughts and some points here and publishing it so i can link to it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;no moderation capabilities&lt;/li&gt;
+&lt;li&gt;bridges don&amp;rsquo;t work well and are 1-way in order to siphon users to matrix&lt;/li&gt;
+&lt;li&gt;it&amp;rsquo;s super slow&lt;/li&gt;
+&lt;li&gt;running a server requires a supercomputer&lt;/li&gt;
+&lt;li&gt;de-facto not federated, everyone is on matrix.org&lt;/li&gt;
+&lt;li&gt;even when you run your own server, it phones home with all kinds of user data to vector.im&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;i’ll update this later with more info when i can.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;15:25 &amp;lt;remyabel&amp;gt; their reference client is slow, had an unnecessary/confusing rename and you can&#39;t delete your account
+15:25 &amp;lt;remyabel&amp;gt; you can only &amp;quot;deactivate&amp;quot; it
+15:26 &amp;lt;Shell&amp;gt; also on a technical level it&#39;s just an /awful/ protocol
+15:26 &amp;lt;~ben&amp;gt; extremely disruptive 1way bridging
+15:26 &amp;lt;Shell&amp;gt; with a huge amount of weird bugs as a result of the fact that the devs... just have no idea what they&#39;re doing
+15:26 &amp;lt;~ben&amp;gt; completely nonexistent abuse mitigation
+15:26 &amp;lt;Shell&amp;gt; and haven&#39;t for years
+15:26 &amp;lt;~ben&amp;gt; _huge_ resource hog if you want to try to run a server
+15:27 &amp;lt;Shell&amp;gt; and yes, the approach to bridging is basically to leech off everyone else, demand huge amounts of support from volunteers who never agreed to it in the first place, and give nothing back.
+15:27 &amp;lt;Shell&amp;gt; Matrix literally wouldn&#39;t have a userbase if it wasn&#39;t for IRC.
+15:28 &amp;lt;~ben&amp;gt; they only care about usercounts
+15:29 &amp;lt;Shell&amp;gt; they have, at various points, refused to employ people to work on the IRC bridges, while the bridge was horribly broken and led to security breaches and ban evasion, while simultaneously advertising them as a primary reason to use Matrix
+15:30 &amp;lt;Shell&amp;gt; and it&#39;s not really an &amp;quot;open project&amp;quot; as the words &amp;quot;Matrix Foundation&amp;quot; would have you think - the entire thing is driven almost entirely by the Matrix.org people, anyone else&#39;s input into the project is largely ignored in place of the Matrix.org roadmap.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;the connection to amdocs is FUD and not worth discussing&lt;/p&gt;
+&lt;p&gt;additional links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.404.city/en/XMPP_vs_Matrix&#34;&gt;https://wiki.404.city/en/XMPP_vs_Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackea.org/notas/matrix.html&#34;&gt;https://hackea.org/notas/matrix.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1&#34;&gt;https://github.com/libremonde-org/paper-research-privacy-matrix.org/tree/master/part1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2&#34;&gt;https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;archive.org links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20141217141653/http://matrix.org/&#34;&gt;https://web.archive.org/web/20141217141653/http://matrix.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219215828/https://en.wikipedia.org/wiki/Matrix_%28protocol%29&#34;&gt;https://web.archive.org/web/20201219215828/https://en.wikipedia.org/wiki/Matrix_%28protocol%29&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219013924/https://lists.autistici.org/message/20200323.184245.94fa2bb8.en.html&#34;&gt;https://web.archive.org/web/20201219013924/https://lists.autistici.org/message/20200323.184245.94fa2bb8.en.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201221141252/https://listas.sindominio.net/pipermail/hackmeeting/2017-October/039274.html&#34;&gt;https://web.archive.org/web/20201221141252/https://listas.sindominio.net/pipermail/hackmeeting/2017-October/039274.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20160616114330/https://vector.im/&#34;&gt;https://web.archive.org/web/20160616114330/https://vector.im/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219130957/https://matrix.org/foundation/&#34;&gt;https://web.archive.org/web/20201219130957/https://matrix.org/foundation/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219131157/https://matrix.org/blog/2019/10/10/new-vector-raises-8-5-m-to-accelerate-matrix-riot-modular&#34;&gt;https://web.archive.org/web/20201219131157/https://matrix.org/blog/2019/10/10/new-vector-raises-8-5-m-to-accelerate-matrix-riot-modular&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20180806141618/https://directory.fsf.org/wiki/Talk:Riot.im&#34;&gt;https://web.archive.org/web/20180806141618/https://directory.fsf.org/wiki/Talk:Riot.im&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201024035930/https://directory.fsf.org/wiki?title=Electron&amp;amp;oldid=71699&#34;&gt;https://web.archive.org/web/20201024035930/https://directory.fsf.org/wiki?title=Electron&amp;amp;oldid=71699&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201025143628/https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_evaluation&#34;&gt;https://web.archive.org/web/20201025143628/https://directory.fsf.org/wiki/Free_Software_Directory:Free_software_evaluation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219220645/https://matrix.org/bridges/&#34;&gt;https://web.archive.org/web/20201219220645/https://matrix.org/bridges/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219015708/https://disroot.org/en/blog/matrix-closure&#34;&gt;https://web.archive.org/web/20201219015708/https://disroot.org/en/blog/matrix-closure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219014545/https://gist.github.com/maxidorius/5736fd09c9194b7a6dc03b6b8d7220d0&#34;&gt;https://web.archive.org/web/20201219014545/https://gist.github.com/maxidorius/5736fd09c9194b7a6dc03b6b8d7220d0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219221731/https://www.matrix.org/blog/2019/09/27/privacy-improvements-in-synapse-1-4-and-riot-1-4/&#34;&gt;https://web.archive.org/web/20201219221731/https://www.matrix.org/blog/2019/09/27/privacy-improvements-in-synapse-1-4-and-riot-1-4/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md&#34;&gt;https://web.archive.org/web/20201219123116/https://gitlab.com/libremonde-org/papers/research/privacy-matrix.org/-/blob/master/part2/README.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
     <item>
       <title>weechat setup</title>
       <link>./weechat-setup.html</link>

@@ -53,9 +53,36 @@
     </item>
     
     <item>
+      <title>chat</title>
+      <link>./tags/chat.html</link>
+      <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
+      
+      <guid>./tags/chat.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>irc</title>
+      <link>./tags/irc.html</link>
+      <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
+      
+      <guid>./tags/irc.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>selfhosting</title>
+      <link>./tags/selfhosting.html</link>
+      <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
+      
+      <guid>./tags/selfhosting.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>social</title>
       <link>./tags/social.html</link>
-      <pubDate>Wed, 28 Oct 2020 16:31:39 +0000</pubDate>
+      <pubDate>Sun, 29 Aug 2021 15:28:27 -0400</pubDate>
       
       <guid>./tags/social.html</guid>
       <description></description>
@@ -85,15 +112,6 @@
       <pubDate>Mon, 03 Feb 2020 20:06:43 +0000</pubDate>
       
       <guid>./tags/update.html</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>irc</title>
-      <link>./tags/irc.html</link>
-      <pubDate>Fri, 16 Nov 2018 23:11:30 +0000</pubDate>
-      
-      <guid>./tags/irc.html</guid>
       <description></description>
     </item>
     

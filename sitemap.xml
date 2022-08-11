@@ -48,7 +48,27 @@
   </url>
   
   <url>
+    <loc>./tags/chat.html</loc>
+    <lastmod>2021-08-29T15:28:27-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/irc.html</loc>
+    <lastmod>2021-08-29T15:28:27-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>./matrix-sucks.html</loc>
+    <lastmod>2021-08-29T15:28:27-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/selfhosting.html</loc>
+    <lastmod>2021-08-29T15:28:27-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>./tags/social.html</loc>
     <lastmod>2021-08-29T15:28:27-04:00</lastmod>
   </url>
   
@@ -64,11 +84,6 @@
   
   <url>
     <loc>./mastodon-postgres-upgrade-fun.html</loc>
-    <lastmod>2020-10-28T16:31:39+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>./tags/social.html</loc>
     <lastmod>2020-10-28T16:31:39+00:00</lastmod>
   </url>
   
@@ -110,11 +125,6 @@
   <url>
     <loc>./raid-nonsense.html</loc>
     <lastmod>2019-01-13T13:28:45+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>./tags/irc.html</loc>
-    <lastmod>2018-11-16T23:11:30+00:00</lastmod>
   </url>
   
   <url>

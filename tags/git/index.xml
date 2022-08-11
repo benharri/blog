@@ -15,7 +15,7 @@
       <guid>./git-diff-highlight.html</guid>
       <description>&lt;p&gt;diff output from git can be hard to read. luckily there&amp;rsquo;s a nice tool bundled with git that can help us out.&lt;/p&gt;
 &lt;p&gt;enter &lt;a href=&#34;https://github.com/git/git/tree/master/contrib/diff-highlight&#34;&gt;diff-highlight&lt;/a&gt;, a little perl script found in git&amp;rsquo;s contrib directory.&lt;/p&gt;
-&lt;p&gt;from it&amp;rsquo;s own documentation:&lt;/p&gt;
+&lt;p&gt;from its own documentation:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[diff-highlight] post-processes the line-oriented diff, finds pairs of lines, and highlights the differening segments.&lt;/p&gt;
 &lt;/blockquote&gt;
